@@ -1,0 +1,226 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Milestones &mdash; Horton v0.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Horton v0.0 documentation" href="index.html" />
+    <link rel="next" title="Horton core" href="lib_horton.html" />
+    <link rel="prev" title="Getting Started" href="dev_getting_started.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lib_horton.html" title="Horton core"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dev_getting_started.html" title="Getting Started"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Horton v0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="milestones">
+<h1>Milestones<a class="headerlink" href="#milestones" title="Permalink to this headline">¶</a></h1>
+<p>This is a formal version of our wish list, grouped into reasonable chunks that
+belong together. I probably forgot a bunch of items, so feel free to add
+stuff. Ideally we&#8217;d implement the most fancy features first, as they will
+lead to good papers. Anyway, the minimal program is a milestone that needs to
+be done first.</p>
+<div class="section" id="minimal-program">
+<h2>Minimal program<a class="headerlink" href="#minimal-program" title="Permalink to this headline">¶</a></h2>
+<p>Basic HF/STO-3G single-point computation on small molecules. We will need the
+following components for this to work:</p>
+<ol class="arabic simple">
+<li>Basis set parser (e.g. Gaussian 94 format)</li>
+<li>Compact array representation of the basis set</li>
+<li>Abstraction layer for large matrices and operations on these objects. This
+is crucial to make the program fast. We have to keep the following in mind.<ul>
+<li>Allocation of a big matrix can never happen accidentally. One must call
+allocate or copy routines to make new matrices.</li>
+<li>Support all kinds of in-place operations.</li>
+<li>Allocation should only happen prior to an actual computations,
+deallocation only in the end. This may seen trivial, but in Python
+allocation/deallocation is done automatically. This is fine for small
+stuff, but not for big arrays.</li>
+<li>Most matrices are triangular, so we can use that to reduce the memory
+footprint.</li>
+<li>In the long run, this part is going to be replaced with a
+sparse-matrix module. The rest of the code should not be affected by
+switching to sparse-matrix code.</li>
+</ul>
+</li>
+<li>Gaussian integral routines. We&#8217;ll probably borrow some from PyQuante to get
+started.</li>
+<li>Matrix element routines: use basis set structure and Gaussian integral
+routines. We need these to compute the derivatives of the total Lagrangian
+towards the density matrix elements. Expectation values of the
+corresponding operators can be evaluated simultaneously. The following
+operators are needed.<ul>
+<li>Overlap</li>
+<li>Kinetic energy</li>
+<li>Hartree &amp; Exchange</li>
+<li>Constraint for number of particles</li>
+<li>Constraint for occupation numbers</li>
+</ul>
+</li>
+<li>Hamiltonian-core guess.</li>
+<li>A Constrained minimizer.</li>
+<li>A basic unit conversion module</li>
+</ol>
+<p>The Python/C wrapping will be done with Cython. The Python/Fortran wrapping
+will be done with Fwrap.</p>
+</div>
+<div class="section" id="the-fun-part-students">
+<h2>The fun part (students)<a class="headerlink" href="#the-fun-part-students" title="Permalink to this headline">¶</a></h2>
+<p>Add more features to make the program more fun:</p>
+<ol class="arabic simple">
+<li>Support a bunch of basis sets</li>
+<li>Add support for LDA. For this we need to implement Becke&#8217;s integration
+scheme and good spherical integration routines.</li>
+<li>Implement some more functionals: XXX.</li>
+</ol>
+<p>We will need to add a lot of testing here, just to make sure the program works
+like it should.</p>
+</div>
+<div class="section" id="thumper-and-friends">
+<h2>Thumper and friends<a class="headerlink" href="#thumper-and-friends" title="Permalink to this headline">¶</a></h2>
+<p>Computation of nuclear forces. Include Sandra&#8217;s optimizer.</p>
+</div>
+<div class="section" id="constrain-the-wavefunction">
+<h2>Constrain the wavefunction<a class="headerlink" href="#constrain-the-wavefunction" title="Permalink to this headline">¶</a></h2>
+<p>Arbitrary constraints (atomic charge, bond orders, ...) during the wavefunction
+optimization.</p>
+</div>
+<div class="section" id="tickle-the-wavefunction">
+<h2>Tickle the wavefunction<a class="headerlink" href="#tickle-the-wavefunction" title="Permalink to this headline">¶</a></h2>
+<p>Response of the wavefunction to perturbations. This has several applications:</p>
+<ol class="arabic simple">
+<li>Vibrational frequencies.</li>
+<li>Polarizability.</li>
+<li>Softness matrix.</li>
+<li>...</li>
+</ol>
+</div>
+<div class="section" id="polymers-membranes-and-crystals">
+<h2>Polymers, membranes and crystals<a class="headerlink" href="#polymers-membranes-and-crystals" title="Permalink to this headline">¶</a></h2>
+<p>1D, 2D and 3D periodic boundary conditions.</p>
+</div>
+<div class="section" id="pseudopotentials">
+<h2>Pseudopotentials<a class="headerlink" href="#pseudopotentials" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="quantum-dots">
+<h2>Quantum dots<a class="headerlink" href="#quantum-dots" title="Permalink to this headline">¶</a></h2>
+<p>Non-uniform Gaussian basis functions.</p>
+</div>
+<div class="section" id="cut-the-crap">
+<h2>Cut the crap<a class="headerlink" href="#cut-the-crap" title="Permalink to this headline">¶</a></h2>
+<p>Decent partitioning schemes.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Milestones</a><ul>
+<li><a class="reference internal" href="#minimal-program">Minimal program</a></li>
+<li><a class="reference internal" href="#the-fun-part-students">The fun part (students)</a></li>
+<li><a class="reference internal" href="#thumper-and-friends">Thumper and friends</a></li>
+<li><a class="reference internal" href="#constrain-the-wavefunction">Constrain the wavefunction</a></li>
+<li><a class="reference internal" href="#tickle-the-wavefunction">Tickle the wavefunction</a></li>
+<li><a class="reference internal" href="#polymers-membranes-and-crystals">Polymers, membranes and crystals</a></li>
+<li><a class="reference internal" href="#pseudopotentials">Pseudopotentials</a></li>
+<li><a class="reference internal" href="#quantum-dots">Quantum dots</a></li>
+<li><a class="reference internal" href="#cut-the-crap">Cut the crap</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dev_getting_started.html"
+                        title="previous chapter">Getting Started</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="lib_horton.html"
+                        title="next chapter">Horton core</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/dev_milestones.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lib_horton.html" title="Horton core"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dev_getting_started.html" title="Getting Started"
+             >previous</a> |</li>
+        <li><a href="index.html">Horton v0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Toon Verstraelen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

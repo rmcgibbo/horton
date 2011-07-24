@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Horton core &mdash; Horton v0.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Horton v0.0 documentation" href="index.html" />
+    <link rel="prev" title="Milestones" href="dev_milestones.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dev_milestones.html" title="Milestones"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Horton v0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="horton-core">
+<h1>Horton core<a class="headerlink" href="#horton-core" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-horton.constants">
+<span id="horton-constants-physical-constants"></span><h2><a class="reference internal" href="#module-horton.constants"><tt class="xref py py-mod docutils literal"><span class="pre">horton.constants</span></tt></a> &#8211; Physical constants<a class="headerlink" href="#module-horton.constants" title="Permalink to this headline">¶</a></h2>
+<p>These are the physical constants defined in this module (in atomic units):</p>
+<blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Name</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>avogadro</td>
+<td>6.0221415000e+23</td>
+</tr>
+<tr><td>boltzmann</td>
+<td>3.1668154051e-06</td>
+</tr>
+<tr><td>lightspeed</td>
+<td>1.3703599975e+02</td>
+</tr>
+<tr><td>planck</td>
+<td>6.2831853072e+00</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</div>
+<div class="section" id="module-horton.context">
+<span id="horton-context-runtime-environment"></span><h2><a class="reference internal" href="#module-horton.context"><tt class="xref py py-mod docutils literal"><span class="pre">horton.context</span></tt></a> &#8211; Runtime environment<a class="headerlink" href="#module-horton.context" title="Permalink to this headline">¶</a></h2>
+<p>This module controls global parameters that are purely technical, e.g. the
+location of data files. It is certainly not meant to keep track of input
+parameters for a computation.</p>
+<p>This module contains a context object, an instance of the <a class="reference internal" href="#horton.context.Context" title="horton.context.Context"><tt class="xref py py-class docutils literal"><span class="pre">Context</span></tt></a>
+class. For now, its functionality is rather limited. It tries to figure
+out the location of the data directory. If it is not specified in the
+environment variable <tt class="docutils literal"><span class="pre">HORTONDATA</span></tt>, it is assumed that the data is located
+in a directory called <tt class="docutils literal"><span class="pre">data</span></tt>. If the data directory does not exist, an
+error is raised.</p>
+<dl class="class">
+<dt id="horton.context.Context">
+<em class="property">class </em><tt class="descclassname">horton.context.</tt><tt class="descname">Context</tt><a class="headerlink" href="#horton.context.Context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds out where the data directory is located etc.</p>
+<p>The data directory contains data files with standard basis sets and
+pseudo potentials.</p>
+<dl class="method">
+<dt id="horton.context.Context.get_fn">
+<tt class="descname">get_fn</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.context.Context.get_fn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the full path to the given filename in the data directory.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.context.Context.glob">
+<tt class="descname">glob</tt><big>(</big><em>pattern</em><big>)</big><a class="headerlink" href="#horton.context.Context.glob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all files in the data directory that match the given pattern.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.io">
+<span id="horton-io-input-output"></span><h2><a class="reference internal" href="#module-horton.io"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io</span></tt></a> &#8211; Input/Output<a class="headerlink" href="#module-horton.io" title="Permalink to this headline">¶</a></h2>
+<p>All input routines begin with <tt class="docutils literal"><span class="pre">load_</span></tt>. All output routines begin with
+<tt class="docutils literal"><span class="pre">dump_</span></tt>.</p>
+<p>This module also contains a smart routine, <tt class="docutils literal"><span class="pre">load_geoms</span></tt>, which makes it
+easier to load molecular geometries from various file formats. It uses to
+extension of the filename to figure out what the file format is.</p>
+<dl class="function">
+<dt id="horton.io.load_geom">
+<tt class="descclassname">horton.io.</tt><tt class="descname">load_geom</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.load_geom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a molecular geometry from a file.</p>
+<p><strong>Argument:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The file to load the geometry from</dd>
+</dl>
+<p><strong>Returns:</strong> two arrays, coordinates and numbers that can be used as the
+two first arguments of the System constructor.</p>
+<p>This routine uses the extension of the filename to determine the file
+format.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.io.load_geom_xyz">
+<tt class="descclassname">horton.io.</tt><tt class="descname">load_geom_xyz</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.load_geom_xyz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a molecular geometry from a .xyz file.</p>
+<p><strong>Argument:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The file to load the geometry from</dd>
+</dl>
+<p><strong>Returns:</strong> two arrays, coordinates and numbers that can be used as the
+two first arguments of the System constructor.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.periodic">
+<span id="horton-periodic-periodic-table"></span><h2><a class="reference internal" href="#module-horton.periodic"><tt class="xref py py-mod docutils literal"><span class="pre">horton.periodic</span></tt></a> &#8211; Periodic Table<a class="headerlink" href="#module-horton.periodic" title="Permalink to this headline">¶</a></h2>
+<p>This module contains an object <tt class="docutils literal"><span class="pre">periodic</span></tt> that can be used as a Pythonic
+periodic table. It can be used as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">horton</span> <span class="kn">import</span> <span class="n">periodic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="s">&#39;si&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">number</span>
+<span class="go">14</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="s">&#39;He&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">number</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="s">&#39;h&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span>
+<span class="go">&#39;H&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span>
+<span class="go">&#39;Li&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="s">&#39;5&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span>
+<span class="go">&#39;B&#39;</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="horton.periodic.Element">
+<em class="property">class </em><tt class="descclassname">horton.periodic.</tt><tt class="descname">Element</tt><big>(</big><em>number</em>, <em>symbol</em><big>)</big><a class="headerlink" href="#horton.periodic.Element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents an element from the periodic table.</p>
+<p>The following attributes are supported:</p>
+<dl class="docutils">
+<dt>number</dt>
+<dd>The atomic number</dd>
+<dt>symbol</dt>
+<dd>A string with the symbol of the element.</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.periodic.Periodic">
+<em class="property">class </em><tt class="descclassname">horton.periodic.</tt><tt class="descname">Periodic</tt><big>(</big><em>elements</em><big>)</big><a class="headerlink" href="#horton.periodic.Periodic" title="Permalink to this definition">¶</a></dt>
+<dd><p>A periodic table data structure.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>elements</dt>
+<dd>A list of <a class="reference internal" href="#horton.periodic.Element" title="horton.periodic.Element"><tt class="xref py py-class docutils literal"><span class="pre">Element</span></tt></a> instances.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.periodic.Periodic.__getitem__">
+<tt class="descname">__getitem__</tt><big>(</big><em>index</em><big>)</big><a class="headerlink" href="#horton.periodic.Periodic.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an element from the table based on a flexible index.</p>
+<p><strong>Argument:</strong></p>
+<dl class="docutils">
+<dt>index</dt>
+<dd>This can be either an integer atomic number, a string with the
+elemental symbol (any case), or a string with the atomic number.</dd>
+</dl>
+<p><strong>Returns:</strong> the corresponding <a class="reference internal" href="#horton.periodic.Element" title="horton.periodic.Element"><tt class="xref py py-class docutils literal"><span class="pre">Element</span></tt></a> instance</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.system">
+<span id="horton-system-molecular-system-specification"></span><h2><a class="reference internal" href="#module-horton.system"><tt class="xref py py-mod docutils literal"><span class="pre">horton.system</span></tt></a> &#8211; Molecular System Specification<a class="headerlink" href="#module-horton.system" title="Permalink to this headline">¶</a></h2>
+<p>Objects of the System class specify the geometry (and atomic elements) of the
+molecule on which Horton will perform a computation. Also other parameters
+that determine several aspects of the molecular wavefunction, are attributes
+of a <a class="reference internal" href="#horton.system.System" title="horton.system.System"><tt class="xref py py-class docutils literal"><span class="pre">System</span></tt></a> instance, e.g. basissets, pseudopotentials, ghost atoms,
+etc.</p>
+<dl class="class">
+<dt id="horton.system.System">
+<em class="property">class </em><tt class="descclassname">horton.system.</tt><tt class="descname">System</tt><big>(</big><em>coordinates</em>, <em>numbers</em><big>)</big><a class="headerlink" href="#horton.system.System" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>coordinates</dt>
+<dd>A (N, 3) float numpy array with Cartesian coordinates of the
+atoms.</dd>
+<dt>numbers</dt>
+<dd>A (N, ) int numpy vector with the atomic numbers.</dd>
+</dl>
+<dl class="classmethod">
+<dt id="horton.system.System.from_file">
+<em class="property">classmethod </em><tt class="descname">from_file</tt><big>(</big><em>filename</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#horton.system.System.from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a System object from a file</p>
+<p>This method is the same as the constructor, except that the first
+two arguments: coordinates and numbers are replaced by a filename.
+For now, only the &#8216;.xyz&#8217; format is supported.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.units">
+<span id="horton-units-unit-conversion"></span><h2><a class="reference internal" href="#module-horton.units"><tt class="xref py py-mod docutils literal"><span class="pre">horton.units</span></tt></a> &#8211; Unit Conversion<a class="headerlink" href="#module-horton.units" title="Permalink to this headline">¶</a></h2>
+<p>Internally Horton always uses atomic units. Atomic units are consistent,
+similar to the SI unit system: one does not need conversion factors in the
+middle of a computation. This choice facilitates the programming and reduces
+accidental bugs.</p>
+<p>References for the conversion values:</p>
+<ul class="simple">
+<li>B. J. Mohr and B. N. Taylor,
+CODATA recommended values of the fundamental physical
+constants: 1998, Rev. Mod. Phys. 72(2), 351 (2000)</li>
+<li>The NIST Reference on Constants, Units, and Uncertainty
+(<a class="reference external" href="http://physics.nist.gov/cuu/Constants/index.html">http://physics.nist.gov/cuu/Constants/index.html</a>)</li>
+<li>1 calorie = 4.184 Joules</li>
+</ul>
+<p><strong>Conventions followed by this module:</strong></p>
+<p>Let foo be is the value of an external unit in internal (atomic) units. The
+way to use this unit is as follows: <tt class="docutils literal"><span class="pre">5*foo</span></tt> litterally means <cite>five times
+foo</cite>. The result of this operation is a floating point number for this value
+in atomic units.</p>
+<p><strong>Examples:</strong></p>
+<p>If you want to have a distance of five angstrom in internal units:
+<tt class="docutils literal"><span class="pre">5*angstrom</span></tt>.</p>
+<p>If you want to convert a length of 5 internal units to angstrom:
+<tt class="docutils literal"><span class="pre">5/angstrom</span></tt>.</p>
+<p><strong>Remarks:</strong></p>
+<p>It is highly recommended to perform unit conversions only when data is read
+from the input or data is written to the output. It may also be useful in
+<cite>input scripts</cite> that use Horton. Do not perform any unit conversion in other
+parts of the program.</p>
+<p>An often recurring question is how to convert a frequency in internal units
+to a spectroscopic wavenumber in inverse centimeters. This is how it can be
+done:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">horton</span> <span class="kn">import</span> <span class="n">centimeter</span><span class="p">,</span> <span class="n">lightspeed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invcm</span> <span class="o">=</span> <span class="n">lightspeed</span><span class="o">/</span><span class="n">centimeter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">freq</span> <span class="o">=</span> <span class="mf">0.00320232</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">freq</span><span class="o">/</span><span class="n">invcm</span>
+</pre></div>
+</div>
+<p>These are the conversion constants defined in this module:</p>
+<blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Name</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>ampere</td>
+<td>1.5097490095e+02</td>
+</tr>
+<tr><td>amu</td>
+<td>1.8228886274e+03</td>
+</tr>
+<tr><td>angstrom</td>
+<td>1.8897261339e+00</td>
+</tr>
+<tr><td>atm</td>
+<td>3.4439674262e-09</td>
+</tr>
+<tr><td>au</td>
+<td>1.0000000000e+00</td>
+</tr>
+<tr><td>avogadro</td>
+<td>6.0221415000e+23</td>
+</tr>
+<tr><td>bar</td>
+<td>3.3989315828e-09</td>
+</tr>
+<tr><td>calorie</td>
+<td>9.5968941808e+17</td>
+</tr>
+<tr><td>centimeter</td>
+<td>1.8897261339e+08</td>
+</tr>
+<tr><td>coulomb</td>
+<td>6.2415097445e+18</td>
+</tr>
+<tr><td>debye</td>
+<td>3.9343031369e-01</td>
+</tr>
+<tr><td>decimeter</td>
+<td>1.8897261339e+09</td>
+</tr>
+<tr><td>deg</td>
+<td>1.7453292520e-02</td>
+</tr>
+<tr><td>electronvolt</td>
+<td>3.6749325920e-02</td>
+</tr>
+<tr><td>femtosecond</td>
+<td>4.1341373337e+01</td>
+</tr>
+<tr><td>gram</td>
+<td>1.0977693253e+27</td>
+</tr>
+<tr><td>hertz</td>
+<td>2.4188843265e-17</td>
+</tr>
+<tr><td>joule</td>
+<td>2.2937127583e+17</td>
+</tr>
+<tr><td>kcalmol</td>
+<td>1.5936015753e-03</td>
+</tr>
+<tr><td>kelvin</td>
+<td>1.0000000000e+00</td>
+</tr>
+<tr><td>kilogram</td>
+<td>1.0977693253e+30</td>
+</tr>
+<tr><td>kjmol</td>
+<td>3.8087991760e-04</td>
+</tr>
+<tr><td>liter</td>
+<td>6.7483345942e+27</td>
+</tr>
+<tr><td>meter</td>
+<td>1.8897261339e+10</td>
+</tr>
+<tr><td>micrometer</td>
+<td>1.8897261339e+04</td>
+</tr>
+<tr><td>miligram</td>
+<td>1.0977693253e+24</td>
+</tr>
+<tr><td>milimeter</td>
+<td>1.8897261339e+07</td>
+</tr>
+<tr><td>mol</td>
+<td>6.0221415000e+23</td>
+</tr>
+<tr><td>nanometer</td>
+<td>1.8897261339e+01</td>
+</tr>
+<tr><td>nanosecond</td>
+<td>4.1341373337e+07</td>
+</tr>
+<tr><td>newton</td>
+<td>1.2137805141e+07</td>
+</tr>
+<tr><td>pascal</td>
+<td>3.3989315828e-14</td>
+</tr>
+<tr><td>picometer</td>
+<td>1.8897261339e-02</td>
+</tr>
+<tr><td>picosecond</td>
+<td>4.1341373337e+04</td>
+</tr>
+<tr><td>rad</td>
+<td>1.0000000000e+00</td>
+</tr>
+<tr><td>rydberg</td>
+<td>5.0000000000e-01</td>
+</tr>
+<tr><td>second</td>
+<td>4.1341373337e+16</td>
+</tr>
+<tr><td>unified</td>
+<td>1.8228886274e+03</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Horton core</a><ul>
+<li><a class="reference internal" href="#module-horton.constants"><tt class="docutils literal"><span class="pre">horton.constants</span></tt> &#8211; Physical constants</a></li>
+<li><a class="reference internal" href="#module-horton.context"><tt class="docutils literal"><span class="pre">horton.context</span></tt> &#8211; Runtime environment</a></li>
+<li><a class="reference internal" href="#module-horton.io"><tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input/Output</a></li>
+<li><a class="reference internal" href="#module-horton.periodic"><tt class="docutils literal"><span class="pre">horton.periodic</span></tt> &#8211; Periodic Table</a></li>
+<li><a class="reference internal" href="#module-horton.system"><tt class="docutils literal"><span class="pre">horton.system</span></tt> &#8211; Molecular System Specification</a></li>
+<li><a class="reference internal" href="#module-horton.units"><tt class="docutils literal"><span class="pre">horton.units</span></tt> &#8211; Unit Conversion</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dev_milestones.html"
+                        title="previous chapter">Milestones</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/lib_horton.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dev_milestones.html" title="Milestones"
+             >previous</a> |</li>
+        <li><a href="index.html">Horton v0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Toon Verstraelen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>
