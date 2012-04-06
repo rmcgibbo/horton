@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -12,9 +11,9 @@
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '#',
         VERSION:     '0.0',
-        COLLAPSE_INDEX: false,
+        COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
@@ -34,8 +33,8 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
         <li class="right" >
           <a href="lib_horton.html" title="Horton core"
              accesskey="N">next</a> |</li>
@@ -58,61 +57,81 @@ belong together. I probably forgot a bunch of items, so feel free to add
 stuff. Ideally we&#8217;d implement the most fancy features first, as they will
 lead to good papers. Anyway, the minimal program is a milestone that needs to
 be done first.</p>
+<p>For every item, there are a few possible states:</p>
+<ul class="simple">
+<li>TODO (or no label): not started yet</li>
+<li>WIP: work in (slow) progress</li>
+<li>DONE: implementation and test routines are ready</li>
+<li>DOCUMENTED: the implementation and its usage are documented somewhere on this website.</li>
+</ul>
 <div class="section" id="minimal-program">
 <h2>Minimal program<a class="headerlink" href="#minimal-program" title="Permalink to this headline">¶</a></h2>
-<p>Basic HF/STO-3G single-point computation on small molecules. We will need the
-following components for this to work:</p>
+<p>Basic HF single-point computation on small molecules. We will need the
+following components:</p>
 <ol class="arabic simple">
-<li>Basis set parser (e.g. Gaussian 94 format)</li>
-<li>Compact array representation of the basis set</li>
-<li>Abstraction layer for large matrices and operations on these objects. This
-is crucial to make the program fast. We have to keep the following in mind.<ul>
+<li>[DONE] A basic unit conversion module, periodic table information, constants.</li>
+<li>[DONE] Basis set parser (NWChem format)</li>
+<li>[DONE] Compact array representation of the basis set</li>
+<li>[DONE] Abstraction layer for large matrices and operations on these objects.
+This is crucial to make the program fast. We have to keep the following in
+mind:<ul>
 <li>Allocation of a big matrix can never happen accidentally. One must call
 allocate or copy routines to make new matrices.</li>
 <li>Support all kinds of in-place operations.</li>
-<li>Allocation should only happen prior to an actual computations,
+<li>Allocation should only happen prior to an actual computation,
 deallocation only in the end. This may seen trivial, but in Python
 allocation/deallocation is done automatically. This is fine for small
 stuff, but not for big arrays.</li>
-<li>Most matrices are triangular, so we can use that to reduce the memory
-footprint.</li>
-<li>In the long run, this part is going to be replaced with a
-sparse-matrix module. The rest of the code should not be affected by
-switching to sparse-matrix code.</li>
+<li>In the long run, this part is going to be extended with alternative
+implementations, e.g. sparse-matrices, parallel operations, .... The rest
+of the code should not be affected by switching to different matrix
+implementations.</li>
+<li>The first version does not have to be perfect, but it is should at least
+have an API that allows us to replace this initial version with faster
+alternatives.</li>
 </ul>
 </li>
-<li>Gaussian integral routines. We&#8217;ll probably borrow some from PyQuante to get
-started.</li>
-<li>Matrix element routines: use basis set structure and Gaussian integral
-routines. We need these to compute the derivatives of the total Lagrangian
-towards the density matrix elements. Expectation values of the
-corresponding operators can be evaluated simultaneously. The following
-operators are needed.<ul>
-<li>Overlap</li>
-<li>Kinetic energy</li>
-<li>Hartree &amp; Exchange</li>
-<li>Constraint for number of particles</li>
-<li>Constraint for occupation numbers</li>
-</ul>
-</li>
-<li>Hamiltonian-core guess.</li>
-<li>A Constrained minimizer.</li>
-<li>A basic unit conversion module</li>
+<li>[DONE] Gaussian integral routines: overlap, kinetic energy, nuclear
+attraction and two-electron. Initially, these are borrowed from <a class="reference external" href="http://pyquante.sourceforge.net/">PyQuante</a> to get started.</li>
+<li>[DOCUMENTED] transformation between Cartesian and pure basis functions.</li>
+<li>[WIP] Generic one- and two-body contraction routines to generate the dense
+matrix representation of the operators. In order to test this properly, we
+will have to add some IO routines to read validation results generated with
+other codes</li>
+<li>[WIP] A system class that can keep track of molecular geometry, wavefunction,
+operators, ...</li>
+<li>A simple class hierarchy to define the Hamiltonian.</li>
+<li>Hamiltonian-core guess and basic SCF routine.</li>
 </ol>
 <p>The Python/C wrapping will be done with Cython. The Python/Fortran wrapping
 will be done with Fwrap.</p>
+</div>
+<div class="section" id="less-urgent-changes-in-basic-version">
+<h2>Less urgent changes in basic version<a class="headerlink" href="#less-urgent-changes-in-basic-version" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Our own implementation of the one-electron integrals. Link with <a class="reference external" href="http://sourceforge.net/projects/libint/">libint2</a> for the two-electron integrals.</li>
+<li>Compact storage and somewhat clever linear aglebra routines for the dense
+matrix objects.</li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Hierarchical_Data_Format">HDF5</a> storage of
+system class, cfr Gaussian checkpoint file. This will be based on the <a class="reference external" href="http://code.google.com/p/h5py/">h5py
+module</a>.</li>
+<li>Transformation of wavefunctions from one basis set to the other.</li>
+</ol>
 </div>
 <div class="section" id="the-fun-part-students">
 <h2>The fun part (students)<a class="headerlink" href="#the-fun-part-students" title="Permalink to this headline">¶</a></h2>
 <p>Add more features to make the program more fun:</p>
 <ol class="arabic simple">
-<li>Support a bunch of basis sets</li>
+<li>Support a bunch of basis sets. (Figure out to what extent we can redistribute
+part of the <a class="reference external" href="https://bse.pnl.gov/bse/portal">EMSL</a> data.)</li>
 <li>Add support for LDA. For this we need to implement Becke&#8217;s integration
-scheme and good spherical integration routines.</li>
-<li>Implement some more functionals: XXX.</li>
+scheme and good spherical integration routines. We can initially take these
+grid routines from HiPart, but it would be nice to have the Lebedev grids
+implemented in <a class="reference external" href="http://code.google.com/p/sympy/">SymPy</a>, which uses
+<a class="reference external" href="http://code.google.com/p/mpmath/">MPMath</a> for arbitrary precision
+evaluation.</li>
+<li>Implement some more functionals. We should make use of <a class="reference external" href="http://www.tddft.org/programs/octopus/wiki/index.php/Libxc">Libxc</a>.</li>
 </ol>
-<p>We will need to add a lot of testing here, just to make sure the program works
-like it should.</p>
 </div>
 <div class="section" id="thumper-and-friends">
 <h2>Thumper and friends<a class="headerlink" href="#thumper-and-friends" title="Permalink to this headline">¶</a></h2>
@@ -129,7 +148,7 @@ optimization.</p>
 <ol class="arabic simple">
 <li>Vibrational frequencies.</li>
 <li>Polarizability.</li>
-<li>Softness matrix.</li>
+<li>Condensed linear response matrix.</li>
 <li>...</li>
 </ol>
 </div>
@@ -158,16 +177,17 @@ optimization.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Milestones</a><ul>
-<li><a class="reference internal" href="#minimal-program">Minimal program</a></li>
-<li><a class="reference internal" href="#the-fun-part-students">The fun part (students)</a></li>
-<li><a class="reference internal" href="#thumper-and-friends">Thumper and friends</a></li>
-<li><a class="reference internal" href="#constrain-the-wavefunction">Constrain the wavefunction</a></li>
-<li><a class="reference internal" href="#tickle-the-wavefunction">Tickle the wavefunction</a></li>
-<li><a class="reference internal" href="#polymers-membranes-and-crystals">Polymers, membranes and crystals</a></li>
-<li><a class="reference internal" href="#pseudopotentials">Pseudopotentials</a></li>
-<li><a class="reference internal" href="#quantum-dots">Quantum dots</a></li>
-<li><a class="reference internal" href="#cut-the-crap">Cut the crap</a></li>
+<li><a class="reference external" href="#">Milestones</a><ul>
+<li><a class="reference external" href="#minimal-program">Minimal program</a></li>
+<li><a class="reference external" href="#less-urgent-changes-in-basic-version">Less urgent changes in basic version</a></li>
+<li><a class="reference external" href="#the-fun-part-students">The fun part (students)</a></li>
+<li><a class="reference external" href="#thumper-and-friends">Thumper and friends</a></li>
+<li><a class="reference external" href="#constrain-the-wavefunction">Constrain the wavefunction</a></li>
+<li><a class="reference external" href="#tickle-the-wavefunction">Tickle the wavefunction</a></li>
+<li><a class="reference external" href="#polymers-membranes-and-crystals">Polymers, membranes and crystals</a></li>
+<li><a class="reference external" href="#pseudopotentials">Pseudopotentials</a></li>
+<li><a class="reference external" href="#quantum-dots">Quantum dots</a></li>
+<li><a class="reference external" href="#cut-the-crap">Cut the crap</a></li>
 </ul>
 </li>
 </ul>
@@ -207,7 +227,7 @@ optimization.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
+          <a href="modindex.html" title="Global Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="lib_horton.html" title="Horton core"
@@ -220,7 +240,7 @@ optimization.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2011, Toon Verstraelen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
     </div>
   </body>
 </html>

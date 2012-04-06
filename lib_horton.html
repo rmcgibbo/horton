@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -12,9 +11,9 @@
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '#',
         VERSION:     '0.0',
-        COLLAPSE_INDEX: false,
+        COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
@@ -33,8 +32,8 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
         <li class="right" >
           <a href="dev_milestones.html" title="Milestones"
              accesskey="P">previous</a> |</li>
@@ -50,7 +49,7 @@
   <div class="section" id="horton-core">
 <h1>Horton core<a class="headerlink" href="#horton-core" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-horton.constants">
-<span id="horton-constants-physical-constants"></span><h2><a class="reference internal" href="#module-horton.constants"><tt class="xref py py-mod docutils literal"><span class="pre">horton.constants</span></tt></a> &#8211; Physical constants<a class="headerlink" href="#module-horton.constants" title="Permalink to this headline">¶</a></h2>
+<h2><a title="" class="reference external" href="#module-horton.constants"><tt class="xref docutils literal"><span class="pre">horton.constants</span></tt></a> &#8211; Physical constants<a class="headerlink" href="#module-horton.constants" title="Permalink to this headline">¶</a></h2>
 <p>These are the physical constants defined in this module (in atomic units):</p>
 <blockquote>
 <table border="1" class="docutils">
@@ -81,11 +80,11 @@
 </blockquote>
 </div>
 <div class="section" id="module-horton.context">
-<span id="horton-context-runtime-environment"></span><h2><a class="reference internal" href="#module-horton.context"><tt class="xref py py-mod docutils literal"><span class="pre">horton.context</span></tt></a> &#8211; Runtime environment<a class="headerlink" href="#module-horton.context" title="Permalink to this headline">¶</a></h2>
+<h2><a title="" class="reference external" href="#module-horton.context"><tt class="xref docutils literal"><span class="pre">horton.context</span></tt></a> &#8211; Runtime environment<a class="headerlink" href="#module-horton.context" title="Permalink to this headline">¶</a></h2>
 <p>This module controls global parameters that are purely technical, e.g. the
 location of data files. It is certainly not meant to keep track of input
 parameters for a computation.</p>
-<p>This module contains a context object, an instance of the <a class="reference internal" href="#horton.context.Context" title="horton.context.Context"><tt class="xref py py-class docutils literal"><span class="pre">Context</span></tt></a>
+<p>This module contains a context object, an instance of the <a title="horton.context.Context" class="reference internal" href="#horton.context.Context"><tt class="xref docutils literal"><span class="pre">Context</span></tt></a>
 class. For now, its functionality is rather limited. It tries to figure
 out the location of the data directory. If it is not specified in the
 environment variable <tt class="docutils literal"><span class="pre">HORTONDATA</span></tt>, it is assumed that the data is located
@@ -100,38 +99,35 @@ pseudo potentials.</p>
 <dl class="method">
 <dt id="horton.context.Context.get_fn">
 <tt class="descname">get_fn</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.context.Context.get_fn" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the full path to the given filename in the data directory.</p>
-</dd></dl>
+<dd>Return the full path to the given filename in the data directory.</dd></dl>
 
 <dl class="method">
 <dt id="horton.context.Context.glob">
 <tt class="descname">glob</tt><big>(</big><em>pattern</em><big>)</big><a class="headerlink" href="#horton.context.Context.glob" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return all files in the data directory that match the given pattern.</p>
-</dd></dl>
+<dd>Return all files in the data directory that match the given pattern.</dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-horton.io">
-<span id="horton-io-input-output"></span><h2><a class="reference internal" href="#module-horton.io"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io</span></tt></a> &#8211; Input/Output<a class="headerlink" href="#module-horton.io" title="Permalink to this headline">¶</a></h2>
+<h2><a title="" class="reference external" href="#module-horton.io"><tt class="xref docutils literal"><span class="pre">horton.io</span></tt></a> &#8211; Input/Output<a class="headerlink" href="#module-horton.io" title="Permalink to this headline">¶</a></h2>
 <p>All input routines begin with <tt class="docutils literal"><span class="pre">load_</span></tt>. All output routines begin with
 <tt class="docutils literal"><span class="pre">dump_</span></tt>.</p>
-<p>This module also contains a smart routine, <tt class="docutils literal"><span class="pre">load_geoms</span></tt>, which makes it
-easier to load molecular geometries from various file formats. It uses to
+<p>This module also contains a smart routine, <tt class="docutils literal"><span class="pre">load_system_args</span></tt>, which makes
+it easier to load molecular data from various file formats. It uses to
 extension of the filename to figure out what the file format is.</p>
 <dl class="function">
-<dt id="horton.io.load_geom">
-<tt class="descclassname">horton.io.</tt><tt class="descname">load_geom</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.load_geom" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load a molecular geometry from a file.</p>
+<dt id="horton.io.load_system_args">
+<tt class="descclassname">horton.io.</tt><tt class="descname">load_system_args</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.load_system_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a molecular data from a file.</p>
 <p><strong>Argument:</strong></p>
 <dl class="docutils">
 <dt>filename</dt>
 <dd>The file to load the geometry from</dd>
 </dl>
-<p><strong>Returns:</strong> two arrays, coordinates and numbers that can be used as the
-two first arguments of the System constructor.</p>
 <p>This routine uses the extension of the filename to determine the file
-format.</p>
+format. It returns a dictionary with constructor arguments for the System
+class.</p>
 </dd></dl>
 
 <dl class="function">
@@ -147,9 +143,52 @@ format.</p>
 two first arguments of the System constructor.</p>
 </dd></dl>
 
+<dl class="function">
+<dt id="horton.io.load_operators_g09">
+<tt class="descclassname">horton.io.</tt><tt class="descname">load_operators_g09</tt><big>(</big><em>fn</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.load_operators_g09" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads several one- and two-body operators from a Gaussian log file.</p>
+<p><strong>Arugment:</strong></p>
+<dl class="docutils">
+<dt>fn</dt>
+<dd>The filename of the Gaussian log file.</dd>
+<dt>lf</dt>
+<dd>A LinalgFactory instance.</dd>
+</dl>
+<p>The following one-body operators are loaded if present: overlap, kinetic,
+nuclear attraction. The following two-body operator is loaded if present:
+electrostatic repulsion. In order to make all these matrices are present
+in the Gaussian log file, the following commands must be used in the
+Gaussian input file:</p>
+<blockquote>
+scf(conventional) iop(3/33=5) extralinks=l316 iop(3/27=999)</blockquote>
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.io.FCHKFile">
+<em class="property">class </em><tt class="descclassname">horton.io.</tt><tt class="descname">FCHKFile</tt><big>(</big><em>filename</em>, <em>ignore_errors=False</em>, <em>field_labels=None</em><big>)</big><a class="headerlink" href="#horton.io.FCHKFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reader for Formatted checkpoint files</p>
+<p>After initialization, the data from the file is available in the fields
+dictionary. Also the following attributes are read from the file: title,
+command, lot (level of theory) and basis.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The formatted checkpoint file.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>ignore_errors</dt>
+<dd>Try to read incorrectly formatted files without raising
+exceptions [default=False]</dd>
+<dt>field_labels</dt>
+<dd>When provided, only these fields are read from the formatted
+checkpoint file. (This can save a lot of time.)</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="module-horton.periodic">
-<span id="horton-periodic-periodic-table"></span><h2><a class="reference internal" href="#module-horton.periodic"><tt class="xref py py-mod docutils literal"><span class="pre">horton.periodic</span></tt></a> &#8211; Periodic Table<a class="headerlink" href="#module-horton.periodic" title="Permalink to this headline">¶</a></h2>
+<h2><a title="" class="reference external" href="#module-horton.periodic"><tt class="xref docutils literal"><span class="pre">horton.periodic</span></tt></a> &#8211; Periodic Table<a class="headerlink" href="#module-horton.periodic" title="Permalink to this headline">¶</a></h2>
 <p>This module contains an object <tt class="docutils literal"><span class="pre">periodic</span></tt> that can be used as a Pythonic
 periodic table. It can be used as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">horton</span> <span class="kn">import</span> <span class="n">periodic</span>
@@ -159,7 +198,7 @@ periodic table. It can be used as follows:</p>
 <span class="go">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="s">&#39;h&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span>
 <span class="go">&#39;H&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="mf">3</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span>
 <span class="go">&#39;Li&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="s">&#39;5&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span>
 <span class="go">&#39;B&#39;</span>
@@ -185,7 +224,7 @@ periodic table. It can be used as follows:</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>elements</dt>
-<dd>A list of <a class="reference internal" href="#horton.periodic.Element" title="horton.periodic.Element"><tt class="xref py py-class docutils literal"><span class="pre">Element</span></tt></a> instances.</dd>
+<dd>A list of <a title="horton.periodic.Element" class="reference internal" href="#horton.periodic.Element"><tt class="xref docutils literal"><span class="pre">Element</span></tt></a> instances.</dd>
 </dl>
 <dl class="method">
 <dt id="horton.periodic.Periodic.__getitem__">
@@ -197,44 +236,96 @@ periodic table. It can be used as follows:</p>
 <dd>This can be either an integer atomic number, a string with the
 elemental symbol (any case), or a string with the atomic number.</dd>
 </dl>
-<p><strong>Returns:</strong> the corresponding <a class="reference internal" href="#horton.periodic.Element" title="horton.periodic.Element"><tt class="xref py py-class docutils literal"><span class="pre">Element</span></tt></a> instance</p>
+<p><strong>Returns:</strong> the corresponding <a title="horton.periodic.Element" class="reference internal" href="#horton.periodic.Element"><tt class="xref docutils literal"><span class="pre">Element</span></tt></a> instance</p>
 </dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-horton.system">
-<span id="horton-system-molecular-system-specification"></span><h2><a class="reference internal" href="#module-horton.system"><tt class="xref py py-mod docutils literal"><span class="pre">horton.system</span></tt></a> &#8211; Molecular System Specification<a class="headerlink" href="#module-horton.system" title="Permalink to this headline">¶</a></h2>
+<h2><a title="" class="reference external" href="#module-horton.system"><tt class="xref docutils literal"><span class="pre">horton.system</span></tt></a> &#8211; Molecular System Specification<a class="headerlink" href="#module-horton.system" title="Permalink to this headline">¶</a></h2>
 <p>Objects of the System class specify the geometry (and atomic elements) of the
 molecule on which Horton will perform a computation. Also other parameters
 that determine several aspects of the molecular wavefunction, are attributes
-of a <a class="reference internal" href="#horton.system.System" title="horton.system.System"><tt class="xref py py-class docutils literal"><span class="pre">System</span></tt></a> instance, e.g. basissets, pseudopotentials, ghost atoms,
+of a <a title="horton.system.System" class="reference internal" href="#horton.system.System"><tt class="xref docutils literal"><span class="pre">System</span></tt></a> instance, e.g. basissets, pseudopotentials, ghost atoms,
 etc.</p>
 <dl class="class">
 <dt id="horton.system.System">
-<em class="property">class </em><tt class="descclassname">horton.system.</tt><tt class="descname">System</tt><big>(</big><em>coordinates</em>, <em>numbers</em><big>)</big><a class="headerlink" href="#horton.system.System" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.system.</tt><tt class="descname">System</tt><big>(</big><em>coordinates</em>, <em>numbers</em>, <em>basis=None</em><big>)</big><a class="headerlink" href="#horton.system.System" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>coordinates</dt>
 <dd>A (N, 3) float numpy array with Cartesian coordinates of the
 atoms.</dd>
 <dt>numbers</dt>
-<dd>A (N, ) int numpy vector with the atomic numbers.</dd>
+<dd>A (N,) int numpy vector with the atomic numbers.</dd>
 </dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>basis</dt>
+<dd>A string or an instance of either the basis set or basis set
+description classes, e.g. &#8216;STO-3G&#8217;, GOBasisDesc(&#8216;STO-3G&#8217;), ...</dd>
+</dl>
+<dl class="attribute">
+<dt id="horton.system.System.basis">
+<tt class="descname">basis</tt><a class="headerlink" href="#horton.system.System.basis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.compute_overlap">
+<tt class="descname">compute_overlap</tt><big>(</big><em>overlap</em><big>)</big><a class="headerlink" href="#horton.system.System.compute_overlap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.system.System.coordinates">
+<tt class="descname">coordinates</tt><a class="headerlink" href="#horton.system.System.coordinates" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="classmethod">
 <dt id="horton.system.System.from_file">
-<em class="property">classmethod </em><tt class="descname">from_file</tt><big>(</big><em>filename</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#horton.system.System.from_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a System object from a file</p>
-<p>This method is the same as the constructor, except that the first
-two arguments: coordinates and numbers are replaced by a filename.
-For now, only the &#8216;.xyz&#8217; format is supported.</p>
+<em class="property">classmethod </em><tt class="descname">from_file</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#horton.system.System.from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a System object from a file.</p>
+<p>A list of filenames may be provided, which will be loaded in that
+order. Each file complements or overrides the information loaded
+from a previous file in the list. Furthermore, keyword arguments
+may be used to specify additional constructor arguments.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.get_basis">
+<tt class="descname">get_basis</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_basis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.get_coordinates">
+<tt class="descname">get_coordinates</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_coordinates" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.get_natom">
+<tt class="descname">get_natom</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_natom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.get_numbers">
+<tt class="descname">get_numbers</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_numbers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.system.System.natom">
+<tt class="descname">natom</tt><a class="headerlink" href="#horton.system.System.natom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.system.System.numbers">
+<tt class="descname">numbers</tt><a class="headerlink" href="#horton.system.System.numbers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-horton.units">
-<span id="horton-units-unit-conversion"></span><h2><a class="reference internal" href="#module-horton.units"><tt class="xref py py-mod docutils literal"><span class="pre">horton.units</span></tt></a> &#8211; Unit Conversion<a class="headerlink" href="#module-horton.units" title="Permalink to this headline">¶</a></h2>
+<h2><a title="" class="reference external" href="#module-horton.units"><tt class="xref docutils literal"><span class="pre">horton.units</span></tt></a> &#8211; Unit Conversion<a class="headerlink" href="#module-horton.units" title="Permalink to this headline">¶</a></h2>
 <p>Internally Horton always uses atomic units. Atomic units are consistent,
 similar to the SI unit system: one does not need conversion factors in the
 middle of a computation. This choice facilitates the programming and reduces
@@ -413,13 +504,13 @@ done:</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Horton core</a><ul>
-<li><a class="reference internal" href="#module-horton.constants"><tt class="docutils literal"><span class="pre">horton.constants</span></tt> &#8211; Physical constants</a></li>
-<li><a class="reference internal" href="#module-horton.context"><tt class="docutils literal"><span class="pre">horton.context</span></tt> &#8211; Runtime environment</a></li>
-<li><a class="reference internal" href="#module-horton.io"><tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input/Output</a></li>
-<li><a class="reference internal" href="#module-horton.periodic"><tt class="docutils literal"><span class="pre">horton.periodic</span></tt> &#8211; Periodic Table</a></li>
-<li><a class="reference internal" href="#module-horton.system"><tt class="docutils literal"><span class="pre">horton.system</span></tt> &#8211; Molecular System Specification</a></li>
-<li><a class="reference internal" href="#module-horton.units"><tt class="docutils literal"><span class="pre">horton.units</span></tt> &#8211; Unit Conversion</a></li>
+<li><a class="reference external" href="#">Horton core</a><ul>
+<li><a class="reference external" href="#module-horton.constants"><tt class="docutils literal"><span class="pre">horton.constants</span></tt> &#8211; Physical constants</a></li>
+<li><a class="reference external" href="#module-horton.context"><tt class="docutils literal"><span class="pre">horton.context</span></tt> &#8211; Runtime environment</a></li>
+<li><a class="reference external" href="#module-horton.io"><tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input/Output</a></li>
+<li><a class="reference external" href="#module-horton.periodic"><tt class="docutils literal"><span class="pre">horton.periodic</span></tt> &#8211; Periodic Table</a></li>
+<li><a class="reference external" href="#module-horton.system"><tt class="docutils literal"><span class="pre">horton.system</span></tt> &#8211; Molecular System Specification</a></li>
+<li><a class="reference external" href="#module-horton.units"><tt class="docutils literal"><span class="pre">horton.units</span></tt> &#8211; Unit Conversion</a></li>
 </ul>
 </li>
 </ul>
@@ -456,7 +547,7 @@ done:</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
+          <a href="modindex.html" title="Global Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="dev_milestones.html" title="Milestones"
@@ -466,7 +557,7 @@ done:</p>
     </div>
     <div class="footer">
         &copy; Copyright 2011, Toon Verstraelen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
     </div>
   </body>
 </html>

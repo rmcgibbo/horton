@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -12,9 +11,9 @@
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '#',
         VERSION:     '0.0',
-        COLLAPSE_INDEX: false,
+        COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
@@ -24,7 +23,7 @@
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="top" title="Horton v0.0 documentation" href="index.html" />
     <link rel="next" title="Milestones" href="dev_milestones.html" />
-    <link rel="prev" title="Theoretical background" href="tut_theory.html" /> 
+    <link rel="prev" title="Gaussian basis functions" href="tut_gaussian_basis.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,13 +33,13 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
         <li class="right" >
           <a href="dev_milestones.html" title="Milestones"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="tut_theory.html" title="Theoretical background"
+          <a href="tut_gaussian_basis.html" title="Gaussian basis functions"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Horton v0.0 documentation</a> &raquo;</li> 
       </ul>
@@ -110,7 +109,7 @@ and compiled with <a class="reference external" href="http://sphinx.pocoo.org/">
 webpage you are currently looking at. More details on the documentation
 system are given below.</p>
 </li>
-<li><p class="first"><strong>Write Python code in style.</strong></p>
+<li><p class="first"><strong>Adopt a clean coding style.</strong></p>
 <p>There is an extensive <a class="reference external" href="http://www.python.org/dev/peps/pep-0008/">Style Guide for Python Code</a>.
 The main purpose is to make the source code easier to read and maintain.
 These are the basics:</p>
@@ -156,7 +155,7 @@ features in Python to break long lines into smaller ones.</p>
 <div class="section" id="git-the-fast-version-control-system">
 <h2>Git: the fast version control system<a class="headerlink" href="#git-the-fast-version-control-system" title="Permalink to this headline">¶</a></h2>
 <p>Horton uses <a class="reference external" href="http://git-scm.com/">Git</a> for version control.</p>
-<p>Because a few of us are new to version control systems (VCSs), I&#8217;ll go through
+<p>This section goes through
 the basics. Although the commands below are specific for Git, most of the
 good practices are general and also apply to other modern VCSs such Bazaar
 or Mercurial. There are however a few old-fashioned systems such as CVS (and to
@@ -263,7 +262,7 @@ tests for that feature. (The more tests, the better.)</p>
 <li><p class="first">Review your changes with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt>. Make sure there are no trailing spaces
 or trailing blank lines. These can be removed with the <tt class="docutils literal"><span class="pre">./cleancode.sh</span></tt>
 script. If you created new files, run the <tt class="docutils literal"><span class="pre">./updateheaders.py</span></tt> script to
-make sure the new files have the propper headers.</p>
+make sure the new files have the proper headers.</p>
 </li>
 <li><p class="first">Review the changed/new files with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">status</span></tt></p>
 </li>
@@ -386,13 +385,12 @@ toony@poony ~/.../horton:master&gt; ./setup.py build_ext -i
 toony@poony ~/.../horton:master&gt; nosetests -v</pre>
 </div>
 <p>There are some cases where the first two commands are not needed. You will
-figure out eventually.</p>
+figure out.</p>
 </div>
 <div class="section" id="writing-documentation">
 <h2>Writing documentation<a class="headerlink" href="#writing-documentation" title="Permalink to this headline">¶</a></h2>
-<p>All the documentation is located in the <tt class="docutils literal"><span class="pre">doc</span></tt> directory. We use the <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a>
-formatting engine to compile the <cite>documentation source code</cite> into fancy
-formatted HTML or PDF. Sphinx can be found here: <a class="reference external" href="http://todo">http://todo</a></p>
+<p>All the documentation is located in the <tt class="docutils literal"><span class="pre">doc</span></tt> directory. We use the <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> formatting engine to compile the <cite>documentation
+source code</cite> into fancy formatted HTML or PDF.</p>
 <p>The source files have the extension <tt class="docutils literal"><span class="pre">.rst</span></tt>, and are written in the
 <a class="reference external" href="http://docutils.sourceforge.net/rst.html">ReStructuredText</a> (RST) format.
 RST in some sense comparable to latex, but more intuitive to use.
@@ -432,25 +430,25 @@ commit that change. There is no need to run some update script.</li>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Getting Started with Coding</a><ul>
-<li><a class="reference internal" href="#coding-guidelines">Coding guidelines</a></li>
-<li><a class="reference internal" href="#git-the-fast-version-control-system">Git: the fast version control system</a><ul>
-<li><a class="reference internal" href="#configuring-git">Configuring Git</a></li>
-<li><a class="reference internal" href="#some-terminology">Some terminology</a></li>
-<li><a class="reference internal" href="#adding-a-feature">Adding a feature</a></li>
-<li><a class="reference internal" href="#git-shortcuts">Git shortcuts</a></li>
+<li><a class="reference external" href="#">Getting Started with Coding</a><ul>
+<li><a class="reference external" href="#coding-guidelines">Coding guidelines</a></li>
+<li><a class="reference external" href="#git-the-fast-version-control-system">Git: the fast version control system</a><ul>
+<li><a class="reference external" href="#configuring-git">Configuring Git</a></li>
+<li><a class="reference external" href="#some-terminology">Some terminology</a></li>
+<li><a class="reference external" href="#adding-a-feature">Adding a feature</a></li>
+<li><a class="reference external" href="#git-shortcuts">Git shortcuts</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#writing-tests">Writing tests</a></li>
-<li><a class="reference internal" href="#writing-documentation">Writing documentation</a></li>
-<li><a class="reference internal" href="#add-yourself-as-an-author">Add yourself as an author</a></li>
+<li><a class="reference external" href="#writing-tests">Writing tests</a></li>
+<li><a class="reference external" href="#writing-documentation">Writing documentation</a></li>
+<li><a class="reference external" href="#add-yourself-as-an-author">Add yourself as an author</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="tut_theory.html"
-                        title="previous chapter">Theoretical background</a></p>
+  <p class="topless"><a href="tut_gaussian_basis.html"
+                        title="previous chapter">Gaussian basis functions</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="dev_milestones.html"
                         title="next chapter">Milestones</a></p>
@@ -483,20 +481,20 @@ commit that change. There is no need to run some update script.</li>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
+          <a href="modindex.html" title="Global Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="dev_milestones.html" title="Milestones"
              >next</a> |</li>
         <li class="right" >
-          <a href="tut_theory.html" title="Theoretical background"
+          <a href="tut_gaussian_basis.html" title="Gaussian basis functions"
              >previous</a> |</li>
         <li><a href="index.html">Horton v0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011, Toon Verstraelen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
     </div>
   </body>
 </html>

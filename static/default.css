@@ -113,8 +113,7 @@ div.sphinxsidebar input {
     font-size: 1em;
 }
 
-
-/* -- hyperlink styles ------------------------------------------------------ */
+/* -- body styles ----------------------------------------------------------- */
 
 a {
     color: #355f7c;
@@ -130,9 +129,10 @@ a:hover {
     text-decoration: underline;
 }
 
-
-
-/* -- body styles ----------------------------------------------------------- */
+div.body p, div.body dd, div.body li {
+    text-align: justify;
+    line-height: 130%;
+}
 
 div.body h1,
 div.body h2,
@@ -242,14 +242,4 @@ th {
 
 .note tt {
     background: #d6d6d6;
-}
-
-.viewcode-back {
-    font-family: sans-serif;
-}
-
-div.viewcode-block:target {
-    background-color: #f4debf;
-    border-top: 1px solid #ac9;
-    border-bottom: 1px solid #ac9;
 }

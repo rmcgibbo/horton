@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -12,9 +11,9 @@
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '#',
         VERSION:     '0.0',
-        COLLAPSE_INDEX: false,
+        COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
@@ -34,8 +33,8 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
         <li class="right" >
           <a href="tut_theory.html" title="Theoretical background"
              accesskey="N">next</a> |</li>
@@ -80,16 +79,17 @@ install relatively recent versions of the following programs/libraries:</p>
 <ul class="simple">
 <li>Python &lt; 3.0: <a class="reference external" href="http://www.python.org/">http://www.python.org/</a> (also install <cite>development files</cite>)</li>
 <li>Numpy &gt; 1.0: <a class="reference external" href="http://www.scipy.org/">http://www.scipy.org/</a></li>
-<li>Cython &gt; (todo): <a class="reference external" href="http://www.cython.org/">http://www.cython.org/</a></li>
+<li>Numpy &gt;= 0.10.0: <a class="reference external" href="http://www.scipy.org/">http://www.scipy.org/</a></li>
+<li>Cython &gt;= 0.14.1 : <a class="reference external" href="http://www.cython.org/">http://www.cython.org/</a></li>
 <li>Sphinx &gt; 1.0: <a class="reference external" href="http://sphinx.pocoo.org/">http://sphinx.pocoo.org/</a></li>
 </ul>
 <p>On a decent operating system, these programs/libraries can be easily installed
 with a package manager. First check that option before manually installing this
 software. On Ubuntu, this one-liner will take care of it:</p>
-<div class="highlight-python"><pre>sudo apt-get install python-dev python-numpy cython python-sphinx</pre>
+<div class="highlight-python"><pre>sudo apt-get install python-dev python-numpy cython python-sphinx python-scipy</pre>
 </div>
-<p>One may either do a regular installation in the home directory, or an in-pace
-build in the source tree.</p>
+<p>One may either install Horton in the home directory, or an in-pace build in the
+source tree.</p>
 <p>The <strong>regular build/install</strong> is as done follows:</p>
 <div class="highlight-python"><pre>./setup.py install --home=~</pre>
 </div>
@@ -103,7 +103,6 @@ environment variables (e.g. modify .bashrc) such that
 <p>The documentation is compiled and viewed as follows:</p>
 <div class="highlight-python"><pre>cd doc
 make html
-make pdf
 firefox _build/html/index.html</pre>
 </div>
 </div>
@@ -121,18 +120,20 @@ nosetests afterwards:</p>
 <div class="highlight-python"><pre>./setup.py build_ext -i
 nosetests -v</pre>
 </div>
-<p>If all runs well, the screen output should end with &#8216;OK&#8217;.</p>
+<p>If all runs well, the screen output should end with &#8216;OK&#8217;. If at some point,
+something during the build process fails, try to clean up the source tree with
+the <tt class="docutils literal"><span class="pre">cleanfiles.sh</span></tt> script and try again.</p>
 </div>
 <div class="section" id="basic-example">
 <h2>Basic example<a class="headerlink" href="#basic-example" title="Permalink to this headline">¶</a></h2>
-<p>(For now, this is just an idea. It does not work yet.)</p>
+<p>(For now, this is just an idea. It does not work yet and it may change.)</p>
 <p>This is a basic example computation in Horton. The input file is just
 a small Python main program that uses the Horton library. The following script
 performs a HF/STO-3G computation on HF:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">horton</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="n">system</span> <span class="o">=</span> <span class="n">System</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span><span class="o">*</span><span class="n">angstrom</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="s">&#39;STO-3G&#39;</span><span class="p">)</span>
+<span class="n">system</span> <span class="o">=</span> <span class="n">System</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span><span class="o">*</span><span class="n">angstrom</span><span class="p">,</span> <span class="p">[</span><span class="mf">1</span><span class="p">,</span> <span class="mf">9</span><span class="p">],</span> <span class="s">&#39;STO-3G&#39;</span><span class="p">)</span>
 <span class="n">hamiltonian</span> <span class="o">=</span> <span class="n">Hamiltonian</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="p">[</span><span class="n">KineticEnergy</span><span class="p">(),</span>  <span class="n">Hartree</span><span class="p">(),</span> <span class="n">Fock</span><span class="p">()])</span>
 <span class="n">wfn</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">hamiltonian</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">wfn</span><span class="o">.</span><span class="n">energy</span><span class="o">/</span><span class="n">kjmol</span>
@@ -171,11 +172,11 @@ potential:</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Getting started</a><ul>
-<li><a class="reference internal" href="#downloading-the-code">Downloading the code</a></li>
-<li><a class="reference internal" href="#compilation">Compilation</a></li>
-<li><a class="reference internal" href="#testing">Testing</a></li>
-<li><a class="reference internal" href="#basic-example">Basic example</a></li>
+<li><a class="reference external" href="#">Getting started</a><ul>
+<li><a class="reference external" href="#downloading-the-code">Downloading the code</a></li>
+<li><a class="reference external" href="#compilation">Compilation</a></li>
+<li><a class="reference external" href="#testing">Testing</a></li>
+<li><a class="reference external" href="#basic-example">Basic example</a></li>
 </ul>
 </li>
 </ul>
@@ -215,7 +216,7 @@ potential:</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
+          <a href="modindex.html" title="Global Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="tut_theory.html" title="Theoretical background"
@@ -228,7 +229,7 @@ potential:</p>
     </div>
     <div class="footer">
         &copy; Copyright 2011, Toon Verstraelen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
     </div>
   </body>
 </html>
