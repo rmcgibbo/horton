@@ -181,6 +181,9 @@ codemeister at all.</p>
     interactive = always
     branch = always
 
+[branch]
+    autosetuprebase = always
+
 [branch "master"]
     remote = origin
     merge = master
@@ -188,8 +191,10 @@ codemeister at all.</p>
 [push]
     default = matching</pre>
 </div>
-<p>Replace my name and email by yours. Add the following to your <tt class="docutils literal"><span class="pre">.bashrc</span></tt>,
-and modify to your taste:</p>
+<p>Replace my name and email by yours. If you are also working on other projects
+that use git, it may be useful to move some of these options to the file
+<tt class="docutils literal"><span class="pre">.git/config</span></tt> in the Horton source tree. Add the following to your
+<tt class="docutils literal"><span class="pre">.bashrc</span></tt>, and modify to your taste:</p>
 <div class="highlight-python"><pre>GITPS1='$(__git_ps1 ":%s")'
 SILVER="\[\033[0;37m\]"
 GRAY="\[\033[1;30m\]"

@@ -72,24 +72,42 @@ command:</p>
 <p>There is also a web interface to Horton&#8217;s git repository:
 <a class="reference external" href="https://github.com/theochem/horton">https://github.com/theochem/horton</a></p>
 </div>
-<div class="section" id="compilation">
-<h2>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
-<p>In order to <cite>compile</cite> the Horton C-extension and documentation, one needs to
+<div class="section" id="common-dependencies">
+<h2>Common dependencies<a class="headerlink" href="#common-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>In order to compile and test Horton and its documentation, one needs to
 install relatively recent versions of the following programs/libraries:</p>
 <ul class="simple">
 <li>Python &lt; 3.0: <a class="reference external" href="http://www.python.org/">http://www.python.org/</a> (also install <cite>development files</cite>)</li>
 <li>Numpy &gt; 1.0: <a class="reference external" href="http://www.scipy.org/">http://www.scipy.org/</a></li>
-<li>Numpy &gt;= 0.10.0: <a class="reference external" href="http://www.scipy.org/">http://www.scipy.org/</a></li>
-<li>Cython &gt;= 0.14.1 : <a class="reference external" href="http://www.cython.org/">http://www.cython.org/</a></li>
+<li>Scipy &gt;= 0.10.0: <a class="reference external" href="http://www.scipy.org/">http://www.scipy.org/</a></li>
+<li>Cython &gt;= 0.15.1 : <a class="reference external" href="http://www.cython.org/">http://www.cython.org/</a></li>
 <li>Sphinx &gt; 1.0: <a class="reference external" href="http://sphinx.pocoo.org/">http://sphinx.pocoo.org/</a></li>
+<li>Nosetests &gt;= 1.1.2: <a class="reference external" href="http://readthedocs.org/docs/nose/en/latest/">http://readthedocs.org/docs/nose/en/latest/</a></li>
+<li>Sympy &gt;= 0.7.1: <a class="reference external" href="http://code.google.com/p/sympy/">http://code.google.com/p/sympy/</a></li>
 </ul>
 <p>On a decent operating system, these programs/libraries can be easily installed
 with a package manager. First check that option before manually installing this
 software. On Ubuntu, this one-liner will take care of it:</p>
-<div class="highlight-python"><pre>sudo apt-get install python-dev python-numpy cython python-sphinx python-scipy</pre>
+<div class="highlight-python"><pre>sudo apt-get install python-dev python-numpy python-scipy cython python-sphinx python-nose python-sympy</pre>
 </div>
-<p>One may either install Horton in the home directory, or an in-pace build in the
-source tree.</p>
+</div>
+<div class="section" id="specific-dependencies">
+<h2>Specific dependencies<a class="headerlink" href="#specific-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>The directory <tt class="docutils literal"><span class="pre">depends</span></tt> of the Horton source tree is used to build specific
+dependencies from source. For the moment, there is only one such dependency,
+namely libint2. The directory <tt class="docutils literal"><span class="pre">depends</span></tt> contains a <tt class="docutils literal"><span class="pre">Makefile</span></tt> that can
+take care of downloading the right version and compiling. The following should
+take care of everything, assuming that you have installed all the libint2
+dependencies:</p>
+<div class="highlight-python"><pre>cd depends
+make -j4 libint2</pre>
+</div>
+<p>The option <tt class="docutils literal"><span class="pre">-j4</span></tt> instructs make to build libint2 in parallel of four cores.</p>
+</div>
+<div class="section" id="compilation-and-installation">
+<h2>Compilation and installation<a class="headerlink" href="#compilation-and-installation" title="Permalink to this headline">¶</a></h2>
+<p>One may either install Horton in the home directory, or perform an in-pace build
+in the source tree.</p>
 <p>The <strong>regular build/install</strong> is as done follows:</p>
 <div class="highlight-python"><pre>./setup.py install --home=~</pre>
 </div>
@@ -108,21 +126,14 @@ firefox _build/html/index.html</pre>
 </div>
 <div class="section" id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
-<p>A bunch of validation routines are included in Horton. To run these tests, one
-must install the Nosetests testing framework. It can be found here:</p>
-<p><a class="reference external" href="http://somethingaboutorange.com/mrl/projects/nose/0.11.2/">http://somethingaboutorange.com/mrl/projects/nose/0.11.2/</a></p>
-<p>We recommend that you use a package manager to install Nosetests. On Ubuntu,
-this software can be installed as follows:</p>
-<div class="highlight-python"><pre>sudo apt-get install python-nose</pre>
-</div>
-<p>Once this Python package is installed, perform an <strong>in-place build</strong> and run
-nosetests afterwards:</p>
+<p>A bunch of validation routines are included in Horton. To run the tests, first
+perform an <strong>in-place build</strong> and run <tt class="docutils literal"><span class="pre">nosetests</span></tt> afterwards:</p>
 <div class="highlight-python"><pre>./setup.py build_ext -i
 nosetests -v</pre>
 </div>
-<p>If all runs well, the screen output should end with &#8216;OK&#8217;. If at some point,
-something during the build process fails, try to clean up the source tree with
-the <tt class="docutils literal"><span class="pre">cleanfiles.sh</span></tt> script and try again.</p>
+<p>If all tests pass, the screen output should end with <tt class="docutils literal"><span class="pre">OK</span></tt>. If at some point,
+something during the build process fails, clean up the source tree with the
+<tt class="docutils literal"><span class="pre">cleanfiles.sh</span></tt> script and try again.</p>
 </div>
 <div class="section" id="basic-example">
 <h2>Basic example<a class="headerlink" href="#basic-example" title="Permalink to this headline">¶</a></h2>
@@ -144,7 +155,7 @@ an XYZ file. To avoid retyping this molecule into the script, on may work as
 follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">horton</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">system</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s">&#39;hcl.xyz&#39;</span><span class="p">,</span> <span class="s">&#39;STO-3G&#39;</span><span class="p">)</span>
+<span class="n">system</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s">&#39;hcl.xyz&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="s">&#39;STO-3G&#39;</span><span class="p">)</span>
 <span class="n">hamiltonian</span> <span class="o">=</span> <span class="n">Hamiltonian</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="p">[</span><span class="n">KineticEnergy</span><span class="p">(),</span>  <span class="n">Hartree</span><span class="p">(),</span> <span class="n">Fock</span><span class="p">()])</span>
 <span class="n">wfn</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">hamiltonian</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">wfn</span><span class="o">.</span><span class="n">energy</span><span class="o">/</span><span class="n">kjmol</span>
@@ -155,7 +166,7 @@ automatically. There is also a shortcut to combine the Hartree and the Fock
 potential:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">horton</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">system</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s">&#39;hcl.xyz&#39;</span><span class="p">,</span> <span class="s">&#39;STO-3G&#39;</span><span class="p">)</span>
+<span class="n">system</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s">&#39;hcl.xyz&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="s">&#39;STO-3G&#39;</span><span class="p">)</span>
 <span class="n">hamiltonian</span> <span class="o">=</span> <span class="n">Hamiltonian</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">HartreeFock</span><span class="p">())</span>
 <span class="n">wfn</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">hamiltonian</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">wfn</span><span class="o">.</span><span class="n">energy</span><span class="o">/</span><span class="n">kjmol</span>
@@ -174,7 +185,9 @@ potential:</p>
   <ul>
 <li><a class="reference external" href="#">Getting started</a><ul>
 <li><a class="reference external" href="#downloading-the-code">Downloading the code</a></li>
-<li><a class="reference external" href="#compilation">Compilation</a></li>
+<li><a class="reference external" href="#common-dependencies">Common dependencies</a></li>
+<li><a class="reference external" href="#specific-dependencies">Specific dependencies</a></li>
+<li><a class="reference external" href="#compilation-and-installation">Compilation and installation</a></li>
 <li><a class="reference external" href="#testing">Testing</a></li>
 <li><a class="reference external" href="#basic-example">Basic example</a></li>
 </ul>
