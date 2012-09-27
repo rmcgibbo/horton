@@ -60,8 +60,8 @@ makes life easy when a group of people are working on a common source code. It
 also makes sense to use it for personal projects. All information about git
 (including downloads and tutorials) can be found here: <a class="reference external" href="http://git-scm.com/">http://git-scm.com/</a>. The
 official git URL of Horton is:</p>
-<blockquote>
-git://github.com/theochem/horton.git</blockquote>
+<div class="highlight-python"><pre>git://github.com/theochem/horton.git</pre>
+</div>
 <p>In order to <cite>clone</cite> the official Horton repository, run this command:</p>
 <div class="highlight-python"><pre>git clone git://github.com/theochem/horton.git</pre>
 </div>
@@ -79,6 +79,7 @@ install relatively recent versions of the following programs/libraries:</p>
 <ul class="simple">
 <li>Python &lt; 3.0: <a class="reference external" href="http://www.python.org/">http://www.python.org/</a> (also install <cite>development files</cite>)</li>
 <li>Numpy &gt; 1.0: <a class="reference external" href="http://www.scipy.org/">http://www.scipy.org/</a></li>
+<li>h5py &gt;= 2.0.0: <a class="reference external" href="http://code.google.com/p/h5py/">http://code.google.com/p/h5py/</a></li>
 <li>Scipy &gt;= 0.10.0: <a class="reference external" href="http://www.scipy.org/">http://www.scipy.org/</a></li>
 <li>Cython &gt;= 0.15.1 : <a class="reference external" href="http://www.cython.org/">http://www.cython.org/</a></li>
 <li>Sphinx &gt; 1.0: <a class="reference external" href="http://sphinx.pocoo.org/">http://sphinx.pocoo.org/</a></li>
@@ -87,22 +88,26 @@ install relatively recent versions of the following programs/libraries:</p>
 </ul>
 <p>On a decent operating system, these programs/libraries can be easily installed
 with a package manager. First check that option before manually installing this
-software. On Ubuntu, this one-liner will take care of it:</p>
-<div class="highlight-python"><pre>sudo apt-get install python-dev python-numpy python-scipy cython python-sphinx python-nose python-sympy</pre>
+software.</p>
+<p>On Ubuntu Linux:</p>
+<div class="highlight-python"><pre>sudo apt-get install python-dev python-numpy python-h5py python-scipy cython python-sphinx python-nose python-sympy</pre>
+</div>
+<p>On Fedora Linux:</p>
+<div class="highlight-python"><pre>sudo apt-get install python-devel numpy h5py scipy Cython python-sphinx python-nose sympy</pre>
 </div>
 </div>
 <div class="section" id="specific-dependencies">
 <h2>Specific dependencies<a class="headerlink" href="#specific-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>The directory <tt class="docutils literal"><span class="pre">depends</span></tt> of the Horton source tree is used to build specific
 dependencies from source. For the moment, there is only one such dependency,
-namely libint2. The directory <tt class="docutils literal"><span class="pre">depends</span></tt> contains a <tt class="docutils literal"><span class="pre">Makefile</span></tt> that can
-take care of downloading the right version and compiling. The following should
-take care of everything, assuming that you have installed all the libint2
-dependencies:</p>
+namely <a class="reference external" href="http://sourceforge.net/p/libint/">libint2</a>. The directory <tt class="docutils literal"><span class="pre">depends</span></tt>
+contains a <tt class="docutils literal"><span class="pre">Makefile</span></tt> that can take care of downloading the right version and
+compiling. The following should take care of everything, assuming that you have
+installed all the libint2 dependencies:</p>
 <div class="highlight-python"><pre>cd depends
-make -j4 libint2</pre>
+make -j4 libint</pre>
 </div>
-<p>The option <tt class="docutils literal"><span class="pre">-j4</span></tt> instructs make to build libint2 in parallel of four cores.</p>
+<p>The option <tt class="docutils literal"><span class="pre">-j4</span></tt> instructs make to build libint2 in parallel on four cores.</p>
 </div>
 <div class="section" id="compilation-and-installation">
 <h2>Compilation and installation<a class="headerlink" href="#compilation-and-installation" title="Permalink to this headline">¶</a></h2>

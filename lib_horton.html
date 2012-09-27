@@ -167,7 +167,7 @@ scf(conventional) iop(3/33=5) extralinks=l316 iop(3/27=999)</blockquote>
 
 <dl class="class">
 <dt id="horton.io.FCHKFile">
-<em class="property">class </em><tt class="descclassname">horton.io.</tt><tt class="descname">FCHKFile</tt><big>(</big><em>filename</em>, <em>ignore_errors=False</em>, <em>field_labels=None</em><big>)</big><a class="headerlink" href="#horton.io.FCHKFile" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.io.</tt><tt class="descname">FCHKFile</tt><big>(</big><em>filename</em>, <em>field_labels=None</em><big>)</big><a class="headerlink" href="#horton.io.FCHKFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reader for Formatted checkpoint files</p>
 <p>After initialization, the data from the file is available in the fields
 dictionary. Also the following attributes are read from the file: title,
@@ -179,9 +179,6 @@ command, lot (level of theory) and basis.</p>
 </dl>
 <p><strong>Optional arguments:</strong></p>
 <dl class="docutils">
-<dt>ignore_errors</dt>
-<dd>Try to read incorrectly formatted files without raising
-exceptions [default=False]</dd>
 <dt>field_labels</dt>
 <dd>When provided, only these fields are read from the formatted
 checkpoint file. (This can save a lot of time.)</dd>
@@ -221,7 +218,7 @@ periodic table. It can be used as follows:</p>
 </div>
 <dl class="class">
 <dt id="horton.periodic.Element">
-<em class="property">class </em><tt class="descclassname">horton.periodic.</tt><tt class="descname">Element</tt><big>(</big><em>number</em>, <em>symbol</em><big>)</big><a class="headerlink" href="#horton.periodic.Element" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.periodic.</tt><tt class="descname">Element</tt><big>(</big><em>number</em>, <em>symbol</em>, <em>cov_radius</em><big>)</big><a class="headerlink" href="#horton.periodic.Element" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents an element from the periodic table.</p>
 <p>The following attributes are supported:</p>
 <dl class="docutils">
@@ -229,6 +226,8 @@ periodic table. It can be used as follows:</p>
 <dd>The atomic number</dd>
 <dt>symbol</dt>
 <dd>A string with the symbol of the element.</dd>
+<dt>cov_radius</dt>
+<dd>The covalent radius</dd>
 </dl>
 </dd></dl>
 
@@ -262,11 +261,11 @@ elemental symbol (any case), or a string with the atomic number.</dd>
 <p>Objects of the System class specify the geometry (and atomic elements) of the
 molecule on which Horton will perform a computation. Also other parameters
 that determine several aspects of the molecular wavefunction, are attributes
-of a <a title="horton.system.System" class="reference internal" href="#horton.system.System"><tt class="xref docutils literal"><span class="pre">System</span></tt></a> instance, e.g. basissets, pseudopotentials, ghost atoms,
+of a <a title="horton.system.System" class="reference internal" href="#horton.system.System"><tt class="xref docutils literal"><span class="pre">System</span></tt></a> instance, e.g. basis sets, pseudo-potentials, ghost atoms,
 etc.</p>
 <dl class="class">
 <dt id="horton.system.System">
-<em class="property">class </em><tt class="descclassname">horton.system.</tt><tt class="descname">System</tt><big>(</big><em>coordinates</em>, <em>numbers</em>, <em>basis=None</em>, <em>wfn=None</em>, <em>lf=None</em>, <em>operators=None</em><big>)</big><a class="headerlink" href="#horton.system.System" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.system.</tt><tt class="descname">System</tt><big>(</big><em>coordinates</em>, <em>numbers</em>, <em>obasis=None</em>, <em>wfn=None</em>, <em>lf=None</em>, <em>operators=None</em>, <em>props=None</em>, <em>dms=None</em>, <em>chk=None</em><big>)</big><a class="headerlink" href="#horton.system.System" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>coordinates</dt>
@@ -274,9 +273,10 @@ etc.</p>
 atoms.</dd>
 <dt>numbers</dt>
 <dd>A (N,) int numpy vector with the atomic numbers.</dd>
-<dt>basis</dt>
+<dt>obasis</dt>
 <dd>A string or an instance of either the basis set or basis set
-description classes, e.g. &#8216;STO-3G&#8217;, GOBasisDesc(&#8216;STO-3G&#8217;), ...</dd>
+description classes, e.g. &#8216;STO-3G&#8217;, GOBasisDesc(&#8216;STO-3G&#8217;), ...
+for the orbitals.</dd>
 </dl>
 <p><strong>Optional arguments:</strong></p>
 <dl class="docutils">
@@ -287,21 +287,69 @@ description classes, e.g. &#8216;STO-3G&#8217;, GOBasisDesc(&#8216;STO-3G&#8217;
 is used by default.</dd>
 <dt>operators</dt>
 <dd>A dictionary with one- and two-body operators.</dd>
+<dt>props</dt>
+<dd>A dictionary with computed properties.</dd>
+<dt>dms</dt>
+<dd>A dictionary with density matrices.</dd>
+<dt>chk</dt>
+<dd>A filename for the checkpoint file or an open h5.File object.
+If the file does not exist yet, it will be created. If the file
+already exists, it must be an HDF5 file that is structured
+such that it adheres to the format that Horton creates itself.
+If chk is an open h5.File object, it will not be closed when the
+System instance is deleted.</dd>
 </dl>
-<dl class="method">
-<dt id="horton.system.System.add_operator">
-<tt class="descname">add_operator</tt><big>(</big><em>name</em>, <em>op</em><big>)</big><a class="headerlink" href="#horton.system.System.add_operator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="attribute">
-<dt id="horton.system.System.basis">
-<tt class="descname">basis</tt><a class="headerlink" href="#horton.system.System.basis" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="horton.system.System.chk">
+<tt class="descname">chk</tt><a class="headerlink" href="#horton.system.System.chk" title="Permalink to this definition">¶</a></dt>
+<dd>A <tt class="docutils literal"><span class="pre">h5.File</span></tt> instance used as checkpoint file or <tt class="xref docutils literal"><span class="pre">None</span></tt></dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.compute_grid_density">
+<tt class="descname">compute_grid_density</tt><big>(</big><em>points</em>, <em>use_dm=False</em>, <em>rhos=None</em>, <em>select='full'</em><big>)</big><a class="headerlink" href="#horton.system.System.compute_grid_density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the electron density on a grid</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>points</dt>
+<dd>A Numpy array with grid points, shape (npoint,3)</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>use_dm</dt>
+<dd>Use C routine based on the density matrix instead of the orbitals.</dd>
+<dt>rhos</dt>
+<dd>An output array, shape (npoint,). The results are added to this
+array.</dd>
+<dt>select</dt>
+<dd>&#8216;alpha&#8217;, &#8216;beta&#8217;, &#8216;full&#8217; or &#8216;spin&#8217;. (&#8216;full&#8217; is the default.)</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<dl class="docutils">
+<dt>rhos</dt>
+<dd>The array with the densities. This is the same as the output
+argument, in case it was provided.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.compute_grid_one_body">
+<tt class="descname">compute_grid_one_body</tt><big>(</big><em>points</em>, <em>weights</em>, <em>pots</em>, <em>one_body</em><big>)</big><a class="headerlink" href="#horton.system.System.compute_grid_one_body" title="Permalink to this definition">¶</a></dt>
+<dd>See documentation self.obasis.compute_grid_one_body</dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.compute_nucnuc">
+<tt class="descname">compute_nucnuc</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.compute_nucnuc" title="Permalink to this definition">¶</a></dt>
+<dd>Compute interaction energy of the nuclei</dd></dl>
 
 <dl class="attribute">
 <dt id="horton.system.System.coordinates">
 <tt class="descname">coordinates</tt><a class="headerlink" href="#horton.system.System.coordinates" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd>The positions of the nuclei</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.system.System.dms">
+<tt class="descname">dms</tt><a class="headerlink" href="#horton.system.System.dms" title="Permalink to this definition">¶</a></dt>
+<dd>A dictionary with density matrices.</dd></dl>
 
 <dl class="classmethod">
 <dt id="horton.system.System.from_file">
@@ -315,77 +363,101 @@ may be used to specify additional constructor arguments.</p>
 contstruct (when needed) arrays to store the results loaded from
 file. When <tt class="docutils literal"><span class="pre">lf</span></tt> is not given, a DenseLinalgFactory is created by
 default.</p>
+<p>The filenames may also contain checkpoint files and open h5.File
+objects of checkpoint files. The last such checkpoint file will
+automatically be used as a checkpoint file for this class. If you
+want to override this behavior, provide the <tt class="docutils literal"><span class="pre">chk</span></tt> keyword argument
+(may be None).</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="horton.system.System.get_basis">
-<tt class="descname">get_basis</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_basis" title="Permalink to this definition">¶</a></dt>
+<dt id="horton.system.System.get_electron_repulsion">
+<tt class="descname">get_electron_repulsion</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_electron_repulsion" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="horton.system.System.get_coordinates">
-<tt class="descname">get_coordinates</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_coordinates" title="Permalink to this definition">¶</a></dt>
+<dt id="horton.system.System.get_kinetic">
+<tt class="descname">get_kinetic</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_kinetic" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="horton.system.System.get_lf">
-<tt class="descname">get_lf</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_lf" title="Permalink to this definition">¶</a></dt>
+<dt id="horton.system.System.get_nuclear_attraction">
+<tt class="descname">get_nuclear_attraction</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_nuclear_attraction" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="horton.system.System.get_natom">
-<tt class="descname">get_natom</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_natom" title="Permalink to this definition">¶</a></dt>
+<dt id="horton.system.System.get_overlap">
+<tt class="descname">get_overlap</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_overlap" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="horton.system.System.get_numbers">
-<tt class="descname">get_numbers</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_numbers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="horton.system.System.get_operators">
-<tt class="descname">get_operators</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_operators" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="horton.system.System.get_wfn">
-<tt class="descname">get_wfn</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.get_wfn" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="horton.system.System.init_kinetic">
-<tt class="descname">init_kinetic</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.init_kinetic" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="horton.system.System.init_overlap">
-<tt class="descname">init_overlap</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.init_overlap" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="horton.system.System.init_wfn">
+<tt class="descname">init_wfn</tt><big>(</big><em>charge=0</em>, <em>mult=None</em>, <em>restricted=None</em><big>)</big><a class="headerlink" href="#horton.system.System.init_wfn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a wavefunction object.</p>
+<p><strong>Optional Arguments:</strong></p>
+<dl class="docutils">
+<dt>charge</dt>
+<dd>The total charge of the system. Defaults to zero.</dd>
+<dt>mult</dt>
+<dd>The spin multiplicity. Defaults to lowest possible.</dd>
+<dt>restricted</dt>
+<dd>Set to True or False to enforce a restricted or unrestricted
+wavefunction. Note that restricted open shell is not yet
+supported. When not set, restricted is used when mult==1 and
+unrestricted otherwise.</dd>
+</dl>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="horton.system.System.lf">
 <tt class="descname">lf</tt><a class="headerlink" href="#horton.system.System.lf" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd>The LinalgFactory for this system</dd></dl>
 
 <dl class="attribute">
 <dt id="horton.system.System.natom">
 <tt class="descname">natom</tt><a class="headerlink" href="#horton.system.System.natom" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd>The number of atoms</dd></dl>
 
 <dl class="attribute">
 <dt id="horton.system.System.numbers">
 <tt class="descname">numbers</tt><a class="headerlink" href="#horton.system.System.numbers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd>An array with the atomic numbers</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.system.System.obasis">
+<tt class="descname">obasis</tt><a class="headerlink" href="#horton.system.System.obasis" title="Permalink to this definition">¶</a></dt>
+<dd>The orbital basis</dd></dl>
 
 <dl class="attribute">
 <dt id="horton.system.System.operators">
 <tt class="descname">operators</tt><a class="headerlink" href="#horton.system.System.operators" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd>A dictionary with operators</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.system.System.props">
+<tt class="descname">props</tt><a class="headerlink" href="#horton.system.System.props" title="Permalink to this definition">¶</a></dt>
+<dd>A dictionary with computed properties.</dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.update_chk">
+<tt class="descname">update_chk</tt><big>(</big><em>field_name=None</em><big>)</big><a class="headerlink" href="#horton.system.System.update_chk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write (a part of) the system to the checkpoint file.</p>
+<p><strong>Optional Argument:</strong></p>
+<dl class="docutils">
+<dt>field</dt>
+<dd>A field string that specifies which part must be written to the
+checkpoint file. When not given, all possible fields are
+written. The latter is only useful in specific cases, e.g. upon
+initialization of the system. The available field names are
+specified in the attribute register dictionary in the
+module <tt class="docutils literal"><span class="pre">horton.checkpoint</span></tt>.</dd>
+</dl>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="horton.system.System.wfn">
 <tt class="descname">wfn</tt><a class="headerlink" href="#horton.system.System.wfn" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd>The wavefunction</dd></dl>
 
 </dd></dl>
 
