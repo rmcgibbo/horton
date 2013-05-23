@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>11. horton.scripts – Auxiliaries for the horton-*.py scripts &mdash; Horton 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Horton 1.0 documentation" href="index.html" />
+    <link rel="prev" title="10. horton.part – Density partitioning" href="lib_horton_part.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_part.html" title="10. horton.part – Density partitioning"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="horton-scripts-auxiliaries-for-the-horton-py-scripts">
+<h1>11. <tt class="docutils literal"><span class="pre">horton.scripts</span></tt> &#8211; Auxiliaries for the <tt class="docutils literal"><span class="pre">horton-*.py</span></tt> scripts<a class="headerlink" href="#horton-scripts-auxiliaries-for-the-horton-py-scripts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-horton.scripts.atomdb">
+<span id="horton-scripts-atomdb-tools-for-the-script-horton-atomdb-py"></span><h2>11.1. <a class="reference internal" href="#module-horton.scripts.atomdb" title="horton.scripts.atomdb"><tt class="xref py py-mod docutils literal"><span class="pre">horton.scripts.atomdb</span></tt></a> &#8211; Tools for the script <tt class="docutils literal"><span class="pre">horton-atomdb.py</span></tt><a class="headerlink" href="#module-horton.scripts.atomdb" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.scripts.atomdb.iter_mults">
+<tt class="descclassname">horton.scripts.atomdb.</tt><tt class="descname">iter_mults</tt><big>(</big><em>nel</em>, <em>hund</em><big>)</big><a class="headerlink" href="#horton.scripts.atomdb.iter_mults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate over atomic spin multiplicites for the given number of electrons</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>nel</dt>
+<dd>The number of electrons (1-56)</dd>
+<dt>hund</dt>
+<dd>When set to True, only one spin multiplicity is returned. Otherwise
+several reasonable spin multiplicities are given.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.scripts.atomdb.iter_states">
+<tt class="descclassname">horton.scripts.atomdb.</tt><tt class="descname">iter_states</tt><big>(</big><em>elements</em>, <em>max_kation</em>, <em>max_anion</em>, <em>hund</em><big>)</big><a class="headerlink" href="#horton.scripts.atomdb.iter_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate over all requested atomic states</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>elements</dt>
+<dd>A string that is suitable for <tt class="docutils literal"><span class="pre">iter_elements</span></tt></dd>
+<dt>template</dt>
+<dd>An instance of the <tt class="docutils literal"><span class="pre">atomdb.Template</span></tt> class</dd>
+<dt>max_kation</dt>
+<dd>The limit for the most positive kation</dd>
+<dt>max_anion</dt>
+<dd>The limit for the most negative anion</dd>
+<dt>hund</dt>
+<dd>Flag to adhere to hund&#8217;s rule for the spin multiplicities.</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.scripts.atomdb.Template">
+<em class="property">class </em><tt class="descclassname">horton.scripts.atomdb.</tt><tt class="descname">Template</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#horton.scripts.atomdb.Template" title="Permalink to this definition">¶</a></dt>
+<dd><p>A template with modifications to support inclusion of other files.</p>
+<dl class="method">
+<dt id="horton.scripts.atomdb.Template.get_subs">
+<tt class="descname">get_subs</tt><big>(</big><em>number</em>, <em>pop</em>, <em>mult</em><big>)</big><a class="headerlink" href="#horton.scripts.atomdb.Template.get_subs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.scripts.atomdb.Template.idpattern">
+<tt class="descname">idpattern</tt><em class="property"> = '[_a-z0-9.:-]+'</em><a class="headerlink" href="#horton.scripts.atomdb.Template.idpattern" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.scripts.atomdb.Template.pattern">
+<tt class="descname">pattern</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x5211870&gt;</em><a class="headerlink" href="#horton.scripts.atomdb.Template.pattern" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.scripts.atomdb.EnergyTable">
+<em class="property">class </em><tt class="descclassname">horton.scripts.atomdb.</tt><tt class="descname">EnergyTable</tt><a class="headerlink" href="#horton.scripts.atomdb.EnergyTable" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.scripts.atomdb.EnergyTable.add">
+<tt class="descname">add</tt><big>(</big><em>number</em>, <em>pop</em>, <em>energy</em><big>)</big><a class="headerlink" href="#horton.scripts.atomdb.EnergyTable.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.scripts.atomdb.EnergyTable.log">
+<tt class="descname">log</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.scripts.atomdb.EnergyTable.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.scripts.common">
+<span id="horton-scripts-common-shared-code-between-multiple-scripts"></span><h2>11.2. <a class="reference internal" href="#module-horton.scripts.common" title="horton.scripts.common"><tt class="xref py py-mod docutils literal"><span class="pre">horton.scripts.common</span></tt></a> &#8211; Shared code between multiple scripts<a class="headerlink" href="#module-horton.scripts.common" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.scripts.common.iter_elements">
+<tt class="descclassname">horton.scripts.common.</tt><tt class="descname">iter_elements</tt><big>(</big><em>elements_str</em><big>)</big><a class="headerlink" href="#horton.scripts.common.iter_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interpret a string as a list of elements</p>
+<dl class="docutils">
+<dt>elements_str</dt>
+<dd>A string with comma-separated element numbers. One may add ranges
+with the format &#8216;N-M&#8217; where M&gt;N.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.scripts.common.reduce_data">
+<tt class="descclassname">horton.scripts.common.</tt><tt class="descname">reduce_data</tt><big>(</big><em>cube_data</em>, <em>ugrid</em>, <em>stride</em>, <em>chop</em><big>)</big><a class="headerlink" href="#horton.scripts.common.reduce_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduce the uniform grid data according to stride and chop arguments</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>fn_cube</dt>
+<dd>The cube file with the electron density.</dd>
+<dt>ugrid</dt>
+<dd>The uniform integration grid.</dd>
+<dt>stride</dt>
+<dd>The reduction factor.</dd>
+<dt>chop</dt>
+<dd>The number of slices to chop of the grid in each direction.</dd>
+</dl>
+<p>Returns: a new array and an updated grid object</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.scripts.common.parse_h5">
+<tt class="descclassname">horton.scripts.common.</tt><tt class="descname">parse_h5</tt><big>(</big><em>arg_h5</em><big>)</big><a class="headerlink" href="#horton.scripts.common.parse_h5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.scripts.common.parse_ewald_args">
+<tt class="descclassname">horton.scripts.common.</tt><tt class="descname">parse_ewald_args</tt><big>(</big><em>args</em><big>)</big><a class="headerlink" href="#horton.scripts.common.parse_ewald_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.scripts.common.parse_pbc">
+<tt class="descclassname">horton.scripts.common.</tt><tt class="descname">parse_pbc</tt><big>(</big><em>spbc</em><big>)</big><a class="headerlink" href="#horton.scripts.common.parse_pbc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.scripts.common.parse_ugrid">
+<tt class="descclassname">horton.scripts.common.</tt><tt class="descname">parse_ugrid</tt><big>(</big><em>sgrid</em>, <em>cell</em><big>)</big><a class="headerlink" href="#horton.scripts.common.parse_ugrid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a uniform integration grid based on the sgrid argument</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>sgrid</dt>
+<dd>A string obtained from the command line</dd>
+<dt>rvecs</dt>
+<dd>The 3D cell vectors</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.scripts.common.store_args">
+<tt class="descclassname">horton.scripts.common.</tt><tt class="descname">store_args</tt><big>(</big><em>args</em>, <em>grp</em><big>)</big><a class="headerlink" href="#horton.scripts.common.store_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the command line arguments to hdf5 attributes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.scripts.common.safe_open_h5">
+<tt class="descclassname">horton.scripts.common.</tt><tt class="descname">safe_open_h5</tt><big>(</big><em>*args</em>, <em>**kwds</em><big>)</big><a class="headerlink" href="#horton.scripts.common.safe_open_h5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to open a file and 10 times wait a random time up to seconds between each attempt.</p>
+<p><strong>Arguments:</strong> the same as those of the h5py.File constructor.</p>
+<p><strong>Optional keyword arguments:</strong></p>
+<dl class="docutils">
+<dt>wait</dt>
+<dd>The maximum number of seconds to wait between two attempts to open
+the file. [default=10]</dd>
+<dt>count</dt>
+<dd>The number of attempts to open the file.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.scripts.common.write_part_output">
+<tt class="descclassname">horton.scripts.common.</tt><tt class="descname">write_part_output</tt><big>(</big><em>fn_h5</em>, <em>label</em>, <em>part</em>, <em>grp_name</em>, <em>names</em>, <em>args</em><big>)</big><a class="headerlink" href="#horton.scripts.common.write_part_output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-horton.scripts.espfit">
+<span id="horton-scripts-espfit-tools-for-the-esp-fitting-scripts"></span><h2>11.3. <a class="reference internal" href="#module-horton.scripts.espfit" title="horton.scripts.espfit"><tt class="xref py py-mod docutils literal"><span class="pre">horton.scripts.espfit</span></tt></a> &#8211; Tools for the ESP fitting scripts<a class="headerlink" href="#module-horton.scripts.espfit" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.scripts.espfit.parse_wdens">
+<tt class="descclassname">horton.scripts.espfit.</tt><tt class="descname">parse_wdens</tt><big>(</big><em>arg</em><big>)</big><a class="headerlink" href="#horton.scripts.espfit.parse_wdens" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the argument to the &#8211;wdens option of horton-espfit.py</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.scripts.espfit.parse_wnear">
+<tt class="descclassname">horton.scripts.espfit.</tt><tt class="descname">parse_wnear</tt><big>(</big><em>args</em><big>)</big><a class="headerlink" href="#horton.scripts.espfit.parse_wnear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the arguments for the &#8211;wnear option of horton-espfit.py</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.scripts.espfit.parse_wfar">
+<tt class="descclassname">horton.scripts.espfit.</tt><tt class="descname">parse_wfar</tt><big>(</big><em>arg</em><big>)</big><a class="headerlink" href="#horton.scripts.espfit.parse_wfar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the argument for the &#8211;wfar option of horton-espfit.py</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.scripts.espfit.load_rho">
+<tt class="descclassname">horton.scripts.espfit.</tt><tt class="descname">load_rho</tt><big>(</big><em>fn_cube</em>, <em>ref_ugrid</em>, <em>stride</em>, <em>chop</em><big>)</big><a class="headerlink" href="#horton.scripts.espfit.load_rho" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load densities from a file, reduce by stride, chop and check ugrid</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>fn_cube</dt>
+<dd>The cube file with the electron density.</dd>
+<dt>ref_ugrid</dt>
+<dd>A reference ugrid that must match the one from the density cube
+file (after reduction).</dd>
+<dt>stride</dt>
+<dd>The reduction factor.</dd>
+<dt>chop</dt>
+<dd>The number of slices to chop of the grid in each direction.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.scripts.espfit.save_weights">
+<tt class="descclassname">horton.scripts.espfit.</tt><tt class="descname">save_weights</tt><big>(</big><em>fn_cube</em>, <em>sys</em>, <em>ugrid</em>, <em>weights</em><big>)</big><a class="headerlink" href="#horton.scripts.espfit.save_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the weights used for the ESP cost function to a cube file</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>fn_cube</dt>
+<dd>The name of the cube file.</dd>
+<dt>sys</dt>
+<dd>A System instance.</dd>
+<dt>ugrid</dt>
+<dd>The uniform integration grid.</dd>
+<dt>weights</dt>
+<dd>The weights array to be saved.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.scripts.wpart">
+<span id="horton-scripts-wpart-tools-for-the-script-horton-wpart-py"></span><h2>11.4. <a class="reference internal" href="#module-horton.scripts.wpart" title="horton.scripts.wpart"><tt class="xref py py-mod docutils literal"><span class="pre">horton.scripts.wpart</span></tt></a> &#8211; Tools for the script <tt class="docutils literal"><span class="pre">horton-wpart.py</span></tt><a class="headerlink" href="#module-horton.scripts.wpart" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.scripts.wpart.parse_grid">
+<tt class="descclassname">horton.scripts.wpart.</tt><tt class="descname">parse_grid</tt><big>(</big><em>sgrid</em>, <em>system</em>, <em>proatomdb</em><big>)</big><a class="headerlink" href="#horton.scripts.wpart.parse_grid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">11. <tt class="docutils literal"><span class="pre">horton.scripts</span></tt> &#8211; Auxiliaries for the <tt class="docutils literal"><span class="pre">horton-*.py</span></tt> scripts</a><ul>
+<li><a class="reference internal" href="#module-horton.scripts.atomdb">11.1. <tt class="docutils literal"><span class="pre">horton.scripts.atomdb</span></tt> &#8211; Tools for the script <tt class="docutils literal"><span class="pre">horton-atomdb.py</span></tt></a></li>
+<li><a class="reference internal" href="#module-horton.scripts.common">11.2. <tt class="docutils literal"><span class="pre">horton.scripts.common</span></tt> &#8211; Shared code between multiple scripts</a></li>
+<li><a class="reference internal" href="#module-horton.scripts.espfit">11.3. <tt class="docutils literal"><span class="pre">horton.scripts.espfit</span></tt> &#8211; Tools for the ESP fitting scripts</a></li>
+<li><a class="reference internal" href="#module-horton.scripts.wpart">11.4. <tt class="docutils literal"><span class="pre">horton.scripts.wpart</span></tt> &#8211; Tools for the script <tt class="docutils literal"><span class="pre">horton-wpart.py</span></tt></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lib_horton_part.html"
+                        title="previous chapter">10. <tt class="docutils literal docutils literal docutils literal"><span class="pre">horton.part</span></tt> &#8211; Density partitioning</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/lib_horton_scripts.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_part.html" title="10. horton.part – Density partitioning"
+             >previous</a> |</li>
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Toon Verstraelen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

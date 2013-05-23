@@ -1,19 +1,23 @@
 Horton's Website
 ################
 
-Horton is a Density Functional Theory program.
+Horton is a development platform for electronic structure methods. An overview
+of the current features can be found in :ref:`ref_features`. If you have
+questions about Horton (not covered on this website) post them on the `Horton
+mailing list <https://groups.google.com/d/forum/horton-discuss>`_.
 
-For now, everything is under construction. If you are interested in our plans,
-check out the milestones below.
 
 Tutorials
 =========
 
 .. toctree::
    :maxdepth: 2
+   :numbered:
 
    tut_getting_started
-   tut_theory
+   tut_cite
+   tut_part
+   tut_scf
    tut_gaussian_basis
 
 
@@ -22,9 +26,11 @@ Development
 
 .. toctree::
    :maxdepth: 2
+   :numbered:
 
-   dev_get_coding
-   dev_milestones
+   dev_contributors
+   dev_releases
+   dev_contribute
 
 
 Reference
@@ -32,9 +38,19 @@ Reference
 
 .. toctree::
    :maxdepth: 2
+   :numbered:
 
+   ref_features
    ref_acronyms
+   ref_literature
    lib_horton
+   lib_horton_espfit
+   lib_horton_gbasis
+   lib_horton_grid
+   lib_horton_hamiltonian
+   lib_horton_io
+   lib_horton_part
+   lib_horton_scripts
 
 
 Indices and tables

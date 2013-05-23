@@ -1,0 +1,622 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. How to contribute to Horton &mdash; Horton 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Horton 1.0 documentation" href="index.html" />
+    <link rel="next" title="1. Features" href="ref_features.html" />
+    <link rel="prev" title="2. Release history" href="dev_releases.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ref_features.html" title="1. Features"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dev_releases.html" title="2. Release history"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="how-to-contribute-to-horton">
+<h1><a class="toc-backref" href="#id4">3. How to contribute to Horton</a><a class="headerlink" href="#how-to-contribute-to-horton" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#how-to-contribute-to-horton" id="id4">How to contribute to Horton</a><ul>
+<li><a class="reference internal" href="#coding-guidelines" id="id5">Coding guidelines</a></li>
+<li><a class="reference internal" href="#git-the-fast-version-control-system" id="id6">Git: the fast version control system</a><ul>
+<li><a class="reference internal" href="#configuring-git" id="id7">Configuring Git</a></li>
+<li><a class="reference internal" href="#some-terminology" id="id8">Some terminology</a></li>
+<li><a class="reference internal" href="#work-flow-for-adding-a-new-feature" id="id9">Work flow for adding a new feature</a><ul>
+<li><a class="reference internal" href="#develop-the-feature-in-a-separate-branch" id="id10">Develop the feature in a separate branch</a></li>
+<li><a class="reference internal" href="#make-your-branch-available-for-review" id="id11">Make your branch available for review</a></li>
+<li><a class="reference internal" href="#rebase-your-branch-on-top-of-the-master-branch" id="id12">Rebase your branch on top of the master branch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unit-tests" id="id13">Unit tests</a><ul>
+<li><a class="reference internal" href="#running-the-tests" id="id14">Running the tests</a></li>
+<li><a class="reference internal" href="#writing-new-tests" id="id15">Writing new tests</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#documentation" id="id16">Documentation</a></li>
+<li><a class="reference internal" href="#examples" id="id17">Examples</a></li>
+<li><a class="reference internal" href="#citing-scientific-work" id="id18">Citing scientific work</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>This chapter discusses all the technology and conventions that make it fun to
+work on Horton with a small team, and to make sure things remain manageable
+as the elephant grows bigger and bigger.</p>
+<p>Although the development of Horton is a rather informal business, it is not a
+bad idea to follow some guidelines to guarantee the quality of the program. A
+general overview of these guidelines are presented in the first section. The
+subsequent section discuss the technical aspects in more detail: how to
+work with git, how to write unit tests, how to write documentation, etc.</p>
+<div class="section" id="coding-guidelines">
+<h2><a class="toc-backref" href="#id5">3.1. Coding guidelines</a><a class="headerlink" href="#coding-guidelines" title="Permalink to this headline">¶</a></h2>
+<p>The following guidelines may feel a bit frustrating in the beginning, but it
+avoids a lot of frustration in the long run.</p>
+<ol class="arabic">
+<li><p class="first"><strong>Write unit tests (validation routines) for new pieces of code. Commit new
+code and tests in one patch.</strong></p>
+<p>Writing unit tests is difficult, especially for newcomers, but it is really
+necessary to maintain to keep Horton functional. Only fools believe they can
+write bug-free code without testing. It always takes some creativity to
+devise test routines, certainly in Horton. Some examples are given below, but
+feel free to blur the lines. Just make sure a test does not take too long to
+execute (i.e. not more than a second).</p>
+<ul class="simple">
+<li>Check whether a computational result is translational invariant.</li>
+<li>Compare energies from atomic computations with published results, or
+results obtained with other (reliable) programs.</li>
+<li>Compare analytical derivatives with finite differences.</li>
+<li>Compare the output of a routine with a results derived on paper.</li>
+</ul>
+<p>In most cases, it is sufficient to imagine what <cite>could</cite> go wrong if your new
+code <cite>would</cite> be buggy.</p>
+<p><em>Important:</em> Avoid tests that just check the output of a routine with the output
+from a previous version of the code. Such tests need to be redone each time
+a bug is found in that routine.</p>
+</li>
+<li><p class="first"><strong>Never commit a patch that breaks the tests.</strong></p>
+<p>The purpose of the tests is to keep the program working as we add more
+features. When a patch breaks previous tests, it is simply unacceptable.</p>
+</li>
+<li><p class="first"><strong>Ask someone to review your patches before they go into the official master
+branch.</strong></p>
+<p>It is perfectly OK to work in your own branch and do there whatever you like.
+It is also OK to upload these branches, such that others can see and review
+your code. As soon as one of your branches is mature enough, use <tt class="docutils literal"><span class="pre">git</span>
+<span class="pre">rebase</span></tt> to apply your patches to the master branch.</p>
+</li>
+<li><p class="first"><strong>When you find a bug, first write a test that fails because of the bug. Then
+fix the bug. Commit both test and fix in one patch.</strong></p>
+<p>This is a great way of fixing bugs and making tests. It also guarantees that
+the bug you found will not be reintroduced accidentally in later versions of
+Horton.</p>
+</li>
+<li><p class="first"><strong>Write lots of comments, doc-strings, documentation and examples.</strong></p>
+<p><cite>Comments</cite> are needed for obvious reasons.</p>
+<p><cite>Doc-strings</cite> are a rather Pythonic thing to do. More information about
+doc-strings can be found <a class="reference external" href="http://www.python.org/dev/peps/pep-0257#what-is-a-docstring">here</a>.</p>
+<p><cite>The documentation</cite> is written in <a class="reference external" href="http://docutils.sourceforge.net/rst.html">ReStructuredText</a>
+and compiled with <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> into the fancy
+webpage you are currently looking at. More details on the documentation
+system are given below.</p>
+<p><cite>Examples</cite> are simple python scripts that use Horton to run a computation.
+Keep these examples simple, e.g. no more than 20 lines, and add abundant
+comments that explain every line.</p>
+</li>
+<li><p class="first"><strong>Adopt a clean coding style.</strong></p>
+<p>There is an extensive <a class="reference external" href="http://www.python.org/dev/peps/pep-0008/">Style Guide for Python Code</a>.
+The main purpose is to make the source code easier to read and maintain.
+These are the basics:</p>
+<ul>
+<li><p class="first">Never use tabs. Always use four spaces to indent code.</p>
+</li>
+<li><p class="first">Use UpperCamelCase for class names. All other names are written in lower
+case, with underscores to separate different words in a name. Never use
+headlessCamelCase.</p>
+</li>
+<li><p class="first">Separate top-level blocks in a module by two blank lines.</p>
+</li>
+<li><p class="first">Separate methods in a class with one blank line.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Doc-strings also have a specific format:</dt>
+<dd><ol class="first last arabic simple">
+<li>A one-line summary, followed by a blank line.</li>
+<li>Description of the arguments, followed by a blank line.</li>
+<li>Description of the return value(s), followed by a blank line.
+(optional)</li>
+<li>Some extra paragraphs with detailed information. (optional)</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p class="first">Use self-explaining names for classes, variables, functions, methods. Start
+functions and methods with a verb.</p>
+</li>
+<li><p class="first">Never use <tt class="docutils literal"><span class="pre">from</span> <span class="pre">foo</span> <span class="pre">import</span> <span class="pre">*</span></tt> in a Horton module. Always specify what is
+to be imported, or use the <tt class="docutils literal"><span class="pre">import</span> <span class="pre">foo</span></tt> or <tt class="docutils literal"><span class="pre">import</span> <span class="pre">foo</span> <span class="pre">as</span> <span class="pre">bar</span></tt> syntax.</p>
+</li>
+<li><p class="first">Avoid long lines, i.e. no longer than 80 characters. Use the line-wrapping
+features in Python to break long lines into smaller ones.</p>
+</li>
+</ul>
+<p>Specific conventions for Horton</p>
+<ul class="simple">
+<li>Import the Numpy package as follows: <tt class="docutils literal"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></tt>.</li>
+<li>Import the H5Py package as follows: <tt class="docutils literal"><span class="pre">import</span> <span class="pre">h5py</span> <span class="pre">as</span> <span class="pre">h5</span></tt>.</li>
+<li>Use single-letter variable names <tt class="docutils literal"><span class="pre">i</span></tt>, <tt class="docutils literal"><span class="pre">j</span></tt>, <tt class="docutils literal"><span class="pre">k</span></tt> and <tt class="docutils literal"><span class="pre">l</span></tt> only for
+integer loop variables.</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="git-the-fast-version-control-system">
+<h2><a class="toc-backref" href="#id6">3.2. Git: the fast version control system</a><a class="headerlink" href="#git-the-fast-version-control-system" title="Permalink to this headline">¶</a></h2>
+<p>Horton uses <a class="reference external" href="http://git-scm.com/">Git</a> for version control.</p>
+<p>This section goes through
+the basics. Although the commands below are specific for Git, most of the
+good practices are general and also apply to other modern VCSs such Bazaar
+or Mercurial. There are however a few old-fashioned systems such as CVS (and to
+some extent Subversion), that do not (or only poorly) support some of the
+guidelines below. Of all the VCSs out there, Git is probably the most snappy, and
+definitely the most popular for new projects. Git is also the only widely
+adopted open-source VCS for the development of commercial software.</p>
+<p>The purpose of a VCS is to allow many different people to make modifications in the same
+program without messing things up. VCS software also makes life much easier for
+someone who has to merge different developments into one common source tree.</p>
+<div class="section" id="configuring-git">
+<h3><a class="toc-backref" href="#id7">3.2.1. Configuring Git</a><a class="headerlink" href="#configuring-git" title="Permalink to this headline">¶</a></h3>
+<p>Make a file ~/.gitconfig as follows:</p>
+<div class="highlight-python"><pre>[user]
+    name = Toon Verstraelen
+    email = Toon.Verstraelen@UGent.be
+
+[color]
+    diff = always
+    status = always
+    interactive = always
+    branch = always
+
+[branch]
+    autosetuprebase = always
+
+[branch "master"]
+    remote = origin
+    merge = master
+
+[push]
+    default = simple</pre>
+</div>
+<p>Replace my name and email by yours. If you are also working on other projects
+that use git, it may be useful to move some of these options to the file
+<tt class="docutils literal"><span class="pre">.git/config</span></tt> in the Horton source tree.</p>
+<p>Furthermore, it is useful to include the current branch in your shell promt. Put
+one of the following in your <tt class="docutils literal"><span class="pre">~/.bashrc</span></tt> file:</p>
+<ul>
+<li><p class="first">For terminals with a dark background:</p>
+<div class="highlight-python"><pre>GIT_PS='$(__git_ps1 ":%s")'
+export PS1="\[\033[1;32m\]\u@\h\[\033[00m\] \[\033[1;34m\]\w\[\033[00m\]\[\033[1;33m\]${GIT_PS}\[\033[1;34m\]&gt;\[\033[00m\] "</pre>
+</div>
+</li>
+<li><p class="first">For terminals with a light background:</p>
+<div class="highlight-python"><pre>GIT_PS='$(__git_ps1 ":%s")'
+export PS1="\[\033[2;32m\]\u@\h\[\033[00m\]:\[\033[2;34m\]\w\[\033[3;31m\]${GIT_PS}\[\033[00m\]$ "</pre>
+</div>
+</li>
+</ul>
+<p>Add salt and pepper to taste. You may also want to add a line <tt class="docutils literal"><span class="pre">export</span>
+<span class="pre">PROMPT_DIRTRIM=3</span></tt> to keep the shell prompt short.</p>
+</div>
+<div class="section" id="some-terminology">
+<h3><a class="toc-backref" href="#id8">3.2.2. Some terminology</a><a class="headerlink" href="#some-terminology" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Patch</dt>
+<dd>A set of changes in the source code. These are typically recorded in a
+<cite>patch</cite> file. Such a file specifies a set of lines that are removed and
+a set of lines that are added.</dd>
+<dt><a class="reference external" href="http://en.wikipedia.org/wiki/SHA-1">SHA-1</a> hash</dt>
+<dd>A <cite>numerical</cite> checksum of a given length in bytes (in this case 256) for a
+much larger amount of data, e.g. a very long character string. One tries to
+design hashing algorithms such that they are doing two things very well: (i) it
+is not possible to derive the original data from a hash and (ii) a small
+change in the original data completely changes the hash. The <a class="reference external" href="http://en.wikipedia.org/wiki/MD5">MD5</a> checksum is
+well known and often used from CD images, but it is not great in terms of
+the above two hashing objectives.</dd>
+<dt>Commit (git specific)</dt>
+<dd>A patch with a some extra information: author, timestamp, a SHA1 hash of the
+code to which it applies, and some other things.</dd>
+<dt>Branch</dt>
+<dd><p class="first">A series of commits that describe the history of the source code.</p>
+<p class="last">In realistic projects, the source code history is not linear, but contains
+many deviations from the <cite>official branch</cite> where people try to implement a
+new feature. It is however useful to have only one official linear history.
+We will show below how this can be done with git.</p>
+</dd>
+<dt>Branch head</dt>
+<dd>The last commit in a branch.</dd>
+</dl>
+</div>
+<div class="section" id="work-flow-for-adding-a-new-feature">
+<h3><a class="toc-backref" href="#id9">3.2.3. Work flow for adding a new feature</a><a class="headerlink" href="#work-flow-for-adding-a-new-feature" title="Permalink to this headline">¶</a></h3>
+<p>The development of a new feature typically consists of three large steps: (i)
+modifications to the code in a separate branch, (ii) review of the new code,
+fixing problems and (iii) rebase your branch on top of the master branch and
+publish.</p>
+<div class="section" id="develop-the-feature-in-a-separate-branch">
+<h4><a class="toc-backref" href="#id10">3.2.3.1. Develop the feature in a separate branch</a><a class="headerlink" href="#develop-the-feature-in-a-separate-branch" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic">
+<li><p class="first">Switch to the master branch if needed:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:foo&gt; git checkout master
+toony@poony ~/.../horton:master&gt;</pre>
+</div>
+<p>The master branch is the official branch of Horton. Also make sure there
+are no uncommitted changes in the source code before switching to the
+master branch.</p>
+</li>
+<li><p class="first">Get the latest version of the official code:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:master&gt; git pull</pre>
+</div>
+</li>
+<li><p class="first">Make a new branch:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:master&gt; git checkout -b bar
+toony@poony ~/.../horton:bar&gt;</pre>
+</div>
+<p>Only start changing the code and committing patches once you have changed
+to this new branch for the implementation of feature <cite>bar</cite>.</p>
+</li>
+<li><p class="first">Make some changes in the source code. When adding a new feature, also add
+tests, documentation, docstrings, comments and examples for that feature.
+(The more tests and documentation, the better.)</p>
+</li>
+<li><p class="first">Review your changes with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt>. Make sure there are no trailing spaces
+or trailing blank lines. These can be removed with the <tt class="docutils literal"><span class="pre">./cleancode.sh</span></tt>
+script. If you created new files, run the <tt class="docutils literal"><span class="pre">./updateheaders.py</span></tt> script to
+make sure the new files have the proper headers.</p>
+</li>
+<li><p class="first">Review the changed/new files with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">status</span></tt></p>
+</li>
+<li><p class="first">Select the files/changes that will be committed with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></tt>. There are
+two ways to do this:</p>
+<ul>
+<li><p class="first">Add all changes in certain files:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:bar&gt; git add horton/file1.py horton/file2.py ...</pre>
+</div>
+</li>
+<li><p class="first">Interactively go through the changes in all/some files:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:bar&gt; git add -p [horton/file1.py horton/file2.py ...]</pre>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first">Commit the selected files to your working branch:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:bar&gt; git commit -m 'Short description'</pre>
+</div>
+</li>
+</ol>
+<p>In practice, you&#8217;ll make a few commits before a new feature is finished. After
+adding a few commits, testing them thoroughly, you are ready for the next step.</p>
+</div>
+<div class="section" id="make-your-branch-available-for-review">
+<h4><a class="toc-backref" href="#id11">3.2.3.2. Make your branch available for review</a><a class="headerlink" href="#make-your-branch-available-for-review" title="Permalink to this headline">¶</a></h4>
+<p>In order to let someone look at your code, you have to make your branch
+available by pushing it to a remote server. One may use <a class="reference external" href="http://www.github.com">Github</a> for this purpose.</p>
+<ol class="arabic">
+<li><p class="first">Configure your repository for the remote server:</p>
+<div class="highlight-python"><pre>git remote add review &lt;paste_your_remote_url_here&gt;</pre>
+</div>
+</li>
+<li><p class="first">Push your branch to the remote server:</p>
+<div class="highlight-python"><pre>git push remote bar:bar</pre>
+</div>
+</li>
+</ol>
+<p>Now send the URL of your remote server and the name of the branch to a peer for
+review. If you are looking for someone to review your code, post a request on
+the <a class="reference external" href="https://groups.google.com/d/forum/horton-discuss">Horton mailing list</a></p>
+<p>Unless, you have written spotless code, you will make some further modifications
+to the code, commit these and push them to the remote server for review. Once
+this iterative process has converged, it is time to move to the next step.</p>
+</div>
+<div class="section" id="rebase-your-branch-on-top-of-the-master-branch">
+<h4><a class="toc-backref" href="#id12">3.2.3.3. Rebase your branch on top of the master branch</a><a class="headerlink" href="#rebase-your-branch-on-top-of-the-master-branch" title="Permalink to this headline">¶</a></h4>
+<p>It is likely that during the development of your feature, the master branch
+has evolved with new commits added by other developers. You need to append your
+branch to the new HEAD of the master branch with the program <tt class="docutils literal"><span class="pre">git</span> <span class="pre">rebase</span></tt></p>
+<ol class="arabic">
+<li><p class="first">Switch to the master branch:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:bar&gt; git checkout master
+toony@poony ~/.../horton:master&gt;</pre>
+</div>
+</li>
+<li><p class="first">Get the latest version of the official code:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:master&gt; git pull</pre>
+</div>
+</li>
+<li><p class="first">Switch to your working branch:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:master&gt; git checkout bar
+toony@poony ~/.../horton:bar&gt;</pre>
+</div>
+</li>
+<li><p class="first">Create a new branch in which the result of <tt class="docutils literal"><span class="pre">git</span> <span class="pre">rebase</span></tt> will be stored.</p>
+<blockquote>
+<div><p><a class="reference external" href="mailto:toony&#37;&#52;&#48;poony">toony<span>&#64;</span>poony</a> ~/.../horton:bar&gt; git checkout -b bar-1
+toony&#64;poony ~/.../horton:bar-1&gt;</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic" start="4">
+<li><p class="first"><cite>Rebase</cite> your commits on top of the latest master branch:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:bar-1&gt; git rebase master</pre>
+</div>
+</li>
+</ol>
+<blockquote>
+<div>This command will try to apply the patches from your working branch to the
+master branch. It may happen that others have changed the official version
+such that your patches do no longer simply apply. When that is the case,
+the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">rebase</span></tt> script will interrupt and tell you what to do. Do not
+panic when this happens. If you feel uncertain about how to resolve
+conflicts, it is time to call your git-savvy friends for help.</div></blockquote>
+<ol class="arabic" start="5">
+<li><p class="first">Run all tests again once the rebase procedure is completed. If needed fix
+problems and commit the changes.</p>
+</li>
+<li><p class="first">Upload the commits to your remote server:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:bar-1&gt; git push review bar-1:bar-1</pre>
+</div>
+</li>
+</ol>
+<p>Now you can get in touch with one of the Horton developers (at the <a class="reference external" href="https://groups.google.com/d/forum/horton-discuss">Horton
+mailing list</a>) to transfer
+these new patches to the public master branch of Horton.</p>
+</div>
+</div>
+</div>
+<div class="section" id="unit-tests">
+<h2><a class="toc-backref" href="#id13">3.3. Unit tests</a><a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h2>
+<p>Horton uses the <a class="reference external" href="http://somethingaboutorange.com/mrl/projects/nose/0.11.2/">Nosetests</a>
+program to run all the unit tests. The goal of a unit test is to check whether
+as small piece of code works as expected.</p>
+<div class="section" id="running-the-tests">
+<h3><a class="toc-backref" href="#id14">3.3.1. Running the tests</a><a class="headerlink" href="#running-the-tests" title="Permalink to this headline">¶</a></h3>
+<p>The tests are run as follows (including preparation steps):</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:master&gt; ./cleanfiles.sh
+toony@poony ~/.../horton:master&gt; ./setup.py build_ext -i
+toony@poony ~/.../horton:master&gt; nosetests -v</pre>
+</div>
+<p>There are some cases where the first two commands are not needed. You will
+figure out.</p>
+<p>When working on a specific part of the code, it is often convenient to limit the
+number of tests that are checked. The following runs only the tests in <tt class="docutils literal"><span class="pre">horton/test/test_cell.py</span></tt>:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:master&gt; nosetests -v horton/test/test_cell.py</pre>
+</div>
+<p>Within one file, one may also select one test function:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:master&gt; nosetests -v horton/test/test_cell.py:test_from_parameters3</pre>
+</div>
+</div>
+<div class="section" id="writing-new-tests">
+<h3><a class="toc-backref" href="#id15">3.3.2. Writing new tests</a><a class="headerlink" href="#writing-new-tests" title="Permalink to this headline">¶</a></h3>
+<p>All tests in Horton are located in the directories <tt class="docutils literal"><span class="pre">horton/test</span></tt> and
+<tt class="docutils literal"><span class="pre">horton/*/test</span></tt>. All module files containing tests have a filename that starts
+with <tt class="docutils literal"><span class="pre">test_</span></tt>. In these modules, all functions with a name that starts with
+<tt class="docutils literal"><span class="pre">test_</span></tt> are picked up by Nosetests. Tests that do not follow this convention,
+are simply ignored.</p>
+<p>The basic structure of a test is as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">test_sum</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span> <span class="o">==</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Horton currently contains many examples that can be used as a starting point
+for new tests. The easiest way to write new tests is to just copy an existing
+test (similar to what you have in mind) and start modifying it.</p>
+<p>Most test packages in <tt class="docutils literal"><span class="pre">horton</span></tt> contain a <tt class="docutils literal"><span class="pre">common</span></tt> module that contains useful
+functions that facilitate the development of tests. An important example is the
+<tt class="docutils literal"><span class="pre">check_delta</span></tt> function to test of analytical derivatives are properly
+implemented. This is a simple example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">horton.common</span> <span class="kn">import</span> <span class="n">check_delta</span>
+
+<span class="k">def</span> <span class="nf">test_quadratic</span><span class="p">():</span>
+    <span class="c"># a vector function that computes the squared norm divided by two</span>
+    <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+
+    <span class="c"># the gradient of that vector function</span>
+    <span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+    <span class="c"># the dimension of the vector x</span>
+    <span class="n">ndim</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="c"># the number of small displacements used in the test</span>
+    <span class="n">ndisp</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="c"># a reference point used for the test of the analytical derivatives</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ndim</span><span class="p">)</span>
+    <span class="c"># the small displacements, i.e. each row is one (small) relative vector</span>
+    <span class="n">dxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">1e-5</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">,</span> <span class="p">(</span><span class="n">ndisp</span><span class="p">,</span> <span class="n">ndim</span><span class="p">))</span>
+
+    <span class="n">check_delta</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">deriv</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dxs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="documentation">
+<h2><a class="toc-backref" href="#id16">3.4. Documentation</a><a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>All the documentation is located in the <tt class="docutils literal"><span class="pre">doc</span></tt> directory. We use the <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> formatting engine to compile the <cite>documentation
+source code</cite> into fancy formatted HTML or PDF.</p>
+<p>The source files have the extension <tt class="docutils literal"><span class="pre">.rst</span></tt>, and are written in the
+<a class="reference external" href="http://docutils.sourceforge.net/rst.html">ReStructuredText</a> (RST) format.
+RST is in some sense comparable to latex, but more intuitive to use.
+It also has some specific advantages for documenting software.</p>
+<p>All <tt class="docutils literal"><span class="pre">.rst</span></tt>-files are part of the source tree, just like the actual source
+code. Git is also used to keep track of changes in the documentation.</p>
+<p>There is a makefile to generate the documentation based in the source code:</p>
+<div class="highlight-python"><pre>toony@poony ~/.../horton:master&gt; cd doc
+toony@poony ~/.../horton/doc:master&gt; make html
+toony@poony ~/.../horton/doc:master&gt; make pdf</pre>
+</div>
+<p>Whenever you add a new feature, make sure that at least files
+<tt class="docutils literal"><span class="pre">lib_horton*.rst</span></tt> are up to date. With more serious work, please also write
+a tutorial, e.g. like this one, to explain how your new feature can be used
+effectively. If you added a significant feature, also update the file
+<tt class="docutils literal"><span class="pre">ref_features.rst</span></tt>.</p>
+</div>
+<div class="section" id="examples">
+<h2><a class="toc-backref" href="#id17">3.5. Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>The examples are located in the <tt class="docutils literal"><span class="pre">examples</span></tt> directory. Each example is located
+in a subdirectory <tt class="docutils literal"><span class="pre">XXX_some_name</span></tt>, where <tt class="docutils literal"><span class="pre">XXX</span></tt> is a counter. In each
+subdirectory there is an executable script <tt class="docutils literal"><span class="pre">run.py</span></tt> that demonstrates a
+feature. Additional input files may be provided here for the example to work.
+For each example, there is also a corresponding test in
+<tt class="docutils literal"><span class="pre">horton/test/test_examples.py</span></tt> Please, follow these conventions when adding a
+new example.</p>
+<p>The file <tt class="docutils literal"><span class="pre">run.py</span></tt> should not contain more than 50 lines of functional Python
+code, preferably even less. Put excessive comments before each line to explain
+how the example work. Also write the test such that it does not take more than a
+second to complete.</p>
+</div>
+<div class="section" id="citing-scientific-work">
+<h2><a class="toc-backref" href="#id18">3.6. Citing scientific work</a><a class="headerlink" href="#citing-scientific-work" title="Permalink to this headline">¶</a></h2>
+<p>Whenever you add a feature based on a scientific publication, it should be cited
+properly:</p>
+<ol class="arabic simple">
+<li>Add an item to the file <tt class="docutils literal"><span class="pre">data/references.bib</span></tt>. Include the <tt class="docutils literal"><span class="pre">doi</span></tt> if
+possible. (The <tt class="docutils literal"><span class="pre">url</span></tt> field can be used as an alternative if the <tt class="docutils literal"><span class="pre">doi</span></tt> is
+not available.) Maintain the chronological order.</li>
+<li>Add <tt class="docutils literal"><span class="pre">log.cite('someref',</span> <span class="pre">'a</span> <span class="pre">reason')</span></tt> to the code based on the publication, e.g.<tt class="docutils literal"><span class="pre">log.cite('marques2012',</span> <span class="pre">'using</span> <span class="pre">LibXC,</span> <span class="pre">the</span> <span class="pre">library</span> <span class="pre">of</span> <span class="pre">exchange</span> <span class="pre">and</span> <span class="pre">correlation</span> <span class="pre">functionals')</span></tt>.</li>
+<li>Update the references in <tt class="docutils literal"><span class="pre">doc/ref_literature.rst</span></tt> by running the script
+<tt class="docutils literal"><span class="pre">updateliterature.sh</span></tt>.</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3. How to contribute to Horton</a><ul>
+<li><a class="reference internal" href="#coding-guidelines">3.1. Coding guidelines</a></li>
+<li><a class="reference internal" href="#git-the-fast-version-control-system">3.2. Git: the fast version control system</a><ul>
+<li><a class="reference internal" href="#configuring-git">3.2.1. Configuring Git</a></li>
+<li><a class="reference internal" href="#some-terminology">3.2.2. Some terminology</a></li>
+<li><a class="reference internal" href="#work-flow-for-adding-a-new-feature">3.2.3. Work flow for adding a new feature</a><ul>
+<li><a class="reference internal" href="#develop-the-feature-in-a-separate-branch">3.2.3.1. Develop the feature in a separate branch</a></li>
+<li><a class="reference internal" href="#make-your-branch-available-for-review">3.2.3.2. Make your branch available for review</a></li>
+<li><a class="reference internal" href="#rebase-your-branch-on-top-of-the-master-branch">3.2.3.3. Rebase your branch on top of the master branch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unit-tests">3.3. Unit tests</a><ul>
+<li><a class="reference internal" href="#running-the-tests">3.3.1. Running the tests</a></li>
+<li><a class="reference internal" href="#writing-new-tests">3.3.2. Writing new tests</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#documentation">3.4. Documentation</a></li>
+<li><a class="reference internal" href="#examples">3.5. Examples</a></li>
+<li><a class="reference internal" href="#citing-scientific-work">3.6. Citing scientific work</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dev_releases.html"
+                        title="previous chapter">2. Release history</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ref_features.html"
+                        title="next chapter">1. Features</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/dev_contribute.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ref_features.html" title="1. Features"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dev_releases.html" title="2. Release history"
+             >previous</a> |</li>
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Toon Verstraelen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

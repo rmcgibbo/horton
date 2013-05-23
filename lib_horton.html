@@ -1,19 +1,23 @@
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Horton core &mdash; Horton v0.0 documentation</title>
+    <title>4. horton – The top-level package &mdash; Horton 1.0 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
-        VERSION:     '0.0',
-        COLLAPSE_MODINDEX: false,
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
@@ -21,8 +25,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Horton v0.0 documentation" href="index.html" />
-    <link rel="prev" title="Acronyms" href="ref_acronyms.html" /> 
+    <link rel="top" title="Horton 1.0 documentation" href="index.html" />
+    <link rel="next" title="5. horton.espfit – ESP fitting of charges" href="lib_horton_espfit.html" />
+    <link rel="prev" title="3. Literature" href="ref_literature.html" /> 
   </head>
   <body>
     <div class="related">
@@ -32,12 +37,15 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
-          <a href="ref_acronyms.html" title="Acronyms"
+          <a href="lib_horton_espfit.html" title="5. horton.espfit – ESP fitting of charges"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ref_literature.html" title="3. Literature"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Horton v0.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -46,45 +54,453 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="horton-core">
-<h1>Horton core<a class="headerlink" href="#horton-core" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="horton-the-top-level-package">
+<h1>4. <tt class="docutils literal"><span class="pre">horton</span></tt> &#8211; The top-level package<a class="headerlink" href="#horton-the-top-level-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-horton.cache">
+<span id="horton-cache-tools-to-avoid-the-recomputation-of-earlier-results"></span><h2>4.1. <a class="reference internal" href="#module-horton.cache" title="horton.cache"><tt class="xref py py-mod docutils literal"><span class="pre">horton.cache</span></tt></a> &#8211; Tools to avoid the recomputation of earlier results<a class="headerlink" href="#module-horton.cache" title="Permalink to this headline">¶</a></h2>
+<p>In principle, the <tt class="docutils literal"><span class="pre">JustOnceClass</span></tt> and the <tt class="docutils literal"><span class="pre">Cache</span></tt> can be used
+independently, but in some cases it makes a lot of sense to combine them.
+See for example the density partitioning code in <tt class="docutils literal"><span class="pre">horton.dpart</span></tt>.</p>
+<dl class="class">
+<dt id="horton.cache.JustOnceClass">
+<em class="property">class </em><tt class="descclassname">horton.cache.</tt><tt class="descname">JustOnceClass</tt><a class="headerlink" href="#horton.cache.JustOnceClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for classes with methods that should never be executed twice.</p>
+<p>In typically applications, these methods get called many times, but
+only during the first call, an actual computation is carried out. This
+way, the caller can safely call a method, just to make sure that a
+required result is computed.</p>
+<p>All methods in the subclasses that should have this feature, must be
+given the <tt class="docutils literal"><span class="pre">just_once</span></tt> decoratore, e.g.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Example</span><span class="p">(</span><span class="n">JustOnceClass</span><span class="p">):</span>
+    <span class="nd">@just_once</span>
+    <span class="k">def</span> <span class="nf">do_something</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">foo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bar</span>
+</pre></div>
+</div>
+<p>When all results are outdate, one can call the <tt class="docutils literal"><span class="pre">invalidate</span></tt> method
+to forget which methods were called already.</p>
+<dl class="method">
+<dt id="horton.cache.JustOnceClass.invalidate">
+<tt class="descname">invalidate</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cache.JustOnceClass.invalidate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.cache.just_once">
+<tt class="descclassname">horton.cache.</tt><tt class="descname">just_once</tt><big>(</big><em>fn</em><big>)</big><a class="headerlink" href="#horton.cache.just_once" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="horton.cache.Cache">
+<em class="property">class </em><tt class="descclassname">horton.cache.</tt><tt class="descname">Cache</tt><a class="headerlink" href="#horton.cache.Cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object that stores previously computed results.</p>
+<p>This is geared towards storing numerical results. The load method
+may be used to initialize new floating point arrays if they are not
+cached yet.</p>
+<dl class="method">
+<dt id="horton.cache.Cache.discard">
+<tt class="descname">discard</tt><big>(</big><em>*key</em><big>)</big><a class="headerlink" href="#horton.cache.Cache.discard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Genuinly discards a cached item from the store, no sneaky reset.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.cache.Cache.dump">
+<tt class="descname">dump</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#horton.cache.Cache.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store an object in the cache.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>key1 [, key2, ...]</dt>
+<dd>The positional arguments (except for the last) are used as a key
+for the object.</dd>
+<dt>value</dt>
+<dd>The object to be stored.</dd>
+</dl>
+<p><strong>Optional argument:</strong></p>
+<dl class="docutils">
+<dt>own</dt>
+<dd>When set to True, the cache will take care of denouncing the
+memory usage due to this array.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.cache.Cache.invalidate">
+<tt class="descname">invalidate</tt><big>(</big><em>*key</em><big>)</big><a class="headerlink" href="#horton.cache.Cache.invalidate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.cache.Cache.invalidate_all">
+<tt class="descname">invalidate_all</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cache.Cache.invalidate_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.cache.Cache.load">
+<tt class="descname">load</tt><big>(</big><em>*key</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#horton.cache.Cache.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.cache.Cache.rename">
+<tt class="descname">rename</tt><big>(</big><em>old</em>, <em>new</em><big>)</big><a class="headerlink" href="#horton.cache.Cache.rename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the name of a cached object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.cache.ArrayStore">
+<em class="property">class </em><tt class="descclassname">horton.cache.</tt><tt class="descname">ArrayStore</tt><big>(</big><em>file</em>, <em>do_close</em><big>)</big><a class="headerlink" href="#horton.cache.ArrayStore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Storage for large arrays</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>file</dt>
+<dd>An h5py.File object or None</dd>
+<dt>do_close</dt>
+<dd>A boolean indicating that the HDF5 file must be closed when the
+ArrayStore object is deleted. If this is True, the corresponding
+file is deleted. Otherwise, the arrays added to the file are
+deleted. The value of this parameter is not relevant when
+file==None.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.cache.ArrayStore.close">
+<tt class="descname">close</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cache.ArrayStore.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.cache.ArrayStore.dump">
+<tt class="descname">dump</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#horton.cache.ArrayStore.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store an array.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>arg1, arg2, arg3, ...</dt>
+<dd>The first N-1 arguments are used as a key to identify the array.</dd>
+<dt>date</dt>
+<dd>The last argument is the array that must be stored.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.cache.ArrayStore.fake">
+<tt class="descname">fake</tt><a class="headerlink" href="#horton.cache.ArrayStore.fake" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="horton.cache.ArrayStore.from_mode">
+<em class="property">classmethod </em><tt class="descname">from_mode</tt><big>(</big><em>mode</em>, <em>fn</em><big>)</big><a class="headerlink" href="#horton.cache.ArrayStore.from_mode" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>mode</dt>
+<dd>Specifies the implementation. &#8216;fake&#8217; means that nothing is
+stored and every array must be recomputed when needed. &#8216;core&#8217;
+means that all arrays are stored in memory in an in-core HDF5
+file. &#8216;disk&#8217; means that the arrays are written to disk in an
+HDF5 file.</dd>
+<dt>fn</dt>
+<dd>The filename, must be None when mode==&#8217;fake&#8217;. It may also be a
+h5py.File object.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.cache.ArrayStore.load">
+<tt class="descname">load</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#horton.cache.ArrayStore.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to load an array from the store.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>output</dt>
+<dd>The first argument is an output argument in which the data is
+copied.</dd>
+<dt>arg1, arg2, arg3, ...</dt>
+<dd>The following arguments are used as a key to identify the array.</dd>
+</dl>
+<p>When this method returns True, it was able to load the array. When
+False, the array should be (re)computed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.cache.ArrayStore.rename">
+<tt class="descname">rename</tt><big>(</big><em>key1</em>, <em>key2</em><big>)</big><a class="headerlink" href="#horton.cache.ArrayStore.rename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.cext">
+<span id="horton-cext-interface-to-low-level-code"></span><h2>4.2. <a class="reference internal" href="#module-horton.cext" title="horton.cext"><tt class="xref py py-mod docutils literal"><span class="pre">horton.cext</span></tt></a> &#8211; Interface to low-level code<a class="headerlink" href="#module-horton.cext" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.cext.Cell">
+<em class="property">class </em><tt class="descclassname">horton.cext.</tt><tt class="descname">Cell</tt><a class="headerlink" href="#horton.cext.Cell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Representation of periodic boundary conditions.</p>
+<p>0, 1, 2 and 3 dimensional systems are supported. The cell vectors need
+not to be orthogonal.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>rvecs</dt>
+<dd>A numpy array with at most three cell vectors, layed out as
+rows in a rank-2 matrix. For non-periodic systems, this array
+must have shape (0,3).</dd>
+</dl>
+<dl class="method">
+<dt id="horton.cext.Cell.add_rvec">
+<tt class="descname">add_rvec</tt><big>(</big><em>delta</em>, <em>r</em><big>)</big><a class="headerlink" href="#horton.cext.Cell.add_rvec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a linear combination of real cell vectors, <tt class="docutils literal"><span class="pre">r</span></tt>, to <tt class="docutils literal"><span class="pre">delta</span></tt> in-place</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.cext.Cell.dot_rvecs">
+<tt class="descname">dot_rvecs</tt><big>(</big><em>cart</em><big>)</big><a class="headerlink" href="#horton.cext.Cell.dot_rvecs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the corresponding dot product with the rvecs</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="horton.cext.Cell.from_hdf5">
+<em class="property">static </em><tt class="descname">from_hdf5</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cext.Cell.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="horton.cext.Cell.from_parameters">
+<em class="property">static </em><tt class="descname">from_parameters</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cext.Cell.from_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a cell with the given parameters</p>
+<p>The a vector is always parallel with the x-axis and they point in the
+same direction. The b vector is always in the xy plane and points
+towards the positive y-direction. The c vector points towards the
+positive z-direction.</p>
+<p>The number of elements in the lengths and angles arrays determines
+the number of cell vectors. There are four cases:</p>
+<ul class="simple">
+<li>len(lengths) == 0 and len(angles) == 0: 0 rvecs</li>
+<li>len(lengths) == 1 and len(angles) == 0: 1 rvecs</li>
+<li>len(lengths) == 2 and len(angles) == 1: 2 rvecs</li>
+<li>len(lengths) == 3 and len(angles) == 3: 3 rvecs</li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.cext.Cell.g_lincomb">
+<tt class="descname">g_lincomb</tt><big>(</big><em>coeffs</em><big>)</big><a class="headerlink" href="#horton.cext.Cell.g_lincomb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a linear combination of reciprocal cell vectors</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.cext.Cell.get_glength">
+<tt class="descname">get_glength</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cext.Cell.get_glength" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.cext.Cell.get_gspacing">
+<tt class="descname">get_gspacing</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cext.Cell.get_gspacing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.cext.Cell.get_ranges_rcut">
+<tt class="descname">get_ranges_rcut</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cext.Cell.get_ranges_rcut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the integer ranges for linear combinations of cell vectors.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>delta</dt>
+<dd>The relative vector between two (interaction) centers</dd>
+<dt>rcut</dt>
+<dd>A cutoff radius</dd>
+</dl>
+<p>The returned ranges span the linear combination of cell vectors that
+can be added to delta to obtain all periodic images within the cutoff
+sphere centered at the origin.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.cext.Cell.get_rlength">
+<tt class="descname">get_rlength</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cext.Cell.get_rlength" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.cext.Cell.get_rspacing">
+<tt class="descname">get_rspacing</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cext.Cell.get_rspacing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.cext.Cell.glengths">
+<tt class="descname">glengths</tt><a class="headerlink" href="#horton.cext.Cell.glengths" title="Permalink to this definition">¶</a></dt>
+<dd><p>The lengths of the reciprocal-space vectors.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.cext.Cell.gspacings">
+<tt class="descname">gspacings</tt><a class="headerlink" href="#horton.cext.Cell.gspacings" title="Permalink to this definition">¶</a></dt>
+<dd><p>The (orthogonal) spacing between opposite sides of the reciprocal-space unit cell.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.cext.Cell.gvecs">
+<tt class="descname">gvecs</tt><a class="headerlink" href="#horton.cext.Cell.gvecs" title="Permalink to this definition">¶</a></dt>
+<dd><p>The reciporcal-space cell vectors, layed out as rows.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.cext.Cell.mic">
+<tt class="descname">mic</tt><big>(</big><em>delta</em><big>)</big><a class="headerlink" href="#horton.cext.Cell.mic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the minimum image convention to delta in-place</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.cext.Cell.nvec">
+<tt class="descname">nvec</tt><a class="headerlink" href="#horton.cext.Cell.nvec" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of cell vectors</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.cext.Cell.parameters">
+<tt class="descname">parameters</tt><a class="headerlink" href="#horton.cext.Cell.parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>The cell parameters (lengths and angles)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.cext.Cell.rlengths">
+<tt class="descname">rlengths</tt><a class="headerlink" href="#horton.cext.Cell.rlengths" title="Permalink to this definition">¶</a></dt>
+<dd><p>The lengths of the real-space vectors.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.cext.Cell.rspacings">
+<tt class="descname">rspacings</tt><a class="headerlink" href="#horton.cext.Cell.rspacings" title="Permalink to this definition">¶</a></dt>
+<dd><p>The (orthogonal) spacing between opposite sides of the real-space unit cell.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.cext.Cell.rvecs">
+<tt class="descname">rvecs</tt><a class="headerlink" href="#horton.cext.Cell.rvecs" title="Permalink to this definition">¶</a></dt>
+<dd><p>The real-space cell vectors, layed out as rows.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.cext.Cell.select_inside">
+<tt class="descname">select_inside</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cext.Cell.select_inside" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.cext.Cell.to_cart">
+<tt class="descname">to_cart</tt><big>(</big><em>frac</em><big>)</big><a class="headerlink" href="#horton.cext.Cell.to_cart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the corresponding Cartesian coordinates</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.cext.Cell.to_frac">
+<tt class="descname">to_frac</tt><big>(</big><em>cart</em><big>)</big><a class="headerlink" href="#horton.cext.Cell.to_frac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the corresponding fractional coordinates</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.cext.Cell.to_hdf5">
+<tt class="descname">to_hdf5</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cext.Cell.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.cext.Cell.update_rvecs">
+<tt class="descname">update_rvecs</tt><big>(</big><em>rvecs</em><big>)</big><a class="headerlink" href="#horton.cext.Cell.update_rvecs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the cell vectors and recompute the reciprocal cell vectors.</p>
+<dl class="docutils">
+<dt>rvecs</dt>
+<dd>A numpy array with at most three cell vectors, layed out as
+rows in a rank-2 matrix. For non-periodic systems, this array
+must have shape (0,3).</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.cext.Cell.volume">
+<tt class="descname">volume</tt><a class="headerlink" href="#horton.cext.Cell.volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>The generalized volume of the unit cell (length, area or volume)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.cext.smart_wrap">
+<tt class="descclassname">horton.cext.</tt><tt class="descname">smart_wrap</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cext.smart_wrap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.cext.fill_cartesian_polynomials">
+<tt class="descclassname">horton.cext.</tt><tt class="descname">fill_cartesian_polynomials</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cext.fill_cartesian_polynomials" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.cext.compute_grid_nucpot">
+<tt class="descclassname">horton.cext.</tt><tt class="descname">compute_grid_nucpot</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.cext.compute_grid_nucpot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-horton.checkpoint">
+<span id="horton-checkpoint-checkpointing-of-results"></span><h2>4.3. <a class="reference internal" href="#module-horton.checkpoint" title="horton.checkpoint"><tt class="xref py py-mod docutils literal"><span class="pre">horton.checkpoint</span></tt></a> &#8211; Checkpointing of results<a class="headerlink" href="#module-horton.checkpoint" title="Permalink to this headline">¶</a></h2>
+<p>The philosophy of this module is to take away as much of the checkpointing
+machinery out of the rest of Horton. The only (somewhat unavoidable)
+exceptions to this philosophy are the <tt class="docutils literal"><span class="pre">load_checkpoint</span></tt> function in
+<tt class="docutils literal"><span class="pre">horton.io</span></tt>, the <tt class="docutils literal"><span class="pre">from_hdf5</span></tt> and <tt class="docutils literal"><span class="pre">to_hdf5</span></tt> methods in several parts
+of Horton and calls to System.update_chk in several parts of the code.</p>
+<p>TODO: (long future) make the fields clever enough such that they can convert
+data from one linalgfactory into another.</p>
+<dl class="function">
+<dt id="horton.checkpoint.load_hdf5_low">
+<tt class="descclassname">horton.checkpoint.</tt><tt class="descname">load_hdf5_low</tt><big>(</big><em>item</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.checkpoint.load_hdf5_low" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load an object from an h5py object from a checkpoint file</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>item</dt>
+<dd>A HD5 Dataset or group.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.checkpoint.dump_hdf5_low">
+<tt class="descclassname">horton.checkpoint.</tt><tt class="descname">dump_hdf5_low</tt><big>(</big><em>grp</em>, <em>name</em>, <em>att</em><big>)</big><a class="headerlink" href="#horton.checkpoint.dump_hdf5_low" title="Permalink to this definition">¶</a></dt>
+<dd><p>Low-level routine used to dump data to an HDF5 file.</p>
+<dl class="docutils">
+<dt>grp</dt>
+<dd>A HDF5 group.</dd>
+<dt>name</dt>
+<dd>The name to be used for this object.</dd>
+<dt>att</dt>
+<dd>The object to be written.</dd>
+</dl>
+</dd></dl>
+
+</div>
 <div class="section" id="module-horton.constants">
-<h2><a title="" class="reference external" href="#module-horton.constants"><tt class="xref docutils literal"><span class="pre">horton.constants</span></tt></a> &#8211; Physical constants<a class="headerlink" href="#module-horton.constants" title="Permalink to this headline">¶</a></h2>
+<span id="horton-constants-physical-constants"></span><h2>4.4. <a class="reference internal" href="#module-horton.constants" title="horton.constants"><tt class="xref py py-mod docutils literal"><span class="pre">horton.constants</span></tt></a> &#8211; Physical constants<a class="headerlink" href="#module-horton.constants" title="Permalink to this headline">¶</a></h2>
 <p>These are the physical constants defined in this module (in atomic units):</p>
 <blockquote>
-<table border="1" class="docutils">
+<div><table border="1" class="docutils">
 <colgroup>
 <col width="47%" />
 <col width="53%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">Name</th>
+<tr class="row-odd"><th class="head">Name</th>
 <th class="head">Value</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>avogadro</td>
+<tr class="row-even"><td>avogadro</td>
 <td>6.0221415000e+23</td>
 </tr>
-<tr><td>boltzmann</td>
+<tr class="row-odd"><td>boltzmann</td>
 <td>3.1668154051e-06</td>
 </tr>
-<tr><td>lightspeed</td>
+<tr class="row-even"><td>lightspeed</td>
 <td>1.3703599975e+02</td>
 </tr>
-<tr><td>planck</td>
+<tr class="row-odd"><td>planck</td>
 <td>6.2831853072e+00</td>
 </tr>
 </tbody>
 </table>
-</blockquote>
+</div></blockquote>
 </div>
 <div class="section" id="module-horton.context">
-<h2><a title="" class="reference external" href="#module-horton.context"><tt class="xref docutils literal"><span class="pre">horton.context</span></tt></a> &#8211; Runtime environment<a class="headerlink" href="#module-horton.context" title="Permalink to this headline">¶</a></h2>
+<span id="horton-context-runtime-environment"></span><h2>4.5. <a class="reference internal" href="#module-horton.context" title="horton.context"><tt class="xref py py-mod docutils literal"><span class="pre">horton.context</span></tt></a> &#8211; Runtime environment<a class="headerlink" href="#module-horton.context" title="Permalink to this headline">¶</a></h2>
 <p>This module controls global parameters that are purely technical, e.g. the
 location of data files. It is certainly not meant to keep track of input
 parameters for a computation.</p>
-<p>This module contains a context object, an instance of the <a title="horton.context.Context" class="reference internal" href="#horton.context.Context"><tt class="xref docutils literal"><span class="pre">Context</span></tt></a>
+<p>This module contains a context object, an instance of the <a class="reference internal" href="#horton.context.Context" title="horton.context.Context"><tt class="xref py py-class docutils literal"><span class="pre">Context</span></tt></a>
 class. For now, its functionality is rather limited. It tries to figure
 out the location of the data directory. If it is not specified in the
 environment variable <tt class="docutils literal"><span class="pre">HORTONDATA</span></tt>, it is assumed that the data is located
@@ -99,126 +515,737 @@ pseudo potentials.</p>
 <dl class="method">
 <dt id="horton.context.Context.get_fn">
 <tt class="descname">get_fn</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.context.Context.get_fn" title="Permalink to this definition">¶</a></dt>
-<dd>Return the full path to the given filename in the data directory.</dd></dl>
+<dd><p>Return the full path to the given filename in the data directory.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="horton.context.Context.glob">
 <tt class="descname">glob</tt><big>(</big><em>pattern</em><big>)</big><a class="headerlink" href="#horton.context.Context.glob" title="Permalink to this definition">¶</a></dt>
-<dd>Return all files in the data directory that match the given pattern.</dd></dl>
+<dd><p>Return all files in the data directory that match the given pattern.</p>
+</dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="module-horton.io">
-<h2><a title="" class="reference external" href="#module-horton.io"><tt class="xref docutils literal"><span class="pre">horton.io</span></tt></a> &#8211; Input/Output<a class="headerlink" href="#module-horton.io" title="Permalink to this headline">¶</a></h2>
-<p>All input routines begin with <tt class="docutils literal"><span class="pre">load_</span></tt>. All output routines begin with
-<tt class="docutils literal"><span class="pre">dump_</span></tt>.</p>
-<p>This module also contains a smart routine, <tt class="docutils literal"><span class="pre">load_system_args</span></tt>, which makes
-it easier to load molecular data from various file formats. It uses to
-extension of the filename to figure out what the file format is.</p>
-<dl class="function">
-<dt id="horton.io.load_system_args">
-<tt class="descclassname">horton.io.</tt><tt class="descname">load_system_args</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.load_system_args" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load a molecular data from a file.</p>
-<p><strong>Argument:</strong></p>
-<dl class="docutils">
-<dt>filename</dt>
-<dd>The file to load the geometry from</dd>
-<dt>lf</dt>
-<dd>A LinalgFactory instance.</dd>
-</dl>
-<p>This routine uses the extension of the filename to determine the file
-format. It returns a dictionary with constructor arguments for the System
-class.</p>
+<div class="section" id="module-horton.exceptions">
+<span id="horton-exceptions-exceptions"></span><h2>4.6. <a class="reference internal" href="#module-horton.exceptions" title="horton.exceptions"><tt class="xref py py-mod docutils literal"><span class="pre">horton.exceptions</span></tt></a> &#8211; Exceptions<a class="headerlink" href="#module-horton.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="horton.exceptions.ElectronCountError">
+<em class="property">exception </em><tt class="descclassname">horton.exceptions.</tt><tt class="descname">ElectronCountError</tt><a class="headerlink" href="#horton.exceptions.ElectronCountError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised when a negative number of electron is encountered, or
+when more electrons than basis functions are requested.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="horton.io.load_geom_xyz">
-<tt class="descclassname">horton.io.</tt><tt class="descname">load_geom_xyz</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.load_geom_xyz" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load a molecular geometry from a .xyz file.</p>
-<p><strong>Argument:</strong></p>
-<dl class="docutils">
-<dt>filename</dt>
-<dd>The file to load the geometry from</dd>
-</dl>
-<p><strong>Returns:</strong> two arrays, coordinates and numbers that can be used as the
-two first arguments of the System constructor.</p>
+<dl class="exception">
+<dt id="horton.exceptions.SymmetryError">
+<em class="property">exception </em><tt class="descclassname">horton.exceptions.</tt><tt class="descname">SymmetryError</tt><a class="headerlink" href="#horton.exceptions.SymmetryError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception raised when some symmetry algorithm fails</p>
 </dd></dl>
 
+</div>
+<div class="section" id="module-horton.guess">
+<span id="horton-guess-algorithms-for-initial-guesses-of-the-wfn"></span><h2>4.7. <a class="reference internal" href="#module-horton.guess" title="horton.guess"><tt class="xref py py-mod docutils literal"><span class="pre">horton.guess</span></tt></a> &#8211; Algorithms for initial guesses of the WFN<a class="headerlink" href="#module-horton.guess" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="horton.io.load_operators_g09">
-<tt class="descclassname">horton.io.</tt><tt class="descname">load_operators_g09</tt><big>(</big><em>fn</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.load_operators_g09" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads several one- and two-body operators from a Gaussian log file.</p>
-<p><strong>Arugment:</strong></p>
-<dl class="docutils">
-<dt>fn</dt>
-<dd>The filename of the Gaussian log file.</dd>
-<dt>lf</dt>
-<dd>A LinalgFactory instance.</dd>
-</dl>
-<p>The following one-body operators are loaded if present: overlap, kinetic,
-nuclear attraction. The following two-body operator is loaded if present:
-electrostatic repulsion. In order to make all these matrices are present
-in the Gaussian log file, the following commands must be used in the
-Gaussian input file:</p>
+<dt id="horton.guess.guess_hamiltonian_core">
+<tt class="descclassname">horton.guess.</tt><tt class="descname">guess_hamiltonian_core</tt><big>(</big><em>system</em><big>)</big><a class="headerlink" href="#horton.guess.guess_hamiltonian_core" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-horton.log">
+<span id="horton-log-screen-logging"></span><h2>4.8. <a class="reference internal" href="#module-horton.log" title="horton.log"><tt class="xref py py-mod docutils literal"><span class="pre">horton.log</span></tt></a> &#8211; Screen logging<a class="headerlink" href="#module-horton.log" title="Permalink to this headline">¶</a></h2>
+<p>The goal of the screen logger is to track the progress of a computation in
+a convenient human-readable way, possibly higlighting problematic situations.
+It is not intended as a computer-readable output file that contains all the
+results of a computation. For that purpose, all useful information is
+written to a binary checkpoint file or kept in memory as attributes of the
+Horton objects.</p>
+</div>
+<div class="section" id="module-horton.matrix">
+<span id="horton-matrix-linear-algebra-abstraction-layer"></span><h2>4.9. <a class="reference internal" href="#module-horton.matrix" title="horton.matrix"><tt class="xref py py-mod docutils literal"><span class="pre">horton.matrix</span></tt></a> &#8211; Linear algebra abstraction layer<a class="headerlink" href="#module-horton.matrix" title="Permalink to this headline">¶</a></h2>
+<p>The purpose of this module is to provide a generic API for different
+implementations of real-valued double precision matrix storage and
+operations.</p>
+<p>Two-dimensional matrices are supposed to be symmetric and are used to
+represent one-body operators and 1DRDMs. Four-dimensional matrices are used
+to represent two-body operators, which are invariant under the following
+interchanges of indexes:</p>
 <blockquote>
-scf(conventional) iop(3/33=5) extralinks=l316 iop(3/27=999)</blockquote>
+<div>&lt;ij|kl&gt; = &lt;ji|lk&gt; = &lt;kl|ij&gt; = &lt;lk|ji&gt; =
+&lt;il|kj&gt; = &lt;jk|li&gt; = &lt;kj|il&gt; = &lt;li|jk&gt;</div></blockquote>
+<p>This module assumes physicists notation for the two-particle operators. It is
+up to the specific implementations of the matrices to make use of these
+symmetries.</p>
+<p>One should use these matrix implementations without accessing the internals
+of each class, i.e. without accessing attributes or methods that start with
+an underscore.</p>
+<p>In order to avoid temporaries when working with arrays, the methods do
+not return arrays. Instead such methods are an in place operation or have
+output arguments. This forces the user to allocate all memory in advance,
+which can then be moved out of the loops. The initial implementation (the
+Dense... classes) are just a proof of concept and may therefore contain
+internals that still make temporaries. This fixed later with an alternative
+implementation.</p>
+<dl class="class">
+<dt id="horton.matrix.LinalgFactory">
+<em class="property">class </em><tt class="descclassname">horton.matrix.</tt><tt class="descname">LinalgFactory</tt><big>(</big><em>default_nbasis=None</em><big>)</big><a class="headerlink" href="#horton.matrix.LinalgFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>A collection of compatible matrix and linear algebra routines.</p>
+<p>This is just an abstract base class that serves as a template for
+specific implementations.</p>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>default_nbasis</dt>
+<dd>The default basis size when constructing new
+operators/expansions.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.matrix.LinalgFactory.create_expansion">
+<tt class="descname">create_expansion</tt><big>(</big><em>nbasis=None</em><big>)</big><a class="headerlink" href="#horton.matrix.LinalgFactory.create_expansion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.LinalgFactory.create_one_body">
+<tt class="descname">create_one_body</tt><big>(</big><em>nbasis=None</em><big>)</big><a class="headerlink" href="#horton.matrix.LinalgFactory.create_one_body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.LinalgFactory.create_two_body">
+<tt class="descname">create_two_body</tt><big>(</big><em>nbasis=None</em><big>)</big><a class="headerlink" href="#horton.matrix.LinalgFactory.create_two_body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.LinalgFactory.diagonalize">
+<tt class="descname">diagonalize</tt><big>(</big><em>ham</em>, <em>overlap</em>, <em>expansion</em>, <em>epsilons</em><big>)</big><a class="headerlink" href="#horton.matrix.LinalgFactory.diagonalize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.LinalgFactory.error_eigen">
+<tt class="descname">error_eigen</tt><big>(</big><em>ham</em>, <em>overlap</em>, <em>expansion</em>, <em>epsilons</em><big>)</big><a class="headerlink" href="#horton.matrix.LinalgFactory.error_eigen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.LinalgFactory.get_memory_one_body">
+<tt class="descname">get_memory_one_body</tt><big>(</big><em>nbasis=None</em><big>)</big><a class="headerlink" href="#horton.matrix.LinalgFactory.get_memory_one_body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.LinalgFactory.get_memory_two_body">
+<tt class="descname">get_memory_two_body</tt><big>(</big><em>nbasis=None</em><big>)</big><a class="headerlink" href="#horton.matrix.LinalgFactory.get_memory_two_body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.LinalgFactory.set_default_nbasis">
+<tt class="descname">set_default_nbasis</tt><big>(</big><em>nbasis</em><big>)</big><a class="headerlink" href="#horton.matrix.LinalgFactory.set_default_nbasis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="class">
-<dt id="horton.io.FCHKFile">
-<em class="property">class </em><tt class="descclassname">horton.io.</tt><tt class="descname">FCHKFile</tt><big>(</big><em>filename</em>, <em>field_labels=None</em><big>)</big><a class="headerlink" href="#horton.io.FCHKFile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reader for Formatted checkpoint files</p>
-<p>After initialization, the data from the file is available in the fields
-dictionary. Also the following attributes are read from the file: title,
-command, lot (level of theory) and basis.</p>
+<dt id="horton.matrix.LinalgObject">
+<em class="property">class </em><tt class="descclassname">horton.matrix.</tt><tt class="descname">LinalgObject</tt><a class="headerlink" href="#horton.matrix.LinalgObject" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.matrix.LinalgObject.apply_basis_permutation">
+<tt class="descname">apply_basis_permutation</tt><big>(</big><em>permutation</em><big>)</big><a class="headerlink" href="#horton.matrix.LinalgObject.apply_basis_permutation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.LinalgObject.assign">
+<tt class="descname">assign</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#horton.matrix.LinalgObject.assign" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="horton.matrix.LinalgObject.from_hdf5">
+<em class="property">classmethod </em><tt class="descname">from_hdf5</tt><big>(</big><em>grp</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.matrix.LinalgObject.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.LinalgObject.reset">
+<tt class="descname">reset</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.matrix.LinalgObject.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.LinalgObject.to_hdf5">
+<tt class="descname">to_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.matrix.LinalgObject.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.matrix.Expansion">
+<em class="property">class </em><tt class="descclassname">horton.matrix.</tt><tt class="descname">Expansion</tt><big>(</big><em>nbasis</em>, <em>nfn=None</em><big>)</big><a class="headerlink" href="#horton.matrix.Expansion" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.matrix.Expansion.check_normalization">
+<tt class="descname">check_normalization</tt><big>(</big><em>olp</em>, <em>eps=0.0001</em><big>)</big><a class="headerlink" href="#horton.matrix.Expansion.check_normalization" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.matrix.OneBody">
+<em class="property">class </em><tt class="descclassname">horton.matrix.</tt><tt class="descname">OneBody</tt><big>(</big><em>nbasis</em><big>)</big><a class="headerlink" href="#horton.matrix.OneBody" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.matrix.OneBody.dot">
+<tt class="descname">dot</tt><big>(</big><em>vec0</em>, <em>vec1</em><big>)</big><a class="headerlink" href="#horton.matrix.OneBody.dot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.OneBody.expectation_value">
+<tt class="descname">expectation_value</tt><big>(</big><em>dm</em><big>)</big><a class="headerlink" href="#horton.matrix.OneBody.expectation_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.OneBody.get_element">
+<tt class="descname">get_element</tt><big>(</big><em>i</em>, <em>j</em><big>)</big><a class="headerlink" href="#horton.matrix.OneBody.get_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.OneBody.iadd">
+<tt class="descname">iadd</tt><big>(</big><em>other</em>, <em>factor=1</em><big>)</big><a class="headerlink" href="#horton.matrix.OneBody.iadd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.OneBody.iscale">
+<tt class="descname">iscale</tt><big>(</big><em>factor</em><big>)</big><a class="headerlink" href="#horton.matrix.OneBody.iscale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.OneBody.itranspose">
+<tt class="descname">itranspose</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.matrix.OneBody.itranspose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.OneBody.set_element">
+<tt class="descname">set_element</tt><big>(</big><em>i</em>, <em>j</em>, <em>value</em><big>)</big><a class="headerlink" href="#horton.matrix.OneBody.set_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.OneBody.trace">
+<tt class="descname">trace</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.matrix.OneBody.trace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.matrix.DenseLinalgFactory">
+<em class="property">class </em><tt class="descclassname">horton.matrix.</tt><tt class="descname">DenseLinalgFactory</tt><big>(</big><em>default_nbasis=None</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseLinalgFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>default_nbasis</dt>
+<dd>The default basis size when constructing new
+operators/expansions.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.matrix.DenseLinalgFactory.create_expansion">
+<tt class="descname">create_expansion</tt><big>(</big><em>nbasis=None</em>, <em>nfn=None</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseLinalgFactory.create_expansion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseLinalgFactory.create_one_body">
+<tt class="descname">create_one_body</tt><big>(</big><em>nbasis=None</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseLinalgFactory.create_one_body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseLinalgFactory.create_two_body">
+<tt class="descname">create_two_body</tt><big>(</big><em>nbasis=None</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseLinalgFactory.create_two_body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="horton.matrix.DenseLinalgFactory.diagonalize">
+<em class="property">static </em><tt class="descname">diagonalize</tt><big>(</big><em>fock</em>, <em>overlap=None</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseLinalgFactory.diagonalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generalized eigen solver for the given Hamiltonian and overlap.</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
-<dt>filename</dt>
-<dd>The formatted checkpoint file.</dd>
-</dl>
-<p><strong>Optional arguments:</strong></p>
-<dl class="docutils">
-<dt>field_labels</dt>
-<dd>When provided, only these fields are read from the formatted
-checkpoint file. (This can save a lot of time.)</dd>
+<dt>fock</dt>
+<dd>A DenseOneBody Hamiltonian (or Fock) operator.</dd>
+<dt>overlap</dt>
+<dd>A DenseOneBody overlap operator.</dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="horton.io.load_fchk">
-<tt class="descclassname">horton.io.</tt><tt class="descname">load_fchk</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.load_fchk" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load from a formatted checkpoint file.</p>
+<dl class="staticmethod">
+<dt id="horton.matrix.DenseLinalgFactory.error_eigen">
+<em class="property">static </em><tt class="descname">error_eigen</tt><big>(</big><em>fock</em>, <em>overlap</em>, <em>expansion</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseLinalgFactory.error_eigen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the error of the orbitals with respect to the eigenproblem</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
-<dt>filename</dt>
-<dd>The filename of the Gaussian formatted checkpoint file.</dd>
-<dt>lf</dt>
-<dd>A LinalgFactory instance.</dd>
+<dt>fock</dt>
+<dd>A DenseOneBody Hamiltonian (or Fock) operator.</dd>
+<dt>overlap</dt>
+<dd>A DenseOneBody overlap operator.</dd>
+<dt>expansion</dt>
+<dd>An expansion object containing the current orbitals/eginvectors.</dd>
+<dt>epsilons</dt>
+<dd>An array with the orbital energies.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseLinalgFactory.get_memory_one_body">
+<tt class="descname">get_memory_one_body</tt><big>(</big><em>nbasis=None</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseLinalgFactory.get_memory_one_body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseLinalgFactory.get_memory_two_body">
+<tt class="descname">get_memory_two_body</tt><big>(</big><em>nbasis=None</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseLinalgFactory.get_memory_two_body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.matrix.DenseExpansion">
+<em class="property">class </em><tt class="descclassname">horton.matrix.</tt><tt class="descname">DenseExpansion</tt><big>(</big><em>nbasis</em>, <em>nfn=None</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion" title="Permalink to this definition">¶</a></dt>
+<dd><p>An expansion of several functions in a basis with a dense matrix of
+coefficients. The implementation is such that the columns of self._array
+contain the orbitals.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>nbasis</dt>
+<dd>The number of basis functions.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>nfn</dt>
+<dd>The number of functions to store. Defaults to nbasis.</dd>
+<dt>do_energies</dt>
+<dd>Also allocate an array to store an energy corresponding to each
+function.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.apply_basis_permutation">
+<tt class="descname">apply_basis_permutation</tt><big>(</big><em>permutation</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.apply_basis_permutation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reorder the coefficients for a given permutation of basis functions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.apply_basis_signs">
+<tt class="descname">apply_basis_signs</tt><big>(</big><em>signs</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.apply_basis_signs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Correct for different sign conventions of the basis functions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.assign">
+<tt class="descname">assign</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.assign" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.check_normalization">
+<tt class="descname">check_normalization</tt><big>(</big><em>olp</em>, <em>eps=0.0001</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.check_normalization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run an internal test to see if the orbitals are normalized</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>olp</dt>
+<dd>The overlap one_body operators</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>eps</dt>
+<dd>The allowed deviation from unity, very loose by default.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.matrix.DenseExpansion.coeffs">
+<tt class="descname">coeffs</tt><a class="headerlink" href="#horton.matrix.DenseExpansion.coeffs" title="Permalink to this definition">¶</a></dt>
+<dd><p>The matrix with the expansion coefficients</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.compute_density_matrix">
+<tt class="descname">compute_density_matrix</tt><big>(</big><em>dm</em>, <em>factor=None</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.compute_density_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the density matrix</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>dm</dt>
+<dd>An output density matrix. This must be a DenseOneBody instance.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>factor</dt>
+<dd>When given, the density matrix is added with the given prefactor
+to the output argument. If not given, the original contents of
+dm are overwritten.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.derive_from_density_and_fock_matrix">
+<tt class="descname">derive_from_density_and_fock_matrix</tt><big>(</big><em>dm</em>, <em>fock</em>, <em>overlap</em>, <em>scale=-0.001</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.derive_from_density_and_fock_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Arguments</strong>:</p>
+<dl class="docutils">
+<dt>dm</dt>
+<dd>A DenseOneBody object with the density matrix</dd>
+<dt>fock</dt>
+<dd>A DenseOneBody object with the Fock matrix</dd>
+<dt>overlap</dt>
+<dd>A DenseOneBody object with the overlap matrix</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>scale</dt>
+<dd>The linear coefficient for the density matrix. It is added to
+the Fock matrix as in level shifting to obtain a set of orbitals
+that diagonalizes both matrices.</dd>
+</dl>
+<p>scale</p>
+<p>This only works well for slater determinants without (fractional)
+holes below the Fermi level.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.derive_from_fock_matrix">
+<tt class="descname">derive_from_fock_matrix</tt><big>(</big><em>fock</em>, <em>overlap</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.derive_from_fock_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Diagonalize a Fock matrix to obtain orbitals and energies</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.matrix.DenseExpansion.energies">
+<tt class="descname">energies</tt><a class="headerlink" href="#horton.matrix.DenseExpansion.energies" title="Permalink to this definition">¶</a></dt>
+<dd><p>The orbital energies</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.get_homo_energy">
+<tt class="descname">get_homo_energy</tt><big>(</big><em>offset=0</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.get_homo_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a homo energy</p>
+<p><strong>Optional arguments</strong>:</p>
+<dl class="docutils">
+<dt>offset</dt>
+<dd>By default, the (highest) homo energy is returned. When this
+index is above zero, the corresponding lower homo energy is
+returned.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.get_homo_index">
+<tt class="descname">get_homo_index</tt><big>(</big><em>offset=0</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.get_homo_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the index of a HOMO orbital.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.get_lumo_energy">
+<tt class="descname">get_lumo_energy</tt><big>(</big><em>offset=0</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.get_lumo_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a lumo energy</p>
+<p><strong>Optional arguments</strong>:</p>
+<dl class="docutils">
+<dt>offset</dt>
+<dd>By default, the (lowest) lumo energy is returned. When this
+index is above zero, the corresponding higher homo energy is
+returned.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.get_lumo_index">
+<tt class="descname">get_lumo_index</tt><big>(</big><em>offset=0</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.get_lumo_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the index of a LUMO orbital.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.matrix.DenseExpansion.homo_energy">
+<tt class="descname">homo_energy</tt><a class="headerlink" href="#horton.matrix.DenseExpansion.homo_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a homo energy</p>
+<p><strong>Optional arguments</strong>:</p>
+<dl class="docutils">
+<dt>offset</dt>
+<dd>By default, the (highest) homo energy is returned. When this
+index is above zero, the corresponding lower homo energy is
+returned.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.matrix.DenseExpansion.lumo_energy">
+<tt class="descname">lumo_energy</tt><a class="headerlink" href="#horton.matrix.DenseExpansion.lumo_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a lumo energy</p>
+<p><strong>Optional arguments</strong>:</p>
+<dl class="docutils">
+<dt>offset</dt>
+<dd>By default, the (lowest) lumo energy is returned. When this
+index is above zero, the corresponding higher homo energy is
+returned.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.matrix.DenseExpansion.nbasis">
+<tt class="descname">nbasis</tt><a class="headerlink" href="#horton.matrix.DenseExpansion.nbasis" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of basis functions</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.matrix.DenseExpansion.nfn">
+<tt class="descname">nfn</tt><a class="headerlink" href="#horton.matrix.DenseExpansion.nfn" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of orbitals (or functions in general)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.matrix.DenseExpansion.occupations">
+<tt class="descname">occupations</tt><a class="headerlink" href="#horton.matrix.DenseExpansion.occupations" title="Permalink to this definition">¶</a></dt>
+<dd><p>The orbital occupations</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.read_from_hdf5">
+<tt class="descname">read_from_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.read_from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.reset">
+<tt class="descname">reset</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseExpansion.to_hdf5">
+<tt class="descname">to_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseExpansion.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.matrix.DenseOneBody">
+<em class="property">class </em><tt class="descclassname">horton.matrix.</tt><tt class="descname">DenseOneBody</tt><big>(</big><em>nbasis</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dense symmetric two-dimensional matrix, also used for density matrices.</p>
+<p>This is the most inefficient implementation in terms of memory usage and
+computer time. Due to its simplicity, it is trivial to implement. This
+implementation mainly serves as a reference for testing purposes.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>nbasis</dt>
+<dd>The number of basis functions.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.apply_basis_permutation">
+<tt class="descname">apply_basis_permutation</tt><big>(</big><em>permutation</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.apply_basis_permutation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reorder the coefficients for a given permutation of basis functions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.apply_basis_signs">
+<tt class="descname">apply_basis_signs</tt><big>(</big><em>signs</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.apply_basis_signs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Correct for different sign conventions of the basis functions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.assign">
+<tt class="descname">assign</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.assign" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.check_symmetry">
+<tt class="descname">check_symmetry</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.check_symmetry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the symmetry of the array. For testing only.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.copy">
+<tt class="descname">copy</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.distance">
+<tt class="descname">distance</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.dot">
+<tt class="descname">dot</tt><big>(</big><em>vec0</em>, <em>vec1</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.dot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.expectation_value">
+<tt class="descname">expectation_value</tt><big>(</big><em>dm</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.expectation_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="horton.matrix.DenseOneBody.from_hdf5">
+<em class="property">classmethod </em><tt class="descname">from_hdf5</tt><big>(</big><em>grp</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.get_element">
+<tt class="descname">get_element</tt><big>(</big><em>i</em>, <em>j</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.get_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.iadd">
+<tt class="descname">iadd</tt><big>(</big><em>other</em>, <em>factor=1</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.iadd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.idot">
+<tt class="descname">idot</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.idot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.iscale">
+<tt class="descname">iscale</tt><big>(</big><em>factor</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.iscale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.itranspose">
+<tt class="descname">itranspose</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.itranspose" title="Permalink to this definition">¶</a></dt>
+<dd><p>In-place transpose</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.matrix.DenseOneBody.nbasis">
+<tt class="descname">nbasis</tt><a class="headerlink" href="#horton.matrix.DenseOneBody.nbasis" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of basis functions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.read_from_hdf5">
+<tt class="descname">read_from_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.read_from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.reset">
+<tt class="descname">reset</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.set_element">
+<tt class="descname">set_element</tt><big>(</big><em>i</em>, <em>j</em>, <em>value</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.set_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.to_hdf5">
+<tt class="descname">to_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseOneBody.trace">
+<tt class="descname">trace</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.matrix.DenseOneBody.trace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.matrix.DenseTwoBody">
+<em class="property">class </em><tt class="descclassname">horton.matrix.</tt><tt class="descname">DenseTwoBody</tt><big>(</big><em>nbasis</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseTwoBody" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dense symmetric four-dimensional matrix.</p>
+<p>This is the most inefficient implementation in terms of memory usage and
+computer time. Due to its simplicity, it is trivial to implement. This
+implementation mainly serves as a reference for testing purposes.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>nbasis</dt>
+<dd>The number of basis functions.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.matrix.DenseTwoBody.apply_basis_permutation">
+<tt class="descname">apply_basis_permutation</tt><big>(</big><em>permutation</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseTwoBody.apply_basis_permutation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reorder the coefficients for a given permutation of basis functions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseTwoBody.apply_basis_signs">
+<tt class="descname">apply_basis_signs</tt><big>(</big><em>signs</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseTwoBody.apply_basis_signs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Correct for different sign conventions of the basis functions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseTwoBody.apply_direct">
+<tt class="descname">apply_direct</tt><big>(</big><em>dm</em>, <em>output</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseTwoBody.apply_direct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the direct dot product with a density matrix.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseTwoBody.apply_exchange">
+<tt class="descname">apply_exchange</tt><big>(</big><em>dm</em>, <em>output</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseTwoBody.apply_exchange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the exchange dot product with a density matrix.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseTwoBody.check_symmetry">
+<tt class="descname">check_symmetry</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.matrix.DenseTwoBody.check_symmetry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the symmetry of the array.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="horton.matrix.DenseTwoBody.from_hdf5">
+<em class="property">classmethod </em><tt class="descname">from_hdf5</tt><big>(</big><em>grp</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseTwoBody.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseTwoBody.get_element">
+<tt class="descname">get_element</tt><big>(</big><em>i</em>, <em>j</em>, <em>k</em>, <em>l</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseTwoBody.get_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.matrix.DenseTwoBody.nbasis">
+<tt class="descname">nbasis</tt><a class="headerlink" href="#horton.matrix.DenseTwoBody.nbasis" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of basis functions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseTwoBody.set_element">
+<tt class="descname">set_element</tt><big>(</big><em>i</em>, <em>j</em>, <em>k</em>, <em>l</em>, <em>value</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseTwoBody.set_element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.matrix.DenseTwoBody.to_hdf5">
+<tt class="descname">to_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.matrix.DenseTwoBody.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.moments">
+<span id="horton-moments-conventions-and-utilities-for-multipole-moments"></span><h2>4.10. <a class="reference internal" href="#module-horton.moments" title="horton.moments"><tt class="xref py py-mod docutils literal"><span class="pre">horton.moments</span></tt></a> &#8211; Conventions and utilities for multipole moments<a class="headerlink" href="#module-horton.moments" title="Permalink to this headline">¶</a></h2>
+<p>This module fixes all the conventions with respect to multipole moments. Some
+of the code below may (in some way) reoccur in the low-level routines. In any
+case, such low-level code should be consistent with the conventions in this
+module. See for example, horton.gobasis.cext.cart_to_pur_low.</p>
+<dl class="function">
+<dt id="horton.moments.get_cartesian_powers">
+<tt class="descclassname">horton.moments.</tt><tt class="descname">get_cartesian_powers</tt><big>(</big><em>lmax</em><big>)</big><a class="headerlink" href="#horton.moments.get_cartesian_powers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an ordered list of power for x, y and z up to angular moment lmax</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>lmax</dt>
+<dd>The maximum angular momentum (0=s, 1=p, 2=d, ...)</dd>
+</dl>
+<p><strong>Returns:</strong> an array where each row corresponds to a multipole moment
+and each column corresponds to a power of x, y and z respectively. The
+rows are grouped per angular momentum, first s, them p, then d, and so
+on. Within one angular momentum the rows are sorted &#8216;alphabetically&#8217;,
+e.g. for l=2: xxx, xxy, xxz, xyy, xyz, xzz, yyy, yyz, yzz, zzz.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.moments.get_ncart">
+<tt class="descclassname">horton.moments.</tt><tt class="descname">get_ncart</tt><big>(</big><em>l</em><big>)</big><a class="headerlink" href="#horton.moments.get_ncart" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of cartesian powers for a given angular momentum, l</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.moments.get_ncart_cumul">
+<tt class="descclassname">horton.moments.</tt><tt class="descname">get_ncart_cumul</tt><big>(</big><em>lmax</em><big>)</big><a class="headerlink" href="#horton.moments.get_ncart_cumul" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of cartesian powers up to a given angular momentum, lmax.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.moments.rotate_cartesian_moments">
+<tt class="descclassname">horton.moments.</tt><tt class="descname">rotate_cartesian_moments</tt><big>(</big><em>moments</em>, <em>rmat</em><big>)</big><a class="headerlink" href="#horton.moments.rotate_cartesian_moments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate cartesian moments</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>moments</dt>
+<dd>A row vector with a series of cartesian multipole moments. Items in
+this vector should follow the same order as defined by the function
+<tt class="docutils literal"><span class="pre">get_cartesian_powers</span></tt>.</dd>
+<dt>rmat</dt>
+<dd>A (3,3) rotation matrix.</dd>
 </dl>
 </dd></dl>
 
 </div>
 <div class="section" id="module-horton.periodic">
-<h2><a title="" class="reference external" href="#module-horton.periodic"><tt class="xref docutils literal"><span class="pre">horton.periodic</span></tt></a> &#8211; Periodic Table<a class="headerlink" href="#module-horton.periodic" title="Permalink to this headline">¶</a></h2>
-<p>This module contains an object <tt class="docutils literal"><span class="pre">periodic</span></tt> that can be used as a Pythonic
-periodic table. It can be used as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">horton</span> <span class="kn">import</span> <span class="n">periodic</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="s">&#39;si&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">number</span>
-<span class="go">14</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="s">&#39;He&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">number</span>
-<span class="go">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="s">&#39;h&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span>
-<span class="go">&#39;H&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="mf">3</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span>
-<span class="go">&#39;Li&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">periodic</span><span class="p">[</span><span class="s">&#39;5&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span>
-<span class="go">&#39;B&#39;</span>
-</pre></div>
-</div>
+<span id="horton-periodic-periodic-table"></span><h2>4.11. <a class="reference internal" href="#module-horton.periodic" title="horton.periodic"><tt class="xref py py-mod docutils literal"><span class="pre">horton.periodic</span></tt></a> &#8211; Periodic Table<a class="headerlink" href="#module-horton.periodic" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.periodic.Element">
-<em class="property">class </em><tt class="descclassname">horton.periodic.</tt><tt class="descname">Element</tt><big>(</big><em>number</em>, <em>symbol</em>, <em>cov_radius</em><big>)</big><a class="headerlink" href="#horton.periodic.Element" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.periodic.</tt><tt class="descname">Element</tt><big>(</big><em>number=None</em>, <em>symbol=None</em>, <em>cov_radius=None</em>, <em>bs_radius=None</em>, <em>vdw_radius=None</em>, <em>wc_radius=None</em><big>)</big><a class="headerlink" href="#horton.periodic.Element" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents an element from the periodic table.</p>
 <p>The following attributes are supported:</p>
 <dl class="docutils">
@@ -227,7 +1254,20 @@ periodic table. It can be used as follows:</p>
 <dt>symbol</dt>
 <dd>A string with the symbol of the element.</dd>
 <dt>cov_radius</dt>
-<dd>The covalent radius</dd>
+<dd>The covalent radius. B. Cordero, V. Gomez, A. E. Platero-Prats, M.
+Reves, J. Echeverria, E. Cremades, F. Barragan, and S. Alvarez,
+Dalton Trans. pp. 2832&#8211;2838 (2008), URL
+<a class="reference external" href="http://dx.doi.org/10.1039/b801115j">http://dx.doi.org/10.1039/b801115j</a></dd>
+<dt>bs_radius</dt>
+<dd>The Bragg-Slater radius. J. C. Slater, J. Chem. Phys. 41, 3199
+(1964), URL <a class="reference external" href="http://dx.doi.org/10.1063/1.1725697">http://dx.doi.org/10.1063/1.1725697</a></dd>
+<dt>vdw_radius</dt>
+<dd>van der Waals radius. R. S. Rowland and R. Taylor, J. Phys. Chem.
+100, 7384 (1996), URL <a class="reference external" href="http://dx.doi.org/10.1021/jp953141+">http://dx.doi.org/10.1021/jp953141+</a></dd>
+<dt>wc_radius</dt>
+<dd>Waber-Cromer radius of the outermost orbital maximum. J. T. Waber
+and D. T. Cromer, J. Chem. Phys. 42, 4116 (1965), URL
+<a class="reference external" href="http://dx.doi.org/10.1063/1.1695904">http://dx.doi.org/10.1063/1.1695904</a></dd>
 </dl>
 </dd></dl>
 
@@ -238,7 +1278,7 @@ periodic table. It can be used as follows:</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>elements</dt>
-<dd>A list of <a title="horton.periodic.Element" class="reference internal" href="#horton.periodic.Element"><tt class="xref docutils literal"><span class="pre">Element</span></tt></a> instances.</dd>
+<dd>A list of <a class="reference internal" href="#horton.periodic.Element" title="horton.periodic.Element"><tt class="xref py py-class docutils literal"><span class="pre">Element</span></tt></a> instances.</dd>
 </dl>
 <dl class="method">
 <dt id="horton.periodic.Periodic.__getitem__">
@@ -250,22 +1290,235 @@ periodic table. It can be used as follows:</p>
 <dd>This can be either an integer atomic number, a string with the
 elemental symbol (any case), or a string with the atomic number.</dd>
 </dl>
-<p><strong>Returns:</strong> the corresponding <a title="horton.periodic.Element" class="reference internal" href="#horton.periodic.Element"><tt class="xref docutils literal"><span class="pre">Element</span></tt></a> instance</p>
+<p><strong>Returns:</strong> the corresponding <a class="reference internal" href="#horton.periodic.Element" title="horton.periodic.Element"><tt class="xref py py-class docutils literal"><span class="pre">Element</span></tt></a> instance</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.scf">
+<span id="horton-scf-self-consistent-field-algorithms"></span><h2>4.12. <a class="reference internal" href="#module-horton.scf" title="horton.scf"><tt class="xref py py-mod docutils literal"><span class="pre">horton.scf</span></tt></a> &#8211; self-consistent field algorithms<a class="headerlink" href="#module-horton.scf" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.scf.converge_scf">
+<tt class="descclassname">horton.scf.</tt><tt class="descname">converge_scf</tt><big>(</big><em>ham</em>, <em>max_iter=128</em>, <em>threshold=1e-08</em><big>)</big><a class="headerlink" href="#horton.scf.converge_scf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimize the energy of the wavefunction with basic SCF</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>ham</dt>
+<dd>A Hamiltonian instance.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>max_iter</dt>
+<dd>The maximum number of iterations</dd>
+<dt>threshold</dt>
+<dd>The convergence threshold for the wavefunction</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<dl class="docutils">
+<dt>converged</dt>
+<dd>True of converged, False if not</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.scf.check_cubic_cs">
+<tt class="descclassname">horton.scf.</tt><tt class="descname">check_cubic_cs</tt><big>(</big><em>ham</em>, <em>dm0</em>, <em>dm1</em>, <em>e0</em>, <em>e1</em>, <em>g0</em>, <em>g1</em>, <em>do_plot=True</em><big>)</big><a class="headerlink" href="#horton.scf.check_cubic_cs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.scf.check_cubic_os">
+<tt class="descclassname">horton.scf.</tt><tt class="descname">check_cubic_os</tt><big>(</big><em>ham</em>, <em>dm0a</em>, <em>dm0b</em>, <em>dm1a</em>, <em>dm1b</em>, <em>e0</em>, <em>e1</em>, <em>g0</em>, <em>g1</em>, <em>do_plot=True</em><big>)</big><a class="headerlink" href="#horton.scf.check_cubic_os" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.scf.converge_scf_oda">
+<tt class="descclassname">horton.scf.</tt><tt class="descname">converge_scf_oda</tt><big>(</big><em>ham</em>, <em>max_iter=128</em>, <em>threshold=1e-06</em>, <em>debug=False</em><big>)</big><a class="headerlink" href="#horton.scf.converge_scf_oda" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimize the energy of the wavefunction with optinal-damping SCF</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>ham</dt>
+<dd>A Hamiltonian instance.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>max_iter</dt>
+<dd>The maximum number of iterations</dd>
+<dt>threshold</dt>
+<dd>The convergence threshold for the wavefunction</dd>
+<dt>debug</dt>
+<dd>Make debug plots with matplotlib of the linear interpolation</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<dl class="docutils">
+<dt>converged</dt>
+<dd>True of converged, False if not</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.scf.convergence_error">
+<tt class="descclassname">horton.scf.</tt><tt class="descname">convergence_error</tt><big>(</big><em>ham</em><big>)</big><a class="headerlink" href="#horton.scf.convergence_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the self-consistency error</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>ham</dt>
+<dd>A Hamiltonian instance.</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<dl class="docutils">
+<dt>error</dt>
+<dd>The SCF error. This measure (not this function) is also used
+in the SCF algorithm to check for convergence.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.symmetry">
+<span id="horton-symmetry-description-of-symmetries"></span><h2>4.13. <a class="reference internal" href="#module-horton.symmetry" title="horton.symmetry"><tt class="xref py py-mod docutils literal"><span class="pre">horton.symmetry</span></tt></a> &#8211; Description of symmetries<a class="headerlink" href="#module-horton.symmetry" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.symmetry.Symmetry">
+<em class="property">class </em><tt class="descclassname">horton.symmetry.</tt><tt class="descname">Symmetry</tt><big>(</big><em>name</em>, <em>generators</em>, <em>fracs</em>, <em>numbers</em>, <em>cell</em>, <em>labels=None</em><big>)</big><a class="headerlink" href="#horton.symmetry.Symmetry" title="Permalink to this definition">¶</a></dt>
+<dd><p>An optional symmetry descriptor for Horton System objects</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>name</dt>
+<dd>Whatever name you want to give to this symmetry. This is
+converted to a string.</dd>
+<dt>generators</dt>
+<dd>A list of (3,4) matrices where the first three columns contain
+the linear transformation matrix and the last column is a
+translation vector. These transformations act on the fractional
+(or reduced) coordinates.</dd>
+<dt>fracs</dt>
+<dd>The fractional coordinates of a primitive cell/unit.</dd>
+<dt>numbers</dt>
+<dd>The corresponding element numbers of the primitive cell/unit</dd>
+<dt>cell</dt>
+<dd>A Cell object. Even for isolated systems a cell object must
+be provided with nvec=0.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>labels</dt>
+<dd>A list of unique labels for each atom in the primitive unit.
+These are generated from the numbers array when not given.</dd>
+</dl>
+<dl class="attribute">
+<dt id="horton.symmetry.Symmetry.cell">
+<tt class="descname">cell</tt><a class="headerlink" href="#horton.symmetry.Symmetry.cell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.symmetry.Symmetry.fracs">
+<tt class="descname">fracs</tt><a class="headerlink" href="#horton.symmetry.Symmetry.fracs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="horton.symmetry.Symmetry.from_hdf5">
+<em class="property">classmethod </em><tt class="descname">from_hdf5</tt><big>(</big><em>grp</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.symmetry.Symmetry.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a Symmetry object from a HDF5 group</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.symmetry.Symmetry.generate">
+<tt class="descname">generate</tt><big>(</big><em>threshold=0.001</em><big>)</big><a class="headerlink" href="#horton.symmetry.Symmetry.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a system object</p>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>threshold</dt>
+<dd>When, after transformation with the generators, two (or more)
+symmetry atoms overlap within this threshold, they will be
+merged into one. The distance is measured in Cartesian
+coordinates.</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<dl class="docutils">
+<dt>coordinates</dt>
+<dd>Cartesian coordinates for all atoms.</dd>
+<dt>numbers</dt>
+<dd>Element numbers for all atoms.</dd>
+<dt>links</dt>
+<dd>An array of indexes to connect each atom back with an atom in
+the primitive cell (first column) and a generator (second
+column).</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.symmetry.Symmetry.generators">
+<tt class="descname">generators</tt><a class="headerlink" href="#horton.symmetry.Symmetry.generators" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.symmetry.Symmetry.identify">
+<tt class="descname">identify</tt><big>(</big><em>system</em>, <em>threshold=0.1</em><big>)</big><a class="headerlink" href="#horton.symmetry.Symmetry.identify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect atoms in the primitive unit with atoms in the system object</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>system</dt>
+<dd>A system object where to atoms (with some minor deviation)
+adhere to this symmetry.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>threshold</dt>
+<dd>The maximum allowed distance between the ideal atom position
+and the actual atom position</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<dl class="docutils">
+<dt>links</dt>
+<dd>An array of indexes to connect each atom back with an atom in
+the primitive cell (first column) and a generator (second
+column).</dd>
+</dl>
+<p>If an atom in the System object can not be linked with an atom in
+the primitive unit, a SymmetryError is raised. If the system contains
+less atoms (e.g. a vacancy) than the perfect crystal, this method
+will not complain.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.symmetry.Symmetry.labels">
+<tt class="descname">labels</tt><a class="headerlink" href="#horton.symmetry.Symmetry.labels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.symmetry.Symmetry.name">
+<tt class="descname">name</tt><a class="headerlink" href="#horton.symmetry.Symmetry.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.symmetry.Symmetry.natom">
+<tt class="descname">natom</tt><a class="headerlink" href="#horton.symmetry.Symmetry.natom" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of atoms in the primitive unit</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.symmetry.Symmetry.numbers">
+<tt class="descname">numbers</tt><a class="headerlink" href="#horton.symmetry.Symmetry.numbers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.symmetry.Symmetry.to_hdf5">
+<tt class="descname">to_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.symmetry.Symmetry.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a symmetry object to an HDF5 group</p>
 </dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-horton.system">
-<h2><a title="" class="reference external" href="#module-horton.system"><tt class="xref docutils literal"><span class="pre">horton.system</span></tt></a> &#8211; Molecular System Specification<a class="headerlink" href="#module-horton.system" title="Permalink to this headline">¶</a></h2>
+<span id="horton-system-molecular-system-specification"></span><h2>4.14. <a class="reference internal" href="#module-horton.system" title="horton.system"><tt class="xref py py-mod docutils literal"><span class="pre">horton.system</span></tt></a> &#8211; Molecular System Specification<a class="headerlink" href="#module-horton.system" title="Permalink to this headline">¶</a></h2>
 <p>Objects of the System class specify the geometry (and atomic elements) of the
 molecule on which Horton will perform a computation. Also other parameters
 that determine several aspects of the molecular wavefunction, are attributes
-of a <a title="horton.system.System" class="reference internal" href="#horton.system.System"><tt class="xref docutils literal"><span class="pre">System</span></tt></a> instance, e.g. basis sets, pseudo-potentials, ghost atoms,
+of a <a class="reference internal" href="#horton.system.System" title="horton.system.System"><tt class="xref py py-class docutils literal"><span class="pre">System</span></tt></a> instance, e.g. basis sets, pseudo-potentials, ghost atoms,
 etc.</p>
 <dl class="class">
 <dt id="horton.system.System">
-<em class="property">class </em><tt class="descclassname">horton.system.</tt><tt class="descname">System</tt><big>(</big><em>coordinates</em>, <em>numbers</em>, <em>obasis=None</em>, <em>wfn=None</em>, <em>lf=None</em>, <em>operators=None</em>, <em>props=None</em>, <em>dms=None</em>, <em>chk=None</em><big>)</big><a class="headerlink" href="#horton.system.System" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.system.</tt><tt class="descname">System</tt><big>(</big><em>coordinates</em>, <em>numbers</em>, <em>obasis=None</em>, <em>wfn=None</em>, <em>lf=None</em>, <em>operators=None</em>, <em>props=None</em>, <em>cell=None</em>, <em>pseudo_numbers=None</em>, <em>chk=None</em><big>)</big><a class="headerlink" href="#horton.system.System" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>coordinates</dt>
@@ -289,8 +1542,12 @@ is used by default.</dd>
 <dd>A dictionary with one- and two-body operators.</dd>
 <dt>props</dt>
 <dd>A dictionary with computed properties.</dd>
-<dt>dms</dt>
-<dd>A dictionary with density matrices.</dd>
+<dt>cell</dt>
+<dd>A Cell object that describes the (generally triclinic) periodic
+boundary conditions. So far, this is nearly nowhere supported in
+Horton, so don&#8217;t get too excited.</dd>
+<dt>pseudo_numbers</dt>
+<dd>The core charges of the pseudo potential, if applicable</dd>
 <dt>chk</dt>
 <dd>A filename for the checkpoint file or an open h5.File object.
 If the file does not exist yet, it will be created. If the file
@@ -299,15 +1556,32 @@ such that it adheres to the format that Horton creates itself.
 If chk is an open h5.File object, it will not be closed when the
 System instance is deleted.</dd>
 </dl>
+<dl class="method">
+<dt id="horton.system.System.assign_chk">
+<tt class="descname">assign_chk</tt><big>(</big><em>chk</em><big>)</big><a class="headerlink" href="#horton.system.System.assign_chk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.system.System.cell">
+<tt class="descname">cell</tt><a class="headerlink" href="#horton.system.System.cell" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Cell object describing the periodic boundary conditions.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.system.System.charge">
+<tt class="descname">charge</tt><a class="headerlink" href="#horton.system.System.charge" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="horton.system.System.chk">
 <tt class="descname">chk</tt><a class="headerlink" href="#horton.system.System.chk" title="Permalink to this definition">¶</a></dt>
-<dd>A <tt class="docutils literal"><span class="pre">h5.File</span></tt> instance used as checkpoint file or <tt class="xref docutils literal"><span class="pre">None</span></tt></dd></dl>
+<dd><p>A <tt class="docutils literal"><span class="pre">h5.File</span></tt> instance used as checkpoint file or <tt class="docutils literal"><span class="pre">None</span></tt></p>
+</dd></dl>
 
 <dl class="method">
 <dt id="horton.system.System.compute_grid_density">
-<tt class="descname">compute_grid_density</tt><big>(</big><em>points</em>, <em>use_dm=False</em>, <em>rhos=None</em>, <em>select='full'</em><big>)</big><a class="headerlink" href="#horton.system.System.compute_grid_density" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the electron density on a grid</p>
+<tt class="descname">compute_grid_density</tt><big>(</big><em>points</em>, <em>rhos=None</em>, <em>select='full'</em><big>)</big><a class="headerlink" href="#horton.system.System.compute_grid_density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the electron density on a grid using self.wfn as input</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>points</dt>
@@ -315,8 +1589,6 @@ System instance is deleted.</dd>
 </dl>
 <p><strong>Optional arguments:</strong></p>
 <dl class="docutils">
-<dt>use_dm</dt>
-<dd>Use C routine based on the density matrix instead of the orbitals.</dd>
 <dt>rhos</dt>
 <dd>An output array, shape (npoint,). The results are added to this
 array.</dd>
@@ -326,30 +1598,137 @@ array.</dd>
 <p><strong>Returns:</strong></p>
 <dl class="docutils">
 <dt>rhos</dt>
-<dd>The array with the densities. This is the same as the output
+<dd>The array with the result. This is the same as the output
 argument, in case it was provided.</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
-<dt id="horton.system.System.compute_grid_one_body">
-<tt class="descname">compute_grid_one_body</tt><big>(</big><em>points</em>, <em>weights</em>, <em>pots</em>, <em>one_body</em><big>)</big><a class="headerlink" href="#horton.system.System.compute_grid_one_body" title="Permalink to this definition">¶</a></dt>
-<dd>See documentation self.obasis.compute_grid_one_body</dd></dl>
+<dt id="horton.system.System.compute_grid_density_fock">
+<tt class="descname">compute_grid_density_fock</tt><big>(</big><em>points</em>, <em>weights</em>, <em>pots</em>, <em>fock</em><big>)</big><a class="headerlink" href="#horton.system.System.compute_grid_density_fock" title="Permalink to this definition">¶</a></dt>
+<dd><p>See documentation self.obasis.compute_grid_density_fock</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.compute_grid_esp">
+<tt class="descname">compute_grid_esp</tt><big>(</big><em>points</em>, <em>esp=None</em>, <em>select='full'</em><big>)</big><a class="headerlink" href="#horton.system.System.compute_grid_esp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the esp on a grid using self.wfn as input</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>points</dt>
+<dd>A Numpy array with grid points, shape (npoint,3)</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>esp</dt>
+<dd>An output array, shape (npoint,). The results are added to this
+array.</dd>
+<dt>select</dt>
+<dd>&#8216;alpha&#8217;, &#8216;beta&#8217;, &#8216;full&#8217; or &#8216;spin&#8217;. (&#8216;full&#8217; is the default.)</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<dl class="docutils">
+<dt>esp</dt>
+<dd>The array with the result. This is the same as the output
+argument, in case it was provided.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.compute_grid_gradient">
+<tt class="descname">compute_grid_gradient</tt><big>(</big><em>points</em>, <em>gradrhos=None</em>, <em>select='full'</em><big>)</big><a class="headerlink" href="#horton.system.System.compute_grid_gradient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the electron density on a grid using self.wfn as input</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>points</dt>
+<dd>A Numpy array with grid points, shape (npoint,3)</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>gradrhos</dt>
+<dd>An output array, shape (npoint, 3). The results are added to
+this array.</dd>
+<dt>select</dt>
+<dd>&#8216;alpha&#8217;, &#8216;beta&#8217;, &#8216;full&#8217; or &#8216;spin&#8217;. (&#8216;full&#8217; is the default.)</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<dl class="docutils">
+<dt>gradrhos</dt>
+<dd>The array with the result. This is the same as the output
+argument, in case it was provided.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.compute_grid_gradient_fock">
+<tt class="descname">compute_grid_gradient_fock</tt><big>(</big><em>points</em>, <em>weights</em>, <em>pots</em>, <em>fock</em><big>)</big><a class="headerlink" href="#horton.system.System.compute_grid_gradient_fock" title="Permalink to this definition">¶</a></dt>
+<dd><p>See documentation self.obasis.compute_grid_gradient_fock</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.compute_grid_hartree">
+<tt class="descname">compute_grid_hartree</tt><big>(</big><em>points</em>, <em>hartree=None</em>, <em>select='full'</em><big>)</big><a class="headerlink" href="#horton.system.System.compute_grid_hartree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the hartree potential on a grid using self.wfn as input</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>points</dt>
+<dd>A Numpy array with grid points, shape (npoint,3)</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>hartree</dt>
+<dd>An output array, shape (npoint,). The results are added to this
+array.</dd>
+<dt>select</dt>
+<dd>&#8216;alpha&#8217;, &#8216;beta&#8217;, &#8216;full&#8217; or &#8216;spin&#8217;. (&#8216;full&#8217; is the default.)</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<dl class="docutils">
+<dt>hartree</dt>
+<dd>The array with the result. This is the same as the output
+argument, in case it was provided.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.compute_grid_orbitals">
+<tt class="descname">compute_grid_orbitals</tt><big>(</big><em>points</em>, <em>iorbs=None</em>, <em>orbs=None</em>, <em>select='alpha'</em><big>)</big><a class="headerlink" href="#horton.system.System.compute_grid_orbitals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the electron density on a grid using self.wfn as input</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>points</dt>
+<dd>A Numpy array with grid points, shape (npoint,3)</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>iorbs</dt>
+<dd>The indexes of the orbitals to be computed. If not given, the
+orbitals with a non-zero occupation number are computed</dd>
+<dt>orbs</dt>
+<dd>An output array, shape (npoint, len(iorbs)). The results are
+added to this array.</dd>
+<dt>select</dt>
+<dd>&#8216;alpha&#8217;, &#8216;beta&#8217;</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<dl class="docutils">
+<dt>orbs</dt>
+<dd>The array with the result. This is the same as the output
+argument, in case it was provided.</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="horton.system.System.compute_nucnuc">
 <tt class="descname">compute_nucnuc</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.system.System.compute_nucnuc" title="Permalink to this definition">¶</a></dt>
-<dd>Compute interaction energy of the nuclei</dd></dl>
+<dd><p>Compute interaction energy of the nuclei</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="horton.system.System.coordinates">
 <tt class="descname">coordinates</tt><a class="headerlink" href="#horton.system.System.coordinates" title="Permalink to this definition">¶</a></dt>
-<dd>The positions of the nuclei</dd></dl>
-
-<dl class="attribute">
-<dt id="horton.system.System.dms">
-<tt class="descname">dms</tt><a class="headerlink" href="#horton.system.System.dms" title="Permalink to this definition">¶</a></dt>
-<dd>A dictionary with density matrices.</dd></dl>
+<dd><p>The positions of the nuclei</p>
+</dd></dl>
 
 <dl class="classmethod">
 <dt id="horton.system.System.from_file">
@@ -411,32 +1790,55 @@ unrestricted otherwise.</dd>
 <dl class="attribute">
 <dt id="horton.system.System.lf">
 <tt class="descname">lf</tt><a class="headerlink" href="#horton.system.System.lf" title="Permalink to this definition">¶</a></dt>
-<dd>The LinalgFactory for this system</dd></dl>
+<dd><p>The LinalgFactory for this system</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="horton.system.System.natom">
 <tt class="descname">natom</tt><a class="headerlink" href="#horton.system.System.natom" title="Permalink to this definition">¶</a></dt>
-<dd>The number of atoms</dd></dl>
+<dd><p>The number of atoms</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="horton.system.System.numbers">
 <tt class="descname">numbers</tt><a class="headerlink" href="#horton.system.System.numbers" title="Permalink to this definition">¶</a></dt>
-<dd>An array with the atomic numbers</dd></dl>
+<dd><p>An array with the atomic numbers</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="horton.system.System.obasis">
 <tt class="descname">obasis</tt><a class="headerlink" href="#horton.system.System.obasis" title="Permalink to this definition">¶</a></dt>
-<dd>The orbital basis</dd></dl>
+<dd><p>The orbital basis</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="horton.system.System.operators">
 <tt class="descname">operators</tt><a class="headerlink" href="#horton.system.System.operators" title="Permalink to this definition">¶</a></dt>
-<dd>A dictionary with operators</dd></dl>
+<dd><p>A dictionary with operators</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="horton.system.System.props">
 <tt class="descname">props</tt><a class="headerlink" href="#horton.system.System.props" title="Permalink to this definition">¶</a></dt>
-<dd>A dictionary with computed properties.</dd></dl>
+<dd><p>A dictionary with computed properties.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.system.System.pseudo_numbers">
+<tt class="descname">pseudo_numbers</tt><a class="headerlink" href="#horton.system.System.pseudo_numbers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.system.System.to_file">
+<tt class="descname">to_file</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.system.System.to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the system to a file</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The name of the file to write to. The extension of the file
+is used to determine the file format.</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="horton.system.System.update_chk">
@@ -457,13 +1859,14 @@ module <tt class="docutils literal"><span class="pre">horton.checkpoint</span></
 <dl class="attribute">
 <dt id="horton.system.System.wfn">
 <tt class="descname">wfn</tt><a class="headerlink" href="#horton.system.System.wfn" title="Permalink to this definition">¶</a></dt>
-<dd>The wavefunction</dd></dl>
+<dd><p>The wavefunction</p>
+</dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-horton.units">
-<h2><a title="" class="reference external" href="#module-horton.units"><tt class="xref docutils literal"><span class="pre">horton.units</span></tt></a> &#8211; Unit Conversion<a class="headerlink" href="#module-horton.units" title="Permalink to this headline">¶</a></h2>
+<span id="horton-units-unit-conversion"></span><h2>4.15. <a class="reference internal" href="#module-horton.units" title="horton.units"><tt class="xref py py-mod docutils literal"><span class="pre">horton.units</span></tt></a> &#8211; Unit Conversion<a class="headerlink" href="#module-horton.units" title="Permalink to this headline">¶</a></h2>
 <p>Internally Horton always uses atomic units. Atomic units are consistent,
 similar to the SI unit system: one does not need conversion factors in the
 middle of a computation. This choice facilitates the programming and reduces
@@ -503,134 +1906,496 @@ done:</p>
 </div>
 <p>These are the conversion constants defined in this module:</p>
 <blockquote>
-<table border="1" class="docutils">
+<div><table border="1" class="docutils">
 <colgroup>
 <col width="47%" />
 <col width="53%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">Name</th>
+<tr class="row-odd"><th class="head">Name</th>
 <th class="head">Value</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>ampere</td>
+<tr class="row-even"><td>ampere</td>
 <td>1.5097490095e+02</td>
 </tr>
-<tr><td>amu</td>
+<tr class="row-odd"><td>amu</td>
 <td>1.8228886274e+03</td>
 </tr>
-<tr><td>angstrom</td>
+<tr class="row-even"><td>angstrom</td>
 <td>1.8897261339e+00</td>
 </tr>
-<tr><td>atm</td>
+<tr class="row-odd"><td>atm</td>
 <td>3.4439674262e-09</td>
 </tr>
-<tr><td>au</td>
+<tr class="row-even"><td>au</td>
 <td>1.0000000000e+00</td>
 </tr>
-<tr><td>avogadro</td>
+<tr class="row-odd"><td>avogadro</td>
 <td>6.0221415000e+23</td>
 </tr>
-<tr><td>bar</td>
+<tr class="row-even"><td>bar</td>
 <td>3.3989315828e-09</td>
 </tr>
-<tr><td>calorie</td>
+<tr class="row-odd"><td>calorie</td>
 <td>9.5968941808e+17</td>
 </tr>
-<tr><td>centimeter</td>
+<tr class="row-even"><td>centimeter</td>
 <td>1.8897261339e+08</td>
 </tr>
-<tr><td>coulomb</td>
+<tr class="row-odd"><td>coulomb</td>
 <td>6.2415097445e+18</td>
 </tr>
-<tr><td>debye</td>
+<tr class="row-even"><td>debye</td>
 <td>3.9343031369e-01</td>
 </tr>
-<tr><td>decimeter</td>
+<tr class="row-odd"><td>decimeter</td>
 <td>1.8897261339e+09</td>
 </tr>
-<tr><td>deg</td>
+<tr class="row-even"><td>deg</td>
 <td>1.7453292520e-02</td>
 </tr>
-<tr><td>electronvolt</td>
+<tr class="row-odd"><td>electronvolt</td>
 <td>3.6749325920e-02</td>
 </tr>
-<tr><td>femtosecond</td>
+<tr class="row-even"><td>femtosecond</td>
 <td>4.1341373337e+01</td>
 </tr>
-<tr><td>gram</td>
+<tr class="row-odd"><td>gram</td>
 <td>1.0977693253e+27</td>
 </tr>
-<tr><td>hertz</td>
+<tr class="row-even"><td>hertz</td>
 <td>2.4188843265e-17</td>
 </tr>
-<tr><td>joule</td>
+<tr class="row-odd"><td>joule</td>
 <td>2.2937127583e+17</td>
 </tr>
-<tr><td>kcalmol</td>
+<tr class="row-even"><td>kcalmol</td>
 <td>1.5936015753e-03</td>
 </tr>
-<tr><td>kelvin</td>
+<tr class="row-odd"><td>kelvin</td>
 <td>1.0000000000e+00</td>
 </tr>
-<tr><td>kilogram</td>
+<tr class="row-even"><td>kilogram</td>
 <td>1.0977693253e+30</td>
 </tr>
-<tr><td>kjmol</td>
+<tr class="row-odd"><td>kjmol</td>
 <td>3.8087991760e-04</td>
 </tr>
-<tr><td>liter</td>
+<tr class="row-even"><td>liter</td>
 <td>6.7483345942e+27</td>
 </tr>
-<tr><td>meter</td>
+<tr class="row-odd"><td>meter</td>
 <td>1.8897261339e+10</td>
 </tr>
-<tr><td>micrometer</td>
+<tr class="row-even"><td>micrometer</td>
 <td>1.8897261339e+04</td>
 </tr>
-<tr><td>miligram</td>
+<tr class="row-odd"><td>miligram</td>
 <td>1.0977693253e+24</td>
 </tr>
-<tr><td>milimeter</td>
+<tr class="row-even"><td>milimeter</td>
 <td>1.8897261339e+07</td>
 </tr>
-<tr><td>mol</td>
+<tr class="row-odd"><td>mol</td>
 <td>6.0221415000e+23</td>
 </tr>
-<tr><td>nanometer</td>
+<tr class="row-even"><td>nanometer</td>
 <td>1.8897261339e+01</td>
 </tr>
-<tr><td>nanosecond</td>
+<tr class="row-odd"><td>nanosecond</td>
 <td>4.1341373337e+07</td>
 </tr>
-<tr><td>newton</td>
+<tr class="row-even"><td>newton</td>
 <td>1.2137805141e+07</td>
 </tr>
-<tr><td>pascal</td>
+<tr class="row-odd"><td>pascal</td>
 <td>3.3989315828e-14</td>
 </tr>
-<tr><td>picometer</td>
+<tr class="row-even"><td>picometer</td>
 <td>1.8897261339e-02</td>
 </tr>
-<tr><td>picosecond</td>
+<tr class="row-odd"><td>picosecond</td>
 <td>4.1341373337e+04</td>
 </tr>
-<tr><td>rad</td>
+<tr class="row-even"><td>rad</td>
 <td>1.0000000000e+00</td>
 </tr>
-<tr><td>rydberg</td>
+<tr class="row-odd"><td>rydberg</td>
 <td>5.0000000000e-01</td>
 </tr>
-<tr><td>second</td>
+<tr class="row-even"><td>second</td>
 <td>4.1341373337e+16</td>
 </tr>
-<tr><td>unified</td>
+<tr class="row-odd"><td>unified</td>
 <td>1.8228886274e+03</td>
 </tr>
 </tbody>
 </table>
-</blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="horton-wfn-wavefunctions">
+<h2>4.16. <a class="reference internal" href="#module-horton.wfn" title="horton.wfn"><tt class="xref py py-mod docutils literal"><span class="pre">horton.wfn</span></tt></a> &#8211; Wavefunctions<a class="headerlink" href="#horton-wfn-wavefunctions" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-horton.wfn"></span><p>The essential part of the wavefunction consists of the expansion coefficients
+in a certain basis.</p>
+<p>Abbreviations used in this module:</p>
+<ul class="simple">
+<li>wfn = wavefunction</li>
+<li>exp = expansion (orbitals, energies and occupations)</li>
+<li>dm = density matrix</li>
+</ul>
+<dl class="class">
+<dt id="horton.wfn.WFN">
+<em class="property">class </em><tt class="descclassname">horton.wfn.</tt><tt class="descname">WFN</tt><big>(</big><em>occ_model</em>, <em>lf</em>, <em>nbasis</em>, <em>norb=None</em><big>)</big><a class="headerlink" href="#horton.wfn.WFN" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>occ_model</dt>
+<dd>A model for the occupation numbers to be assigned after
+diagonalization of the Fock matrix.</dd>
+<dt>lf</dt>
+<dd>A LinalgFactory instance.</dd>
+<dt>nbasis</dt>
+<dd>The number of basis functions.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>norb</dt>
+<dd>the number of orbitals (occupied + virtual). When not given,
+it is set to nbasis.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.wfn.WFN.apply_basis_permutation">
+<tt class="descname">apply_basis_permutation</tt><big>(</big><em>permutation</em><big>)</big><a class="headerlink" href="#horton.wfn.WFN.apply_basis_permutation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reorder the expansion coefficients and the density matrices</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.WFN.apply_basis_signs">
+<tt class="descname">apply_basis_signs</tt><big>(</big><em>signs</em><big>)</big><a class="headerlink" href="#horton.wfn.WFN.apply_basis_signs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fix the signs of the expansion coefficients and the density matrices</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.WFN.check_normalization">
+<tt class="descname">check_normalization</tt><big>(</big><em>olp</em>, <em>eps=0.0001</em><big>)</big><a class="headerlink" href="#horton.wfn.WFN.check_normalization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run an internal test to see if the orbitals are normalized</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>olp</dt>
+<dd>The overlap one_body operators</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>eps</dt>
+<dd>The allowed deviation from unity, very loose by default.</dd>
+</dl>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="horton.wfn.WFN.from_hdf5">
+<em class="property">classmethod </em><tt class="descname">from_hdf5</tt><big>(</big><em>grp</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.wfn.WFN.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.WFN.get_dm">
+<tt class="descname">get_dm</tt><big>(</big><em>select</em><big>)</big><a class="headerlink" href="#horton.wfn.WFN.get_dm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a density matrix. If not available, it will be created (if possible)</p>
+<dl class="docutils">
+<dt>select</dt>
+<dd>&#8216;alpha&#8217;, &#8216;beta&#8217;, &#8216;full&#8217; or &#8216;spin&#8217;.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.WFN.get_exp">
+<tt class="descname">get_exp</tt><big>(</big><em>spin</em><big>)</big><a class="headerlink" href="#horton.wfn.WFN.get_exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an expansion of the wavefunction, if available.</p>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>select</dt>
+<dd>the spin component: &#8216;alpha&#8217; or &#8216;beta&#8217;.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.WFN.init_dm">
+<tt class="descname">init_dm</tt><big>(</big><em>select</em><big>)</big><a class="headerlink" href="#horton.wfn.WFN.init_dm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.WFN.init_exp">
+<tt class="descname">init_exp</tt><big>(</big><em>spin</em><big>)</big><a class="headerlink" href="#horton.wfn.WFN.init_exp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.WFN.invalidate">
+<tt class="descname">invalidate</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.wfn.WFN.invalidate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be called when the wavefunction is outdated</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.wfn.WFN.nbasis">
+<tt class="descname">nbasis</tt><a class="headerlink" href="#horton.wfn.WFN.nbasis" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of basis functions.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.wfn.WFN.norb">
+<tt class="descname">norb</tt><a class="headerlink" href="#horton.wfn.WFN.norb" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of orbitals in the expansion(s)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.WFN.to_hdf5">
+<tt class="descname">to_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.wfn.WFN.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.WFN.update_dm">
+<tt class="descname">update_dm</tt><big>(</big><em>select</em>, <em>dm=None</em><big>)</big><a class="headerlink" href="#horton.wfn.WFN.update_dm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Derive the density matrix from the expansion(s) and store in cache</p>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>select</dt>
+<dd>&#8216;alpha&#8217;, &#8216;beta&#8217;, &#8216;full&#8217; or &#8216;spin&#8217;.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.wfn.ClosedShellWFN">
+<em class="property">class </em><tt class="descclassname">horton.wfn.</tt><tt class="descname">ClosedShellWFN</tt><big>(</big><em>occ_model</em>, <em>lf</em>, <em>nbasis</em>, <em>norb=None</em><big>)</big><a class="headerlink" href="#horton.wfn.ClosedShellWFN" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>occ_model</dt>
+<dd>A model for the occupation numbers to be assigned after
+diagonalization of the Fock matrix.</dd>
+<dt>lf</dt>
+<dd>A LinalgFactory instance.</dd>
+<dt>nbasis</dt>
+<dd>The number of basis functions.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>norb</dt>
+<dd>the number of orbitals (occupied + virtual). When not given,
+it is set to nbasis.</dd>
+</dl>
+<dl class="attribute">
+<dt id="horton.wfn.ClosedShellWFN.closed_shell">
+<tt class="descname">closed_shell</tt><em class="property"> = True</em><a class="headerlink" href="#horton.wfn.ClosedShellWFN.closed_shell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.ClosedShellWFN.get_spin">
+<tt class="descname">get_spin</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.wfn.ClosedShellWFN.get_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the expectation values of the projecte and squared spin</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.wfn.ClosedShellWFN.homo_energy">
+<tt class="descname">homo_energy</tt><a class="headerlink" href="#horton.wfn.ClosedShellWFN.homo_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The HOMO of the wavefunction</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.wfn.ClosedShellWFN.lumo_energy">
+<tt class="descname">lumo_energy</tt><a class="headerlink" href="#horton.wfn.ClosedShellWFN.lumo_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The LUMO of the wavefunction</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.wfn.ClosedShellWFN.mult">
+<tt class="descname">mult</tt><a class="headerlink" href="#horton.wfn.ClosedShellWFN.mult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.wfn.ClosedShellWFN.nel">
+<tt class="descname">nel</tt><a class="headerlink" href="#horton.wfn.ClosedShellWFN.nel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.wfn.ClosedShellWFN.nep">
+<tt class="descname">nep</tt><a class="headerlink" href="#horton.wfn.ClosedShellWFN.nep" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.ClosedShellWFN.update_exp">
+<tt class="descname">update_exp</tt><big>(</big><em>fock_alpha</em>, <em>overlap</em>, <em>dm_alpha=None</em><big>)</big><a class="headerlink" href="#horton.wfn.ClosedShellWFN.update_exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the expansion based on the given fock matrix</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>fock_alpha</dt>
+<dd>A DenseOneBody object with the Fock operator</dd>
+<dt>overlap</dt>
+<dd>A DenseOneBody object with the overlap operator</dd>
+</dl>
+<p><strong>*Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>dm_alpha</dt>
+<dd>A DenseOneBody object with the density matrix</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.wfn.OpenShellWFN">
+<em class="property">class </em><tt class="descclassname">horton.wfn.</tt><tt class="descname">OpenShellWFN</tt><big>(</big><em>occ_model</em>, <em>lf</em>, <em>nbasis</em>, <em>norb=None</em><big>)</big><a class="headerlink" href="#horton.wfn.OpenShellWFN" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>occ_model</dt>
+<dd>A model for the occupation numbers to be assigned after
+diagonalization of the Fock matrix.</dd>
+<dt>lf</dt>
+<dd>A LinalgFactory instance.</dd>
+<dt>nbasis</dt>
+<dd>The number of basis functions.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>norb</dt>
+<dd>the number of orbitals (occupied + virtual). When not given,
+it is set to nbasis.</dd>
+</dl>
+<dl class="attribute">
+<dt id="horton.wfn.OpenShellWFN.closed_shell">
+<tt class="descname">closed_shell</tt><em class="property"> = False</em><a class="headerlink" href="#horton.wfn.OpenShellWFN.closed_shell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.OpenShellWFN.get_spin">
+<tt class="descname">get_spin</tt><big>(</big><em>olp</em><big>)</big><a class="headerlink" href="#horton.wfn.OpenShellWFN.get_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the expectation values of the projected and squared spin</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>olp</dt>
+<dd>The overlap matrix</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.wfn.OpenShellWFN.homo_energy">
+<tt class="descname">homo_energy</tt><a class="headerlink" href="#horton.wfn.OpenShellWFN.homo_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The HOMO of the wavefunction</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.wfn.OpenShellWFN.lumo_energy">
+<tt class="descname">lumo_energy</tt><a class="headerlink" href="#horton.wfn.OpenShellWFN.lumo_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The LUMO of the wavefunction</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.wfn.OpenShellWFN.mult">
+<tt class="descname">mult</tt><a class="headerlink" href="#horton.wfn.OpenShellWFN.mult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.wfn.OpenShellWFN.nalpha">
+<tt class="descname">nalpha</tt><a class="headerlink" href="#horton.wfn.OpenShellWFN.nalpha" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.wfn.OpenShellWFN.nbeta">
+<tt class="descname">nbeta</tt><a class="headerlink" href="#horton.wfn.OpenShellWFN.nbeta" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.wfn.OpenShellWFN.nel">
+<tt class="descname">nel</tt><a class="headerlink" href="#horton.wfn.OpenShellWFN.nel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.OpenShellWFN.update_exp">
+<tt class="descname">update_exp</tt><big>(</big><em>fock_alpha</em>, <em>fock_beta</em>, <em>overlap</em>, <em>dm_alpha=None</em>, <em>dm_beta=None</em><big>)</big><a class="headerlink" href="#horton.wfn.OpenShellWFN.update_exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the expansion based on the given fock matrix</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>fock_alpha, fock_beta</dt>
+<dd>DenseOneBody objects with the Fock operators</dd>
+<dt>overlap</dt>
+<dd>A DenseOneBody object with the overlap operator</dd>
+</dl>
+<p><strong>*Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>dm_alpha, dm_beta</dt>
+<dd>DenseOneBody objects with the density matrices</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.wfn.AufbauOccModel">
+<em class="property">class </em><tt class="descclassname">horton.wfn.</tt><tt class="descname">AufbauOccModel</tt><big>(</big><em>nalpha</em>, <em>nbeta=None</em><big>)</big><a class="headerlink" href="#horton.wfn.AufbauOccModel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.wfn.AufbauOccModel.assign">
+<tt class="descname">assign</tt><big>(</big><em>exp_alpha</em>, <em>exp_beta=None</em><big>)</big><a class="headerlink" href="#horton.wfn.AufbauOccModel.assign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign occupation numbers to the expansion objects</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>exp_alpha</dt>
+<dd>An alpha DenseExpansion object</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>exp_beta</dt>
+<dd>A beta DenseExpansion object</dd>
+</dl>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="horton.wfn.AufbauOccModel.from_hdf5">
+<em class="property">classmethod </em><tt class="descname">from_hdf5</tt><big>(</big><em>grp</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.wfn.AufbauOccModel.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.AufbauOccModel.log">
+<tt class="descname">log</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.wfn.AufbauOccModel.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.AufbauOccModel.to_hdf5">
+<tt class="descname">to_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.wfn.AufbauOccModel.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.wfn.AufbauSpinOccModel">
+<em class="property">class </em><tt class="descclassname">horton.wfn.</tt><tt class="descname">AufbauSpinOccModel</tt><big>(</big><em>nel</em><big>)</big><a class="headerlink" href="#horton.wfn.AufbauSpinOccModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>This Aufbau model only applies to unrestricted wavefunctions</p>
+<dl class="method">
+<dt id="horton.wfn.AufbauSpinOccModel.assign">
+<tt class="descname">assign</tt><big>(</big><em>exp_alpha</em>, <em>exp_beta</em><big>)</big><a class="headerlink" href="#horton.wfn.AufbauSpinOccModel.assign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign occupation numbers to the expansion objects</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>exp_alpha, exp_beta</dt>
+<dd>Alpha and beta DenseExpansion object</dd>
+</dl>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="horton.wfn.AufbauSpinOccModel.from_hdf5">
+<em class="property">classmethod </em><tt class="descname">from_hdf5</tt><big>(</big><em>grp</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.wfn.AufbauSpinOccModel.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.AufbauSpinOccModel.log">
+<tt class="descname">log</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.wfn.AufbauSpinOccModel.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.wfn.AufbauSpinOccModel.to_hdf5">
+<tt class="descname">to_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.wfn.AufbauSpinOccModel.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 
@@ -642,20 +2407,33 @@ done:</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference external" href="#">Horton core</a><ul>
-<li><a class="reference external" href="#module-horton.constants"><tt class="docutils literal"><span class="pre">horton.constants</span></tt> &#8211; Physical constants</a></li>
-<li><a class="reference external" href="#module-horton.context"><tt class="docutils literal"><span class="pre">horton.context</span></tt> &#8211; Runtime environment</a></li>
-<li><a class="reference external" href="#module-horton.io"><tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input/Output</a></li>
-<li><a class="reference external" href="#module-horton.periodic"><tt class="docutils literal"><span class="pre">horton.periodic</span></tt> &#8211; Periodic Table</a></li>
-<li><a class="reference external" href="#module-horton.system"><tt class="docutils literal"><span class="pre">horton.system</span></tt> &#8211; Molecular System Specification</a></li>
-<li><a class="reference external" href="#module-horton.units"><tt class="docutils literal"><span class="pre">horton.units</span></tt> &#8211; Unit Conversion</a></li>
+<li><a class="reference internal" href="#">4. <tt class="docutils literal"><span class="pre">horton</span></tt> &#8211; The top-level package</a><ul>
+<li><a class="reference internal" href="#module-horton.cache">4.1. <tt class="docutils literal"><span class="pre">horton.cache</span></tt> &#8211; Tools to avoid the recomputation of earlier results</a></li>
+<li><a class="reference internal" href="#module-horton.cext">4.2. <tt class="docutils literal"><span class="pre">horton.cext</span></tt> &#8211; Interface to low-level code</a></li>
+<li><a class="reference internal" href="#module-horton.checkpoint">4.3. <tt class="docutils literal"><span class="pre">horton.checkpoint</span></tt> &#8211; Checkpointing of results</a></li>
+<li><a class="reference internal" href="#module-horton.constants">4.4. <tt class="docutils literal"><span class="pre">horton.constants</span></tt> &#8211; Physical constants</a></li>
+<li><a class="reference internal" href="#module-horton.context">4.5. <tt class="docutils literal"><span class="pre">horton.context</span></tt> &#8211; Runtime environment</a></li>
+<li><a class="reference internal" href="#module-horton.exceptions">4.6. <tt class="docutils literal"><span class="pre">horton.exceptions</span></tt> &#8211; Exceptions</a></li>
+<li><a class="reference internal" href="#module-horton.guess">4.7. <tt class="docutils literal"><span class="pre">horton.guess</span></tt> &#8211; Algorithms for initial guesses of the WFN</a></li>
+<li><a class="reference internal" href="#module-horton.log">4.8. <tt class="docutils literal"><span class="pre">horton.log</span></tt> &#8211; Screen logging</a></li>
+<li><a class="reference internal" href="#module-horton.matrix">4.9. <tt class="docutils literal"><span class="pre">horton.matrix</span></tt> &#8211; Linear algebra abstraction layer</a></li>
+<li><a class="reference internal" href="#module-horton.moments">4.10. <tt class="docutils literal"><span class="pre">horton.moments</span></tt> &#8211; Conventions and utilities for multipole moments</a></li>
+<li><a class="reference internal" href="#module-horton.periodic">4.11. <tt class="docutils literal"><span class="pre">horton.periodic</span></tt> &#8211; Periodic Table</a></li>
+<li><a class="reference internal" href="#module-horton.scf">4.12. <tt class="docutils literal"><span class="pre">horton.scf</span></tt> &#8211; self-consistent field algorithms</a></li>
+<li><a class="reference internal" href="#module-horton.symmetry">4.13. <tt class="docutils literal"><span class="pre">horton.symmetry</span></tt> &#8211; Description of symmetries</a></li>
+<li><a class="reference internal" href="#module-horton.system">4.14. <tt class="docutils literal"><span class="pre">horton.system</span></tt> &#8211; Molecular System Specification</a></li>
+<li><a class="reference internal" href="#module-horton.units">4.15. <tt class="docutils literal"><span class="pre">horton.units</span></tt> &#8211; Unit Conversion</a></li>
+<li><a class="reference internal" href="#horton-wfn-wavefunctions">4.16. <tt class="docutils literal"><span class="pre">horton.wfn</span></tt> &#8211; Wavefunctions</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="ref_acronyms.html"
-                        title="previous chapter">Acronyms</a></p>
+  <p class="topless"><a href="ref_literature.html"
+                        title="previous chapter">3. Literature</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="lib_horton_espfit.html"
+                        title="next chapter">5. <tt class="docutils literal"><span class="pre">horton.espfit</span></tt> &#8211; ESP fitting of charges</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/lib_horton.txt"
@@ -664,7 +2442,7 @@ done:</p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -685,17 +2463,20 @@ done:</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="ref_acronyms.html" title="Acronyms"
+          <a href="lib_horton_espfit.html" title="5. horton.espfit – ESP fitting of charges"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ref_literature.html" title="3. Literature"
              >previous</a> |</li>
-        <li><a href="index.html">Horton v0.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011, Toon Verstraelen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

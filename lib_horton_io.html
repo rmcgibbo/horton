@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>9. horton.io – Input/output routines &mdash; Horton 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Horton 1.0 documentation" href="index.html" />
+    <link rel="next" title="10. horton.part – Density partitioning" href="lib_horton_part.html" />
+    <link rel="prev" title="8. horton.hamiltonian – SCF model hamiltonians" href="lib_horton_hamiltonian.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_part.html" title="10. horton.part – Density partitioning"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_hamiltonian.html" title="8. horton.hamiltonian – SCF model hamiltonians"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="horton-io-input-output-routines">
+<h1>9. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input/output routines<a class="headerlink" href="#horton-io-input-output-routines" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-horton.io.chk">
+<span id="horton-io-chk-horton-checkpoint-file-format"></span><h2>9.1. <a class="reference internal" href="#module-horton.io.chk" title="horton.io.chk"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.chk</span></tt></a> &#8211; Horton checkpoint file format<a class="headerlink" href="#module-horton.io.chk" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.io.chk.load_checkpoint">
+<tt class="descclassname">horton.io.chk.</tt><tt class="descname">load_checkpoint</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.chk.load_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load constructor arguments from a Horton checkpoint file</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>This is the file name of an HDF5 Horton checkpoint file. It may also
+be an open h5.Group object.</dd>
+<dt>lf</dt>
+<dd>A LinalgFactory instance.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.io.cif">
+<span id="horton-io-cif-crystal-information-file-format"></span><h2>9.2. <a class="reference internal" href="#module-horton.io.cif" title="horton.io.cif"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.cif</span></tt></a> &#8211; Crystal Information File format<a class="headerlink" href="#module-horton.io.cif" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.io.cif.dump_cif">
+<tt class="descclassname">horton.io.cif.</tt><tt class="descname">dump_cif</tt><big>(</big><em>filename</em>, <em>system</em><big>)</big><a class="headerlink" href="#horton.io.cif.dump_cif" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a Horton system to a CIF file</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The name of the new CIF file.</dd>
+<dt>system</dt>
+<dd>The system to be written to the CIF file.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.io.cif.iter_equiv_pos_terms">
+<tt class="descclassname">horton.io.cif.</tt><tt class="descname">iter_equiv_pos_terms</tt><big>(</big><em>comp</em><big>)</big><a class="headerlink" href="#horton.io.cif.iter_equiv_pos_terms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate over the terms in a component from the equiv_pos_as_xyz table</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>comp</dt>
+<dd>A string with one or more terms, e.g. &#8216;x&#8217;, &#8216;-y&#8217;, &#8216;y+1/2&#8217;, ...</dd>
+</dl>
+<p><strong>Yields:</strong> 2-tuples of the form (sign, sybol). For example, the input
+&#8216;y-1/2&#8217; will yield to 2-tuples: (+1, &#8216;y&#8217;), (-1, &#8216;1/2&#8217;)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.io.cif.equiv_pos_to_generator">
+<tt class="descclassname">horton.io.cif.</tt><tt class="descname">equiv_pos_to_generator</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#horton.io.cif.equiv_pos_to_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a equiv_pos_as_xyz string to a generator matrix</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>s</dt>
+<dd>A single line from the equiv_pos_as_xyz table</dd>
+</dl>
+<p><strong>Returns:</strong> a (3,4) array where the first three columns contain the
+rotation matrix and the last column is the translation vector.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.io.cif.load_cif">
+<tt class="descclassname">horton.io.cif.</tt><tt class="descname">load_cif</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.cif.load_cif" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a CIF file</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The name of an existing CIF file</dd>
+<dt>lf</dt>
+<dd>An instance of the LinalgFactory class. (Ignored here)</dd>
+</dl>
+<p><strong>Returns:</strong> a dictionary with constructor arguments</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.io.common">
+<span id="horton-io-common-shared-routines-in-the-io-package"></span><h2>9.3. <a class="reference internal" href="#module-horton.io.common" title="horton.io.common"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.common</span></tt></a> &#8211; Shared routines in the io package<a class="headerlink" href="#module-horton.io.common" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.io.common.renorm_helper">
+<tt class="descclassname">horton.io.common.</tt><tt class="descname">renorm_helper</tt><big>(</big><em>con_coeff</em>, <em>alpha</em>, <em>shell_type</em><big>)</big><a class="headerlink" href="#horton.io.common.renorm_helper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fix an unnormalized contraction coefficient</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.io.common.get_orca_signs">
+<tt class="descclassname">horton.io.common.</tt><tt class="descname">get_orca_signs</tt><big>(</big><em>obasis</em><big>)</big><a class="headerlink" href="#horton.io.common.get_orca_signs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Correct for different sign conventions used in ORCA.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.io.cp2k">
+<span id="horton-io-cp2k-cp2k-output-parsing-atom-code"></span><h2>9.4. <a class="reference internal" href="#module-horton.io.cp2k" title="horton.io.cp2k"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.cp2k</span></tt></a> &#8211; CP2K output parsing (atom code)<a class="headerlink" href="#module-horton.io.cp2k" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.io.cp2k.load_atom_cp2k">
+<tt class="descclassname">horton.io.cp2k.</tt><tt class="descname">load_atom_cp2k</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.cp2k.load_atom_cp2k" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-horton.io.cube">
+<span id="horton-io-cube-gaussian-cube-files"></span><h2>9.5. <a class="reference internal" href="#module-horton.io.cube" title="horton.io.cube"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.cube</span></tt></a> &#8211; Gaussian Cube files<a class="headerlink" href="#module-horton.io.cube" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.io.cube.load_cube">
+<tt class="descclassname">horton.io.cube.</tt><tt class="descname">load_cube</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.cube.load_cube" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.io.cube.dump_cube">
+<tt class="descclassname">horton.io.cube.</tt><tt class="descname">dump_cube</tt><big>(</big><em>filename</em>, <em>system</em><big>)</big><a class="headerlink" href="#horton.io.cube.dump_cube" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-horton.io.gaussian">
+<span id="horton-io-gaussian-other-stuff-gaussian"></span><h2>9.6. <a class="reference internal" href="#module-horton.io.gaussian" title="horton.io.gaussian"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.gaussian</span></tt></a> &#8211; Other stuff Gaussian<a class="headerlink" href="#module-horton.io.gaussian" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.io.gaussian.load_operators_g09">
+<tt class="descclassname">horton.io.gaussian.</tt><tt class="descname">load_operators_g09</tt><big>(</big><em>fn</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.gaussian.load_operators_g09" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads several one- and two-body operators from a Gaussian log file.</p>
+<p><strong>Arugment:</strong></p>
+<dl class="docutils">
+<dt>fn</dt>
+<dd>The filename of the Gaussian log file.</dd>
+<dt>lf</dt>
+<dd>A LinalgFactory instance.</dd>
+</dl>
+<p>The following one-body operators are loaded if present: overlap, kinetic,
+nuclear attraction. The following two-body operator is loaded if present:
+electrostatic repulsion. In order to make all these matrices are present
+in the Gaussian log file, the following commands must be used in the
+Gaussian input file:</p>
+<blockquote>
+<div>scf(conventional) iop(3/33=5) extralinks=l316 iop(3/27=999)</div></blockquote>
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.io.gaussian.FCHKFile">
+<em class="property">class </em><tt class="descclassname">horton.io.gaussian.</tt><tt class="descname">FCHKFile</tt><big>(</big><em>filename</em>, <em>field_labels=None</em><big>)</big><a class="headerlink" href="#horton.io.gaussian.FCHKFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reader for Formatted checkpoint files</p>
+<p>After initialization, the data from the file is available in the fields
+dictionary. Also the following attributes are read from the file: title,
+command, lot (level of theory) and basis.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The formatted checkpoint file.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>field_labels</dt>
+<dd>When provided, only these fields are read from the formatted
+checkpoint file. (This can save a lot of time.)</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.io.gaussian.load_fchk">
+<tt class="descclassname">horton.io.gaussian.</tt><tt class="descname">load_fchk</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.gaussian.load_fchk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load from a formatted checkpoint file.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The filename of the Gaussian formatted checkpoint file.</dd>
+<dt>lf</dt>
+<dd>A LinalgFactory instance.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.io.molden">
+<span id="horton-io-molden-molden-wavefunction-input-file"></span><h2>9.7. <a class="reference internal" href="#module-horton.io.molden" title="horton.io.molden"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.molden</span></tt></a> &#8211; Molden wavefunction input file<a class="headerlink" href="#module-horton.io.molden" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.io.molden.load_molden">
+<tt class="descclassname">horton.io.molden.</tt><tt class="descname">load_molden</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.molden.load_molden" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load data from a molden input file (with ORCA sign conventions).</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The filename of the molden input file.</dd>
+<dt>lf</dt>
+<dd>A LinalgFactory instance.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.io.molekel">
+<span id="horton-io-molekel-molekel-wavefunction-file"></span><h2>9.8. <a class="reference internal" href="#module-horton.io.molekel" title="horton.io.molekel"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.molekel</span></tt></a> &#8211; Molekel wavefunction file<a class="headerlink" href="#module-horton.io.molekel" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.io.molekel.load_mkl">
+<tt class="descclassname">horton.io.molekel.</tt><tt class="descname">load_mkl</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.molekel.load_mkl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load data from a Molekel file (with ORCA sign conventions).</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The filename of the mkl file.</dd>
+<dt>lf</dt>
+<dd>A LinalgFactory instance.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.io.smart">
+<span id="horton-io-smart-smart-interface-to-all-input-output-routines"></span><h2>9.9. <a class="reference internal" href="#module-horton.io.smart" title="horton.io.smart"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.smart</span></tt></a> &#8211; Smart interface to all input-output routines<a class="headerlink" href="#module-horton.io.smart" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.io.smart.load_system_args">
+<tt class="descclassname">horton.io.smart.</tt><tt class="descname">load_system_args</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.smart.load_system_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a molecular data from a file.</p>
+<p><strong>Argument:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The file to load the geometry from</dd>
+<dt>lf</dt>
+<dd>A LinalgFactory instance.</dd>
+</dl>
+<p>This routine uses the extension of the filename to determine the file
+format. It returns a dictionary with constructor arguments for the System
+class.</p>
+<p>For each filename extension, there is a specialized load_xxx function
+that returns a dictionary with arguments for the constructor of the
+<tt class="docutils literal"><span class="pre">System</span></tt> class, except for the <tt class="docutils literal"><span class="pre">chk</span></tt> and <tt class="docutils literal"><span class="pre">lf</span></tt> arguments. Two
+additional variables may be added in the returned dictionary:
+<tt class="docutils literal"><span class="pre">permutation</span></tt> and <tt class="docutils literal"><span class="pre">signs</span></tt>. These will be used to reorder and change
+the signs of all matrix elements related to the basis functions.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.io.smart.dump_system">
+<tt class="descclassname">horton.io.smart.</tt><tt class="descname">dump_system</tt><big>(</big><em>filename</em>, <em>system</em><big>)</big><a class="headerlink" href="#horton.io.smart.dump_system" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-horton.io.vasp">
+<span id="horton-io-vasp-vasp-poscar-chgcar-and-locpot-files"></span><h2>9.10. <a class="reference internal" href="#module-horton.io.vasp" title="horton.io.vasp"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.vasp</span></tt></a> &#8211; VASP POSCAR, CHGCAR and LOCPOT files<a class="headerlink" href="#module-horton.io.vasp" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.io.vasp.load_chgcar">
+<tt class="descclassname">horton.io.vasp.</tt><tt class="descname">load_chgcar</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.vasp.load_chgcar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a vasp 5 chgcar file.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.io.vasp.load_locpot">
+<tt class="descclassname">horton.io.vasp.</tt><tt class="descname">load_locpot</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.vasp.load_locpot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a vasp 5 locpot file.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.io.vasp.load_poscar">
+<tt class="descclassname">horton.io.vasp.</tt><tt class="descname">load_poscar</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.vasp.load_poscar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.io.vasp.dump_poscar">
+<tt class="descclassname">horton.io.vasp.</tt><tt class="descname">dump_poscar</tt><big>(</big><em>filename</em>, <em>system</em><big>)</big><a class="headerlink" href="#horton.io.vasp.dump_poscar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a system to a file in VASP&#8217;s POSCAR format</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The name of the file to be written. This is usually POSCAR.</dd>
+<dt>system</dt>
+<dd>An instance of the System class.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.io.xyz">
+<span id="horton-io-xyz-the-xyz-format"></span><h2>9.11. <a class="reference internal" href="#module-horton.io.xyz" title="horton.io.xyz"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.xyz</span></tt></a> &#8211; The XYZ format<a class="headerlink" href="#module-horton.io.xyz" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.io.xyz.load_geom_xyz">
+<tt class="descclassname">horton.io.xyz.</tt><tt class="descname">load_geom_xyz</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.xyz.load_geom_xyz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a molecular geometry from a .xyz file.</p>
+<p><strong>Argument:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The file to load the geometry from</dd>
+</dl>
+<p><strong>Returns:</strong> two arrays, coordinates and numbers that can be used as the
+two first arguments of the System constructor.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">9. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input/output routines</a><ul>
+<li><a class="reference internal" href="#module-horton.io.chk">9.1. <tt class="docutils literal"><span class="pre">horton.io.chk</span></tt> &#8211; Horton checkpoint file format</a></li>
+<li><a class="reference internal" href="#module-horton.io.cif">9.2. <tt class="docutils literal"><span class="pre">horton.io.cif</span></tt> &#8211; Crystal Information File format</a></li>
+<li><a class="reference internal" href="#module-horton.io.common">9.3. <tt class="docutils literal"><span class="pre">horton.io.common</span></tt> &#8211; Shared routines in the io package</a></li>
+<li><a class="reference internal" href="#module-horton.io.cp2k">9.4. <tt class="docutils literal"><span class="pre">horton.io.cp2k</span></tt> &#8211; CP2K output parsing (atom code)</a></li>
+<li><a class="reference internal" href="#module-horton.io.cube">9.5. <tt class="docutils literal"><span class="pre">horton.io.cube</span></tt> &#8211; Gaussian Cube files</a></li>
+<li><a class="reference internal" href="#module-horton.io.gaussian">9.6. <tt class="docutils literal"><span class="pre">horton.io.gaussian</span></tt> &#8211; Other stuff Gaussian</a></li>
+<li><a class="reference internal" href="#module-horton.io.molden">9.7. <tt class="docutils literal"><span class="pre">horton.io.molden</span></tt> &#8211; Molden wavefunction input file</a></li>
+<li><a class="reference internal" href="#module-horton.io.molekel">9.8. <tt class="docutils literal"><span class="pre">horton.io.molekel</span></tt> &#8211; Molekel wavefunction file</a></li>
+<li><a class="reference internal" href="#module-horton.io.smart">9.9. <tt class="docutils literal"><span class="pre">horton.io.smart</span></tt> &#8211; Smart interface to all input-output routines</a></li>
+<li><a class="reference internal" href="#module-horton.io.vasp">9.10. <tt class="docutils literal"><span class="pre">horton.io.vasp</span></tt> &#8211; VASP POSCAR, CHGCAR and LOCPOT files</a></li>
+<li><a class="reference internal" href="#module-horton.io.xyz">9.11. <tt class="docutils literal"><span class="pre">horton.io.xyz</span></tt> &#8211; The XYZ format</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lib_horton_hamiltonian.html"
+                        title="previous chapter">8. <tt class="docutils literal docutils literal docutils literal"><span class="pre">horton.hamiltonian</span></tt> &#8211; SCF model hamiltonians</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="lib_horton_part.html"
+                        title="next chapter">10. <tt class="docutils literal"><span class="pre">horton.part</span></tt> &#8211; Density partitioning</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/lib_horton_io.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_part.html" title="10. horton.part – Density partitioning"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_hamiltonian.html" title="8. horton.hamiltonian – SCF model hamiltonians"
+             >previous</a> |</li>
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Toon Verstraelen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

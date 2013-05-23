@@ -1,19 +1,23 @@
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Gaussian basis functions &mdash; Horton v0.0 documentation</title>
+    <title>5. Gaussian basis functions &mdash; Horton 1.0 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
-        VERSION:     '0.0',
-        COLLAPSE_MODINDEX: false,
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
@@ -21,9 +25,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Horton v0.0 documentation" href="index.html" />
-    <link rel="next" title="Getting Started with Coding" href="dev_get_coding.html" />
-    <link rel="prev" title="Theoretical background" href="tut_theory.html" /> 
+    <link rel="top" title="Horton 1.0 documentation" href="index.html" />
+    <link rel="next" title="1. Contributors" href="dev_contributors.html" />
+    <link rel="prev" title="4. How to use Horton as an SCF program" href="tut_scf.html" /> 
   </head>
   <body>
     <div class="related">
@@ -33,15 +37,15 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
-          <a href="dev_get_coding.html" title="Getting Started with Coding"
+          <a href="dev_contributors.html" title="1. Contributors"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="tut_theory.html" title="Theoretical background"
+          <a href="tut_scf.html" title="4. How to use Horton as an SCF program"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Horton v0.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -51,16 +55,16 @@
           <div class="body">
             
   <div class="section" id="gaussian-basis-functions">
-<h1>Gaussian basis functions<a class="headerlink" href="#gaussian-basis-functions" title="Permalink to this headline">¶</a></h1>
+<h1>5. Gaussian basis functions<a class="headerlink" href="#gaussian-basis-functions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>5.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Horton supports contracted Gaussian basis functions, which have in general the
 following form:</p>
 <div class="math">
 <p><img src="_images/math/5bb267d753c9dc49c6b3ca0c4a74a1b3b2df498e.png" alt="b(\mathbf{r}; D_1, \ldots, D_k, P, \alpha_1, \ldots, \alpha_K, \mathbf{r}_A) =
 \sum_{k=1}^K D_k N(\alpha_k, P)
 P(\mathbf{r} - \mathbf{r}_A)
-\exp(-\alpha_k \Vert \mathbf{r} - \mathbf{r}_A \Vert^2)" /></p>
+\exp(-\alpha_k \Vert \mathbf{r} - \mathbf{r}_A \Vert^2)"/></p>
 </div><p>where <img class="math" src="_images/math/dfb064112b6c94470339f6571f69d07afc1c024c.png" alt="K" style="vertical-align: 0px"/> is the contraction length, <img class="math" src="_images/math/436f74f016c5ee72d5603c33a35eed660a7c84cd.png" alt="D_k" style="vertical-align: -3px"/> is a contraction
 coefficient, <img class="math" src="_images/math/fc97ef67268cd4e91bacdf12b8901d7036c9a056.png" alt="N" style="vertical-align: 0px"/> is a normalization constant, <img class="math" src="_images/math/4b4cade9ca8a2c8311fafcf040bc5b15ca507f52.png" alt="P" style="vertical-align: 0px"/> is a Cartesian
 polynomial, <img class="math" src="_images/math/63b67135e8833d91f039ecd50338c25a564d0a5a.png" alt="\alpha_k" style="vertical-align: -3px"/> is an exponent and <img class="math" src="_images/math/9633118ce2557302a8d664d25031feaabafa678c.png" alt="\mathbf{r}_A" style="vertical-align: -3px"/> is the
@@ -71,22 +75,22 @@ exponent and is defined by the following relation:</p>
 <div class="math">
 <p><img src="_images/math/05377c028a1b35fc799aaa8fd71c252eba079451.png" alt="\int \Bigl\vert N(\alpha_k, P) P(\mathbf{r} - \mathbf{r}_A)
 \exp(-\alpha_k \Vert \mathbf{r} - \mathbf{r}_A \Vert^2)
-\Bigr\vert^2 d\mathbf{r} = 1" /></p>
+\Bigr\vert^2 d\mathbf{r} = 1"/></p>
 </div><p>Likewise, the contraction coefficients are defined such that the total
 contraction satisfies the same normalization condition:</p>
 <div class="math">
 <p><img src="_images/math/d5f17c9281c3da9e1ddf23a87e1ca57ae05994c6.png" alt="\int \Bigl\vert
 b(\mathbf{r}; D_1, \ldots, D_k, P, \alpha_1, \ldots, \alpha_K, \mathbf{r}_A)
-\Bigr\vert^2 d\mathbf{r} = 1" /></p>
+\Bigr\vert^2 d\mathbf{r} = 1"/></p>
 </div><p>There are two common forms of the polynomial: Cartesian and pure (harmonic) basis
 functions. Both types will be defined below, together with some conventions
 that are needed for the implementation in Horton.</p>
 </div>
 <div class="section" id="cartesian">
-<h2>Cartesian<a class="headerlink" href="#cartesian" title="Permalink to this headline">¶</a></h2>
+<h2>5.2. Cartesian<a class="headerlink" href="#cartesian" title="Permalink to this headline">¶</a></h2>
 <p>When the polynomial consists of a single term as follows:</p>
 <div class="math">
-<p><img src="_images/math/e8e18b1eabcee7a00434ae708cca71721c8c20d4.png" alt="P(x,y,z) = x^{n_x} y^{n_y} z^{n_z}" /></p>
+<p><img src="_images/math/e8e18b1eabcee7a00434ae708cca71721c8c20d4.png" alt="P(x,y,z) = x^{n_x} y^{n_y} z^{n_z}"/></p>
 </div><p>with <img class="math" src="_images/math/681e8a9cd61d71bbf227b51f031e542b1eeffda6.png" alt="n_x" style="vertical-align: -3px"/>, <img class="math" src="_images/math/4590906156b55c69e609aad35ae185b88bdfa59b.png" alt="n_y" style="vertical-align: -6px"/>, <img class="math" src="_images/math/4c87a9bba703b63baf21c238b69ed59c2389c092.png" alt="n_z" style="vertical-align: -3px"/>, zero or positive integer powers, one
 speaks of <cite>Cartesian Gaussian basis functions</cite>. One refers to the sum of the
 powers as the angular momentum of the Cartesian Gaussian basis. The
@@ -95,7 +99,7 @@ normalization constant is:</p>
 <p><img src="_images/math/301db86f793f358b92c2082453f9f385602d0caf.png" alt="N(\alpha_k, n_x, n_y, n_z) = \sqrt{\frac
 {(2\alpha_k/\pi)^{3/2} (4\alpha_k)^{n_x+n_y+n_z}}
 {(2n_x-1)!! (2n_y-1)!! (2n_z-1)!!}
-}" /></p>
+}"/></p>
 </div><p>In practice one combines all basis functions of a given angular momentum (or
 algebraic order). A basis specification typically only mentions the total
 angular momentum, and it is assumed that all polynomials of that
@@ -113,34 +117,34 @@ the table below.</p>
 <col width="90%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">Symbol</th>
+<tr class="row-odd"><th class="head">Symbol</th>
 <th class="head">Angular momentum</th>
 <th class="head">#</th>
 <th class="head">Polynomials</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>S</td>
+<tr class="row-even"><td>S</td>
 <td>0</td>
 <td>1</td>
 <td><img class="math" src="_images/math/dce34f4dfb2406144304ad0d6106c5382ddd1446.png" alt="1" style="vertical-align: -1px"/></td>
 </tr>
-<tr><td>P</td>
+<tr class="row-odd"><td>P</td>
 <td>1</td>
 <td>3</td>
 <td><img class="math" src="_images/math/26eeb5258ca5099acf8fe96b2a1049c48c89a5e6.png" alt="x" style="vertical-align: 0px"/>, <img class="math" src="_images/math/092e364e1d9d19ad5fffb0b46ef4cc7f2da02c1c.png" alt="y" style="vertical-align: -4px"/>, <img class="math" src="_images/math/b13f21416d84e13708696f34dea81026cda583c9.png" alt="z" style="vertical-align: 0px"/></td>
 </tr>
-<tr><td>D</td>
+<tr class="row-even"><td>D</td>
 <td>2</td>
 <td>6</td>
 <td><img class="math" src="_images/math/2cb569e54a01b1549c985f1c1b6054c6eb31a9d8.png" alt="xx" style="vertical-align: 0px"/>, <img class="math" src="_images/math/3f79c3676b62fb47243e0d357c87115b6f3395e4.png" alt="xy" style="vertical-align: -4px"/>, <img class="math" src="_images/math/2dd70347c7940f63ff9417e383548564fd92aff7.png" alt="xz" style="vertical-align: 0px"/>, <img class="math" src="_images/math/6d0bf4f80cc2021882856f7c627aca141ca94c38.png" alt="yy" style="vertical-align: -4px"/>, <img class="math" src="_images/math/5d379b13c2338ee58a27252096b2544c9e8e37c7.png" alt="yz" style="vertical-align: -4px"/>, <img class="math" src="_images/math/39baf3c3334363412178a0e5ca3df2b929591075.png" alt="zz" style="vertical-align: 0px"/></td>
 </tr>
-<tr><td>F</td>
+<tr class="row-odd"><td>F</td>
 <td>3</td>
 <td>10</td>
 <td><img class="math" src="_images/math/d22a8367c92dde9062b2e629977b7ea74453dfd0.png" alt="xxx" style="vertical-align: 0px"/>, <img class="math" src="_images/math/0e728bec818b5e02657482b9d699394ae304bc23.png" alt="xxy" style="vertical-align: -4px"/>, <img class="math" src="_images/math/1aeee2a8d41927ba1033dcedcfc3bbd056cb3f46.png" alt="xxz" style="vertical-align: 0px"/>, <img class="math" src="_images/math/17e2a806df9592e097bb88616882e7bbafdb8e23.png" alt="xyy" style="vertical-align: -4px"/>, <img class="math" src="_images/math/d57d8fef9329fabd73078ae824a034e8a00e332f.png" alt="xyz" style="vertical-align: -4px"/>, <img class="math" src="_images/math/c4939caf05bc59456649076adca8277010ed5216.png" alt="xzz" style="vertical-align: 0px"/>, <img class="math" src="_images/math/1b5e043a6ad97cc5d3e82f8c3107b3b3745065c8.png" alt="yyy" style="vertical-align: -4px"/>, <img class="math" src="_images/math/fb2582617fd2ea349ce2fc84f186e7b1c2575c20.png" alt="yyz" style="vertical-align: -4px"/>, <img class="math" src="_images/math/25a2339e432fcc0f651c923d631c8064b311bcec.png" alt="yzz" style="vertical-align: -4px"/>, <img class="math" src="_images/math/cf5f3cce4e612746622f49e510fce0f9b34f8777.png" alt="zzz" style="vertical-align: 0px"/></td>
 </tr>
-<tr><td>G</td>
+<tr class="row-even"><td>G</td>
 <td>4</td>
 <td>15</td>
 <td><img class="math" src="_images/math/0a96fb9dc206400dcd7a8cf51a1f335df4627bce.png" alt="xxxx" style="vertical-align: 0px"/>, <img class="math" src="_images/math/de0074ac0317963dfd28c1bd2c294aa2f095289a.png" alt="xxxy" style="vertical-align: -4px"/>, <img class="math" src="_images/math/fcd874fde8605eea9d11f60e32462cef20104456.png" alt="xxxz" style="vertical-align: 0px"/>, <img class="math" src="_images/math/4c7604ca0ca7bb2c4c2fc7efc8394bfaa08fb235.png" alt="xxyy" style="vertical-align: -4px"/>, <img class="math" src="_images/math/68ddb52731dc26fc15a1f533029d73aabd5ef022.png" alt="xxyz" style="vertical-align: -4px"/>, <img class="math" src="_images/math/149e94f9315425c2f813fbf68b8c79b570431119.png" alt="xxzz" style="vertical-align: 0px"/>, <img class="math" src="_images/math/892580c98166f70c68ea28d61362fe0346f02a79.png" alt="xyyy" style="vertical-align: -4px"/>, <img class="math" src="_images/math/eff07f7b8e7eaeab6e57b970137bc0f4ee605572.png" alt="xyyz" style="vertical-align: -4px"/>, <img class="math" src="_images/math/7af8cffadc5e846b9e3ba4db8a5286b07088ad93.png" alt="xyzz" style="vertical-align: -4px"/>, <img class="math" src="_images/math/0c636a54c9f6280707376cf068afd7e7ff135493.png" alt="xzzz" style="vertical-align: 0px"/>, <img class="math" src="_images/math/17f049d55f6ff7fdc5d86a07910fe1bf76f601b9.png" alt="yyyy" style="vertical-align: -4px"/>, <img class="math" src="_images/math/15545b47b5eabfca0af326ce298dd965cc194683.png" alt="yyyz" style="vertical-align: -4px"/>, <img class="math" src="_images/math/37211b1eca1a3aa3d9cc56870cdbcd69dcd71f0b.png" alt="yyzz" style="vertical-align: -4px"/>, <img class="math" src="_images/math/436554cbeb8bf54b4f653e01fcd7a75b1e2b9cbb.png" alt="yzzz" style="vertical-align: -4px"/>, <img class="math" src="_images/math/2d10c2b03a0e384b52d6f9c524ad222fe3dc8693.png" alt="zzzz" style="vertical-align: 0px"/></td>
@@ -149,26 +153,26 @@ the table below.</p>
 </table>
 </div>
 <div class="section" id="pure-or-harmonic">
-<h2>Pure or Harmonic<a class="headerlink" href="#pure-or-harmonic" title="Permalink to this headline">¶</a></h2>
+<h2>5.3. Pure or Harmonic<a class="headerlink" href="#pure-or-harmonic" title="Permalink to this headline">¶</a></h2>
 <p>When the polynomial is a real regular solid harmonic, one speaks of <cite>pure
 Gaussian basis functions</cite>:</p>
 <div class="math">
-<p><img src="_images/math/705fd1809f2be44b673b06d197be037181ffac6b.png" alt="P(r,\theta,\phi) = C_\ell^m(r,\theta,\phi) \quad \text{or} \quad P(r,\theta,\phi) = S_\ell^m(r,\theta,\phi)" /></p>
+<p><img src="_images/math/705fd1809f2be44b673b06d197be037181ffac6b.png" alt="P(r,\theta,\phi) = C_\ell^m(r,\theta,\phi) \quad \text{or} \quad P(r,\theta,\phi) = S_\ell^m(r,\theta,\phi)"/></p>
 </div><p>where <img class="math" src="_images/math/f9983687acf90d3012b80948e83e98ef82130fdc.png" alt="C_\ell^m" style="vertical-align: -5px"/> and <img class="math" src="_images/math/3d1f73a4150c226cc30c1119d9f06c9be679d344.png" alt="S_\ell^m" style="vertical-align: -5px"/> are cosine and sine-like real regular
 solid harmonics, defined as follows:</p>
 <div class="math">
 <p><img src="_images/math/3649ab757a020f09f751376c71125e25999f2e0d.png" alt="C_\ell^0(r,\theta,\phi) &amp; = r^\ell Y_\ell^0(r,\theta,\phi) \\
 C_\ell^m(r,\theta,\phi) &amp; = r^\ell \frac{1}{\sqrt{2}}((-1)^m Y_\ell^m(\theta,\phi) + Y_\ell^{-m}(\theta,\phi)) \quad m = 1\ldots \ell \\
-S_\ell^m(r,\theta,\phi) &amp; = r^\ell \frac{1}{i \sqrt{2}}((-1)^m Y_\ell^m(\theta,\phi) - Y_\ell^{-m}(\theta,\phi)) \quad m = 1\ldots \ell" /></p>
+S_\ell^m(r,\theta,\phi) &amp; = r^\ell \frac{1}{i \sqrt{2}}((-1)^m Y_\ell^m(\theta,\phi) - Y_\ell^{-m}(\theta,\phi)) \quad m = 1\ldots \ell"/></p>
 </div><p>The index <img class="math" src="_images/math/63c17c295325f731666c7d74952b563a01e00fcc.png" alt="\ell" style="vertical-align: -1px"/> is a zero or positive. Due to the presence of the factor
 <img class="math" src="_images/math/10570f7d7d4438e2e463056043937f325988769d.png" alt="r^\ell" style="vertical-align: 0px"/>, these are homogeneous polynomials, i.e. linear combinations of the
 Cartesian polynomials listed above. The following definition for the spherical
 harmonics is used:</p>
 <div class="math">
-<p><img src="_images/math/20b3260cc47f97fc5e1976037f17558887576e6b.png" alt="Y_\ell^m(\theta, \varphi) = \sqrt{\frac{(\ell-m)!}{(\ell+m)!}} \, P_\ell^m(\cos{\theta})\, e^{i m \varphi}" /></p>
+<p><img src="_images/math/20b3260cc47f97fc5e1976037f17558887576e6b.png" alt="Y_\ell^m(\theta, \varphi) = \sqrt{\frac{(\ell-m)!}{(\ell+m)!}} \, P_\ell^m(\cos{\theta})\, e^{i m \varphi}"/></p>
 </div><p>which has a norm</p>
 <div class="math">
-<p><img src="_images/math/fa346eab36bf4b8bfea8efec6fc2df4fb6f8319b.png" alt="\iint |Y_\ell^m(\theta, \varphi)|^2 \sin \theta d \theta d \varphi = \frac{4\pi}{2\ell+1}" /></p>
+<p><img src="_images/math/fa346eab36bf4b8bfea8efec6fc2df4fb6f8319b.png" alt="\iint |Y_\ell^m(\theta, \varphi)|^2 \sin \theta d \theta d \varphi = \frac{4\pi}{2\ell+1}"/></p>
 </div><p>for the sake of compatibility with the unnormalized Cartesian s- and p-type
 functions above. The normalization constant of a pure Gaussian basis function
 is:</p>
@@ -176,7 +180,7 @@ is:</p>
 <p><img src="_images/math/e839a6f6b9d9499806d3793bf8a7e24b915163f5.png" alt="N(\alpha_k, \ell) = \sqrt{\frac
 {(2\alpha_k/\pi)^{3/2} (4\alpha_k)^\ell}
 {(2\ell-1)!!}
-}" /></p>
+}"/></p>
 </div><p>In practical applications, one always combines all the basis functions of a
 given angular momentum. A basis specification typically only mentions the total
 angular momentum, and it is assumed that all polynomials of that
@@ -196,34 +200,34 @@ the table below.</p>
 <col width="85%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">Symbol</th>
+<tr class="row-odd"><th class="head">Symbol</th>
 <th class="head">Angular momentum</th>
 <th class="head">#</th>
 <th class="head">Polynomials</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>S</td>
+<tr class="row-even"><td>S</td>
 <td>0</td>
 <td>1</td>
 <td><img class="math" src="_images/math/9517c983aaab11396f2f5caa337bc1a0c7a62dfb.png" alt="C_0^0=1" style="vertical-align: -5px"/></td>
 </tr>
-<tr><td>P</td>
+<tr class="row-odd"><td>P</td>
 <td>1</td>
 <td>3</td>
 <td><img class="math" src="_images/math/d82e8a307de91e3dba8f8bff44c6392e9c400dad.png" alt="C_1^0=z" style="vertical-align: -6px"/>, <img class="math" src="_images/math/82b2836653bedfd50c398ac6aad2e1b263086e8c.png" alt="C_1^1=x" style="vertical-align: -6px"/>, <img class="math" src="_images/math/89f8bc74b446c710c0657fde8f473a8165fcacb2.png" alt="S_1^1=y" style="vertical-align: -6px"/></td>
 </tr>
-<tr><td>D</td>
+<tr class="row-even"><td>D</td>
 <td>2</td>
 <td>5</td>
 <td><img class="math" src="_images/math/437b3e536c1259d51516b4744f8634099a9ed69f.png" alt="C_2^0" style="vertical-align: -5px"/>, <img class="math" src="_images/math/90cceab3abf3cbc95011e2c3a3e8124f91426027.png" alt="C_2^1" style="vertical-align: -5px"/>, <img class="math" src="_images/math/2a0b9cadf72b3920ae97f18f01b81b565ced2249.png" alt="S_2^1" style="vertical-align: -5px"/>, <img class="math" src="_images/math/74a6d5227489a4ac3f0bca97c95d56d57d40d218.png" alt="C_2^2" style="vertical-align: -5px"/>, <img class="math" src="_images/math/b2d8efef1172fb2fa3f1c5871f17ee9786d80c4b.png" alt="S_2^2" style="vertical-align: -5px"/></td>
 </tr>
-<tr><td>F</td>
+<tr class="row-odd"><td>F</td>
 <td>3</td>
 <td>7</td>
 <td><img class="math" src="_images/math/f2e337e3398ccd79bfd977604a4babc7c55b920f.png" alt="C_3^0" style="vertical-align: -5px"/>, <img class="math" src="_images/math/2a6b1186df697f365b458ab2de11b2f06cc79ace.png" alt="C_3^1" style="vertical-align: -5px"/>, <img class="math" src="_images/math/869aef0e148db4fe218cc14dcf61d7c9f0a50c0c.png" alt="S_3^1" style="vertical-align: -5px"/>, <img class="math" src="_images/math/0422ccf21f5058c14c6503d5236cb651114f50b6.png" alt="C_3^2" style="vertical-align: -5px"/>, <img class="math" src="_images/math/cc472bd5a281d0bf81d99acef6e4b4badda8782b.png" alt="S_3^2" style="vertical-align: -5px"/>, <img class="math" src="_images/math/f10f9d38e71df572e92f84a5bf7b52833d3415b5.png" alt="C_3^3" style="vertical-align: -5px"/>, <img class="math" src="_images/math/680f6d2c4fac53f92ad43b516ad08973e6a4b761.png" alt="S_3^3" style="vertical-align: -5px"/></td>
 </tr>
-<tr><td>G</td>
+<tr class="row-even"><td>G</td>
 <td>4</td>
 <td>9</td>
 <td><img class="math" src="_images/math/2617152feccf4f97d4279df32e555ae8aa09a9a0.png" alt="C_4^0" style="vertical-align: -5px"/>, <img class="math" src="_images/math/30145380c1e1cbb979ee4c29b2d54e4f0a11883f.png" alt="C_4^1" style="vertical-align: -5px"/>, <img class="math" src="_images/math/4ed34b8394fb7865789b272f85d7300fe1b8a4e9.png" alt="S_4^1" style="vertical-align: -5px"/>, <img class="math" src="_images/math/cff29a3045e578fc2f5a8da4c99c9d092aeb5e44.png" alt="C_4^2" style="vertical-align: -5px"/>, <img class="math" src="_images/math/eecb49ac74c144c34fe316ea0ce3dcd95e5a33d1.png" alt="S_4^2" style="vertical-align: -5px"/>, <img class="math" src="_images/math/47e7e7970fa2e7e248e775b9db32b45e5a956c22.png" alt="C_4^3" style="vertical-align: -5px"/>, <img class="math" src="_images/math/793e33db6d5f981eac9a0961117651e72f1d2098.png" alt="S_4^3" style="vertical-align: -5px"/>, <img class="math" src="_images/math/369b4db21de22df736052dd84c9f86e23f56d6b4.png" alt="C_4^4" style="vertical-align: -5px"/>, <img class="math" src="_images/math/800b9a19b3cb32f2b68c61759eea7be48264ca09.png" alt="S_4^4" style="vertical-align: -5px"/></td>
@@ -232,52 +236,52 @@ the table below.</p>
 </table>
 </div>
 <div class="section" id="transformation-from-cartesian-to-pure">
-<h2>Transformation from Cartesian to pure<a class="headerlink" href="#transformation-from-cartesian-to-pure" title="Permalink to this headline">¶</a></h2>
+<h2>5.4. Transformation from Cartesian to pure<a class="headerlink" href="#transformation-from-cartesian-to-pure" title="Permalink to this headline">¶</a></h2>
 <p>Let us now derive convenient expressions for these real solid harmonics in terms
 of Cartesian coordinates. The function <img class="math" src="_images/math/13543bb10b41341dc3820bb9d0a2ec2bb77a735c.png" alt="P_\ell^m" style="vertical-align: -5px"/> is the
 associated Legendre Polynomial. For positive <img class="math" src="_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m" style="vertical-align: 0px"/> we have:</p>
 <div class="math">
 <p><img src="_images/math/424c0d7d4cdf2785c29c8153bbe9c057ea520806.png" alt="P_\ell^m(x) &amp; = (-1)^m (1-x^2)^{m/2} \frac{d^m}{dx^m} P_\ell(x) \\
-P_\ell^{-m}(x) &amp; = (-1)^m \frac{(\ell-m)!}{(\ell+m)!} P_\ell^m" /></p>
+P_\ell^{-m}(x) &amp; = (-1)^m \frac{(\ell-m)!}{(\ell+m)!} P_\ell^m"/></p>
 </div><p>where <img class="math" src="_images/math/abe78c6cea153988ec84e79a2e46a7e2bfecd072.png" alt="P_\ell" style="vertical-align: -3px"/> is the ordinary Legendre polynomial of order <img class="math" src="_images/math/63c17c295325f731666c7d74952b563a01e00fcc.png" alt="\ell" style="vertical-align: -1px"/>.
 Note that the factors <img class="math" src="_images/math/f9437217dcd1cca1eccdf2d80ab4c9f6fb53a0e3.png" alt="(-1)^m" style="vertical-align: -5px"/> are compensated in the definition of the
 real solid harmonics. Substitution of these definitions leads to the following
 form for the spherical harmonics:</p>
 <div class="math">
-<p><img src="_images/math/a198354483c5a0fe31269a4cf0eb6ca64feb653a.png" alt="Y_\ell^m(\theta, \varphi) = (-1)^{(m+|m|)/2}\sqrt{\frac{(\ell-|m|)!}{(\ell+|m|)!}} \, sin^m \theta \frac{d^m P_\ell(\cos{\theta})}{d \cos \theta}\, e^{i m \varphi}" /></p>
+<p><img src="_images/math/a198354483c5a0fe31269a4cf0eb6ca64feb653a.png" alt="Y_\ell^m(\theta, \varphi) = (-1)^{(m+|m|)/2}\sqrt{\frac{(\ell-|m|)!}{(\ell+|m|)!}} \, sin^m \theta \frac{d^m P_\ell(\cos{\theta})}{d \cos \theta}\, e^{i m \varphi}"/></p>
 </div><p>For <img class="math" src="_images/math/073b68444caca3c51f4ce50ee7fe4e5939755e22.png" alt="m&gt;0" style="vertical-align: 0px"/>, the real spherical harmonics are first written as follows:</p>
 <div class="math">
 <p><img src="_images/math/e4bfa1ad9bce3ace535ff6fd994d5e2238ba1b33.png" alt="C_\ell^m(\theta, \varphi) &amp; = r^\ell \sqrt{\frac{2(\ell-m)!}{(\ell+m)!}} \, sin^m \theta \frac{d^m P_\ell(\cos{\theta})}{d \cos \theta}\, cos(m \varphi) \\
-S_\ell^m(\theta, \varphi) &amp; = r^\ell \sqrt{\frac{2(\ell-m)!}{(\ell+m)!}} \, sin^m \theta \frac{d^m P_\ell(\cos{\theta})}{d \cos \theta}\, sin(m \varphi)" /></p>
+S_\ell^m(\theta, \varphi) &amp; = r^\ell \sqrt{\frac{2(\ell-m)!}{(\ell+m)!}} \, sin^m \theta \frac{d^m P_\ell(\cos{\theta})}{d \cos \theta}\, sin(m \varphi)"/></p>
 </div><p>It is conventional to factor out the <img class="math" src="_images/math/b13f21416d84e13708696f34dea81026cda583c9.png" alt="z" style="vertical-align: 0px"/>-dependent part (which also has
 some pure <img class="math" src="_images/math/b55ca7a0aa88ab7d58f4fc035317fdac39b17861.png" alt="r" style="vertical-align: 0px"/>-dependence). Making use of <img class="math" src="_images/math/ca0649767b535a2cfeb8c84236026ec66ea061c8.png" alt="z=r\cos\theta" style="vertical-align: 0px"/>, one gets:</p>
 <div class="math">
 <p><img src="_images/math/a129e93e5499d41febdc66fddf47db05291fdc90.png" alt="\Pi_\ell^m(z,r^2) &amp; = r^{\ell-m} \frac{d^m P_\ell (\cos\theta)}{d \cos\theta} \\
-         &amp; = \sum_{k=0}^{\lfloor (\ell-m)/2 \rfloor} \gamma_{\ell k}^{(m)} r^{2k} z^{\ell-2k-m}" /></p>
+         &amp; = \sum_{k=0}^{\lfloor (\ell-m)/2 \rfloor} \gamma_{\ell k}^{(m)} r^{2k} z^{\ell-2k-m}"/></p>
 </div><p>with</p>
 <div class="math">
-<p><img src="_images/math/cd733f3930cafb3da2ab8557ad40987b66ba0fbf.png" alt="\gamma_{\ell k}^{(m)} = \frac{(-1)^k}{2^\ell} \binom{\ell}{k}\binom{2\ell-2k}{\ell}\frac{(\ell-2k)!}{(\ell-2k-m)!}" /></p>
+<p><img src="_images/math/cd733f3930cafb3da2ab8557ad40987b66ba0fbf.png" alt="\gamma_{\ell k}^{(m)} = \frac{(-1)^k}{2^\ell} \binom{\ell}{k}\binom{2\ell-2k}{\ell}\frac{(\ell-2k)!}{(\ell-2k-m)!}"/></p>
 </div><p>For the <img class="math" src="_images/math/e53b1fe25be1c679117fb44a6a886fe1247d189a.png" alt="(x,y)" style="vertical-align: -5px"/>-dependence one has to following polynomials for the
 cosine and sine-like functions, respectively:</p>
 <div class="math">
 <p><img src="_images/math/15e5e22dec2e23628f47d8ccc71da8fb794071c8.png" alt="A_m(x,y) &amp; = r^m \sin^m \theta \cos(m \varphi) \\
          &amp; = \frac{1}{2}\biggl( (r \sin \theta e^{i \varphi})^m + (r \sin \theta e^{-i \varphi})^m \biggr) \\
          &amp; = \frac{1}{2}\biggl( (x + iy)^m + (x - iy)^m \biggr) \\
-         &amp; = \sum_p \binom{m}{p} x^p y^m-p \cos \bigl( (m-p) \pi/2 \bigl)" /></p>
+         &amp; = \sum_p \binom{m}{p} x^p y^m-p \cos \bigl( (m-p) \pi/2 \bigl)"/></p>
 </div><div class="math">
 <p><img src="_images/math/37daecb135c4058c80baa7ed0eb7477267ecbfbb.png" alt="B_m(x,y) &amp; = r^m \sin^m \theta \sin(m \varphi) \\
          &amp; = \frac{1}{2}\biggl( (r \sin \theta e^{i \varphi})^m - (r \sin \theta e^{-i \varphi})^m \biggr) \\
          &amp; = \frac{1}{2}\biggl( (x + iy)^m - (x - iy)^m \biggr) \\
-         &amp; = \sum_p \binom{m}{p} x^p y^m-p \sin \bigl( (m-p) \pi/2 \bigl)" /></p>
+         &amp; = \sum_p \binom{m}{p} x^p y^m-p \sin \bigl( (m-p) \pi/2 \bigl)"/></p>
 </div><p>where we made use of <img class="math" src="_images/math/7db9a9b22fff215ee2134ccae2b01147706cec6f.png" alt="i^k+(-i)^k = e^{k\pi/2} + e^{-k\pi/2} = \cos(k\pi/2)" style="vertical-align: -5px"/>
 and <img class="math" src="_images/math/27082c4a416b6134bdba06e5f219780546b4cbf0.png" alt="i^k-(-i)^k = e^{k\pi/2} - e^{-k\pi/2} = \sin(k\pi/2)" style="vertical-align: -5px"/>. Putting it
 all together, we have:</p>
 <div class="math">
 <p><img src="_images/math/00327dd73f9e353e76a50938275f69616febd7f2.png" alt="C_\ell^m(x, y, z) &amp; = \sqrt{\frac{2(\ell-m)!}{(\ell+m)!}} \, \Pi_\ell^m(z,r^2) \, A_m(x,y) \\
-S_\ell^m(x, y, z) &amp; = \sqrt{\frac{2(\ell-m)!}{(\ell+m)!}} \, \Pi_\ell^m(z,r^2) \, B_m(x,y)" /></p>
+S_\ell^m(x, y, z) &amp; = \sqrt{\frac{2(\ell-m)!}{(\ell+m)!}} \, \Pi_\ell^m(z,r^2) \, B_m(x,y)"/></p>
 </div><p>Also for the case <img class="math" src="_images/math/2e275495e7e44d279fb3e5051b3a63115e79ead5.png" alt="m=0" style="vertical-align: 0px"/>, one has a similar form:</p>
 <div class="math">
-<p><img src="_images/math/653999f1ae1d3e2f051b330cb79c4b1acd749d69.png" alt="C_\ell^0(x, y, z) &amp; = \Pi_\ell^0(z,r^2) \\" /></p>
+<p><img src="_images/math/653999f1ae1d3e2f051b330cb79c4b1acd749d69.png" alt="C_\ell^0(x, y, z) &amp; = \Pi_\ell^0(z,r^2) \\"/></p>
 </div><p>These expressions allow one to write the real solid harmonics in terms of a
 homogeneous polynomial of Cartesian coordinates. The following table is
 generated by the script <tt class="docutils literal"><span class="pre">tools/harmonics.py</span></tt>, which uses Sympy for the
@@ -307,7 +311,7 @@ S_4^2(x,y,z) &amp; = \frac{1}{15} \sqrt{5} x y \left(- \frac{15}{2} r^{2} + \fra
 C_4^3(x,y,z) &amp; = \frac{1}{4} \sqrt{70} z \left(x^{3} - 3 x y^{2}\right) \\
 S_4^3(x,y,z) &amp; = \frac{1}{4} \sqrt{70} z \left(3 x^{2} y - y^{3}\right) \\
 C_4^4(x,y,z) &amp; = \frac{1}{8} \sqrt{35} \left(x^{4} - 6 x^{2} y^{2} + y^{4}\right) \\
-S_4^4(x,y,z) &amp; = \frac{1}{8} \sqrt{35} \left(4 x^{3} y - 4 x y^{3}\right)" /></p>
+S_4^4(x,y,z) &amp; = \frac{1}{8} \sqrt{35} \left(4 x^{3} y - 4 x y^{3}\right)"/></p>
 </div><p>Note that these functions are not normalized yet.
 The formatting of the list above is not great because of the limitations of
 Sympy&#8217;s latex printer.</p>
@@ -388,7 +392,7 @@ X(C_4^0) \\ X(C_4^1) \\ X(S_4^1) \\ X(C_4^2) \\ X(S_4^2) \\ X(C_4^3) \\ X(S_4^3)
 \end{array}\right)
 \left(\begin{array}{c}
 X(xxxx) \\ X(xxxy) \\ X(xxxz) \\ X(xxyy) \\ X(xxyz) \\ X(xxzz) \\ X(xyyy) \\ X(xyyz) \\ X(xyzz) \\ X(xzzz) \\ X(yyyy) \\ X(yyyz) \\ X(yyzz) \\ X(yzzz) \\ X(zzzz)
-\end{array}\right)" /></p>
+\end{array}\right)"/></p>
 </div><p>These transformations are implemented in <tt class="docutils literal"><span class="pre">horton/cartpure.c</span></tt> with sparse
 matrix products for angular momenta up to <img class="math" src="_images/math/1658cd56d5f06aef3aeecb9881011967ffc7f7f9.png" alt="\ell=9" style="vertical-align: -1px"/>.</p>
 </div>
@@ -402,21 +406,21 @@ matrix products for angular momenta up to <img class="math" src="_images/math/16
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference external" href="#">Gaussian basis functions</a><ul>
-<li><a class="reference external" href="#introduction">Introduction</a></li>
-<li><a class="reference external" href="#cartesian">Cartesian</a></li>
-<li><a class="reference external" href="#pure-or-harmonic">Pure or Harmonic</a></li>
-<li><a class="reference external" href="#transformation-from-cartesian-to-pure">Transformation from Cartesian to pure</a></li>
+<li><a class="reference internal" href="#">5. Gaussian basis functions</a><ul>
+<li><a class="reference internal" href="#introduction">5.1. Introduction</a></li>
+<li><a class="reference internal" href="#cartesian">5.2. Cartesian</a></li>
+<li><a class="reference internal" href="#pure-or-harmonic">5.3. Pure or Harmonic</a></li>
+<li><a class="reference internal" href="#transformation-from-cartesian-to-pure">5.4. Transformation from Cartesian to pure</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="tut_theory.html"
-                        title="previous chapter">Theoretical background</a></p>
+  <p class="topless"><a href="tut_scf.html"
+                        title="previous chapter">4. How to use Horton as an SCF program</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="dev_get_coding.html"
-                        title="next chapter">Getting Started with Coding</a></p>
+  <p class="topless"><a href="dev_contributors.html"
+                        title="next chapter">1. Contributors</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/tut_gaussian_basis.txt"
@@ -425,7 +429,7 @@ matrix products for angular momenta up to <img class="math" src="_images/math/16
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -446,20 +450,20 @@ matrix products for angular momenta up to <img class="math" src="_images/math/16
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="dev_get_coding.html" title="Getting Started with Coding"
+          <a href="dev_contributors.html" title="1. Contributors"
              >next</a> |</li>
         <li class="right" >
-          <a href="tut_theory.html" title="Theoretical background"
+          <a href="tut_scf.html" title="4. How to use Horton as an SCF program"
              >previous</a> |</li>
-        <li><a href="index.html">Horton v0.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011, Toon Verstraelen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

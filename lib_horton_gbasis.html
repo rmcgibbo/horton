@@ -1,0 +1,701 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. horton.gbasis – Gaussian basis sets &mdash; Horton 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Horton 1.0 documentation" href="index.html" />
+    <link rel="next" title="7. horton.grid – Numerical integration grids" href="lib_horton_grid.html" />
+    <link rel="prev" title="5. horton.espfit – ESP fitting of charges" href="lib_horton_espfit.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_grid.html" title="7. horton.grid – Numerical integration grids"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_espfit.html" title="5. horton.espfit – ESP fitting of charges"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="horton-gbasis-gaussian-basis-sets">
+<h1>6. <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt> &#8211; Gaussian basis sets<a class="headerlink" href="#horton-gbasis-gaussian-basis-sets" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-horton.gbasis.cext">
+<span id="horton-gbasis-cext-interface-to-low-level-code"></span><h2>6.1. <a class="reference internal" href="#module-horton.gbasis.cext" title="horton.gbasis.cext"><tt class="xref py py-mod docutils literal"><span class="pre">horton.gbasis.cext</span></tt></a> &#8211; Interface to low-level code<a class="headerlink" href="#module-horton.gbasis.cext" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.gbasis.cext.boys_function">
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">boys_function</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.boys_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.cext.cart_to_pure_low">
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">cart_to_pure_low</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.cart_to_pure_low" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.cext.fac">
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">fac</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.fac" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.cext.fac2">
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">fac2</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.fac2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.cext.binom">
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">binom</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.binom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.cext.get_shell_nbasis">
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">get_shell_nbasis</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.get_shell_nbasis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.cext.get_max_shell_type">
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">get_max_shell_type</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.get_max_shell_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.cext.gpt_coeff">
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">gpt_coeff</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.gpt_coeff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.cext.gb_overlap_int1d">
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">gb_overlap_int1d</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.gb_overlap_int1d" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.cext.nuclear_attraction_helper">
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">nuclear_attraction_helper</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.nuclear_attraction_helper" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.cext.gob_cart_normalization">
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">gob_cart_normalization</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.gob_cart_normalization" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.cext.gob_pure_normalization">
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">gob_pure_normalization</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.gob_pure_normalization" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.cext.GOBasis">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">GOBasis</tt><a class="headerlink" href="#horton.gbasis.cext.GOBasis" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.gbasis.cext.GOBasis.check_matrix_coeffs">
+<tt class="descname">check_matrix_coeffs</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.check_matrix_coeffs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.GOBasis.check_matrix_one_body">
+<tt class="descname">check_matrix_one_body</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.check_matrix_one_body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.GOBasis.check_matrix_two_body">
+<tt class="descname">check_matrix_two_body</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.check_matrix_two_body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.GOBasis.compute_electron_repulsion">
+<tt class="descname">compute_electron_repulsion</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_electron_repulsion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.GOBasis.compute_grid_density_dm">
+<tt class="descname">compute_grid_density_dm</tt><big>(</big><em>dm</em>, <em>points</em>, <em>rho</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_density_dm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the electron density on a grid for a given density matrix.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>dm</dt>
+<dd>A density matrix. For now, this must be a DenseOneBody object.</dd>
+<dt>points</dt>
+<dd>A Numpy array with grid points, shape (npoint,3).</dd>
+<dt>rhos</dt>
+<dd>A Numpy array for the output, shape (npoint,).</dd>
+</dl>
+<p><strong>Warning:</strong> the results are added to the output array! This may
+be useful to combine results from different spin components.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.GOBasis.compute_grid_density_fock">
+<tt class="descname">compute_grid_density_fock</tt><big>(</big><em>points</em>, <em>weights</em>, <em>pots</em>, <em>fock</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_density_fock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute a one-body operator based on a density potential grid in real-space</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>points</dt>
+<dd>A Numpy array with grid points, shape (npoint,3).</dd>
+<dt>weights</dt>
+<dd>A Numpy array with integration weights, shape (npoint,).</dd>
+<dt>pots</dt>
+<dd>A Numpy array with density potential data, shape (npoint,).</dd>
+<dt>fock</dt>
+<dd>A one-body operator. For now, this must be a DenseOneBody
+object.</dd>
+</dl>
+<p><strong>Warning:</strong> the results are added to the fock operator!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.GOBasis.compute_grid_gradient_dm">
+<tt class="descname">compute_grid_gradient_dm</tt><big>(</big><em>dm</em>, <em>points</em>, <em>gradrho</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_gradient_dm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the electron density gradient on a grid for a given density matrix.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>dm</dt>
+<dd>A density matrix. For now, this must be a DenseOneBody object.</dd>
+<dt>points</dt>
+<dd>A Numpy array with grid points, shape (npoint,3).</dd>
+<dt>gradrhos</dt>
+<dd>A Numpy array for the output, shape (npoint,3).</dd>
+</dl>
+<p><strong>Warning:</strong> the results are added to the output array! This may
+be useful to combine results from different spin components.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.GOBasis.compute_grid_gradient_fock">
+<tt class="descname">compute_grid_gradient_fock</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_gradient_fock" title="Permalink to this definition">¶</a></dt>
+<dd><p>compute_grid_density_fock(points, weights, pots, fock)</p>
+<p>Compute a one-body operator based on a density potential grid in real-space</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>points</dt>
+<dd>A Numpy array with grid points, shape (npoint,3).</dd>
+<dt>weights</dt>
+<dd>A Numpy array with integration weights, shape (npoint,).</dd>
+<dt>pots</dt>
+<dd>A Numpy array with gradient potential data, shape (npoint, 3).</dd>
+<dt>fock</dt>
+<dd>A one-body operator. For now, this must be a DenseOneBody
+object.</dd>
+</dl>
+<p><strong>Warning:</strong> the results are added to the fock operator!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.GOBasis.compute_grid_hartree_dm">
+<tt class="descname">compute_grid_hartree_dm</tt><big>(</big><em>dm</em>, <em>points</em>, <em>output</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_hartree_dm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the Hartree potential on a grid for a given density matrix.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>dm</dt>
+<dd>A density matrix. For now, this must be a DenseOneBody object.</dd>
+<dt>points</dt>
+<dd>A Numpy array with grid points, shape (npoint,3).</dd>
+<dt>grid_fn</dt>
+<dd>A grid function.</dd>
+<dt>output</dt>
+<dd>A Numpy array for the output.</dd>
+</dl>
+<p><strong>Warning:</strong> the results are added to the output array! This may
+be useful to combine results from different spin components.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.GOBasis.compute_grid_orbitals_exp">
+<tt class="descname">compute_grid_orbitals_exp</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_orbitals_exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>compute_grid_density_exp(exp, points, iorbs, orbs)</p>
+<p>Compute the orbtials on a grid for a given set of expansion coefficients.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>exp</dt>
+<dd>An expansion object. For now, this must be a DenseExpansion object.</dd>
+<dt>points</dt>
+<dd>A Numpy array with grid points, shape (npoint,3).</dd>
+<dt>iorbs</dt>
+<dd>The indexes of the orbitals to be computed. If not given, the
+orbitals with a non-zero occupation number are computed</dd>
+<dt>orbs</dt>
+<dd>An output array, shape (npoint, len(iorbs)). The results are
+added to this array.</dd>
+</dl>
+<p><strong>Warning:</strong> the results are added to the output array!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.GOBasis.compute_kinetic">
+<tt class="descname">compute_kinetic</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_kinetic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the kinetic energy matrix in a Gaussian orbital basis.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.GOBasis.compute_nuclear_attraction">
+<tt class="descname">compute_nuclear_attraction</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_nuclear_attraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the kintic energy matrix in a Gaussian orbital basis.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.GOBasis.compute_overlap">
+<tt class="descname">compute_overlap</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_overlap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the overlap matrix in a Gaussian orbital basis.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.cext.GB2OverlapIntegral">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">GB2OverlapIntegral</tt><a class="headerlink" href="#horton.gbasis.cext.GB2OverlapIntegral" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for ints.GB2OverlapIntegral, for testing only</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.cext.GB2KineticIntegral">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">GB2KineticIntegral</tt><a class="headerlink" href="#horton.gbasis.cext.GB2KineticIntegral" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for ints.GB2OverlapIntegral, for testing only</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.cext.GB2NuclearAttractionIntegral">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">GB2NuclearAttractionIntegral</tt><a class="headerlink" href="#horton.gbasis.cext.GB2NuclearAttractionIntegral" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for ints.GB2NuclearAttractionIntegral, for testing only</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.cext.GB4ElectronReuplsionIntegralLibInt">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">GB4ElectronReuplsionIntegralLibInt</tt><a class="headerlink" href="#horton.gbasis.cext.GB4ElectronReuplsionIntegralLibInt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for ints.GB4ElectronReuplsionIntegralLibInt, for testing only</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.cext.GB1DMGridDensityFn">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">GB1DMGridDensityFn</tt><a class="headerlink" href="#horton.gbasis.cext.GB1DMGridDensityFn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.cext.GB1DMGridGradientFn">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">GB1DMGridGradientFn</tt><a class="headerlink" href="#horton.gbasis.cext.GB1DMGridGradientFn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.cext.IterGB1">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">IterGB1</tt><a class="headerlink" href="#horton.gbasis.cext.IterGB1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for the IterGB1 class, for testing only.</p>
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB1.inc_prim">
+<tt class="descname">inc_prim</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.inc_prim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB1.inc_shell">
+<tt class="descname">inc_shell</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.inc_shell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.gbasis.cext.IterGB1.private_fields">
+<tt class="descname">private_fields</tt><a class="headerlink" href="#horton.gbasis.cext.IterGB1.private_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.gbasis.cext.IterGB1.public_fields">
+<tt class="descname">public_fields</tt><a class="headerlink" href="#horton.gbasis.cext.IterGB1.public_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB1.store">
+<tt class="descname">store</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.store" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB1.update_prim">
+<tt class="descname">update_prim</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.update_prim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB1.update_shell">
+<tt class="descname">update_shell</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.update_shell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.cext.IterGB2">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">IterGB2</tt><a class="headerlink" href="#horton.gbasis.cext.IterGB2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for the IterGB2 class, for testing only.</p>
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB2.inc_prim">
+<tt class="descname">inc_prim</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.inc_prim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB2.inc_shell">
+<tt class="descname">inc_shell</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.inc_shell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.gbasis.cext.IterGB2.private_fields">
+<tt class="descname">private_fields</tt><a class="headerlink" href="#horton.gbasis.cext.IterGB2.private_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.gbasis.cext.IterGB2.public_fields">
+<tt class="descname">public_fields</tt><a class="headerlink" href="#horton.gbasis.cext.IterGB2.public_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB2.store">
+<tt class="descname">store</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.store" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB2.update_prim">
+<tt class="descname">update_prim</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.update_prim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB2.update_shell">
+<tt class="descname">update_shell</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.update_shell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.cext.IterGB4">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">IterGB4</tt><a class="headerlink" href="#horton.gbasis.cext.IterGB4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for the IterGB4 class, for testing only.</p>
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB4.inc_prim">
+<tt class="descname">inc_prim</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.inc_prim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB4.inc_shell">
+<tt class="descname">inc_shell</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.inc_shell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.gbasis.cext.IterGB4.private_fields">
+<tt class="descname">private_fields</tt><a class="headerlink" href="#horton.gbasis.cext.IterGB4.private_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.gbasis.cext.IterGB4.public_fields">
+<tt class="descname">public_fields</tt><a class="headerlink" href="#horton.gbasis.cext.IterGB4.public_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB4.store">
+<tt class="descname">store</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.store" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB4.update_prim">
+<tt class="descname">update_prim</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.update_prim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterGB4.update_shell">
+<tt class="descname">update_shell</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.update_shell" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.cext.iter_pow1_inc">
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">iter_pow1_inc</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.iter_pow1_inc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.cext.IterPow1">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">IterPow1</tt><a class="headerlink" href="#horton.gbasis.cext.IterPow1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for the IterPow1 class, for testing only.</p>
+<dl class="attribute">
+<dt id="horton.gbasis.cext.IterPow1.fields">
+<tt class="descname">fields</tt><a class="headerlink" href="#horton.gbasis.cext.IterPow1.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterPow1.inc">
+<tt class="descname">inc</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterPow1.inc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.cext.IterPow2">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">IterPow2</tt><a class="headerlink" href="#horton.gbasis.cext.IterPow2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for the IterPow2 class, for testing only.</p>
+<dl class="attribute">
+<dt id="horton.gbasis.cext.IterPow2.fields">
+<tt class="descname">fields</tt><a class="headerlink" href="#horton.gbasis.cext.IterPow2.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.cext.IterPow2.inc">
+<tt class="descname">inc</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterPow2.inc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.gbasis.gobasis">
+<span id="horton-gbasis-gobasis-high-level-logic-to-set-up-a-molecular-orbital-basis"></span><h2>6.2. <a class="reference internal" href="#module-horton.gbasis.gobasis" title="horton.gbasis.gobasis"><tt class="xref py py-mod docutils literal"><span class="pre">horton.gbasis.gobasis</span></tt></a> &#8211; High-level logic to set up a molecular orbital basis<a class="headerlink" href="#module-horton.gbasis.gobasis" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.gbasis.gobasis.GOBasisDesc">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.gobasis.</tt><tt class="descname">GOBasisDesc</tt><big>(</big><em>default</em>, <em>element_map=None</em>, <em>index_map=None</em>, <em>pure=True</em><big>)</big><a class="headerlink" href="#horton.gbasis.gobasis.GOBasisDesc" title="Permalink to this definition">¶</a></dt>
+<dd><p>A user specification of the basis set.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>default</dt>
+<dd>The default basis set applied to each atom.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>element_map</dt>
+<dd>A dictionary with element names or numbers as keys, and
+basis sets as values. These specs override the default basis</dd>
+<dt>index_map</dt>
+<dd>A dictionary with atomic indexes (based on the order of the
+atoms) as keys and basis sets as values</dd>
+<dt>pure</dt>
+<dd>By default pure basis functions are used. Set this to false to
+switch to Cartesian basis functions.</dd>
+</dl>
+<p>In all three arguments, basis may either refer to None, a string
+representation (STO-3G), a GOBasisFamily instance or a GOBasisAtom
+instance.</p>
+<dl class="method">
+<dt id="horton.gbasis.gobasis.GOBasisDesc.apply_to">
+<tt class="descname">apply_to</tt><big>(</big><em>system</em><big>)</big><a class="headerlink" href="#horton.gbasis.gobasis.GOBasisDesc.apply_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a GOBasis object for the system</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.gobasis.GOBasisFamily">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.gobasis.</tt><tt class="descname">GOBasisFamily</tt><big>(</big><em>name</em>, <em>basis_atom_map=None</em>, <em>filename=None</em><big>)</big><a class="headerlink" href="#horton.gbasis.gobasis.GOBasisFamily" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>name</dt>
+<dd>The name of the basis set family, e.g. &#8216;STO-3G&#8217;.</dd>
+</dl>
+<p><strong>Optional Arguments:</strong></p>
+<dl class="docutils">
+<dt>basis_atom_map</dt>
+<dd>A dictionary with atomic numbers as values and GOBasisAtom
+instances as keys.</dd>
+<dt>filename</dt>
+<dd>A file to load the basis set from when needed.</dd>
+</dl>
+<p>Either one of the two optional arguments must be provided. The first
+allows the user to craft his/her own basis set family. The second
+can be used to refer to a file that contains the basis set family.
+This file is only loaded when a basis set is requested for a given
+atom, in order to avoid slow startup times. The format of the basis
+set filename is deduced from the extension.</p>
+<dl class="method">
+<dt id="horton.gbasis.gobasis.GOBasisFamily.get">
+<tt class="descname">get</tt><big>(</big><em>number</em><big>)</big><a class="headerlink" href="#horton.gbasis.gobasis.GOBasisFamily.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the GOBasisAtom instance for the given number.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.gobasis.GOBasisFamily.load">
+<tt class="descname">load</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.gobasis.GOBasisFamily.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the basis set from file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.gobasis.GOBasisAtom">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.gobasis.</tt><tt class="descname">GOBasisAtom</tt><big>(</big><em>bcs</em><big>)</big><a class="headerlink" href="#horton.gbasis.gobasis.GOBasisAtom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description of an atomic basis set with segmented contractions.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>bcs</dt>
+<dd>A list of GOBasisContraction instances.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.gbasis.gobasis.GOBasisAtom.extend">
+<tt class="descname">extend</tt><big>(</big><em>i</em>, <em>shell_map</em>, <em>nprims</em>, <em>shell_types</em>, <em>alphas</em>, <em>con_coeffs</em>, <em>pure=True</em><big>)</big><a class="headerlink" href="#horton.gbasis.gobasis.GOBasisAtom.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the lists with basis functions for this atom.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>i</dt>
+<dd>The index of the center of this atom.</dd>
+<dt>shell_map, nprims, shell_types, alphas, con_coeffs</dt>
+<dd>These are all output arguments that must be extended with the
+basis set parameters for this atom. The meaning of each argument
+is defined in the documentation for constructor of the GOBasis
+class.</dd>
+</dl>
+<p><strong>Optional argument:</strong></p>
+<dl class="docutils">
+<dt>pure</dt>
+<dd>By default pure basis functions are used. Set this to False to
+switch to Cartesian basis functions.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.gbasis.gobasis.GOBasisContraction">
+<em class="property">class </em><tt class="descclassname">horton.gbasis.gobasis.</tt><tt class="descname">GOBasisContraction</tt><big>(</big><em>shell_type</em>, <em>alphas</em>, <em>con_coeffs</em><big>)</big><a class="headerlink" href="#horton.gbasis.gobasis.GOBasisContraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description of a contraction</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>shell_type</dt>
+<dd>The angular quantum numbers of the shell. (0=s, 1=p, 2=d, ...)</dd>
+<dt>alphas</dt>
+<dd>1D array with exponents of the primitives.</dd>
+<dt>con_coeffs</dt>
+<dd>the linear coefficients of the contraction. In the case of a
+segmented basis set, this is just a 1D array with the same size
+as alphas. In the case of a generalized contraction, this is a
+2D numpy array, where each row corresponds to a primitive and
+the columns correspond to different contractions.</dd>
+</dl>
+<p>It is possible to construct this object with lists instead of arrays
+as arguments. Just call the to_arrays method once the lists are
+completed. (This is convenient when loading basis sets from a file.)</p>
+<dl class="method">
+<dt id="horton.gbasis.gobasis.GOBasisContraction.get_segmented_bcs">
+<tt class="descname">get_segmented_bcs</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.gobasis.GOBasisContraction.get_segmented_bcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of segmented contractions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.gobasis.GOBasisContraction.is_generalized">
+<tt class="descname">is_generalized</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.gobasis.GOBasisContraction.is_generalized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if this is a generalized contraction</p>
+<p>This routine also checks if the con_coeffs attribute is consistent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.gbasis.gobasis.GOBasisContraction.to_arrays">
+<tt class="descname">to_arrays</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.gobasis.GOBasisContraction.to_arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the alphas and con_coeffs attributes to numpy arrays.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.gbasis.io">
+<span id="horton-gbasis-io-tools-to-load-standard-basis-sets-from-file"></span><h2>6.3. <a class="reference internal" href="#module-horton.gbasis.io" title="horton.gbasis.io"><tt class="xref py py-mod docutils literal"><span class="pre">horton.gbasis.io</span></tt></a> &#8211; Tools to load standard basis sets from file<a class="headerlink" href="#module-horton.gbasis.io" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.gbasis.io.str_to_shell_types">
+<tt class="descclassname">horton.gbasis.io.</tt><tt class="descname">str_to_shell_types</tt><big>(</big><em>s</em>, <em>pure=False</em><big>)</big><a class="headerlink" href="#horton.gbasis.io.str_to_shell_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a string into a list of contraction types</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.io.load_basis_atom_map_nwchem">
+<tt class="descclassname">horton.gbasis.io.</tt><tt class="descname">load_basis_atom_map_nwchem</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.gbasis.io.load_basis_atom_map_nwchem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the basis set family from an NWChem file.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">6. <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt> &#8211; Gaussian basis sets</a><ul>
+<li><a class="reference internal" href="#module-horton.gbasis.cext">6.1. <tt class="docutils literal"><span class="pre">horton.gbasis.cext</span></tt> &#8211; Interface to low-level code</a></li>
+<li><a class="reference internal" href="#module-horton.gbasis.gobasis">6.2. <tt class="docutils literal"><span class="pre">horton.gbasis.gobasis</span></tt> &#8211; High-level logic to set up a molecular orbital basis</a></li>
+<li><a class="reference internal" href="#module-horton.gbasis.io">6.3. <tt class="docutils literal"><span class="pre">horton.gbasis.io</span></tt> &#8211; Tools to load standard basis sets from file</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lib_horton_espfit.html"
+                        title="previous chapter">5. <tt class="docutils literal docutils literal docutils literal"><span class="pre">horton.espfit</span></tt> &#8211; ESP fitting of charges</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="lib_horton_grid.html"
+                        title="next chapter">7. <tt class="docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integration grids</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/lib_horton_gbasis.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_grid.html" title="7. horton.grid – Numerical integration grids"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_espfit.html" title="5. horton.espfit – ESP fitting of charges"
+             >previous</a> |</li>
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Toon Verstraelen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

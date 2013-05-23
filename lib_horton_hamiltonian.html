@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>8. horton.hamiltonian – SCF model hamiltonians &mdash; Horton 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Horton 1.0 documentation" href="index.html" />
+    <link rel="next" title="9. horton.io – Input/output routines" href="lib_horton_io.html" />
+    <link rel="prev" title="7. horton.grid – Numerical integration grids" href="lib_horton_grid.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_io.html" title="9. horton.io – Input/output routines"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_grid.html" title="7. horton.grid – Numerical integration grids"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="horton-hamiltonian-scf-model-hamiltonians">
+<h1>8. <tt class="docutils literal"><span class="pre">horton.hamiltonian</span></tt> &#8211; SCF model hamiltonians<a class="headerlink" href="#horton-hamiltonian-scf-model-hamiltonians" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-horton.hamiltonian.builtin">
+<span id="horton-hamiltonian-builtin-built-in-functionals"></span><h2>8.1. <a class="reference internal" href="#module-horton.hamiltonian.builtin" title="horton.hamiltonian.builtin"><tt class="xref py py-mod docutils literal"><span class="pre">horton.hamiltonian.builtin</span></tt></a> &#8211; Built-in functionals<a class="headerlink" href="#module-horton.hamiltonian.builtin" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.hamiltonian.builtin.Hartree">
+<em class="property">class </em><tt class="descclassname">horton.hamiltonian.builtin.</tt><tt class="descname">Hartree</tt><a class="headerlink" href="#horton.hamiltonian.builtin.Hartree" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.hamiltonian.builtin.Hartree.add_fock_matrix">
+<tt class="descname">add_fock_matrix</tt><big>(</big><em>fock_alpha</em>, <em>fock_beta</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.builtin.Hartree.add_fock_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.builtin.Hartree.compute_energy">
+<tt class="descname">compute_energy</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.builtin.Hartree.compute_energy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.builtin.Hartree.prepare_system">
+<tt class="descname">prepare_system</tt><big>(</big><em>system</em>, <em>cache</em>, <em>grid</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.builtin.Hartree.prepare_system" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.hamiltonian.builtin.HartreeFock">
+<em class="property">class </em><tt class="descclassname">horton.hamiltonian.builtin.</tt><tt class="descname">HartreeFock</tt><big>(</big><em>fraction_exchange=1.0</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.builtin.HartreeFock" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.hamiltonian.builtin.HartreeFock.add_fock_matrix">
+<tt class="descname">add_fock_matrix</tt><big>(</big><em>fock_alpha</em>, <em>fock_beta</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.builtin.HartreeFock.add_fock_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.builtin.HartreeFock.compute_energy">
+<tt class="descname">compute_energy</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.builtin.HartreeFock.compute_energy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.hamiltonian.builtin.DiracExchange">
+<em class="property">class </em><tt class="descclassname">horton.hamiltonian.builtin.</tt><tt class="descname">DiracExchange</tt><big>(</big><em>coeff=None</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.builtin.DiracExchange" title="Permalink to this definition">¶</a></dt>
+<dd><p>An implementation of the Dirac Exchange Functional</p>
+<p><strong>Arguments:</strong></p>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>coeff</dt>
+<dd>The coefficient Cx in front of the Dirac exchange energy.
+It defaults to the uniform electron gas value, i.e.
+Cx = 3/4 (3/pi)^(1/3).</dd>
+</dl>
+<dl class="method">
+<dt id="horton.hamiltonian.builtin.DiracExchange.add_fock_matrix">
+<tt class="descname">add_fock_matrix</tt><big>(</big><em>fock_alpha</em>, <em>fock_beta</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.builtin.DiracExchange.add_fock_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.builtin.DiracExchange.compute_energy">
+<tt class="descname">compute_energy</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.builtin.DiracExchange.compute_energy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.hamiltonian.builtin.DiracExchange.require_grid">
+<tt class="descname">require_grid</tt><em class="property"> = True</em><a class="headerlink" href="#horton.hamiltonian.builtin.DiracExchange.require_grid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.hamiltonian.cext">
+<span id="horton-hamiltonian-cext-interface-to-low-level-code"></span><h2>8.2. <a class="reference internal" href="#module-horton.hamiltonian.cext" title="horton.hamiltonian.cext"><tt class="xref py py-mod docutils literal"><span class="pre">horton.hamiltonian.cext</span></tt></a> &#8211; Interface to low-level code<a class="headerlink" href="#module-horton.hamiltonian.cext" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.hamiltonian.cext.LibXCWrapper">
+<em class="property">class </em><tt class="descclassname">horton.hamiltonian.cext.</tt><tt class="descname">LibXCWrapper</tt><a class="headerlink" href="#horton.hamiltonian.cext.LibXCWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.hamiltonian.cext.LibXCWrapper.compute_gga_exc_pol">
+<tt class="descname">compute_gga_exc_pol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.cext.LibXCWrapper.compute_gga_exc_pol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.cext.LibXCWrapper.compute_gga_exc_unpol">
+<tt class="descname">compute_gga_exc_unpol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.cext.LibXCWrapper.compute_gga_exc_unpol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.cext.LibXCWrapper.compute_gga_vxc_pol">
+<tt class="descname">compute_gga_vxc_pol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.cext.LibXCWrapper.compute_gga_vxc_pol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.cext.LibXCWrapper.compute_gga_vxc_unpol">
+<tt class="descname">compute_gga_vxc_unpol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.cext.LibXCWrapper.compute_gga_vxc_unpol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.cext.LibXCWrapper.compute_lda_exc_pol">
+<tt class="descname">compute_lda_exc_pol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.cext.LibXCWrapper.compute_lda_exc_pol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.cext.LibXCWrapper.compute_lda_exc_unpol">
+<tt class="descname">compute_lda_exc_unpol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.cext.LibXCWrapper.compute_lda_exc_unpol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.cext.LibXCWrapper.compute_lda_vxc_pol">
+<tt class="descname">compute_lda_vxc_pol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.cext.LibXCWrapper.compute_lda_vxc_pol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.cext.LibXCWrapper.compute_lda_vxc_unpol">
+<tt class="descname">compute_lda_vxc_unpol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.cext.LibXCWrapper.compute_lda_vxc_unpol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.cext.LibXCWrapper.get_hyb_exx_fraction">
+<tt class="descname">get_hyb_exx_fraction</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.cext.LibXCWrapper.get_hyb_exx_fraction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.hamiltonian.core">
+<span id="horton-hamiltonian-core-base-classes-and-core-hamiltonian"></span><h2>8.3. <a class="reference internal" href="#module-horton.hamiltonian.core" title="horton.hamiltonian.core"><tt class="xref py py-mod docutils literal"><span class="pre">horton.hamiltonian.core</span></tt></a> &#8211; Base classes and core Hamiltonian<a class="headerlink" href="#module-horton.hamiltonian.core" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.hamiltonian.core.Hamiltonian">
+<em class="property">class </em><tt class="descclassname">horton.hamiltonian.core.</tt><tt class="descname">Hamiltonian</tt><big>(</big><em>system</em>, <em>terms</em>, <em>grid=None</em>, <em>auto_complete=True</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.core.Hamiltonian" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>system</dt>
+<dd>The System object for which the energy must be computed.</dd>
+<dt>terms</dt>
+<dd>The terms in the Hamiltonian. Kinetic energy, external
+potential (nuclei), and Hartree are added automatically.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>grid</dt>
+<dd>The integration grid, in case some terms need one.</dd>
+<dt>auto_complete</dt>
+<dd>When set to False, the kinetic energy, external potential and
+Hartree terms are not added automatically.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.hamiltonian.core.Hamiltonian.compute_energy">
+<tt class="descname">compute_energy</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.core.Hamiltonian.compute_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute energy.</p>
+<p><strong>Returns:</strong></p>
+<p>The total energy, including nuclear-nuclear repulsion.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.core.Hamiltonian.compute_fock">
+<tt class="descname">compute_fock</tt><big>(</big><em>fock_alpha</em>, <em>fock_beta</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.core.Hamiltonian.compute_fock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute alpha (and beta) Fock matrix(es).</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>fock_alpha</dt>
+<dd>A One-Body operator output argument for the alpha fock matrix.</dd>
+<dt>fock_alpha</dt>
+<dd>A One-Body operator output argument for the beta fock matrix.</dd>
+</dl>
+<p>In the case of a closed-shell computation, the argument fock_beta is
+<tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.core.Hamiltonian.invalidate">
+<tt class="descname">invalidate</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.core.Hamiltonian.invalidate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark the properties derived from the wfn as outdated.</p>
+<p>This method does not recompute anything, but just marks operators
+as outdated. They are recomputed as they are needed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.hamiltonian.core.HamiltonianTerm">
+<em class="property">class </em><tt class="descclassname">horton.hamiltonian.core.</tt><tt class="descname">HamiltonianTerm</tt><a class="headerlink" href="#horton.hamiltonian.core.HamiltonianTerm" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.hamiltonian.core.HamiltonianTerm.add_fock_matrix">
+<tt class="descname">add_fock_matrix</tt><big>(</big><em>fock_alpha</em>, <em>fock_beta</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.core.HamiltonianTerm.add_fock_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.core.HamiltonianTerm.compute_energy">
+<tt class="descname">compute_energy</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.core.HamiltonianTerm.compute_energy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.core.HamiltonianTerm.prepare_system">
+<tt class="descname">prepare_system</tt><big>(</big><em>system</em>, <em>cache</em>, <em>grid</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.core.HamiltonianTerm.prepare_system" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.hamiltonian.core.HamiltonianTerm.require_grid">
+<tt class="descname">require_grid</tt><em class="property"> = False</em><a class="headerlink" href="#horton.hamiltonian.core.HamiltonianTerm.require_grid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.core.HamiltonianTerm.store_energy">
+<tt class="descname">store_energy</tt><big>(</big><em>suffix</em>, <em>energy</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.core.HamiltonianTerm.store_energy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.core.HamiltonianTerm.update_grad_rho">
+<tt class="descname">update_grad_rho</tt><big>(</big><em>select</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.core.HamiltonianTerm.update_grad_rho" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.core.HamiltonianTerm.update_rho">
+<tt class="descname">update_rho</tt><big>(</big><em>select</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.core.HamiltonianTerm.update_rho" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.hamiltonian.core.HamiltonianTerm.update_sigma">
+<tt class="descname">update_sigma</tt><big>(</big><em>select</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.core.HamiltonianTerm.update_sigma" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.hamiltonian.core.KineticEnergy">
+<em class="property">class </em><tt class="descclassname">horton.hamiltonian.core.</tt><tt class="descname">KineticEnergy</tt><a class="headerlink" href="#horton.hamiltonian.core.KineticEnergy" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.hamiltonian.core.KineticEnergy.get_operator">
+<tt class="descname">get_operator</tt><big>(</big><em>system</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.core.KineticEnergy.get_operator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.hamiltonian.core.ExternalPotential">
+<em class="property">class </em><tt class="descclassname">horton.hamiltonian.core.</tt><tt class="descname">ExternalPotential</tt><a class="headerlink" href="#horton.hamiltonian.core.ExternalPotential" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.hamiltonian.core.ExternalPotential.get_operator">
+<tt class="descname">get_operator</tt><big>(</big><em>system</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.core.ExternalPotential.get_operator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.hamiltonian.fixed">
+<span id="horton-hamiltonian-fixed-custom-terms-for-the-hamiltonian"></span><h2>8.4. <a class="reference internal" href="#module-horton.hamiltonian.fixed" title="horton.hamiltonian.fixed"><tt class="xref py py-mod docutils literal"><span class="pre">horton.hamiltonian.fixed</span></tt></a> &#8211; Custom terms for the Hamiltonian<a class="headerlink" href="#module-horton.hamiltonian.fixed" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.hamiltonian.fixed.CustomFixedTerm">
+<em class="property">class </em><tt class="descclassname">horton.hamiltonian.fixed.</tt><tt class="descname">CustomFixedTerm</tt><big>(</big><em>operator</em>, <em>suffix</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.fixed.CustomFixedTerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a user-defined term that is linear in the density matrix</p>
+<p>This term can be used to implemented perturbations by finite fields.</p>
+<dl class="method">
+<dt id="horton.hamiltonian.fixed.CustomFixedTerm.prepare_system">
+<tt class="descname">prepare_system</tt><big>(</big><em>system</em>, <em>cache</em>, <em>grid</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.fixed.CustomFixedTerm.prepare_system" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.hamiltonian.fixed.CustomGridFixedTerm">
+<em class="property">class </em><tt class="descclassname">horton.hamiltonian.fixed.</tt><tt class="descname">CustomGridFixedTerm</tt><big>(</big><em>custom_grid</em>, <em>potential</em>, <em>suffix</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.fixed.CustomGridFixedTerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a user-defined term, through a grid, that is linear in the density matrix</p>
+<p>This term can be used to implemented perturbations by finite potentials
+defined on a real-space grid.</p>
+<dl class="method">
+<dt id="horton.hamiltonian.fixed.CustomGridFixedTerm.get_operator">
+<tt class="descname">get_operator</tt><big>(</big><em>system</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.fixed.CustomGridFixedTerm.get_operator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.hamiltonian.libxc">
+<span id="horton-hamiltonian-libxc-libxc-functionals"></span><h2>8.5. <a class="reference internal" href="#module-horton.hamiltonian.libxc" title="horton.hamiltonian.libxc"><tt class="xref py py-mod docutils literal"><span class="pre">horton.hamiltonian.libxc</span></tt></a> &#8211; LibXC functionals<a class="headerlink" href="#module-horton.hamiltonian.libxc" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.hamiltonian.libxc.LibXCLDATerm">
+<em class="property">class </em><tt class="descclassname">horton.hamiltonian.libxc.</tt><tt class="descname">LibXCLDATerm</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.libxc.LibXCLDATerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any LDA functional from LibXC</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>Arguments:*</p>
+<dl class="docutils">
+<dt>name</dt>
+<dd>The name of the functional in LibXC, without the &#8216;<a href="#id3"><span class="problematic" id="id4">lda_</span></a>&#8216; prefix.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.hamiltonian.libxc.LibXCLDATerm.compute_energy">
+<tt class="descname">compute_energy</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.libxc.LibXCLDATerm.compute_energy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.hamiltonian.libxc.LibXCLDATerm.require_grid">
+<tt class="descname">require_grid</tt><em class="property"> = True</em><a class="headerlink" href="#horton.hamiltonian.libxc.LibXCLDATerm.require_grid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.hamiltonian.libxc.LibXCGGATerm">
+<em class="property">class </em><tt class="descclassname">horton.hamiltonian.libxc.</tt><tt class="descname">LibXCGGATerm</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.libxc.LibXCGGATerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any GGA functional from LibXC</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>name</dt>
+<dd>The name of the functional in LibXC, without the &#8216;<a href="#id5"><span class="problematic" id="id6">gga_</span></a>&#8216; prefix.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.hamiltonian.libxc.LibXCGGATerm.compute_energy">
+<tt class="descname">compute_energy</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.libxc.LibXCGGATerm.compute_energy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.hamiltonian.libxc.LibXCHybridGGATerm">
+<em class="property">class </em><tt class="descclassname">horton.hamiltonian.libxc.</tt><tt class="descname">LibXCHybridGGATerm</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#horton.hamiltonian.libxc.LibXCHybridGGATerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any Hybrid GGA functional from LibXC</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>name</dt>
+<dd>The name of the functional in LibXC, without the &#8216;<a href="#id7"><span class="problematic" id="id8">hyb_gga_</span></a>&#8216; prefix.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.hamiltonian.libxc.LibXCHybridGGATerm.get_exx_fraction">
+<tt class="descname">get_exx_fraction</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.hamiltonian.libxc.LibXCHybridGGATerm.get_exx_fraction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">8. <tt class="docutils literal"><span class="pre">horton.hamiltonian</span></tt> &#8211; SCF model hamiltonians</a><ul>
+<li><a class="reference internal" href="#module-horton.hamiltonian.builtin">8.1. <tt class="docutils literal"><span class="pre">horton.hamiltonian.builtin</span></tt> &#8211; Built-in functionals</a></li>
+<li><a class="reference internal" href="#module-horton.hamiltonian.cext">8.2. <tt class="docutils literal"><span class="pre">horton.hamiltonian.cext</span></tt> &#8211; Interface to low-level code</a></li>
+<li><a class="reference internal" href="#module-horton.hamiltonian.core">8.3. <tt class="docutils literal"><span class="pre">horton.hamiltonian.core</span></tt> &#8211; Base classes and core Hamiltonian</a></li>
+<li><a class="reference internal" href="#module-horton.hamiltonian.fixed">8.4. <tt class="docutils literal"><span class="pre">horton.hamiltonian.fixed</span></tt> &#8211; Custom terms for the Hamiltonian</a></li>
+<li><a class="reference internal" href="#module-horton.hamiltonian.libxc">8.5. <tt class="docutils literal"><span class="pre">horton.hamiltonian.libxc</span></tt> &#8211; LibXC functionals</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="lib_horton_grid.html"
+                        title="previous chapter">7. <tt class="docutils literal docutils literal docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integration grids</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="lib_horton_io.html"
+                        title="next chapter">9. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input/output routines</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/lib_horton_hamiltonian.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_io.html" title="9. horton.io – Input/output routines"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="lib_horton_grid.html" title="7. horton.grid – Numerical integration grids"
+             >previous</a> |</li>
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Toon Verstraelen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

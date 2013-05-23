@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. Features &mdash; Horton 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Horton 1.0 documentation" href="index.html" />
+    <link rel="next" title="2. Acronyms" href="ref_acronyms.html" />
+    <link rel="prev" title="3. How to contribute to Horton" href="dev_contribute.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ref_acronyms.html" title="2. Acronyms"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dev_contribute.html" title="3. How to contribute to Horton"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="features">
+<span id="ref-features"></span><h1>1. Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-horton-library">
+<h2>1.1. The Horton library<a class="headerlink" href="#the-horton-library" title="Permalink to this headline">¶</a></h2>
+<p>Each package below has a <tt class="docutils literal"><span class="pre">test</span></tt> subpackage that contains unit tests.</p>
+<div class="section" id="package-horton">
+<h3>1.1.1. Package <tt class="docutils literal"><span class="pre">horton</span></tt><a class="headerlink" href="#package-horton" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Datastructures for molecular systems, wavefunctions, unit cell and symmetry.</li>
+<li>Checkpointing.</li>
+<li>Unit conversion and physical constants.</li>
+<li>Initial wavefunction guess, SCF (regular and optimal damping).</li>
+<li>Periodic table.</li>
+<li>Linear algebra abstraction layer.</li>
+<li>Caching tools to avoid recomputation of earlier results.</li>
+</ul>
+</div>
+<div class="section" id="package-horton-espfit">
+<h3>1.1.2. Package <tt class="docutils literal"><span class="pre">horton.espfit</span></tt><a class="headerlink" href="#package-horton-espfit" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Various ESP cost functions to fit charges for 3D periodic systems.</li>
+<li>Evaluation of ESP on grids for 3D periodic systems.</li>
+</ul>
+</div>
+<div class="section" id="package-horton-gbasis">
+<h3>1.1.3. Package <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt><a class="headerlink" href="#package-horton-gbasis" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Datastructures for Gaussian basis sets (Cartesian and pure).</li>
+<li>Generator for standard basis sets.</li>
+<li>Integrals in terms of Gaussian basis functions.</li>
+<li>Evaluation of density, potential and density gradient on grids.</li>
+</ul>
+</div>
+<div class="section" id="package-horton-grid">
+<h3>1.1.4. Package <tt class="docutils literal"><span class="pre">horton.grid</span></tt><a class="headerlink" href="#package-horton-grid" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Molecular integration grids (Becke partitioning with Lebedev Laikov atom
+centered grids).</li>
+<li>Pruned grids for elements H-Ar.</li>
+<li>1D integration grids.</li>
+<li>1D Cubic splines.</li>
+<li>Uniform grids (cube files).</li>
+</ul>
+</div>
+<div class="section" id="package-horton-hamiltonian">
+<h3>1.1.5. Package <tt class="docutils literal"><span class="pre">horton.hamiltonian</span></tt><a class="headerlink" href="#package-horton-hamiltonian" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Definition of HF and DFT Hamiltonians.</li>
+<li><a class="reference external" href="http://www.tddft.org/programs/octopus/wiki/index.php/Libxc">LibXC</a> is used
+to provide a large number of exchange and correlation functionals.
+<a class="reference internal" href="ref_literature.html#marques2012">[marques2012]</a></li>
+<li>Custom terms can be added as external potential</li>
+</ul>
+</div>
+<div class="section" id="package-horton-io">
+<h3>1.1.6. Package <tt class="docutils literal"><span class="pre">horton.io</span></tt><a class="headerlink" href="#package-horton-io" title="Permalink to this headline">¶</a></h3>
+<p>The following file formats are supported.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="65%" />
+<col width="23%" />
+<col width="5%" />
+<col width="6%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Format</th>
+<th class="head">Pattern</th>
+<th class="head">Read</th>
+<th class="head">Write</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Internal checkpointing format based on HDF5</td>
+<td><tt class="docutils literal"><span class="pre">*.chk</span></tt> <tt class="docutils literal"><span class="pre">*.h5</span></tt></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>CIF (crystalographic information file)</td>
+<td><tt class="docutils literal"><span class="pre">*.cif</span></tt></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>Atomic wavefunctions from CP2K (2.4-r12857)</td>
+<td><tt class="docutils literal"><span class="pre">*.cp2k.out</span></tt></td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Gaussian cube files</td>
+<td><tt class="docutils literal"><span class="pre">*.cube</span></tt></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>Gaussian log files (operators)</td>
+<td><tt class="docutils literal"><span class="pre">*.log</span></tt></td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Gaussian format checkpoint files</td>
+<td><tt class="docutils literal"><span class="pre">*.fchk</span></tt></td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Molden input files (wavefunction)</td>
+<td><tt class="docutils literal"><span class="pre">*.molden.input</span></tt></td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Molekel file</td>
+<td><tt class="docutils literal"><span class="pre">*.mkl</span></tt></td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>VASP CHGCAR and LOCPOT files</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VASP POSCAR</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>XYZ format</td>
+<td><tt class="docutils literal"><span class="pre">*.xyz</span></tt></td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="package-horton-part">
+<h3>1.1.7. Package <tt class="docutils literal"><span class="pre">horton.part</span></tt><a class="headerlink" href="#package-horton-part" title="Permalink to this headline">¶</a></h3>
+<p>The following density partitioning schemes are implemented:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">becke</span></tt>: Becke partitioning <a class="reference internal" href="ref_literature.html#becke1988-multicenter">[becke1988_multicenter]</a></li>
+<li><tt class="docutils literal"><span class="pre">h</span></tt>: Hirshfeld partitioning <a class="reference internal" href="ref_literature.html#hirshfeld1977">[hirshfeld1977]</a></li>
+<li><tt class="docutils literal"><span class="pre">hi</span></tt>: Iterative Hirshfeld partitioning <a class="reference internal" href="ref_literature.html#bultinck2007">[bultinck2007]</a></li>
+<li><tt class="docutils literal"><span class="pre">he</span></tt>: Extended Hirshfeld partitioning <a class="reference internal" href="ref_literature.html#verstraelen2013">[verstraelen2013]</a></li>
+</ul>
+<p>Partitioning can be carried on isolated and periodic systems. Both all-electron (AE)
+and pseudo-potential (PP) densities are supported. The following AIM properties can
+be computed:</p>
+<ul class="simple">
+<li>Atomic charges, population, pseudo_population</li>
+<li>Cartesian atomic multipoles</li>
+<li>Tkatchenko-Scheffler dispersion coefficients <a class="reference internal" href="ref_literature.html#tkatchenko2009">[tkatchenko2009]</a></li>
+</ul>
+<p>Note that not all AIM properties work for any combination partitioning scheme
+and boundary condition for technical reasons.</p>
+</div>
+</div>
+<div class="section" id="horton-command-line-scripts">
+<h2>1.2. Horton command-line scripts<a class="headerlink" href="#horton-command-line-scripts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="density-partitioning">
+<h3>1.2.1. Density partitioning<a class="headerlink" href="#density-partitioning" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">horton-atomdb.py</span></tt>: generate database of isolated atoms</li>
+<li><tt class="docutils literal"><span class="pre">horton-cpart.py</span></tt>: partition densities on uniform grids (cube and LOCPOT files)</li>
+<li><tt class="docutils literal"><span class="pre">horton-wpart.py</span></tt>: partition densities derived from wavefunctions in a Gaussian basis (fchk, mkl, molden.input)</li>
+</ul>
+</div>
+<div class="section" id="esp-fitting">
+<h3>1.2.2. ESP fitting<a class="headerlink" href="#esp-fitting" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">horton-esp-cost.py</span></tt>: set up a cost function for ESP fitting or testing</li>
+<li><tt class="docutils literal"><span class="pre">horton-esp-fit.py</span></tt>: derive atomic charges from an ESP cost function</li>
+<li><tt class="docutils literal"><span class="pre">horton-esp-gen.py</span></tt>: generate the electrostatic potential due to a set of charges</li>
+<li><tt class="docutils literal"><span class="pre">horton-esp-test.py</span></tt>: test how well charges perform for a given cost function</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Features</a><ul>
+<li><a class="reference internal" href="#the-horton-library">1.1. The Horton library</a><ul>
+<li><a class="reference internal" href="#package-horton">1.1.1. Package <tt class="docutils literal"><span class="pre">horton</span></tt></a></li>
+<li><a class="reference internal" href="#package-horton-espfit">1.1.2. Package <tt class="docutils literal"><span class="pre">horton.espfit</span></tt></a></li>
+<li><a class="reference internal" href="#package-horton-gbasis">1.1.3. Package <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt></a></li>
+<li><a class="reference internal" href="#package-horton-grid">1.1.4. Package <tt class="docutils literal"><span class="pre">horton.grid</span></tt></a></li>
+<li><a class="reference internal" href="#package-horton-hamiltonian">1.1.5. Package <tt class="docutils literal"><span class="pre">horton.hamiltonian</span></tt></a></li>
+<li><a class="reference internal" href="#package-horton-io">1.1.6. Package <tt class="docutils literal"><span class="pre">horton.io</span></tt></a></li>
+<li><a class="reference internal" href="#package-horton-part">1.1.7. Package <tt class="docutils literal"><span class="pre">horton.part</span></tt></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#horton-command-line-scripts">1.2. Horton command-line scripts</a><ul>
+<li><a class="reference internal" href="#density-partitioning">1.2.1. Density partitioning</a></li>
+<li><a class="reference internal" href="#esp-fitting">1.2.2. ESP fitting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dev_contribute.html"
+                        title="previous chapter">3. How to contribute to Horton</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ref_acronyms.html"
+                        title="next chapter">2. Acronyms</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/ref_features.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ref_acronyms.html" title="2. Acronyms"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dev_contribute.html" title="3. How to contribute to Horton"
+             >previous</a> |</li>
+        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Toon Verstraelen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
