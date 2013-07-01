@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3. Atoms-in-Molecules (AIM) analysis &mdash; Horton 1.0 documentation</title>
+    <title>3. Atoms-in-Molecules (AIM) analysis &mdash; Horton 1.0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0',
+        VERSION:     '1.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0 documentation" href="index.html" />
+    <link rel="top" title="Horton 1.0.1 documentation" href="index.html" />
     <link rel="next" title="4. How to use Horton as an SCF program" href="tut_scf.html" />
     <link rel="prev" title="2. How to cite Horton" href="tut_cite.html" /> 
   </head>
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="tut_cite.html" title="2. How to cite Horton"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -543,7 +543,7 @@ partitioning scheme:</p>
 <li><tt class="docutils literal"><span class="pre">hi</span></tt>: Iterative Hirshfeld partitioning. <a class="reference internal" href="ref_literature.html#bultinck2007">[bultinck2007]</a></li>
 <li><tt class="docutils literal"><span class="pre">he</span></tt>: Extended Hirshfeld partitioning. <a class="reference internal" href="ref_literature.html#verstraelen2013">[verstraelen2013]</a></li>
 </ul>
-<p>The last argument is only needed for the Hirshfeld variants. This script
+<p>The <tt class="docutils literal"><span class="pre">atoms.h5</span></tt> argument is only needed for the Hirshfeld variants. This script
 computes atomic weight functions and then derives all AIM observables that are
 implemented for that scheme. These results are stored in a HDF5 file with
 the same name as the <tt class="docutils literal"><span class="pre">wfn</span></tt> file but with a <tt class="docutils literal"><span class="pre">.h5</span></tt> extension appended. In this
@@ -551,6 +551,16 @@ HDF5 file, the results are written in the group <tt class="docutils literal"><sp
 <tt class="docutils literal"><span class="pre">${SCHEME}</span></tt> is any of <tt class="docutils literal"><span class="pre">b</span></tt>, <tt class="docutils literal"><span class="pre">h</span></tt>, <tt class="docutils literal"><span class="pre">hi</span></tt>, <tt class="docutils literal"><span class="pre">he</span></tt>.</p>
 <p>Run <tt class="docutils literal"><span class="pre">horton-wpart.py</span> <span class="pre">--help</span></tt> to get a complete list of all command-line
 options.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When a post Hartree-Fock level is used in Gaussian 03/09 (MP2, MP3, CC or
+CI), one must add the keyword <tt class="docutils literal"><span class="pre">Density=current</span></tt> to the commands in the
+input file. This is needed to have the corresponding density matrix in the
+formatted checkpoint file. When such a post HF density matrix is present,
+Horton will load that density matrix instead of the SCF density matrix. Also
+note that for some levels of theory, no 1RDM is constructed, including MP4,
+MP5, ZINDO and QCISD(T).</p>
+</div>
 </div>
 <div class="section" id="horton-cpart-py-aim-analysis-based-on-a-cube-file">
 <h2><a class="toc-backref" href="#id23">3.4. <tt class="docutils literal"><span class="pre">horton-cpart.py</span></tt> &#8211; AIM analysis based on a cube file</a><a class="headerlink" href="#horton-cpart-py-aim-analysis-based-on-a-cube-file" title="Permalink to this headline">¶</a></h2>
@@ -707,7 +717,7 @@ as a starting point for similar scripts. These unit tests can be found in
         <li class="right" >
           <a href="tut_cite.html" title="2. How to cite Horton"
              >previous</a> |</li>
-        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

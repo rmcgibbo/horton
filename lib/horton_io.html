@@ -8,44 +8,44 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9. horton.io – Input/output routines &mdash; Horton 1.0 documentation</title>
+    <title>8. horton.io – Input and output routines &mdash; Horton 1.0.1 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '1.0',
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0 documentation" href="index.html" />
-    <link rel="next" title="10. horton.part – Density partitioning" href="lib_horton_part.html" />
-    <link rel="prev" title="8. horton.hamiltonian – SCF model hamiltonians" href="lib_horton_hamiltonian.html" /> 
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Horton 1.0.1 documentation" href="../index.html" />
+    <link rel="next" title="9. horton.meanfield – Mean-field electronic structure code" href="horton_meanfield.html" />
+    <link rel="prev" title="7. horton.grid – Numerical integraton grids" href="horton_grid.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="lib_horton_part.html" title="10. horton.part – Density partitioning"
+          <a href="horton_meanfield.html" title="9. horton.meanfield – Mean-field electronic structure code"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="lib_horton_hamiltonian.html" title="8. horton.hamiltonian – SCF model hamiltonians"
+          <a href="horton_grid.html" title="7. horton.grid – Numerical integraton grids"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -54,10 +54,10 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="horton-io-input-output-routines">
-<h1>9. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input/output routines<a class="headerlink" href="#horton-io-input-output-routines" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="horton-io-input-and-output-routines">
+<h1>8. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input and output routines<a class="headerlink" href="#horton-io-input-and-output-routines" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-horton.io.chk">
-<span id="horton-io-chk-horton-checkpoint-file-format"></span><h2>9.1. <a class="reference internal" href="#module-horton.io.chk" title="horton.io.chk"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.chk</span></tt></a> &#8211; Horton checkpoint file format<a class="headerlink" href="#module-horton.io.chk" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-chk-horton-checkpoint-file-format"></span><h2>8.1. <tt class="docutils literal"><span class="pre">horton.io.chk</span></tt> &#8211; Horton Checkpoint File Format<a class="headerlink" href="#module-horton.io.chk" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.chk.load_checkpoint">
 <tt class="descclassname">horton.io.chk.</tt><tt class="descname">load_checkpoint</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.chk.load_checkpoint" title="Permalink to this definition">¶</a></dt>
@@ -74,7 +74,7 @@ be an open h5.Group object.</dd>
 
 </div>
 <div class="section" id="module-horton.io.cif">
-<span id="horton-io-cif-crystal-information-file-format"></span><h2>9.2. <a class="reference internal" href="#module-horton.io.cif" title="horton.io.cif"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.cif</span></tt></a> &#8211; Crystal Information File format<a class="headerlink" href="#module-horton.io.cif" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-cif-crystalographic-information-file-format"></span><h2>8.2. <tt class="docutils literal"><span class="pre">horton.io.cif</span></tt> &#8211; Crystalographic Information File Format<a class="headerlink" href="#module-horton.io.cif" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.cif.dump_cif">
 <tt class="descclassname">horton.io.cif.</tt><tt class="descname">dump_cif</tt><big>(</big><em>filename</em>, <em>system</em><big>)</big><a class="headerlink" href="#horton.io.cif.dump_cif" title="Permalink to this definition">¶</a></dt>
@@ -130,7 +130,7 @@ rotation matrix and the last column is the translation vector.</p>
 
 </div>
 <div class="section" id="module-horton.io.common">
-<span id="horton-io-common-shared-routines-in-the-io-package"></span><h2>9.3. <a class="reference internal" href="#module-horton.io.common" title="horton.io.common"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.common</span></tt></a> &#8211; Shared routines in the io package<a class="headerlink" href="#module-horton.io.common" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-common-shared-routines-in-the-io-package"></span><h2>8.3. <tt class="docutils literal"><span class="pre">horton.io.common</span></tt> &#8211; Shared routines in the IO package<a class="headerlink" href="#module-horton.io.common" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.common.renorm_helper">
 <tt class="descclassname">horton.io.common.</tt><tt class="descname">renorm_helper</tt><big>(</big><em>con_coeff</em>, <em>alpha</em>, <em>shell_type</em><big>)</big><a class="headerlink" href="#horton.io.common.renorm_helper" title="Permalink to this definition">¶</a></dt>
@@ -145,7 +145,7 @@ rotation matrix and the last column is the translation vector.</p>
 
 </div>
 <div class="section" id="module-horton.io.cp2k">
-<span id="horton-io-cp2k-cp2k-output-parsing-atom-code"></span><h2>9.4. <a class="reference internal" href="#module-horton.io.cp2k" title="horton.io.cp2k"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.cp2k</span></tt></a> &#8211; CP2K output parsing (atom code)<a class="headerlink" href="#module-horton.io.cp2k" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-cp2k-cp2k-atomic-wavefunctions"></span><h2>8.4. <tt class="docutils literal"><span class="pre">horton.io.cp2k</span></tt> &#8211; CP2K atomic wavefunctions<a class="headerlink" href="#module-horton.io.cp2k" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.cp2k.load_atom_cp2k">
 <tt class="descclassname">horton.io.cp2k.</tt><tt class="descname">load_atom_cp2k</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.cp2k.load_atom_cp2k" title="Permalink to this definition">¶</a></dt>
@@ -153,7 +153,7 @@ rotation matrix and the last column is the translation vector.</p>
 
 </div>
 <div class="section" id="module-horton.io.cube">
-<span id="horton-io-cube-gaussian-cube-files"></span><h2>9.5. <a class="reference internal" href="#module-horton.io.cube" title="horton.io.cube"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.cube</span></tt></a> &#8211; Gaussian Cube files<a class="headerlink" href="#module-horton.io.cube" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-cube-gaussian-cube-file-format"></span><h2>8.5. <tt class="docutils literal"><span class="pre">horton.io.cube</span></tt> &#8211; Gaussian Cube File Format<a class="headerlink" href="#module-horton.io.cube" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.cube.load_cube">
 <tt class="descclassname">horton.io.cube.</tt><tt class="descname">load_cube</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.cube.load_cube" title="Permalink to this definition">¶</a></dt>
@@ -166,7 +166,7 @@ rotation matrix and the last column is the translation vector.</p>
 
 </div>
 <div class="section" id="module-horton.io.gaussian">
-<span id="horton-io-gaussian-other-stuff-gaussian"></span><h2>9.6. <a class="reference internal" href="#module-horton.io.gaussian" title="horton.io.gaussian"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.gaussian</span></tt></a> &#8211; Other stuff Gaussian<a class="headerlink" href="#module-horton.io.gaussian" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-gaussian-gaussian-log-and-fchk-file-fromats"></span><h2>8.6. <tt class="docutils literal"><span class="pre">horton.io.gaussian</span></tt> &#8211; Gaussian LOG and FCHK file fromats<a class="headerlink" href="#module-horton.io.gaussian" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.gaussian.load_operators_g09">
 <tt class="descclassname">horton.io.gaussian.</tt><tt class="descname">load_operators_g09</tt><big>(</big><em>fn</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.gaussian.load_operators_g09" title="Permalink to this definition">¶</a></dt>
@@ -222,7 +222,7 @@ checkpoint file. (This can save a lot of time.)</dd>
 
 </div>
 <div class="section" id="module-horton.io.molden">
-<span id="horton-io-molden-molden-wavefunction-input-file"></span><h2>9.7. <a class="reference internal" href="#module-horton.io.molden" title="horton.io.molden"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.molden</span></tt></a> &#8211; Molden wavefunction input file<a class="headerlink" href="#module-horton.io.molden" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-molden-molden-wavefunction-input-file-format"></span><h2>8.7. <tt class="docutils literal"><span class="pre">horton.io.molden</span></tt> &#8211; Molden Wavefunction Input File Format<a class="headerlink" href="#module-horton.io.molden" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.molden.load_molden">
 <tt class="descclassname">horton.io.molden.</tt><tt class="descname">load_molden</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.molden.load_molden" title="Permalink to this definition">¶</a></dt>
@@ -238,7 +238,7 @@ checkpoint file. (This can save a lot of time.)</dd>
 
 </div>
 <div class="section" id="module-horton.io.molekel">
-<span id="horton-io-molekel-molekel-wavefunction-file"></span><h2>9.8. <a class="reference internal" href="#module-horton.io.molekel" title="horton.io.molekel"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.molekel</span></tt></a> &#8211; Molekel wavefunction file<a class="headerlink" href="#module-horton.io.molekel" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-molekel-molekel-wavefunction-input-file-format"></span><h2>8.8. <tt class="docutils literal"><span class="pre">horton.io.molekel</span></tt> &#8211; Molekel Wavefunction Input File Format<a class="headerlink" href="#module-horton.io.molekel" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.molekel.load_mkl">
 <tt class="descclassname">horton.io.molekel.</tt><tt class="descname">load_mkl</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.molekel.load_mkl" title="Permalink to this definition">¶</a></dt>
@@ -254,7 +254,7 @@ checkpoint file. (This can save a lot of time.)</dd>
 
 </div>
 <div class="section" id="module-horton.io.smart">
-<span id="horton-io-smart-smart-interface-to-all-input-output-routines"></span><h2>9.9. <a class="reference internal" href="#module-horton.io.smart" title="horton.io.smart"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.smart</span></tt></a> &#8211; Smart interface to all input-output routines<a class="headerlink" href="#module-horton.io.smart" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-smart-detection-of-file-formats"></span><h2>8.9. <tt class="docutils literal"><span class="pre">horton.io.smart</span></tt> &#8211; Detection of file formats<a class="headerlink" href="#module-horton.io.smart" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.smart.load_system_args">
 <tt class="descclassname">horton.io.smart.</tt><tt class="descname">load_system_args</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.smart.load_system_args" title="Permalink to this definition">¶</a></dt>
@@ -274,7 +274,9 @@ that returns a dictionary with arguments for the constructor of the
 <tt class="docutils literal"><span class="pre">System</span></tt> class, except for the <tt class="docutils literal"><span class="pre">chk</span></tt> and <tt class="docutils literal"><span class="pre">lf</span></tt> arguments. Two
 additional variables may be added in the returned dictionary:
 <tt class="docutils literal"><span class="pre">permutation</span></tt> and <tt class="docutils literal"><span class="pre">signs</span></tt>. These will be used to reorder and change
-the signs of all matrix elements related to the basis functions.</p>
+the signs of all matrix elements related to the basis functions. The
+cache argument always has to be a dictionary (and not yet a Cache
+instance). See System constructor for details.</p>
 </dd></dl>
 
 <dl class="function">
@@ -284,7 +286,7 @@ the signs of all matrix elements related to the basis functions.</p>
 
 </div>
 <div class="section" id="module-horton.io.vasp">
-<span id="horton-io-vasp-vasp-poscar-chgcar-and-locpot-files"></span><h2>9.10. <a class="reference internal" href="#module-horton.io.vasp" title="horton.io.vasp"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.vasp</span></tt></a> &#8211; VASP POSCAR, CHGCAR and LOCPOT files<a class="headerlink" href="#module-horton.io.vasp" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-vasp-vasp-poscar-chgcar-and-potcar-file-formats"></span><h2>8.10. <tt class="docutils literal"><span class="pre">horton.io.vasp</span></tt> &#8211; VASP POSCAR, CHGCAR and POTCAR File Formats<a class="headerlink" href="#module-horton.io.vasp" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.vasp.load_chgcar">
 <tt class="descclassname">horton.io.vasp.</tt><tt class="descname">load_chgcar</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.vasp.load_chgcar" title="Permalink to this definition">¶</a></dt>
@@ -317,7 +319,7 @@ the signs of all matrix elements related to the basis functions.</p>
 
 </div>
 <div class="section" id="module-horton.io.xyz">
-<span id="horton-io-xyz-the-xyz-format"></span><h2>9.11. <a class="reference internal" href="#module-horton.io.xyz" title="horton.io.xyz"><tt class="xref py py-mod docutils literal"><span class="pre">horton.io.xyz</span></tt></a> &#8211; The XYZ format<a class="headerlink" href="#module-horton.io.xyz" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-xyz-xyz-file-format"></span><h2>8.11. <tt class="docutils literal"><span class="pre">horton.io.xyz</span></tt> &#8211; XYZ File Format<a class="headerlink" href="#module-horton.io.xyz" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.xyz.load_geom_xyz">
 <tt class="descclassname">horton.io.xyz.</tt><tt class="descname">load_geom_xyz</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.xyz.load_geom_xyz" title="Permalink to this definition">¶</a></dt>
@@ -340,38 +342,38 @@ two first arguments of the System constructor.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">9. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input/output routines</a><ul>
-<li><a class="reference internal" href="#module-horton.io.chk">9.1. <tt class="docutils literal"><span class="pre">horton.io.chk</span></tt> &#8211; Horton checkpoint file format</a></li>
-<li><a class="reference internal" href="#module-horton.io.cif">9.2. <tt class="docutils literal"><span class="pre">horton.io.cif</span></tt> &#8211; Crystal Information File format</a></li>
-<li><a class="reference internal" href="#module-horton.io.common">9.3. <tt class="docutils literal"><span class="pre">horton.io.common</span></tt> &#8211; Shared routines in the io package</a></li>
-<li><a class="reference internal" href="#module-horton.io.cp2k">9.4. <tt class="docutils literal"><span class="pre">horton.io.cp2k</span></tt> &#8211; CP2K output parsing (atom code)</a></li>
-<li><a class="reference internal" href="#module-horton.io.cube">9.5. <tt class="docutils literal"><span class="pre">horton.io.cube</span></tt> &#8211; Gaussian Cube files</a></li>
-<li><a class="reference internal" href="#module-horton.io.gaussian">9.6. <tt class="docutils literal"><span class="pre">horton.io.gaussian</span></tt> &#8211; Other stuff Gaussian</a></li>
-<li><a class="reference internal" href="#module-horton.io.molden">9.7. <tt class="docutils literal"><span class="pre">horton.io.molden</span></tt> &#8211; Molden wavefunction input file</a></li>
-<li><a class="reference internal" href="#module-horton.io.molekel">9.8. <tt class="docutils literal"><span class="pre">horton.io.molekel</span></tt> &#8211; Molekel wavefunction file</a></li>
-<li><a class="reference internal" href="#module-horton.io.smart">9.9. <tt class="docutils literal"><span class="pre">horton.io.smart</span></tt> &#8211; Smart interface to all input-output routines</a></li>
-<li><a class="reference internal" href="#module-horton.io.vasp">9.10. <tt class="docutils literal"><span class="pre">horton.io.vasp</span></tt> &#8211; VASP POSCAR, CHGCAR and LOCPOT files</a></li>
-<li><a class="reference internal" href="#module-horton.io.xyz">9.11. <tt class="docutils literal"><span class="pre">horton.io.xyz</span></tt> &#8211; The XYZ format</a></li>
+<li><a class="reference internal" href="#">8. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input and output routines</a><ul>
+<li><a class="reference internal" href="#module-horton.io.chk">8.1. <tt class="docutils literal"><span class="pre">horton.io.chk</span></tt> &#8211; Horton Checkpoint File Format</a></li>
+<li><a class="reference internal" href="#module-horton.io.cif">8.2. <tt class="docutils literal"><span class="pre">horton.io.cif</span></tt> &#8211; Crystalographic Information File Format</a></li>
+<li><a class="reference internal" href="#module-horton.io.common">8.3. <tt class="docutils literal"><span class="pre">horton.io.common</span></tt> &#8211; Shared routines in the IO package</a></li>
+<li><a class="reference internal" href="#module-horton.io.cp2k">8.4. <tt class="docutils literal"><span class="pre">horton.io.cp2k</span></tt> &#8211; CP2K atomic wavefunctions</a></li>
+<li><a class="reference internal" href="#module-horton.io.cube">8.5. <tt class="docutils literal"><span class="pre">horton.io.cube</span></tt> &#8211; Gaussian Cube File Format</a></li>
+<li><a class="reference internal" href="#module-horton.io.gaussian">8.6. <tt class="docutils literal"><span class="pre">horton.io.gaussian</span></tt> &#8211; Gaussian LOG and FCHK file fromats</a></li>
+<li><a class="reference internal" href="#module-horton.io.molden">8.7. <tt class="docutils literal"><span class="pre">horton.io.molden</span></tt> &#8211; Molden Wavefunction Input File Format</a></li>
+<li><a class="reference internal" href="#module-horton.io.molekel">8.8. <tt class="docutils literal"><span class="pre">horton.io.molekel</span></tt> &#8211; Molekel Wavefunction Input File Format</a></li>
+<li><a class="reference internal" href="#module-horton.io.smart">8.9. <tt class="docutils literal"><span class="pre">horton.io.smart</span></tt> &#8211; Detection of file formats</a></li>
+<li><a class="reference internal" href="#module-horton.io.vasp">8.10. <tt class="docutils literal"><span class="pre">horton.io.vasp</span></tt> &#8211; VASP POSCAR, CHGCAR and POTCAR File Formats</a></li>
+<li><a class="reference internal" href="#module-horton.io.xyz">8.11. <tt class="docutils literal"><span class="pre">horton.io.xyz</span></tt> &#8211; XYZ File Format</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="lib_horton_hamiltonian.html"
-                        title="previous chapter">8. <tt class="docutils literal docutils literal docutils literal"><span class="pre">horton.hamiltonian</span></tt> &#8211; SCF model hamiltonians</a></p>
+  <p class="topless"><a href="horton_grid.html"
+                        title="previous chapter">7. <tt class="docutils literal docutils literal docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integraton grids</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="lib_horton_part.html"
-                        title="next chapter">10. <tt class="docutils literal"><span class="pre">horton.part</span></tt> &#8211; Density partitioning</a></p>
+  <p class="topless"><a href="horton_meanfield.html"
+                        title="next chapter">9. <tt class="docutils literal"><span class="pre">horton.meanfield</span></tt> &#8211; Mean-field electronic structure code</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/lib_horton_io.txt"
+    <li><a href="../_sources/lib/horton_io.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
+    <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -390,18 +392,18 @@ two first arguments of the System constructor.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="lib_horton_part.html" title="10. horton.part – Density partitioning"
+          <a href="horton_meanfield.html" title="9. horton.meanfield – Mean-field electronic structure code"
              >next</a> |</li>
         <li class="right" >
-          <a href="lib_horton_hamiltonian.html" title="8. horton.hamiltonian – SCF model hamiltonians"
+          <a href="horton_grid.html" title="7. horton.grid – Numerical integraton grids"
              >previous</a> |</li>
-        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

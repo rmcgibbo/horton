@@ -8,44 +8,44 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>7. horton.grid – Numerical integration grids &mdash; Horton 1.0 documentation</title>
+    <title>7. horton.grid – Numerical integraton grids &mdash; Horton 1.0.1 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '1.0',
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0 documentation" href="index.html" />
-    <link rel="next" title="8. horton.hamiltonian – SCF model hamiltonians" href="lib_horton_hamiltonian.html" />
-    <link rel="prev" title="6. horton.gbasis – Gaussian basis sets" href="lib_horton_gbasis.html" /> 
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Horton 1.0.1 documentation" href="../index.html" />
+    <link rel="next" title="8. horton.io – Input and output routines" href="horton_io.html" />
+    <link rel="prev" title="6. horton.gbasis – Gaussian basis sets" href="horton_gbasis.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="lib_horton_hamiltonian.html" title="8. horton.hamiltonian – SCF model hamiltonians"
+          <a href="horton_io.html" title="8. horton.io – Input and output routines"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="lib_horton_gbasis.html" title="6. horton.gbasis – Gaussian basis sets"
+          <a href="horton_gbasis.html" title="6. horton.gbasis – Gaussian basis sets"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -54,10 +54,10 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="horton-grid-numerical-integration-grids">
-<h1>7. <tt class="docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integration grids<a class="headerlink" href="#horton-grid-numerical-integration-grids" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="horton-grid-numerical-integraton-grids">
+<h1>7. <tt class="docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integraton grids<a class="headerlink" href="#horton-grid-numerical-integraton-grids" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-horton.grid.atgrid">
-<span id="horton-grid-atgrid-atomic-integration-grids"></span><h2>7.1. <a class="reference internal" href="#module-horton.grid.atgrid" title="horton.grid.atgrid"><tt class="xref py py-mod docutils literal"><span class="pre">horton.grid.atgrid</span></tt></a> &#8211; Atomic integration grids<a class="headerlink" href="#module-horton.grid.atgrid" title="Permalink to this headline">¶</a></h2>
+<span id="horton-grid-atgrid-atomic-grids"></span><h2>7.1. <tt class="docutils literal"><span class="pre">horton.grid.atgrid</span></tt> &#8211; Atomic grids<a class="headerlink" href="#module-horton.grid.atgrid" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.grid.atgrid.AtomicGrid">
 <em class="property">class </em><tt class="descclassname">horton.grid.atgrid.</tt><tt class="descname">AtomicGrid</tt><big>(</big><em>number</em>, <em>center</em>, <em>atspec='tv-13.1-3'</em>, <em>random_rotate=True</em>, <em>points=None</em><big>)</big><a class="headerlink" href="#horton.grid.atgrid.AtomicGrid" title="Permalink to this definition">¶</a></dt>
@@ -127,6 +127,11 @@ that are not reproducible.</dd>
 <dd><p>The radial integration grid</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="horton.grid.atgrid.AtomicGrid.update_center">
+<tt class="descname">update_center</tt><big>(</big><em>center</em><big>)</big><a class="headerlink" href="#horton.grid.atgrid.AtomicGrid.update_center" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="function">
@@ -169,8 +174,100 @@ grids.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-horton.grid.base">
+<span id="horton-grid-base-base-classes-for-3d-integration-grids"></span><h2>7.2. <tt class="docutils literal"><span class="pre">horton.grid.base</span></tt> &#8211; Base classes for 3D integration grids<a class="headerlink" href="#module-horton.grid.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.grid.base.IntGrid">
+<em class="property">class </em><tt class="descclassname">horton.grid.base.</tt><tt class="descname">IntGrid</tt><big>(</big><em>points</em>, <em>weights</em>, <em>subgrids=None</em><big>)</big><a class="headerlink" href="#horton.grid.base.IntGrid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for real-space integration grids in Horton</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>points</dt>
+<dd>A numpy array with shape (npoint,3) with the Cartesian
+coordinates of the grids points.</dd>
+<dt>weights</dt>
+<dd>The integration weights of the grid points</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>subgrids</dt>
+<dd>Can be given when this grid is composed of several other
+grids. The points data is shared, but the weights of the
+subgrids may be different.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.grid.base.IntGrid.distances">
+<tt class="descname">distances</tt><big>(</big><em>center</em>, <em>d</em><big>)</big><a class="headerlink" href="#horton.grid.base.IntGrid.distances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute distances between all grid points and a center, store result in d.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.grid.base.IntGrid.eval_spline">
+<tt class="descname">eval_spline</tt><big>(</big><em>cubic_spline</em>, <em>center</em>, <em>output</em>, <em>cell=None</em><big>)</big><a class="headerlink" href="#horton.grid.base.IntGrid.eval_spline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.grid.base.IntGrid.integrate">
+<tt class="descname">integrate</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#horton.grid.base.IntGrid.integrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integrate the product of all arguments</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>data1, data2, ...</dt>
+<dd>All arguments must be arrays with the same size as the number
+of grid points. The arrays contain the functions, evaluated
+at the grid points, that must be multiplied and integrated.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>center</dt>
+<dd>When given, a multipole moment can be computed with respect to
+this center instead of a plain integral.</dd>
+<dt>nx, ny, nz, nr</dt>
+<dd>The powers that determine the type of moment computed. These can
+only be given if center is given.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.grid.base.IntGrid.points">
+<tt class="descname">points</tt><a class="headerlink" href="#horton.grid.base.IntGrid.points" title="Permalink to this definition">¶</a></dt>
+<dd><p>The grid points.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.grid.base.IntGrid.shape">
+<tt class="descname">shape</tt><a class="headerlink" href="#horton.grid.base.IntGrid.shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>The shape of the grid.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.grid.base.IntGrid.size">
+<tt class="descname">size</tt><a class="headerlink" href="#horton.grid.base.IntGrid.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The size of the grid.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.grid.base.IntGrid.subgrids">
+<tt class="descname">subgrids</tt><a class="headerlink" href="#horton.grid.base.IntGrid.subgrids" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of grid objects used to construct this grid.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.grid.base.IntGrid.weights">
+<tt class="descname">weights</tt><a class="headerlink" href="#horton.grid.base.IntGrid.weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>The grid weights.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.grid.base.IntGrid.zeros">
+<tt class="descname">zeros</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.grid.base.IntGrid.zeros" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-horton.grid.cext">
-<span id="horton-grid-cext-interface-to-low-level-code"></span><h2>7.2. <a class="reference internal" href="#module-horton.grid.cext" title="horton.grid.cext"><tt class="xref py py-mod docutils literal"><span class="pre">horton.grid.cext</span></tt></a> &#8211; Interface to low-level code<a class="headerlink" href="#module-horton.grid.cext" title="Permalink to this headline">¶</a></h2>
+<span id="horton-grid-cext-c-extensions"></span><h2>7.3. <tt class="docutils literal"><span class="pre">horton.grid.cext</span></tt> &#8211; C++ extensions<a class="headerlink" href="#module-horton.grid.cext" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.grid.cext.lebedev_laikov_npoint">
 <tt class="descclassname">horton.grid.cext.</tt><tt class="descname">lebedev_laikov_npoint</tt><big>(</big><em>lvalue</em><big>)</big><a class="headerlink" href="#horton.grid.cext.lebedev_laikov_npoint" title="Permalink to this definition">¶</a></dt>
@@ -368,10 +465,10 @@ scheme.</dd>
 <dd><p>A linear grid.</p>
 <p>The grid points are distributed as follows:</p>
 <div class="math">
-<p><img src="_images/math/25017b670cdbe99ffe453eef860c985f670fe53f.png" alt="r_i = \alpha i + r_0"/></p>
+<p><img src="../_images/math/25017b670cdbe99ffe453eef860c985f670fe53f.png" alt="r_i = \alpha i + r_0"/></p>
 </div><p>with</p>
 <div class="math">
-<p><img src="_images/math/1ed4a9b18ca223c143469d51a75d647d99d229fa.png" alt="\alpha = (r_{N-1} -r_0)/(N-1)."/></p>
+<p><img src="../_images/math/1ed4a9b18ca223c143469d51a75d647d99d229fa.png" alt="\alpha = (r_{N-1} -r_0)/(N-1)."/></p>
 </div><dl class="attribute">
 <dt id="horton.grid.cext.LinearRTransform.alpha">
 <tt class="descname">alpha</tt><a class="headerlink" href="#horton.grid.cext.LinearRTransform.alpha" title="Permalink to this definition">¶</a></dt>
@@ -405,10 +502,10 @@ scheme.</dd>
 <dd><p>An exponential grid.</p>
 <p>The grid points are distributed as follows:</p>
 <div class="math">
-<p><img src="_images/math/c82caff0d768f75af797d9f0d44cfb199c9962bc.png" alt="r_i = r_0 \alpha^i"/></p>
+<p><img src="../_images/math/c82caff0d768f75af797d9f0d44cfb199c9962bc.png" alt="r_i = r_0 \alpha^i"/></p>
 </div><p>with</p>
 <div class="math">
-<p><img src="_images/math/b1e9e30a49321f45e9e98152740ed70436d014a5.png" alt="\alpha = \log(r_{N-1}/r_0)/(N-1)."/></p>
+<p><img src="../_images/math/b1e9e30a49321f45e9e98152740ed70436d014a5.png" alt="\alpha = \log(r_{N-1}/r_0)/(N-1)."/></p>
 </div><dl class="attribute">
 <dt id="horton.grid.cext.ExpRTransform.alpha">
 <tt class="descname">alpha</tt><a class="headerlink" href="#horton.grid.cext.ExpRTransform.alpha" title="Permalink to this definition">¶</a></dt>
@@ -442,12 +539,12 @@ scheme.</dd>
 <dd><p>A shifted exponential grid.</p>
 <p>The grid points are distributed as follows:</p>
 <div class="math">
-<p><img src="_images/math/8f781a5a0e9ef20a356265ddb71f6bdf33014312.png" alt="r_i = r_0 \alpha^i - r_s"/></p>
+<p><img src="../_images/math/8f781a5a0e9ef20a356265ddb71f6bdf33014312.png" alt="r_i = r_0 \alpha^i - r_s"/></p>
 </div><p>with</p>
 <div class="math">
-<p><img src="_images/math/3b0f679a359883195c64ada2e9551f6470b0cbd1.png" alt="r_0 = r_m + r_s"/></p>
+<p><img src="../_images/math/3b0f679a359883195c64ada2e9551f6470b0cbd1.png" alt="r_0 = r_m + r_s"/></p>
 </div><div class="math">
-<p><img src="_images/math/73b739dae470d61cdc5778150657d52eb3d50dca.png" alt="\alpha = \log\left(\frac{r_M+r_s}{r_0}\right)/(N-1)."/></p>
+<p><img src="../_images/math/73b739dae470d61cdc5778150657d52eb3d50dca.png" alt="\alpha = \log\left(\frac{r_M+r_s}{r_0}\right)/(N-1)."/></p>
 </div><dl class="attribute">
 <dt id="horton.grid.cext.ShiftedExpRTransform.alpha">
 <tt class="descname">alpha</tt><a class="headerlink" href="#horton.grid.cext.ShiftedExpRTransform.alpha" title="Permalink to this definition">¶</a></dt>
@@ -491,10 +588,10 @@ scheme.</dd>
 <dd><p>A grid introduced by Baker et al.</p>
 <p>The grid points are distributed as follows:</p>
 <div class="math">
-<p><img src="_images/math/1cfd7df217592994e9d567042573de659c7b2680.png" alt="r_i = A*ln\left[1-\left(\frac{i}{npoint}\right)^2\right]"/></p>
+<p><img src="../_images/math/1cfd7df217592994e9d567042573de659c7b2680.png" alt="r_i = A*ln\left[1-\left(\frac{i}{npoint}\right)^2\right]"/></p>
 </div><p>with</p>
 <div class="math">
-<p><img src="_images/math/f21f8e6e57210b4b23211773dfdc7ec75fd3105e.png" alt="A = \frac{1}{ln\left[1-\left(\frac{npoint-1}{npoint}\right)^2\right]}."/></p>
+<p><img src="../_images/math/f21f8e6e57210b4b23211773dfdc7ec75fd3105e.png" alt="A = \frac{1}{ln\left[1-\left(\frac{npoint-1}{npoint}\right)^2\right]}."/></p>
 </div><dl class="method">
 <dt id="horton.grid.cext.BakerRTransform.chop">
 <tt class="descname">chop</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.grid.cext.BakerRTransform.chop" title="Permalink to this definition">¶</a></dt>
@@ -802,7 +899,7 @@ only be given if center is given.</dd>
 
 </div>
 <div class="section" id="module-horton.grid.int1d">
-<span id="horton-grid-int1d-one-dimensional-integration-algorithms"></span><h2>7.3. <a class="reference internal" href="#module-horton.grid.int1d" title="horton.grid.int1d"><tt class="xref py py-mod docutils literal"><span class="pre">horton.grid.int1d</span></tt></a> &#8211; One-dimensional integration algorithms<a class="headerlink" href="#module-horton.grid.int1d" title="Permalink to this headline">¶</a></h2>
+<span id="horton-grid-int1d-1d-integration-algorithms"></span><h2>7.4. <tt class="docutils literal"><span class="pre">horton.grid.int1d</span></tt> &#8211; 1D integration algorithms<a class="headerlink" href="#module-horton.grid.int1d" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.grid.int1d.Integrator1D">
 <em class="property">class </em><tt class="descclassname">horton.grid.int1d.</tt><tt class="descname">Integrator1D</tt><a class="headerlink" href="#horton.grid.int1d.Integrator1D" title="Permalink to this definition">¶</a></dt>
@@ -873,7 +970,7 @@ only be given if center is given.</dd>
 
 </div>
 <div class="section" id="module-horton.grid.molgrid">
-<span id="horton-grid-molgrid-molecular-integration-grids"></span><h2>7.4. <a class="reference internal" href="#module-horton.grid.molgrid" title="horton.grid.molgrid"><tt class="xref py py-mod docutils literal"><span class="pre">horton.grid.molgrid</span></tt></a> &#8211; Molecular integration grids<a class="headerlink" href="#module-horton.grid.molgrid" title="Permalink to this headline">¶</a></h2>
+<span id="horton-grid-molgrid-molecular-integration-grids"></span><h2>7.5. <tt class="docutils literal"><span class="pre">horton.grid.molgrid</span></tt> &#8211; Molecular integration grids<a class="headerlink" href="#module-horton.grid.molgrid" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.grid.molgrid.BeckeMolGrid">
 <em class="property">class </em><tt class="descclassname">horton.grid.molgrid.</tt><tt class="descname">BeckeMolGrid</tt><big>(</big><em>system</em>, <em>atspecs='tv-13.1-3'</em>, <em>k=3</em>, <em>random_rotate=True</em>, <em>keep_subgrids=False</em><big>)</big><a class="headerlink" href="#horton.grid.molgrid.BeckeMolGrid" title="Permalink to this definition">¶</a></dt>
@@ -927,17 +1024,16 @@ atoms.</li>
 <dd><p>The random rotation flag.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="horton.grid.molgrid.BeckeMolGrid.system">
-<tt class="descname">system</tt><a class="headerlink" href="#horton.grid.molgrid.BeckeMolGrid.system" title="Permalink to this definition">¶</a></dt>
-<dd><p>The system object for which this grid is made.</p>
-</dd></dl>
+<dl class="method">
+<dt id="horton.grid.molgrid.BeckeMolGrid.update_centers">
+<tt class="descname">update_centers</tt><big>(</big><em>system</em><big>)</big><a class="headerlink" href="#horton.grid.molgrid.BeckeMolGrid.update_centers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-horton.grid.radial">
-<span id="horton-grid-radial-radial-integration-grids"></span><h2>7.5. <a class="reference internal" href="#module-horton.grid.radial" title="horton.grid.radial"><tt class="xref py py-mod docutils literal"><span class="pre">horton.grid.radial</span></tt></a> &#8211; Radial integration grids<a class="headerlink" href="#module-horton.grid.radial" title="Permalink to this headline">¶</a></h2>
+<span id="horton-grid-radial-1d-radial-integration-grid"></span><h2>7.6. <tt class="docutils literal"><span class="pre">horton.grid.radial</span></tt> &#8211; 1D Radial integration grid<a class="headerlink" href="#module-horton.grid.radial" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.grid.radial.RadialGrid">
 <em class="property">class </em><tt class="descclassname">horton.grid.radial.</tt><tt class="descname">RadialGrid</tt><big>(</big><em>rtransform</em>, <em>int1d=None</em><big>)</big><a class="headerlink" href="#horton.grid.radial.RadialGrid" title="Permalink to this definition">¶</a></dt>
@@ -1014,7 +1110,7 @@ at the grid points, that must be multiplied and integrated.</dd>
 
 </div>
 <div class="section" id="module-horton.grid.visual">
-<span id="horton-grid-visual-grids-for-contour-plots"></span><h2>7.6. <a class="reference internal" href="#module-horton.grid.visual" title="horton.grid.visual"><tt class="xref py py-mod docutils literal"><span class="pre">horton.grid.visual</span></tt></a> &#8211; Grids for contour plots<a class="headerlink" href="#module-horton.grid.visual" title="Permalink to this headline">¶</a></h2>
+<span id="horton-grid-visual-grids-suitable-for-visualization"></span><h2>7.7. <tt class="docutils literal"><span class="pre">horton.grid.visual</span></tt> &#8211; Grids suitable for visualization<a class="headerlink" href="#module-horton.grid.visual" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.grid.visual.RectangleGrid">
 <em class="property">class </em><tt class="descclassname">horton.grid.visual.</tt><tt class="descname">RectangleGrid</tt><big>(</big><em>center</em>, <em>axis0</em>, <em>axis1</em>, <em>l0</em>, <em>h0</em>, <em>l1</em>, <em>h1</em><big>)</big><a class="headerlink" href="#horton.grid.visual.RectangleGrid" title="Permalink to this definition">¶</a></dt>
@@ -1029,33 +1125,34 @@ at the grid points, that must be multiplied and integrated.</dd>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">7. <tt class="docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integration grids</a><ul>
-<li><a class="reference internal" href="#module-horton.grid.atgrid">7.1. <tt class="docutils literal"><span class="pre">horton.grid.atgrid</span></tt> &#8211; Atomic integration grids</a></li>
-<li><a class="reference internal" href="#module-horton.grid.cext">7.2. <tt class="docutils literal"><span class="pre">horton.grid.cext</span></tt> &#8211; Interface to low-level code</a></li>
-<li><a class="reference internal" href="#module-horton.grid.int1d">7.3. <tt class="docutils literal"><span class="pre">horton.grid.int1d</span></tt> &#8211; One-dimensional integration algorithms</a></li>
-<li><a class="reference internal" href="#module-horton.grid.molgrid">7.4. <tt class="docutils literal"><span class="pre">horton.grid.molgrid</span></tt> &#8211; Molecular integration grids</a></li>
-<li><a class="reference internal" href="#module-horton.grid.radial">7.5. <tt class="docutils literal"><span class="pre">horton.grid.radial</span></tt> &#8211; Radial integration grids</a></li>
-<li><a class="reference internal" href="#module-horton.grid.visual">7.6. <tt class="docutils literal"><span class="pre">horton.grid.visual</span></tt> &#8211; Grids for contour plots</a></li>
+<li><a class="reference internal" href="#">7. <tt class="docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integraton grids</a><ul>
+<li><a class="reference internal" href="#module-horton.grid.atgrid">7.1. <tt class="docutils literal"><span class="pre">horton.grid.atgrid</span></tt> &#8211; Atomic grids</a></li>
+<li><a class="reference internal" href="#module-horton.grid.base">7.2. <tt class="docutils literal"><span class="pre">horton.grid.base</span></tt> &#8211; Base classes for 3D integration grids</a></li>
+<li><a class="reference internal" href="#module-horton.grid.cext">7.3. <tt class="docutils literal"><span class="pre">horton.grid.cext</span></tt> &#8211; C++ extensions</a></li>
+<li><a class="reference internal" href="#module-horton.grid.int1d">7.4. <tt class="docutils literal"><span class="pre">horton.grid.int1d</span></tt> &#8211; 1D integration algorithms</a></li>
+<li><a class="reference internal" href="#module-horton.grid.molgrid">7.5. <tt class="docutils literal"><span class="pre">horton.grid.molgrid</span></tt> &#8211; Molecular integration grids</a></li>
+<li><a class="reference internal" href="#module-horton.grid.radial">7.6. <tt class="docutils literal"><span class="pre">horton.grid.radial</span></tt> &#8211; 1D Radial integration grid</a></li>
+<li><a class="reference internal" href="#module-horton.grid.visual">7.7. <tt class="docutils literal"><span class="pre">horton.grid.visual</span></tt> &#8211; Grids suitable for visualization</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="lib_horton_gbasis.html"
+  <p class="topless"><a href="horton_gbasis.html"
                         title="previous chapter">6. <tt class="docutils literal docutils literal docutils literal"><span class="pre">horton.gbasis</span></tt> &#8211; Gaussian basis sets</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="lib_horton_hamiltonian.html"
-                        title="next chapter">8. <tt class="docutils literal"><span class="pre">horton.hamiltonian</span></tt> &#8211; SCF model hamiltonians</a></p>
+  <p class="topless"><a href="horton_io.html"
+                        title="next chapter">8. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input and output routines</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/lib_horton_grid.txt"
+    <li><a href="../_sources/lib/horton_grid.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
+    <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -1074,18 +1171,18 @@ at the grid points, that must be multiplied and integrated.</dd>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="lib_horton_hamiltonian.html" title="8. horton.hamiltonian – SCF model hamiltonians"
+          <a href="horton_io.html" title="8. horton.io – Input and output routines"
              >next</a> |</li>
         <li class="right" >
-          <a href="lib_horton_gbasis.html" title="6. horton.gbasis – Gaussian basis sets"
+          <a href="horton_gbasis.html" title="6. horton.gbasis – Gaussian basis sets"
              >previous</a> |</li>
-        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

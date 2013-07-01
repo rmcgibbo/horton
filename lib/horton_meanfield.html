@@ -1,0 +1,1096 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>9. horton.meanfield – Mean-field electronic structure code &mdash; Horton 1.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Horton 1.0.1 documentation" href="../index.html" />
+    <link rel="next" title="10. horton.part – Package for density-based partitioning (fuzzy atoms)" href="horton_part.html" />
+    <link rel="prev" title="8. horton.io – Input and output routines" href="horton_io.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="horton_part.html" title="10. horton.part – Package for density-based partitioning (fuzzy atoms)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="horton_io.html" title="8. horton.io – Input and output routines"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="horton-meanfield-mean-field-electronic-structure-code">
+<h1>9. <tt class="docutils literal"><span class="pre">horton.meanfield</span></tt> &#8211; Mean-field electronic structure code<a class="headerlink" href="#horton-meanfield-mean-field-electronic-structure-code" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-horton.meanfield.builtin">
+<span id="horton-meanfield-builtin-built-in-energy-terms"></span><h2>9.1. <tt class="docutils literal"><span class="pre">horton.meanfield.builtin</span></tt> &#8211; Built-in energy terms<a class="headerlink" href="#module-horton.meanfield.builtin" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.meanfield.builtin.Hartree">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.builtin.</tt><tt class="descname">Hartree</tt><big>(</big><em>label='hartree'</em><big>)</big><a class="headerlink" href="#horton.meanfield.builtin.Hartree" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.meanfield.builtin.Hartree.add_fock_matrix">
+<tt class="descname">add_fock_matrix</tt><big>(</big><em>fock_alpha</em>, <em>fock_beta</em>, <em>scale=1</em><big>)</big><a class="headerlink" href="#horton.meanfield.builtin.Hartree.add_fock_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.builtin.Hartree.compute">
+<tt class="descname">compute</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.builtin.Hartree.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.meanfield.builtin.HartreeFockExchange">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.builtin.</tt><tt class="descname">HartreeFockExchange</tt><big>(</big><em>label='exchange_hartree_fock'</em>, <em>fraction_exchange=1.0</em><big>)</big><a class="headerlink" href="#horton.meanfield.builtin.HartreeFockExchange" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.meanfield.builtin.HartreeFockExchange.add_fock_matrix">
+<tt class="descname">add_fock_matrix</tt><big>(</big><em>fock_alpha</em>, <em>fock_beta</em>, <em>scale=1</em><big>)</big><a class="headerlink" href="#horton.meanfield.builtin.HartreeFockExchange.add_fock_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.builtin.HartreeFockExchange.compute">
+<tt class="descname">compute</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.builtin.HartreeFockExchange.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.meanfield.builtin.DiracExchange">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.builtin.</tt><tt class="descname">DiracExchange</tt><big>(</big><em>label='exchange_dirac'</em>, <em>coeff=None</em><big>)</big><a class="headerlink" href="#horton.meanfield.builtin.DiracExchange" title="Permalink to this definition">¶</a></dt>
+<dd><p>An implementation of the Dirac Exchange Functional</p>
+<p><strong>Arguments:</strong></p>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>coeff</dt>
+<dd>The coefficient Cx in front of the Dirac exchange energy.
+It defaults to the uniform electron gas value, i.e.
+Cx = 3/4 (3/pi)^(1/3).</dd>
+</dl>
+<dl class="method">
+<dt id="horton.meanfield.builtin.DiracExchange.add_fock_matrix">
+<tt class="descname">add_fock_matrix</tt><big>(</big><em>fock_alpha</em>, <em>fock_beta</em>, <em>scale=1</em><big>)</big><a class="headerlink" href="#horton.meanfield.builtin.DiracExchange.add_fock_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.builtin.DiracExchange.compute">
+<tt class="descname">compute</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.builtin.DiracExchange.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.builtin.DiracExchange.require_grid">
+<tt class="descname">require_grid</tt><em class="property"> = True</em><a class="headerlink" href="#horton.meanfield.builtin.DiracExchange.require_grid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.meanfield.cext">
+<span id="horton-meanfield-cext-c-extensions"></span><h2>9.2. <tt class="docutils literal"><span class="pre">horton.meanfield.cext</span></tt> &#8211; C++ extensions<a class="headerlink" href="#module-horton.meanfield.cext" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.meanfield.cext.LibXCWrapper">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.cext.</tt><tt class="descname">LibXCWrapper</tt><a class="headerlink" href="#horton.meanfield.cext.LibXCWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.meanfield.cext.LibXCWrapper.compute_gga_exc_pol">
+<tt class="descname">compute_gga_exc_pol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.cext.LibXCWrapper.compute_gga_exc_pol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.cext.LibXCWrapper.compute_gga_exc_unpol">
+<tt class="descname">compute_gga_exc_unpol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.cext.LibXCWrapper.compute_gga_exc_unpol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.cext.LibXCWrapper.compute_gga_vxc_pol">
+<tt class="descname">compute_gga_vxc_pol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.cext.LibXCWrapper.compute_gga_vxc_pol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.cext.LibXCWrapper.compute_gga_vxc_unpol">
+<tt class="descname">compute_gga_vxc_unpol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.cext.LibXCWrapper.compute_gga_vxc_unpol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.cext.LibXCWrapper.compute_lda_exc_pol">
+<tt class="descname">compute_lda_exc_pol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.cext.LibXCWrapper.compute_lda_exc_pol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.cext.LibXCWrapper.compute_lda_exc_unpol">
+<tt class="descname">compute_lda_exc_unpol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.cext.LibXCWrapper.compute_lda_exc_unpol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.cext.LibXCWrapper.compute_lda_vxc_pol">
+<tt class="descname">compute_lda_vxc_pol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.cext.LibXCWrapper.compute_lda_vxc_pol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.cext.LibXCWrapper.compute_lda_vxc_unpol">
+<tt class="descname">compute_lda_vxc_unpol</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.cext.LibXCWrapper.compute_lda_vxc_unpol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.cext.LibXCWrapper.get_hyb_exx_fraction">
+<tt class="descname">get_hyb_exx_fraction</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.cext.LibXCWrapper.get_hyb_exx_fraction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.meanfield.core">
+<span id="horton-meanfield-core-linear-energy-terms-core-hamiltonian"></span><h2>9.3. <tt class="docutils literal"><span class="pre">horton.meanfield.core</span></tt> &#8211; Linear energy terms (Core Hamiltonian)<a class="headerlink" href="#module-horton.meanfield.core" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.meanfield.core.LinearObservable">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.core.</tt><tt class="descname">LinearObservable</tt><big>(</big><em>label</em><big>)</big><a class="headerlink" href="#horton.meanfield.core.LinearObservable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all observables that are linear in the density matrix</p>
+<p>This is (technically) a special class because the Fock operator does not
+have to be recomputed when the density matrix changes.</p>
+<dl class="method">
+<dt id="horton.meanfield.core.LinearObservable.add_fock_matrix">
+<tt class="descname">add_fock_matrix</tt><big>(</big><em>fock_alpha</em>, <em>fock_beta</em>, <em>scale=1</em><big>)</big><a class="headerlink" href="#horton.meanfield.core.LinearObservable.add_fock_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.core.LinearObservable.compute">
+<tt class="descname">compute</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.core.LinearObservable.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.core.LinearObservable.get_operator">
+<tt class="descname">get_operator</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.core.LinearObservable.get_operator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.meanfield.core.KineticEnergy">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.core.</tt><tt class="descname">KineticEnergy</tt><big>(</big><em>label='kin'</em><big>)</big><a class="headerlink" href="#horton.meanfield.core.KineticEnergy" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.meanfield.core.KineticEnergy.get_operator">
+<tt class="descname">get_operator</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.core.KineticEnergy.get_operator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.meanfield.core.ExternalPotential">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.core.</tt><tt class="descname">ExternalPotential</tt><big>(</big><em>label='ne'</em><big>)</big><a class="headerlink" href="#horton.meanfield.core.ExternalPotential" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.meanfield.core.ExternalPotential.get_operator">
+<tt class="descname">get_operator</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.core.ExternalPotential.get_operator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.meanfield.core.CustomLinearObservable">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.core.</tt><tt class="descname">CustomLinearObservable</tt><big>(</big><em>label</em>, <em>get_operator</em><big>)</big><a class="headerlink" href="#horton.meanfield.core.CustomLinearObservable" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a user-defined term that is linear in the density matrix</p>
+<p>This term can be used to implemented perturbations by finite fields.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.meanfield.guess">
+<span id="horton-meanfield-guess-initial-guesses-for-wavefunctions"></span><h2>9.4. <tt class="docutils literal"><span class="pre">horton.meanfield.guess</span></tt> &#8211; Initial guesses for wavefunctions<a class="headerlink" href="#module-horton.meanfield.guess" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.meanfield.guess.guess_hamiltonian_core">
+<tt class="descclassname">horton.meanfield.guess.</tt><tt class="descname">guess_hamiltonian_core</tt><big>(</big><em>system</em><big>)</big><a class="headerlink" href="#horton.meanfield.guess.guess_hamiltonian_core" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-horton.meanfield.hamiltonian">
+<span id="horton-meanfield-hamiltonian-mean-field-dft-hf-hamiltonian-data-structures"></span><h2>9.5. <tt class="docutils literal"><span class="pre">horton.meanfield.hamiltonian</span></tt> &#8211; Mean-field DFT/HF Hamiltonian data structures<a class="headerlink" href="#module-horton.meanfield.hamiltonian" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.meanfield.hamiltonian.Hamiltonian">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.hamiltonian.</tt><tt class="descname">Hamiltonian</tt><big>(</big><em>system</em>, <em>terms</em>, <em>grid=None</em>, <em>auto_complete=True</em><big>)</big><a class="headerlink" href="#horton.meanfield.hamiltonian.Hamiltonian" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>system</dt>
+<dd>The System object for which the energy must be computed.</dd>
+<dt>terms</dt>
+<dd>The terms in the Hamiltonian. Kinetic energy, external
+potential (nuclei), and Hartree are added automatically.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>grid</dt>
+<dd>The integration grid, in case some terms need one.</dd>
+<dt>auto_complete</dt>
+<dd>When set to False, the kinetic energy, external potential and
+Hartree terms are not added automatically.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.meanfield.hamiltonian.Hamiltonian.add_term">
+<tt class="descname">add_term</tt><big>(</big><em>term</em><big>)</big><a class="headerlink" href="#horton.meanfield.hamiltonian.Hamiltonian.add_term" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new term to the hamiltonian</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.hamiltonian.Hamiltonian.clear">
+<tt class="descname">clear</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.hamiltonian.Hamiltonian.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark the properties derived from the wfn as outdated.</p>
+<p>This method does not recompute anything, but just marks operators
+as outdated. They are recomputed as they are needed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.hamiltonian.Hamiltonian.compute">
+<tt class="descname">compute</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.hamiltonian.Hamiltonian.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the energy.</p>
+<p><strong>Returns:</strong></p>
+<p>The total energy, including nuclear-nuclear repulsion.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.hamiltonian.Hamiltonian.compute_fock">
+<tt class="descname">compute_fock</tt><big>(</big><em>fock_alpha</em>, <em>fock_beta</em><big>)</big><a class="headerlink" href="#horton.meanfield.hamiltonian.Hamiltonian.compute_fock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute alpha (and beta) Fock matrix(es).</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>fock_alpha</dt>
+<dd>A One-Body operator output argument for the alpha fock matrix.</dd>
+<dt>fock_alpha</dt>
+<dd>A One-Body operator output argument for the beta fock matrix.</dd>
+</dl>
+<p>In the case of a closed-shell computation, the argument fock_beta is
+<tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.meanfield.libxc">
+<span id="horton-meanfield-libxc-interface-to-lda-gga-and-hybrid-functionals-from-libxc"></span><h2>9.6. <tt class="docutils literal"><span class="pre">horton.meanfield.libxc</span></tt> &#8211; Interface to LDA, GGA and Hybrid functionals from LibXC<a class="headerlink" href="#module-horton.meanfield.libxc" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.meanfield.libxc.LibXCLDA">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.libxc.</tt><tt class="descname">LibXCLDA</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#horton.meanfield.libxc.LibXCLDA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any LDA functional from LibXC</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>name</dt>
+<dd>The name of the functional in LibXC, without the <tt class="docutils literal"><span class="pre">lda_</span></tt>
+prefix.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.meanfield.libxc.LibXCLDA.compute">
+<tt class="descname">compute</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.libxc.LibXCLDA.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.libxc.LibXCLDA.require_grid">
+<tt class="descname">require_grid</tt><em class="property"> = True</em><a class="headerlink" href="#horton.meanfield.libxc.LibXCLDA.require_grid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.meanfield.libxc.LibXCGGA">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.libxc.</tt><tt class="descname">LibXCGGA</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#horton.meanfield.libxc.LibXCGGA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any GGA functional from LibXC</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>name</dt>
+<dd>The name of the functional in LibXC, without the <tt class="docutils literal"><span class="pre">gga_</span></tt>
+prefix.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.meanfield.libxc.LibXCGGA.compute">
+<tt class="descname">compute</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.libxc.LibXCGGA.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.meanfield.libxc.LibXCHybridGGA">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.libxc.</tt><tt class="descname">LibXCHybridGGA</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#horton.meanfield.libxc.LibXCHybridGGA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any Hybrid GGA functional from LibXC</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>name</dt>
+<dd>The name of the functional in LibXC, without the <tt class="docutils literal"><span class="pre">hyb_gga_</span></tt>
+prefix.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.meanfield.libxc.LibXCHybridGGA.get_exx_fraction">
+<tt class="descname">get_exx_fraction</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.libxc.LibXCHybridGGA.get_exx_fraction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.meanfield.observable">
+<span id="horton-meanfield-observable-base-class-for-energy-terms-and-other-observables-of-the-wavefunction"></span><h2>9.7. <tt class="docutils literal"><span class="pre">horton.meanfield.observable</span></tt> &#8211; Base class for energy terms and other observables of the wavefunction<a class="headerlink" href="#module-horton.meanfield.observable" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.meanfield.observable.Observable">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.observable.</tt><tt class="descname">Observable</tt><big>(</big><em>label</em><big>)</big><a class="headerlink" href="#horton.meanfield.observable.Observable" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.meanfield.observable.Observable.add_fock_matrix">
+<tt class="descname">add_fock_matrix</tt><big>(</big><em>fock_alpha</em>, <em>fock_beta</em>, <em>scale=1</em><big>)</big><a class="headerlink" href="#horton.meanfield.observable.Observable.add_fock_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.observable.Observable.cache">
+<tt class="descname">cache</tt><a class="headerlink" href="#horton.meanfield.observable.Observable.cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>The cache of the hamiltonian object, cleared after a change in wfn.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.observable.Observable.compute">
+<tt class="descname">compute</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.observable.Observable.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.observable.Observable.grid">
+<tt class="descname">grid</tt><a class="headerlink" href="#horton.meanfield.observable.Observable.grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>The numerical integration grid for this hamiltonian.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.observable.Observable.require_grid">
+<tt class="descname">require_grid</tt><em class="property"> = False</em><a class="headerlink" href="#horton.meanfield.observable.Observable.require_grid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.observable.Observable.set_hamiltonian">
+<tt class="descname">set_hamiltonian</tt><big>(</big><em>hamiltonian</em><big>)</big><a class="headerlink" href="#horton.meanfield.observable.Observable.set_hamiltonian" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.observable.Observable.system">
+<tt class="descname">system</tt><a class="headerlink" href="#horton.meanfield.observable.Observable.system" title="Permalink to this definition">¶</a></dt>
+<dd><p>The system for which the hamiltonian is defined.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.observable.Observable.update_grad_rho">
+<tt class="descname">update_grad_rho</tt><big>(</big><em>select</em><big>)</big><a class="headerlink" href="#horton.meanfield.observable.Observable.update_grad_rho" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.observable.Observable.update_rho">
+<tt class="descname">update_rho</tt><big>(</big><em>select</em><big>)</big><a class="headerlink" href="#horton.meanfield.observable.Observable.update_rho" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.observable.Observable.update_sigma">
+<tt class="descname">update_sigma</tt><big>(</big><em>select</em><big>)</big><a class="headerlink" href="#horton.meanfield.observable.Observable.update_sigma" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.meanfield.project">
+<span id="horton-meanfield-project-projection-of-1-electron-orbitals-to-a-new-basis-set"></span><h2>9.8. <tt class="docutils literal"><span class="pre">horton.meanfield.project</span></tt> &#8211; Projection of 1-electron orbitals to a new basis set<a class="headerlink" href="#module-horton.meanfield.project" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="horton.meanfield.project.ProjectionError">
+<em class="property">exception </em><tt class="descclassname">horton.meanfield.project.</tt><tt class="descname">ProjectionError</tt><a class="headerlink" href="#horton.meanfield.project.ProjectionError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.meanfield.project.project_orbitals_mgs">
+<tt class="descclassname">horton.meanfield.project.</tt><tt class="descname">project_orbitals_mgs</tt><big>(</big><em>system</em>, <em>old_wfn</em>, <em>old_obasis</em>, <em>eps=1e-10</em><big>)</big><a class="headerlink" href="#horton.meanfield.project.project_orbitals_mgs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Project orbitals from the <tt class="docutils literal"><span class="pre">old_wfn</span></tt> (wrt <tt class="docutils literal"><span class="pre">old_basis</span></tt>) on the wfn of the <tt class="docutils literal"><span class="pre">system</span></tt> object with the modified Gram-Schmidt algorithm.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>system</dt>
+<dd>The system with the new orbital basis. It must have a
+wavefunction object compatible with the old wavefunction (restricted
+versus unrestricted).</dd>
+<dt>old_wfn</dt>
+<dd>The old (mean-field) wavefunction object</dd>
+<dt>old_obasis</dt>
+<dd>The orbital basis for the old wavefunction</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>eps</dt>
+<dd>A threshold for the renormalization in the Gram-Schmidt procedure.</dd>
+</dl>
+<p>See <tt class="docutils literal"><span class="pre">project_orbitals_mgs_low</span></tt> for details.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.meanfield.project.project_orbitals_mgs_low">
+<tt class="descclassname">horton.meanfield.project.</tt><tt class="descname">project_orbitals_mgs_low</tt><big>(</big><em>obasis0</em>, <em>obasis1</em>, <em>exp0</em>, <em>exp1</em>, <em>eps=1e-10</em><big>)</big><a class="headerlink" href="#horton.meanfield.project.project_orbitals_mgs_low" title="Permalink to this definition">¶</a></dt>
+<dd><p>Project the orbitals in <tt class="docutils literal"><span class="pre">exp0</span></tt> (wrt <tt class="docutils literal"><span class="pre">obasis0</span></tt>) on <tt class="docutils literal"><span class="pre">obasis1</span></tt> and store in <tt class="docutils literal"><span class="pre">exp1</span></tt> with the modified Gram-Schmidt algorithm.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>obasis0</dt>
+<dd>The orbital basis for the original wavefunction expansion.</dd>
+<dt>obasis1</dt>
+<dd>The new orbital basis for the projected wavefunction expansion.</dd>
+<dt>exp0</dt>
+<dd>The expansion of the original orbitals.</dd>
+<dt>exp1 (output)</dt>
+<dd>An output argument in which the projected orbitals will be stored.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>eps</dt>
+<dd>A threshold for the renormalization in the Gram-Schmidt procedure</dd>
+</dl>
+<p>The projection is based on the Modified Gram-Schmidt (MGS) process. In
+each iteration of the MGS, a renormalization is carried out. If the norm
+in this step is smaller than <tt class="docutils literal"><span class="pre">eps</span></tt>, an error is raised.</p>
+<p>Note that <tt class="docutils literal"><span class="pre">exp1</span></tt> will be incomplete in several ways. The orbital
+energies are not copied. Only the occupied orbitals in <tt class="docutils literal"><span class="pre">exp0</span></tt> are
+projected. Coefficients of higher orbitals are set to zero. The orbital
+occupations are simply copied. This should be sufficient to construct
+an initial guess in a new orbital basis set based on a previous solution.</p>
+<p>If the number of orbitals in <tt class="docutils literal"><span class="pre">exp1</span></tt> is too small to store all projected
+orbitals, an error is raised.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.meanfield.scf">
+<span id="horton-meanfield-scf-self-consistent-field-algorithms"></span><h2>9.9. <tt class="docutils literal"><span class="pre">horton.meanfield.scf</span></tt> &#8211; Self-Consistent Field algorithms<a class="headerlink" href="#module-horton.meanfield.scf" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="horton.meanfield.scf.NoSCFConvergence">
+<em class="property">exception </em><tt class="descclassname">horton.meanfield.scf.</tt><tt class="descname">NoSCFConvergence</tt><a class="headerlink" href="#horton.meanfield.scf.NoSCFConvergence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.meanfield.scf.converge_scf">
+<tt class="descclassname">horton.meanfield.scf.</tt><tt class="descname">converge_scf</tt><big>(</big><em>ham</em>, <em>maxiter=128</em>, <em>threshold=1e-08</em><big>)</big><a class="headerlink" href="#horton.meanfield.scf.converge_scf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimize the energy of the wavefunction with basic SCF</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>ham</dt>
+<dd>A Hamiltonian instance.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>maxiter</dt>
+<dd>The maximum number of iterations. When set to None, the SCF loop
+will go one until convergence is reached.</dd>
+<dt>threshold</dt>
+<dd>The convergence threshold for the wavefunction</dd>
+</dl>
+<p><strong>Raises:</strong></p>
+<dl class="docutils">
+<dt>NoSCFConvergence</dt>
+<dd>if the convergence criteria are not met within the specified number
+of iterations.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.meanfield.scf.check_cubic_cs">
+<tt class="descclassname">horton.meanfield.scf.</tt><tt class="descname">check_cubic_cs</tt><big>(</big><em>ham</em>, <em>dm0</em>, <em>dm1</em>, <em>e0</em>, <em>e1</em>, <em>g0</em>, <em>g1</em>, <em>do_plot=True</em><big>)</big><a class="headerlink" href="#horton.meanfield.scf.check_cubic_cs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.meanfield.scf.check_cubic_os">
+<tt class="descclassname">horton.meanfield.scf.</tt><tt class="descname">check_cubic_os</tt><big>(</big><em>ham</em>, <em>dm0a</em>, <em>dm0b</em>, <em>dm1a</em>, <em>dm1b</em>, <em>e0</em>, <em>e1</em>, <em>g0</em>, <em>g1</em>, <em>do_plot=True</em><big>)</big><a class="headerlink" href="#horton.meanfield.scf.check_cubic_os" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="horton.meanfield.scf.converge_scf_oda">
+<tt class="descclassname">horton.meanfield.scf.</tt><tt class="descname">converge_scf_oda</tt><big>(</big><em>ham</em>, <em>maxiter=128</em>, <em>threshold=1e-06</em>, <em>debug=False</em><big>)</big><a class="headerlink" href="#horton.meanfield.scf.converge_scf_oda" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimize the energy of the wavefunction with optinal-damping SCF</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>ham</dt>
+<dd>A Hamiltonian instance.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>maxiter</dt>
+<dd>The maximum number of iterations. When set to None, the SCF loop
+will go one until convergence is reached.</dd>
+<dt>threshold</dt>
+<dd>The convergence threshold for the wavefunction</dd>
+<dt>debug</dt>
+<dd>Make debug plots with matplotlib of the linear interpolation</dd>
+</dl>
+<p><strong>Raises:</strong></p>
+<dl class="docutils">
+<dt>NoSCFConvergence</dt>
+<dd>if the convergence criteria are not met within the specified number
+of iterations.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.meanfield.scf.convergence_error">
+<tt class="descclassname">horton.meanfield.scf.</tt><tt class="descname">convergence_error</tt><big>(</big><em>ham</em><big>)</big><a class="headerlink" href="#horton.meanfield.scf.convergence_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the self-consistency error</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>ham</dt>
+<dd>A Hamiltonian instance.</dd>
+</dl>
+<p><strong>Returns:</strong></p>
+<dl class="docutils">
+<dt>error</dt>
+<dd>The SCF error. This measure (not this function) is also used
+in the SCF algorithm to check for convergence.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-horton.meanfield.wfn">
+<span id="horton-meanfield-wfn-wavefunction-implementations"></span><h2>9.10. <tt class="docutils literal"><span class="pre">horton.meanfield.wfn</span></tt> &#8211; Wavefunction implementations<a class="headerlink" href="#module-horton.meanfield.wfn" title="Permalink to this headline">¶</a></h2>
+<p>Abbreviations used in this module:</p>
+<ul class="simple">
+<li>wfn = wavefunction</li>
+<li>exp = expansion (orbitals, energies and occupations)</li>
+<li>dm = density matrix</li>
+</ul>
+<dl class="function">
+<dt id="horton.meanfield.wfn.setup_mean_field_wfn">
+<tt class="descclassname">horton.meanfield.wfn.</tt><tt class="descname">setup_mean_field_wfn</tt><big>(</big><em>system</em>, <em>charge=0</em>, <em>mult=None</em>, <em>restricted=None</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.setup_mean_field_wfn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a mean-field wavefunction and assign it to the given system.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>system</dt>
+<dd>A System instance.</dd>
+</dl>
+<p><strong>Optional Arguments:</strong></p>
+<dl class="docutils">
+<dt>charge</dt>
+<dd>The total charge of the system. Defaults to zero.</dd>
+<dt>mult</dt>
+<dd>The spin multiplicity. Defaults to lowest possible. Use &#8216;free&#8217; to
+let the SCF algorithm find the spin multiplicity with the lowest
+energy. (Beware of local minima.)</dd>
+<dt>restricted</dt>
+<dd>Set to True or False to enforce a restricted or unrestricted
+wavefunction. Note that restricted open shell is not yet
+supported. When not set, restricted is used when mult==1 and
+unrestricted otherwise.</dd>
+</dl>
+<p>If a wavefunction of the correct type is already present, it will be
+configured with the requested charge and multiplicity.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.meanfield.wfn.check_dm">
+<tt class="descclassname">horton.meanfield.wfn.</tt><tt class="descname">check_dm</tt><big>(</big><em>dm</em>, <em>overlap</em>, <em>lf</em>, <em>name</em>, <em>eps=0.0001</em>, <em>occ_max=1.0</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.check_dm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the density matrix has eigenvalues in the proper range.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>dm</dt>
+<dd>The density matrix</dd>
+<dt>overlap</dt>
+<dd>The overlap matrix</dd>
+<dt>lf</dt>
+<dd>The LinalgFactory instance used for the diagonalization of the
+density matrix.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>eps</dt>
+<dd>The threshold on the eigenvalue inequalities.</dd>
+<dt>occ_max</dt>
+<dd>The maximum occupation.</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.meanfield.wfn.MeanFieldWFN">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.wfn.</tt><tt class="descname">MeanFieldWFN</tt><big>(</big><em>occ_model</em>, <em>lf</em>, <em>nbasis</em>, <em>norb=None</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>occ_model</dt>
+<dd>A model for the occupation numbers to be assigned after
+diagonalization of the Fock matrix.</dd>
+<dt>lf</dt>
+<dd>A LinalgFactory instance.</dd>
+<dt>nbasis</dt>
+<dd>The number of basis functions.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>norb</dt>
+<dd>the number of orbitals (occupied + virtual). When not given,
+it is set to nbasis.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.apply_basis_permutation">
+<tt class="descname">apply_basis_permutation</tt><big>(</big><em>permutation</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.apply_basis_permutation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reorder the expansion coefficients and the density matrices</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.apply_basis_signs">
+<tt class="descname">apply_basis_signs</tt><big>(</big><em>signs</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.apply_basis_signs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fix the signs of the expansion coefficients and the density matrices</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.check_normalization">
+<tt class="descname">check_normalization</tt><big>(</big><em>olp</em>, <em>eps=0.0001</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.check_normalization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run an internal test to see if the orbitals are normalized</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>olp</dt>
+<dd>The overlap one_body operators</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>eps</dt>
+<dd>The allowed deviation from unity, very loose by default.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.clear">
+<tt class="descname">clear</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear all wavefunction information</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.clear_dm">
+<tt class="descname">clear_dm</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.clear_dm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the density matrices</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.clear_exp">
+<tt class="descname">clear_exp</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.clear_exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the wavefunction expansions</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.dm_alpha">
+<tt class="descname">dm_alpha</tt><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.dm_alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alpha density matrix</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.dm_beta">
+<tt class="descname">dm_beta</tt><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.dm_beta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beta density matrix</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.dm_full">
+<tt class="descname">dm_full</tt><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.dm_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>Full density matrix</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.dm_spin">
+<tt class="descname">dm_spin</tt><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.dm_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spin density matrix</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.exp_alpha">
+<tt class="descname">exp_alpha</tt><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.exp_alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alpha orbital expansion</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.exp_beta">
+<tt class="descname">exp_beta</tt><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.exp_beta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beta orbital expansion</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.from_hdf5">
+<em class="property">classmethod </em><tt class="descname">from_hdf5</tt><big>(</big><em>grp</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.get_dm">
+<tt class="descname">get_dm</tt><big>(</big><em>select</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.get_dm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a density matrix. If not available, it will be created (if possible)</p>
+<dl class="docutils">
+<dt>select</dt>
+<dd>&#8216;alpha&#8217;, &#8216;beta&#8217;, &#8216;full&#8217; or &#8216;spin&#8217;.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.get_exp">
+<tt class="descname">get_exp</tt><big>(</big><em>spin</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.get_exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an expansion of the wavefunction, if available.</p>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>select</dt>
+<dd>the spin component: &#8216;alpha&#8217; or &#8216;beta&#8217;.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.init_dm">
+<tt class="descname">init_dm</tt><big>(</big><em>select</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.init_dm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.init_exp">
+<tt class="descname">init_exp</tt><big>(</big><em>spin</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.init_exp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.nbasis">
+<tt class="descname">nbasis</tt><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.nbasis" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of basis functions.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.norb">
+<tt class="descname">norb</tt><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.norb" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of orbitals in the expansion(s)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.to_hdf5">
+<tt class="descname">to_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.MeanFieldWFN.update_dm">
+<tt class="descname">update_dm</tt><big>(</big><em>select</em>, <em>dm=None</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.MeanFieldWFN.update_dm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Derive the density matrix from the expansion(s) and store in cache</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>select</dt>
+<dd>&#8216;alpha&#8217;, &#8216;beta&#8217;, &#8216;full&#8217; or &#8216;spin&#8217;.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>dm</dt>
+<dd>When provided, this density matrix is stored instead of one
+derived from the orbitals.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.meanfield.wfn.RestrictedWFN">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.wfn.</tt><tt class="descname">RestrictedWFN</tt><big>(</big><em>occ_model</em>, <em>lf</em>, <em>nbasis</em>, <em>norb=None</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.RestrictedWFN" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>occ_model</dt>
+<dd>A model for the occupation numbers to be assigned after
+diagonalization of the Fock matrix.</dd>
+<dt>lf</dt>
+<dd>A LinalgFactory instance.</dd>
+<dt>nbasis</dt>
+<dd>The number of basis functions.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>norb</dt>
+<dd>the number of orbitals (occupied + virtual). When not given,
+it is set to nbasis.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.meanfield.wfn.RestrictedWFN.get_spin">
+<tt class="descname">get_spin</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.RestrictedWFN.get_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the expectation values of the projecte and squared spin</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.RestrictedWFN.homo_energy">
+<tt class="descname">homo_energy</tt><a class="headerlink" href="#horton.meanfield.wfn.RestrictedWFN.homo_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The HOMO of the wavefunction</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.RestrictedWFN.lumo_energy">
+<tt class="descname">lumo_energy</tt><a class="headerlink" href="#horton.meanfield.wfn.RestrictedWFN.lumo_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The LUMO of the wavefunction</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.RestrictedWFN.mult">
+<tt class="descname">mult</tt><a class="headerlink" href="#horton.meanfield.wfn.RestrictedWFN.mult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.RestrictedWFN.nel">
+<tt class="descname">nel</tt><a class="headerlink" href="#horton.meanfield.wfn.RestrictedWFN.nel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.RestrictedWFN.nep">
+<tt class="descname">nep</tt><a class="headerlink" href="#horton.meanfield.wfn.RestrictedWFN.nep" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.RestrictedWFN.update_exp">
+<tt class="descname">update_exp</tt><big>(</big><em>fock_alpha</em>, <em>overlap</em>, <em>dm_alpha=None</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.RestrictedWFN.update_exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the expansion based on the given fock matrix</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>fock_alpha</dt>
+<dd>A DenseOneBody object with the Fock operator</dd>
+<dt>overlap</dt>
+<dd>A DenseOneBody object with the overlap operator</dd>
+</dl>
+<p><strong>*Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>dm_alpha</dt>
+<dd>A DenseOneBody object with the density matrix</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.meanfield.wfn.UnrestrictedWFN">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.wfn.</tt><tt class="descname">UnrestrictedWFN</tt><big>(</big><em>occ_model</em>, <em>lf</em>, <em>nbasis</em>, <em>norb=None</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.UnrestrictedWFN" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>occ_model</dt>
+<dd>A model for the occupation numbers to be assigned after
+diagonalization of the Fock matrix.</dd>
+<dt>lf</dt>
+<dd>A LinalgFactory instance.</dd>
+<dt>nbasis</dt>
+<dd>The number of basis functions.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>norb</dt>
+<dd>the number of orbitals (occupied + virtual). When not given,
+it is set to nbasis.</dd>
+</dl>
+<dl class="method">
+<dt id="horton.meanfield.wfn.UnrestrictedWFN.get_spin">
+<tt class="descname">get_spin</tt><big>(</big><em>olp</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.UnrestrictedWFN.get_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the expectation values of the projected and squared spin</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>olp</dt>
+<dd>The overlap matrix</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.UnrestrictedWFN.homo_energy">
+<tt class="descname">homo_energy</tt><a class="headerlink" href="#horton.meanfield.wfn.UnrestrictedWFN.homo_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The HOMO of the wavefunction</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.UnrestrictedWFN.lumo_energy">
+<tt class="descname">lumo_energy</tt><a class="headerlink" href="#horton.meanfield.wfn.UnrestrictedWFN.lumo_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The LUMO of the wavefunction</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.UnrestrictedWFN.mult">
+<tt class="descname">mult</tt><a class="headerlink" href="#horton.meanfield.wfn.UnrestrictedWFN.mult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.UnrestrictedWFN.nalpha">
+<tt class="descname">nalpha</tt><a class="headerlink" href="#horton.meanfield.wfn.UnrestrictedWFN.nalpha" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.UnrestrictedWFN.nbeta">
+<tt class="descname">nbeta</tt><a class="headerlink" href="#horton.meanfield.wfn.UnrestrictedWFN.nbeta" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.meanfield.wfn.UnrestrictedWFN.nel">
+<tt class="descname">nel</tt><a class="headerlink" href="#horton.meanfield.wfn.UnrestrictedWFN.nel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.UnrestrictedWFN.update_exp">
+<tt class="descname">update_exp</tt><big>(</big><em>fock_alpha</em>, <em>fock_beta</em>, <em>overlap</em>, <em>dm_alpha=None</em>, <em>dm_beta=None</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.UnrestrictedWFN.update_exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the expansion based on the given fock matrix</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>fock_alpha, fock_beta</dt>
+<dd>DenseOneBody objects with the Fock operators</dd>
+<dt>overlap</dt>
+<dd>A DenseOneBody object with the overlap operator</dd>
+</dl>
+<p><strong>*Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>dm_alpha, dm_beta</dt>
+<dd>DenseOneBody objects with the density matrices</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.meanfield.wfn.AufbauOccModel">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.wfn.</tt><tt class="descname">AufbauOccModel</tt><big>(</big><em>nalpha</em>, <em>nbeta=None</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.AufbauOccModel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.meanfield.wfn.AufbauOccModel.assign">
+<tt class="descname">assign</tt><big>(</big><em>exp_alpha</em>, <em>exp_beta=None</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.AufbauOccModel.assign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign occupation numbers to the expansion objects</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>exp_alpha</dt>
+<dd>An alpha DenseExpansion object</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>exp_beta</dt>
+<dd>A beta DenseExpansion object</dd>
+</dl>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="horton.meanfield.wfn.AufbauOccModel.from_hdf5">
+<em class="property">classmethod </em><tt class="descname">from_hdf5</tt><big>(</big><em>grp</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.AufbauOccModel.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.AufbauOccModel.log">
+<tt class="descname">log</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.AufbauOccModel.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.AufbauOccModel.to_hdf5">
+<tt class="descname">to_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.AufbauOccModel.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.meanfield.wfn.AufbauSpinOccModel">
+<em class="property">class </em><tt class="descclassname">horton.meanfield.wfn.</tt><tt class="descname">AufbauSpinOccModel</tt><big>(</big><em>nel</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.AufbauSpinOccModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>This Aufbau model only applies to unrestricted wavefunctions</p>
+<dl class="method">
+<dt id="horton.meanfield.wfn.AufbauSpinOccModel.assign">
+<tt class="descname">assign</tt><big>(</big><em>exp_alpha</em>, <em>exp_beta</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.AufbauSpinOccModel.assign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign occupation numbers to the expansion objects</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>exp_alpha, exp_beta</dt>
+<dd>Alpha and beta DenseExpansion object</dd>
+</dl>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="horton.meanfield.wfn.AufbauSpinOccModel.from_hdf5">
+<em class="property">classmethod </em><tt class="descname">from_hdf5</tt><big>(</big><em>grp</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.AufbauSpinOccModel.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.AufbauSpinOccModel.log">
+<tt class="descname">log</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.AufbauSpinOccModel.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.meanfield.wfn.AufbauSpinOccModel.to_hdf5">
+<tt class="descname">to_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.meanfield.wfn.AufbauSpinOccModel.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">9. <tt class="docutils literal"><span class="pre">horton.meanfield</span></tt> &#8211; Mean-field electronic structure code</a><ul>
+<li><a class="reference internal" href="#module-horton.meanfield.builtin">9.1. <tt class="docutils literal"><span class="pre">horton.meanfield.builtin</span></tt> &#8211; Built-in energy terms</a></li>
+<li><a class="reference internal" href="#module-horton.meanfield.cext">9.2. <tt class="docutils literal"><span class="pre">horton.meanfield.cext</span></tt> &#8211; C++ extensions</a></li>
+<li><a class="reference internal" href="#module-horton.meanfield.core">9.3. <tt class="docutils literal"><span class="pre">horton.meanfield.core</span></tt> &#8211; Linear energy terms (Core Hamiltonian)</a></li>
+<li><a class="reference internal" href="#module-horton.meanfield.guess">9.4. <tt class="docutils literal"><span class="pre">horton.meanfield.guess</span></tt> &#8211; Initial guesses for wavefunctions</a></li>
+<li><a class="reference internal" href="#module-horton.meanfield.hamiltonian">9.5. <tt class="docutils literal"><span class="pre">horton.meanfield.hamiltonian</span></tt> &#8211; Mean-field DFT/HF Hamiltonian data structures</a></li>
+<li><a class="reference internal" href="#module-horton.meanfield.libxc">9.6. <tt class="docutils literal"><span class="pre">horton.meanfield.libxc</span></tt> &#8211; Interface to LDA, GGA and Hybrid functionals from LibXC</a></li>
+<li><a class="reference internal" href="#module-horton.meanfield.observable">9.7. <tt class="docutils literal"><span class="pre">horton.meanfield.observable</span></tt> &#8211; Base class for energy terms and other observables of the wavefunction</a></li>
+<li><a class="reference internal" href="#module-horton.meanfield.project">9.8. <tt class="docutils literal"><span class="pre">horton.meanfield.project</span></tt> &#8211; Projection of 1-electron orbitals to a new basis set</a></li>
+<li><a class="reference internal" href="#module-horton.meanfield.scf">9.9. <tt class="docutils literal"><span class="pre">horton.meanfield.scf</span></tt> &#8211; Self-Consistent Field algorithms</a></li>
+<li><a class="reference internal" href="#module-horton.meanfield.wfn">9.10. <tt class="docutils literal"><span class="pre">horton.meanfield.wfn</span></tt> &#8211; Wavefunction implementations</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="horton_io.html"
+                        title="previous chapter">8. <tt class="docutils literal docutils literal docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input and output routines</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="horton_part.html"
+                        title="next chapter">10. <tt class="docutils literal"><span class="pre">horton.part</span></tt> &#8211; Package for density-based partitioning (fuzzy atoms)</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/lib/horton_meanfield.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="horton_part.html" title="10. horton.part – Package for density-based partitioning (fuzzy atoms)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="horton_io.html" title="8. horton.io – Input and output routines"
+             >previous</a> |</li>
+        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Toon Verstraelen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

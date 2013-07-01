@@ -8,44 +8,44 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>6. horton.gbasis – Gaussian basis sets &mdash; Horton 1.0 documentation</title>
+    <title>6. horton.gbasis – Gaussian basis sets &mdash; Horton 1.0.1 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '1.0',
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0 documentation" href="index.html" />
-    <link rel="next" title="7. horton.grid – Numerical integration grids" href="lib_horton_grid.html" />
-    <link rel="prev" title="5. horton.espfit – ESP fitting of charges" href="lib_horton_espfit.html" /> 
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Horton 1.0.1 documentation" href="../index.html" />
+    <link rel="next" title="7. horton.grid – Numerical integraton grids" href="horton_grid.html" />
+    <link rel="prev" title="5. horton.espfit – Electrostatic potential fitting" href="horton_espfit.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="lib_horton_grid.html" title="7. horton.grid – Numerical integration grids"
+          <a href="horton_grid.html" title="7. horton.grid – Numerical integraton grids"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="lib_horton_espfit.html" title="5. horton.espfit – ESP fitting of charges"
+          <a href="horton_espfit.html" title="5. horton.espfit – Electrostatic potential fitting"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -57,7 +57,7 @@
   <div class="section" id="horton-gbasis-gaussian-basis-sets">
 <h1>6. <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt> &#8211; Gaussian basis sets<a class="headerlink" href="#horton-gbasis-gaussian-basis-sets" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-horton.gbasis.cext">
-<span id="horton-gbasis-cext-interface-to-low-level-code"></span><h2>6.1. <a class="reference internal" href="#module-horton.gbasis.cext" title="horton.gbasis.cext"><tt class="xref py py-mod docutils literal"><span class="pre">horton.gbasis.cext</span></tt></a> &#8211; Interface to low-level code<a class="headerlink" href="#module-horton.gbasis.cext" title="Permalink to this headline">¶</a></h2>
+<span id="horton-gbasis-cext-c-extensions"></span><h2>6.1. <tt class="docutils literal"><span class="pre">horton.gbasis.cext</span></tt> &#8211; C++ extensions<a class="headerlink" href="#module-horton.gbasis.cext" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.gbasis.cext.boys_function">
 <tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">boys_function</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.boys_function" title="Permalink to this definition">¶</a></dt>
@@ -470,7 +470,7 @@ added to this array.</dd>
 
 </div>
 <div class="section" id="module-horton.gbasis.gobasis">
-<span id="horton-gbasis-gobasis-high-level-logic-to-set-up-a-molecular-orbital-basis"></span><h2>6.2. <a class="reference internal" href="#module-horton.gbasis.gobasis" title="horton.gbasis.gobasis"><tt class="xref py py-mod docutils literal"><span class="pre">horton.gbasis.gobasis</span></tt></a> &#8211; High-level logic to set up a molecular orbital basis<a class="headerlink" href="#module-horton.gbasis.gobasis" title="Permalink to this headline">¶</a></h2>
+<span id="horton-gbasis-gobasis-gaussian-orbital-basis-set-module"></span><h2>6.2. <tt class="docutils literal"><span class="pre">horton.gbasis.gobasis</span></tt> &#8211; Gaussian orbital basis set module.<a class="headerlink" href="#module-horton.gbasis.gobasis" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.gbasis.gobasis.GOBasisDesc">
 <em class="property">class </em><tt class="descclassname">horton.gbasis.gobasis.</tt><tt class="descname">GOBasisDesc</tt><big>(</big><em>default</em>, <em>element_map=None</em>, <em>index_map=None</em>, <em>pure=True</em><big>)</big><a class="headerlink" href="#horton.gbasis.gobasis.GOBasisDesc" title="Permalink to this definition">¶</a></dt>
@@ -615,7 +615,7 @@ completed. (This is convenient when loading basis sets from a file.)</p>
 
 </div>
 <div class="section" id="module-horton.gbasis.io">
-<span id="horton-gbasis-io-tools-to-load-standard-basis-sets-from-file"></span><h2>6.3. <a class="reference internal" href="#module-horton.gbasis.io" title="horton.gbasis.io"><tt class="xref py py-mod docutils literal"><span class="pre">horton.gbasis.io</span></tt></a> &#8211; Tools to load standard basis sets from file<a class="headerlink" href="#module-horton.gbasis.io" title="Permalink to this headline">¶</a></h2>
+<span id="horton-gbasis-io-input-output-routines-for-gaussian-basis-sets"></span><h2>6.3. <tt class="docutils literal"><span class="pre">horton.gbasis.io</span></tt> &#8211; Input/Output routines for gaussian basis sets<a class="headerlink" href="#module-horton.gbasis.io" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.gbasis.io.str_to_shell_types">
 <tt class="descclassname">horton.gbasis.io.</tt><tt class="descname">str_to_shell_types</tt><big>(</big><em>s</em>, <em>pure=False</em><big>)</big><a class="headerlink" href="#horton.gbasis.io.str_to_shell_types" title="Permalink to this definition">¶</a></dt>
@@ -637,30 +637,30 @@ completed. (This is convenient when loading basis sets from a file.)</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">6. <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt> &#8211; Gaussian basis sets</a><ul>
-<li><a class="reference internal" href="#module-horton.gbasis.cext">6.1. <tt class="docutils literal"><span class="pre">horton.gbasis.cext</span></tt> &#8211; Interface to low-level code</a></li>
-<li><a class="reference internal" href="#module-horton.gbasis.gobasis">6.2. <tt class="docutils literal"><span class="pre">horton.gbasis.gobasis</span></tt> &#8211; High-level logic to set up a molecular orbital basis</a></li>
-<li><a class="reference internal" href="#module-horton.gbasis.io">6.3. <tt class="docutils literal"><span class="pre">horton.gbasis.io</span></tt> &#8211; Tools to load standard basis sets from file</a></li>
+<li><a class="reference internal" href="#module-horton.gbasis.cext">6.1. <tt class="docutils literal"><span class="pre">horton.gbasis.cext</span></tt> &#8211; C++ extensions</a></li>
+<li><a class="reference internal" href="#module-horton.gbasis.gobasis">6.2. <tt class="docutils literal"><span class="pre">horton.gbasis.gobasis</span></tt> &#8211; Gaussian orbital basis set module.</a></li>
+<li><a class="reference internal" href="#module-horton.gbasis.io">6.3. <tt class="docutils literal"><span class="pre">horton.gbasis.io</span></tt> &#8211; Input/Output routines for gaussian basis sets</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="lib_horton_espfit.html"
-                        title="previous chapter">5. <tt class="docutils literal docutils literal docutils literal"><span class="pre">horton.espfit</span></tt> &#8211; ESP fitting of charges</a></p>
+  <p class="topless"><a href="horton_espfit.html"
+                        title="previous chapter">5. <tt class="docutils literal docutils literal docutils literal"><span class="pre">horton.espfit</span></tt> &#8211; Electrostatic potential fitting</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="lib_horton_grid.html"
-                        title="next chapter">7. <tt class="docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integration grids</a></p>
+  <p class="topless"><a href="horton_grid.html"
+                        title="next chapter">7. <tt class="docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integraton grids</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/lib_horton_gbasis.txt"
+    <li><a href="../_sources/lib/horton_gbasis.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
+    <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -679,18 +679,18 @@ completed. (This is convenient when loading basis sets from a file.)</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="lib_horton_grid.html" title="7. horton.grid – Numerical integration grids"
+          <a href="horton_grid.html" title="7. horton.grid – Numerical integraton grids"
              >next</a> |</li>
         <li class="right" >
-          <a href="lib_horton_espfit.html" title="5. horton.espfit – ESP fitting of charges"
+          <a href="horton_espfit.html" title="5. horton.espfit – Electrostatic potential fitting"
              >previous</a> |</li>
-        <li><a href="index.html">Horton 1.0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
