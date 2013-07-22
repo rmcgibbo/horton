@@ -8,15 +8,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>5. horton.espfit – Electrostatic potential fitting &mdash; Horton 1.0.1 documentation</title>
+    <title>7. horton.espfit – Electrostatic potential fitting &mdash; Horton 1.2.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/breathe.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0.1',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,9 +26,9 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0.1 documentation" href="../index.html" />
-    <link rel="next" title="6. horton.gbasis – Gaussian basis sets" href="horton_gbasis.html" />
-    <link rel="prev" title="4. horton – The main Horton Package" href="horton.html" /> 
+    <link rel="top" title="Horton 1.2.1 documentation" href="../index.html" />
+    <link rel="next" title="8. horton.gbasis – Gaussian basis sets" href="horton_gbasis.html" />
+    <link rel="prev" title="6. horton – The main Horton Package" href="horton.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,12 +41,12 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="horton_gbasis.html" title="6. horton.gbasis – Gaussian basis sets"
+          <a href="horton_gbasis.html" title="8. horton.gbasis – Gaussian basis sets"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="horton.html" title="4. horton – The main Horton Package"
+          <a href="horton.html" title="6. horton – The main Horton Package"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -55,48 +56,53 @@
           <div class="body">
             
   <div class="section" id="horton-espfit-electrostatic-potential-fitting">
-<h1>5. <tt class="docutils literal"><span class="pre">horton.espfit</span></tt> &#8211; Electrostatic potential fitting<a class="headerlink" href="#horton-espfit-electrostatic-potential-fitting" title="Permalink to this headline">¶</a></h1>
+<h1>7. <tt class="docutils literal"><span class="pre">horton.espfit</span></tt> &#8211; Electrostatic potential fitting<a class="headerlink" href="#horton-espfit-electrostatic-potential-fitting" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-horton.espfit.cext">
-<span id="horton-espfit-cext-c-extensions"></span><h2>5.1. <tt class="docutils literal"><span class="pre">horton.espfit.cext</span></tt> &#8211; C++ extensions<a class="headerlink" href="#module-horton.espfit.cext" title="Permalink to this headline">¶</a></h2>
+<span id="horton-espfit-cext-c-extensions"></span><h2>7.1. <tt class="docutils literal"><span class="pre">horton.espfit.cext</span></tt> &#8211; C++ extensions<a class="headerlink" href="#module-horton.espfit.cext" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.espfit.cext.pair_ewald">
-<tt class="descclassname">horton.espfit.cext.</tt><tt class="descname">pair_ewald</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.espfit.cext.pair_ewald" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.espfit.cext.</tt><tt class="descname">pair_ewald</tt><big>(</big><em>ndarray delta</em>, <em>Cell cell</em>, <em>double rcut</em>, <em>double alpha</em>, <em>double gcut</em><big>)</big><a class="headerlink" href="#horton.espfit.cext.pair_ewald" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.espfit.cext.setup_esp_cost_cube">
-<tt class="descclassname">horton.espfit.cext.</tt><tt class="descname">setup_esp_cost_cube</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.espfit.cext.setup_esp_cost_cube" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.espfit.cext.</tt><tt class="descname">setup_esp_cost_cube</tt><big>(</big><em>UniformGrid ugrid</em>, <em>ndarray vref</em>, <em>ndarray weights</em>, <em>ndarray centers</em>, <em>ndarray A</em>, <em>ndarray B</em>, <em>ndarray C</em>, <em>double rcut</em>, <em>double alpha</em>, <em>double gcut</em><big>)</big><a class="headerlink" href="#horton.espfit.cext.setup_esp_cost_cube" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.espfit.cext.compute_esp_grid_cube">
-<tt class="descclassname">horton.espfit.cext.</tt><tt class="descname">compute_esp_grid_cube</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.espfit.cext.compute_esp_grid_cube" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.espfit.cext.</tt><tt class="descname">compute_esp_grid_cube</tt><big>(</big><em>UniformGrid ugrid</em>, <em>ndarray esp</em>, <em>ndarray centers</em>, <em>ndarray charges</em>, <em>double rcut</em>, <em>double alpha</em>, <em>double gcut</em><big>)</big><a class="headerlink" href="#horton.espfit.cext.compute_esp_grid_cube" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.espfit.cext.multiply_dens_mask">
-<tt class="descclassname">horton.espfit.cext.</tt><tt class="descname">multiply_dens_mask</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.espfit.cext.multiply_dens_mask" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.espfit.cext.</tt><tt class="descname">multiply_dens_mask</tt><big>(</big><em>ndarray rho</em>, <em>double lnrho0</em>, <em>double sigma</em>, <em>ndarray weights</em><big>)</big><a class="headerlink" href="#horton.espfit.cext.multiply_dens_mask" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.espfit.cext.multiply_near_mask">
-<tt class="descclassname">horton.espfit.cext.</tt><tt class="descname">multiply_near_mask</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.espfit.cext.multiply_near_mask" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.espfit.cext.</tt><tt class="descname">multiply_near_mask</tt><big>(</big><em>ndarray center</em>, <em>UniformGrid ugrid</em>, <em>double r0</em>, <em>double gamma</em>, <em>ndarray weights</em><big>)</big><a class="headerlink" href="#horton.espfit.cext.multiply_near_mask" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.espfit.cext.multiply_far_mask">
-<tt class="descclassname">horton.espfit.cext.</tt><tt class="descname">multiply_far_mask</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.espfit.cext.multiply_far_mask" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.espfit.cext.</tt><tt class="descname">multiply_far_mask</tt><big>(</big><em>ndarray centers</em>, <em>UniformGrid ugrid</em>, <em>double r0</em>, <em>double gamma</em>, <em>ndarray weights</em><big>)</big><a class="headerlink" href="#horton.espfit.cext.multiply_far_mask" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="section" id="module-horton.espfit.cost">
-<span id="horton-espfit-cost-esp-cost-functions-for-estimating-and-testing-charges"></span><h2>5.2. <tt class="docutils literal"><span class="pre">horton.espfit.cost</span></tt> &#8211; ESP Cost functions for estimating and testing charges<a class="headerlink" href="#module-horton.espfit.cost" title="Permalink to this headline">¶</a></h2>
+<span id="horton-espfit-cost-esp-cost-functions-for-estimating-and-testing-charges"></span><h2>7.2. <tt class="docutils literal"><span class="pre">horton.espfit.cost</span></tt> &#8211; ESP Cost functions for estimating and testing charges<a class="headerlink" href="#module-horton.espfit.cost" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.espfit.cost.ESPCost">
 <em class="property">class </em><tt class="descclassname">horton.espfit.cost.</tt><tt class="descname">ESPCost</tt><big>(</big><em>A</em>, <em>B</em>, <em>C</em>, <em>natom</em><big>)</big><a class="headerlink" href="#horton.espfit.cost.ESPCost" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="classmethod">
 <dt id="horton.espfit.cost.ESPCost.from_grid_data">
-<em class="property">classmethod </em><tt class="descname">from_grid_data</tt><big>(</big><em>system</em>, <em>grid</em>, <em>vref</em>, <em>weights</em>, <em>rcut=20</em>, <em>alpha=None</em>, <em>gcut=None</em><big>)</big><a class="headerlink" href="#horton.espfit.cost.ESPCost.from_grid_data" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><tt class="descname">from_grid_data</tt><big>(</big><em>system</em>, <em>ugrid</em>, <em>vref</em>, <em>weights</em>, <em>rcut=20.0</em>, <em>alpha=None</em>, <em>gcut=None</em><big>)</big><a class="headerlink" href="#horton.espfit.cost.ESPCost.from_grid_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="horton.espfit.cost.ESPCost.from_hdf5">
+<em class="property">classmethod </em><tt class="descname">from_hdf5</tt><big>(</big><em>grp</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.espfit.cost.ESPCost.from_hdf5" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -107,6 +113,11 @@
 <dl class="method">
 <dt id="horton.espfit.cost.ESPCost.solve">
 <tt class="descname">solve</tt><big>(</big><em>qtot=None</em>, <em>ridge=0.0</em><big>)</big><a class="headerlink" href="#horton.espfit.cost.ESPCost.solve" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.espfit.cost.ESPCost.to_hdf5">
+<tt class="descname">to_hdf5</tt><big>(</big><em>grp</em><big>)</big><a class="headerlink" href="#horton.espfit.cost.ESPCost.to_hdf5" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -148,8 +159,19 @@ happens, it is better not to use charges at all.</p>
 <p><strong>Optional arguments:</strong></p>
 <dl class="docutils">
 <dt>dens</dt>
-<dd>The density-based criterion. This is a three-tuple with rho, rho0
-and alpha.</dd>
+<dd><p class="first">The density-based criterion. This is a three-tuple with rho, lnrho0
+and sigma. rho is the atomic or the pro-atomic electron density on
+the same grid as the ESP data. lnrho0 and sigma are parameters
+defined in JCTC, 3, 1004 (2007), DOI:10.1021/ct600295n. The weight
+function takes the form:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">sigma</span><span class="o">*</span><span class="p">(</span><span class="n">ln</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span> <span class="o">-</span> <span class="n">lnrho0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">Note that the density, rho, should not contain depletions in the
+atomic cores, as is often encountered with pseudo-potential
+computations. In that case it is recommended to construct a
+promolecular density as input for this option.</p>
+</dd>
 <dt>near</dt>
 <dd>Exclude points near the nuclei. This is a dictionary with as items
 (number, (R0, gamma)).</dd>
@@ -158,6 +180,76 @@ and alpha.</dd>
 </dl>
 </dd></dl>
 
+</div>
+<div class="section" id="horton-espfit-electrostatics-h">
+<h2>7.3. <tt class="docutils literal"><span class="pre">horton/espfit/electrostatics.h</span></tt><a class="headerlink" href="#horton-espfit-electrostatics-h" title="Permalink to this headline">¶</a></h2>
+<p></p>
+<p></p>
+<em>Functions</em><blockquote>
+<div><p id=""><span id="hortonelectrostatics_8h_1a4f07d278563f8fc4ddab22eac31ce8e5"></span><div class="line-block">
+<div class="line">double <strong>pair_electrostatics</strong>(double * delta, const  <a class="reference internal" href="horton.html#hortonclassCell"><em>Cell</em></a>  * cell, double rcut, double alpha, double gcut)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonelectrostatics_8h_1a82f384311ff2e87ab7d04437fff58789"></span><div class="line-block">
+<div class="line">double <strong>pair_ewald3d</strong>(double * delta, const  <a class="reference internal" href="horton.html#hortonclassCell"><em>Cell</em></a>  * cell, double rcut, double alpha, double gcut)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonelectrostatics_8h_1a52ebc5a98a880e32ce387b9480e5cea7"></span><div class="line-block">
+<div class="line">void <strong>setup_esp_cost_cube</strong>(<a class="reference internal" href="horton_grid.html#hortonclassUniformGrid"><em>UniformGrid</em></a>  * ugrid, double * vref, double * weights, double * centers, double * A, double * B, double * C, long ncenter, double rcut, double alpha, double gcut)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonelectrostatics_8h_1ad88bc8bb4aa878bee0b063455de4723c"></span><div class="line-block">
+<div class="line">void <strong>compute_esp_cube</strong>(<a class="reference internal" href="horton_grid.html#hortonclassUniformGrid"><em>UniformGrid</em></a>  * ugrid, double * esp, double * centers, double * charges, long ncenter, double rcut, double alpha, double gcut)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="horton-espfit-mask-h">
+<h2>7.4. <tt class="docutils literal"><span class="pre">horton/espfit/mask.h</span></tt><a class="headerlink" href="#horton-espfit-mask-h" title="Permalink to this headline">¶</a></h2>
+<p></p>
+<p></p>
+<em>Functions</em><blockquote>
+<div><p id=""><span id="hortonmask_8h_1aecb9705566db555ae6772c0b08c34c82"></span><div class="line-block">
+<div class="line">void <strong>multiply_dens_mask</strong>(double * rho, double lnrho0, double sigma, double * weights, long npoint)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonmask_8h_1abc7a29889609792fe2562de3df72f712"></span><div class="line-block">
+<div class="line">void <strong>multiply_near_mask</strong>(double * center, <a class="reference internal" href="horton_grid.html#hortonclassUniformGrid"><em>UniformGrid</em></a>  * ugrid, double r0, double gamma, double * weights)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonmask_8h_1af2315cdd95e53ecadff50e16eedc97e5"></span><div class="line-block">
+<div class="line">void <strong>multiply_far_mask</strong>(double * centers, long ncenter, <a class="reference internal" href="horton_grid.html#hortonclassUniformGrid"><em>UniformGrid</em></a>  * ugrid, double r0, double gamma, double * weights)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
 </div>
 </div>
 
@@ -169,19 +261,21 @@ and alpha.</dd>
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">5. <tt class="docutils literal"><span class="pre">horton.espfit</span></tt> &#8211; Electrostatic potential fitting</a><ul>
-<li><a class="reference internal" href="#module-horton.espfit.cext">5.1. <tt class="docutils literal"><span class="pre">horton.espfit.cext</span></tt> &#8211; C++ extensions</a></li>
-<li><a class="reference internal" href="#module-horton.espfit.cost">5.2. <tt class="docutils literal"><span class="pre">horton.espfit.cost</span></tt> &#8211; ESP Cost functions for estimating and testing charges</a></li>
+<li><a class="reference internal" href="#">7. <tt class="docutils literal"><span class="pre">horton.espfit</span></tt> &#8211; Electrostatic potential fitting</a><ul>
+<li><a class="reference internal" href="#module-horton.espfit.cext">7.1. <tt class="docutils literal"><span class="pre">horton.espfit.cext</span></tt> &#8211; C++ extensions</a></li>
+<li><a class="reference internal" href="#module-horton.espfit.cost">7.2. <tt class="docutils literal"><span class="pre">horton.espfit.cost</span></tt> &#8211; ESP Cost functions for estimating and testing charges</a></li>
+<li><a class="reference internal" href="#horton-espfit-electrostatics-h">7.3. <tt class="docutils literal"><span class="pre">horton/espfit/electrostatics.h</span></tt></a></li>
+<li><a class="reference internal" href="#horton-espfit-mask-h">7.4. <tt class="docutils literal"><span class="pre">horton/espfit/mask.h</span></tt></a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="horton.html"
-                        title="previous chapter">4. <tt class="docutils literal docutils literal"><span class="pre">horton</span></tt> &#8211; The main Horton Package</a></p>
+                        title="previous chapter">6. <tt class="docutils literal"><span class="pre">horton</span></tt> &#8211; The main Horton Package</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="horton_gbasis.html"
-                        title="next chapter">6. <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt> &#8211; Gaussian basis sets</a></p>
+                        title="next chapter">8. <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt> &#8211; Gaussian basis sets</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/lib/horton_espfit.txt"
@@ -214,12 +308,12 @@ and alpha.</dd>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="horton_gbasis.html" title="6. horton.gbasis – Gaussian basis sets"
+          <a href="horton_gbasis.html" title="8. horton.gbasis – Gaussian basis sets"
              >next</a> |</li>
         <li class="right" >
-          <a href="horton.html" title="4. horton – The main Horton Package"
+          <a href="horton.html" title="6. horton – The main Horton Package"
              >previous</a> |</li>
-        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

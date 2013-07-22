@@ -10,15 +10,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Index &mdash; Horton 1.0.1 documentation</title>
+    <title>Index &mdash; Horton 1.2.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/breathe.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0.1',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +28,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0.1 documentation" href="index.html" /> 
+    <link rel="top" title="Horton 1.2.1 documentation" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -39,7 +40,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -76,6 +77,8 @@
  | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
  | <a href="#W"><strong>W</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
  | <a href="#Z"><strong>Z</strong></a>
  
 </div>
@@ -86,6 +89,24 @@
   <dt><a href="lib/horton_grid.html#horton.grid.cext.CubicSpline.__call__">__call__ (horton.grid.cext.CubicSpline attribute)</a>
   </dt>
 
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_diis.CSCubicODAStep.__call__">__call__() (horton.meanfield.scf_diis.CSCubicODAStep method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_diis.CSQuadraticODAStep.__call__">(horton.meanfield.scf_diis.CSQuadraticODAStep method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_diis.CSSCFStep.__call__">(horton.meanfield.scf_diis.CSSCFStep method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_wrapper.SCFWrapper.__call__">(horton.meanfield.scf_wrapper.SCFWrapper method)</a>
+  </dt>
+
+      </dl></dd>
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
@@ -126,7 +147,7 @@
   </dt>
 
         
-  <dt><a href="lib/horton_meanfield.html#horton.meanfield.core.LinearObservable.add_fock_matrix">(horton.meanfield.core.LinearObservable method)</a>
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.linear.LinearObservable.add_fock_matrix">(horton.meanfield.linear.LinearObservable method)</a>
   </dt>
 
         
@@ -140,6 +161,10 @@
 
       
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.hamiltonian.Hamiltonian.add_term">add_term() (horton.meanfield.hamiltonian.Hamiltonian method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.molgrid.BeckeMolGrid.agspec">agspec (horton.grid.molgrid.BeckeMolGrid attribute)</a>
   </dt>
 
       
@@ -212,8 +237,6 @@
   <dt><a href="lib/horton_gbasis.html#horton.gbasis.gobasis.GOBasisDesc.apply_to">apply_to() (horton.gbasis.gobasis.GOBasisDesc method)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton.html#horton.matrix.DenseExpansion.assign">assign() (horton.matrix.DenseExpansion method)</a>
   </dt>
@@ -235,7 +258,13 @@
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.AufbauSpinOccModel.assign">(horton.meanfield.wfn.AufbauSpinOccModel method)</a>
   </dt>
 
+        
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.FermiOccModel.assign">(horton.meanfield.wfn.FermiOccModel method)</a>
+  </dt>
+
       </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton.html#horton.system.System.assign_chk">assign_chk() (horton.system.System method)</a>
   </dt>
@@ -245,15 +274,15 @@
   </dt>
 
       
-  <dt><a href="lib/horton_grid.html#horton.grid.atgrid.ATGridFamily">ATGridFamily (class in horton.grid.atgrid)</a>
-  </dt>
-
-      
   <dt><a href="lib/horton_grid.html#horton.grid.atgrid.AtomicGrid">AtomicGrid (class in horton.grid.atgrid)</a>
   </dt>
 
       
-  <dt><a href="lib/horton_grid.html#horton.grid.molgrid.BeckeMolGrid.atspecs">atspecs (horton.grid.molgrid.BeckeMolGrid attribute)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.atgrid.AtomicGridSpec">AtomicGridSpec (class in horton.grid.atgrid)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton.html#horton.periodic.Element.attribute_names">attribute_names (horton.periodic.Element attribute)</a>
   </dt>
 
       
@@ -268,16 +297,24 @@
   <dt><a href="lib/horton_grid.html#horton.grid.atgrid.AtomicGrid.av_weights">av_weights (horton.grid.atgrid.AtomicGrid attribute)</a>
   </dt>
 
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_wrapper.SCFWrapper.available_methods">available_methods (horton.meanfield.scf_wrapper.SCFWrapper attribute)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.visual.RectangleGrid.axis0">axis0 (horton.grid.visual.RectangleGrid attribute)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.visual.RectangleGrid.axis1">axis1 (horton.grid.visual.RectangleGrid attribute)</a>
+  </dt>
+
   </dl></td>
 </tr></table>
 
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.BakerRTransform">BakerRTransform (class in horton.grid.cext)</a>
-  </dt>
-
       
   <dt><a href="lib/horton_grid.html#horton.grid.cext.becke_helper_atom">becke_helper_atom() (in module horton.grid.cext)</a>
   </dt>
@@ -294,12 +331,12 @@
   <dt><a href="lib/horton_grid.html#horton.grid.cext.UniformGridWindow.begin">begin (horton.grid.cext.UniformGridWindow attribute)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_gbasis.html#horton.gbasis.cext.binom">binom() (in module horton.gbasis.cext)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_grid.html#horton.grid.cext.Block3Iterator">Block3Iterator (class in horton.grid.cext)</a>
   </dt>
@@ -332,6 +369,10 @@
 
       <dd><dl>
         
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.MeanFieldWFN.cache">(horton.meanfield.wfn.MeanFieldWFN attribute)</a>
+  </dt>
+
+        
   <dt><a href="lib/horton_part.html#horton.part.base.Part.cache">(horton.part.base.Part attribute)</a>
   </dt>
 
@@ -349,14 +390,10 @@
   </dt>
 
       
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.UniformGrid.cell">cell (horton.grid.cext.UniformGrid attribute)</a>
+  <dt><a href="lib/horton.html#horton.symmetry.Symmetry.cell">cell (horton.symmetry.Symmetry attribute)</a>
   </dt>
 
       <dd><dl>
-        
-  <dt><a href="lib/horton.html#horton.symmetry.Symmetry.cell">(horton.symmetry.Symmetry attribute)</a>
-  </dt>
-
         
   <dt><a href="lib/horton.html#horton.system.System.cell">(horton.system.System attribute)</a>
   </dt>
@@ -364,6 +401,10 @@
       </dl></dd>
       
   <dt><a href="lib/horton_grid.html#horton.grid.atgrid.AtomicGrid.center">center (horton.grid.atgrid.AtomicGrid attribute)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.molgrid.BeckeMolGrid.centers">centers (horton.grid.molgrid.BeckeMolGrid attribute)</a>
   </dt>
 
       
@@ -377,15 +418,19 @@
 
       </dl></dd>
       
-  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf.check_cubic_cs">check_cubic_cs() (in module horton.meanfield.scf)</a>
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_oda.check_cubic_cs">check_cubic_cs() (in module horton.meanfield.scf_oda)</a>
   </dt>
 
       
-  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf.check_cubic_os">check_cubic_os() (in module horton.meanfield.scf)</a>
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_oda.check_cubic_os">check_cubic_os() (in module horton.meanfield.scf_oda)</a>
   </dt>
 
       
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.check_dm">check_dm() (in module horton.meanfield.wfn)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver.check_feasible">check_feasible() (horton.quadprog.QPSolver method)</a>
   </dt>
 
       
@@ -415,6 +460,14 @@
 
       </dl></dd>
       
+  <dt><a href="lib/horton_scripts.html#horton.scripts.common.check_output">check_output() (in module horton.scripts.common)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver.check_solution">check_solution() (horton.quadprog.QPSolver method)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton.html#horton.matrix.DenseOneBody.check_symmetry">check_symmetry() (horton.matrix.DenseOneBody method)</a>
   </dt>
 
@@ -429,20 +482,20 @@
   </dt>
 
       
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.BakerRTransform.chop">chop() (horton.grid.cext.BakerRTransform method)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.ExpRTransform.chop">chop() (horton.grid.cext.ExpRTransform method)</a>
   </dt>
 
       <dd><dl>
-        
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.ExpRTransform.chop">(horton.grid.cext.ExpRTransform method)</a>
-  </dt>
-
         
   <dt><a href="lib/horton_grid.html#horton.grid.cext.IdentityRTransform.chop">(horton.grid.cext.IdentityRTransform method)</a>
   </dt>
 
         
   <dt><a href="lib/horton_grid.html#horton.grid.cext.LinearRTransform.chop">(horton.grid.cext.LinearRTransform method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.PowerRTransform.chop">(horton.grid.cext.PowerRTransform method)</a>
   </dt>
 
         
@@ -534,10 +587,6 @@
   </dt>
 
         
-  <dt><a href="lib/horton_meanfield.html#horton.meanfield.core.LinearObservable.compute">(horton.meanfield.core.LinearObservable method)</a>
-  </dt>
-
-        
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.hamiltonian.Hamiltonian.compute">(horton.meanfield.hamiltonian.Hamiltonian method)</a>
   </dt>
 
@@ -550,10 +599,30 @@
   </dt>
 
         
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.linear.LinearObservable.compute">(horton.meanfield.linear.LinearObservable method)</a>
+  </dt>
+
+        
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.observable.Observable.compute">(horton.meanfield.observable.Observable method)</a>
   </dt>
 
       </dl></dd>
+      
+  <dt><a href="lib/horton_part.html#horton.part.iterstock.IterativeProatomMixin.compute_change">compute_change() (horton.part.iterstock.IterativeProatomMixin method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver.compute_cn">compute_cn() (horton.quadprog.QPSolver method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.convergence.compute_commutator">compute_commutator() (in module horton.meanfield.convergence)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver.compute_cost">compute_cost() (horton.quadprog.QPSolver method)</a>
+  </dt>
+
       
   <dt><a href="lib/horton_grid.html#horton.grid.cext.compute_cubic_spline_int_weights">compute_cubic_spline_int_weights() (in module horton.grid.cext)</a>
   </dt>
@@ -598,6 +667,8 @@
   <dt><a href="lib/horton_gbasis.html#horton.gbasis.cext.GOBasis.compute_grid_density_dm">compute_grid_density_dm() (horton.gbasis.cext.GOBasis method)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_gbasis.html#horton.gbasis.cext.GOBasis.compute_grid_density_fock">compute_grid_density_fock() (horton.gbasis.cext.GOBasis method)</a>
   </dt>
@@ -608,8 +679,6 @@
   </dt>
 
       </dl></dd>
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton.html#horton.system.System.compute_grid_esp">compute_grid_esp() (horton.system.System method)</a>
   </dt>
@@ -703,10 +772,6 @@
 
       </dl></dd>
       
-  <dt><a href="lib/horton_part.html#horton.part.linalg.constrained_solver">constrained_solver() (in module horton.part.linalg)</a>
-  </dt>
-
-      
   <dt><a href="lib/horton.html#horton.context.Context">Context (class in horton.context)</a>
   </dt>
 
@@ -715,11 +780,31 @@
   </dt>
 
       
-  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf.converge_scf_oda">converge_scf_oda() (in module horton.meanfield.scf)</a>
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_cdiis.converge_scf_cdiis">converge_scf_cdiis() (in module horton.meanfield.scf_cdiis)</a>
   </dt>
 
       
-  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf.convergence_error">convergence_error() (in module horton.meanfield.scf)</a>
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_ediis.converge_scf_ediis">converge_scf_ediis() (in module horton.meanfield.scf_ediis)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_ediis2.converge_scf_ediis2">converge_scf_ediis2() (in module horton.meanfield.scf_ediis2)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_oda.converge_scf_oda">converge_scf_oda() (in module horton.meanfield.scf_oda)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_wrapper.SCFWrapper.convergence_error">convergence_error() (horton.meanfield.scf_wrapper.SCFWrapper method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.convergence.convergence_error_commutator">convergence_error_commutator() (in module horton.meanfield.convergence)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.convergence.convergence_error_eigen">convergence_error_eigen() (in module horton.meanfield.convergence)</a>
   </dt>
 
       
@@ -740,14 +825,6 @@
   </dt>
 
       </dl></dd>
-      
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.CubicSpline.copy_d">copy_d() (horton.grid.cext.CubicSpline method)</a>
-  </dt>
-
-      
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.CubicSpline.copy_y">copy_y() (horton.grid.cext.CubicSpline method)</a>
-  </dt>
-
       
   <dt><a href="lib/horton_part.html#horton.part.base.CPart">CPart (class in horton.part.base)</a>
   </dt>
@@ -783,6 +860,18 @@
 
       </dl></dd>
       
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_diis.CSCubicODAStep">CSCubicODAStep (class in horton.meanfield.scf_diis)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_diis.CSQuadraticODAStep">CSQuadraticODAStep (class in horton.meanfield.scf_diis)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_diis.CSSCFStep">CSSCFStep (class in horton.meanfield.scf_diis)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_grid.html#horton.grid.int1d.CubicIntegrator1D">CubicIntegrator1D (class in horton.grid.int1d)</a>
   </dt>
 
@@ -791,7 +880,11 @@
   </dt>
 
       
-  <dt><a href="lib/horton_meanfield.html#horton.meanfield.core.CustomLinearObservable">CustomLinearObservable (class in horton.meanfield.core)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.CuspExtrapolation">CuspExtrapolation (class in horton.grid.cext)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.linear.CustomLinearObservable">CustomLinearObservable (class in horton.meanfield.linear)</a>
   </dt>
 
   </dl></td>
@@ -821,6 +914,10 @@
   </dt>
 
       
+  <dt><a href="lib/horton_part.html#horton.part.proatomdb.ProAtomRecord.deriv">deriv (horton.part.proatomdb.ProAtomRecord attribute)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_grid.html#horton.grid.cext.CubicSpline.deriv">deriv() (horton.grid.cext.CubicSpline method)</a>
   </dt>
 
@@ -831,7 +928,19 @@
 
       </dl></dd>
       
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.deriv_array">deriv_array() (horton.grid.cext.RTransform method)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.deriv2">deriv2() (horton.grid.cext.RTransform method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.deriv3">deriv3() (horton.grid.cext.RTransform method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.Extrapolation.deriv_left">deriv_left() (horton.grid.cext.Extrapolation method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.Extrapolation.deriv_right">deriv_right() (horton.grid.cext.Extrapolation method)</a>
   </dt>
 
       
@@ -840,6 +949,10 @@
 
       
   <dt><a href="lib/horton.html#horton.matrix.DenseExpansion.derive_from_fock_matrix">derive_from_fock_matrix() (horton.matrix.DenseExpansion method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton.html#horton.matrix.DenseExpansion.derive_naturals">derive_naturals() (horton.matrix.DenseExpansion method)</a>
   </dt>
 
       
@@ -862,10 +975,6 @@
 
       
   <dt><a href="lib/horton.html#horton.matrix.DenseOneBody.distance">distance() (horton.matrix.DenseOneBody method)</a>
-  </dt>
-
-      
-  <dt><a href="lib/horton_grid.html#horton.grid.base.IntGrid.distances">distances() (horton.grid.base.IntGrid method)</a>
   </dt>
 
       
@@ -916,10 +1025,34 @@
   <dt><a href="lib/horton_part.html#horton.part.base.Part.do_partitioning">do_partitioning() (horton.part.base.Part method)</a>
   </dt>
 
+      <dd><dl>
+        
+  <dt><a href="lib/horton_part.html#horton.part.iterstock.IterativeProatomMixin.do_partitioning">(horton.part.iterstock.IterativeProatomMixin method)</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="lib/horton_part.html#horton.part.base.Part.do_populations">do_populations() (horton.part.base.Part method)</a>
   </dt>
 
+      
+  <dt><a href="lib/horton_part.html#horton.part.base.Part.do_spin_charges">do_spin_charges() (horton.part.base.Part method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_part.html#horton.part.base.CPart.do_spindens">do_spindens() (horton.part.base.CPart method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="lib/horton_part.html#horton.part.base.Part.do_spindens">(horton.part.base.Part method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_part.html#horton.part.base.WPart.do_spindens">(horton.part.base.WPart method)</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="lib/horton.html#horton.matrix.DenseOneBody.dot">dot() (horton.matrix.DenseOneBody method)</a>
   </dt>
@@ -943,11 +1076,11 @@
   </dt>
 
       
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.dot_multi_parts">dot_multi_parts() (in module horton.grid.cext)</a>
+  <dt><a href="lib/horton.html#horton.cext.Cell.dot_rvecs">dot_rvecs() (horton.cext.Cell method)</a>
   </dt>
 
       
-  <dt><a href="lib/horton.html#horton.cext.Cell.dot_rvecs">dot_rvecs() (horton.cext.Cell method)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.CubicSpline.dt">dt (horton.grid.cext.CubicSpline attribute)</a>
   </dt>
 
       
@@ -967,11 +1100,19 @@
   </dt>
 
       
+  <dt><a href="lib/horton_io.html#horton.io.molden.dump_molden">dump_molden() (in module horton.io.molden)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_io.html#horton.io.vasp.dump_poscar">dump_poscar() (in module horton.io.vasp)</a>
   </dt>
 
       
   <dt><a href="lib/horton_io.html#horton.io.smart.dump_system">dump_system() (in module horton.io.smart)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.CubicSpline.dx">dx (horton.grid.cext.CubicSpline attribute)</a>
   </dt>
 
   </dl></td>
@@ -1005,6 +1146,10 @@
   </dt>
 
       
+  <dt><a href="lib/horton_part.html#horton.part.base.WPart.epsilon">epsilon (horton.part.base.WPart attribute)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_io.html#horton.io.cif.equiv_pos_to_generator">equiv_pos_to_generator() (in module horton.io.cif)</a>
   </dt>
 
@@ -1019,7 +1164,15 @@
 
       </dl></dd>
       
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_wrapper.SCFWrapper.error_measures">error_measures (horton.meanfield.scf_wrapper.SCFWrapper attribute)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_espfit.html#horton.espfit.cost.ESPCost">ESPCost (class in horton.espfit.cost)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.Extrapolation.eval_left">eval_left() (horton.grid.cext.Extrapolation method)</a>
   </dt>
 
       
@@ -1041,6 +1194,12 @@
 
       </dl></dd>
       
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.Extrapolation.eval_right">eval_right() (horton.grid.cext.Extrapolation method)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
   <dt><a href="lib/horton_grid.html#horton.grid.base.IntGrid.eval_spline">eval_spline() (horton.grid.base.IntGrid method)</a>
   </dt>
 
@@ -1054,8 +1213,6 @@
   </dt>
 
       </dl></dd>
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_grid.html#horton.grid.cext.eval_spline_cube">eval_spline_cube() (in module horton.grid.cext)</a>
   </dt>
@@ -1064,6 +1221,20 @@
   <dt><a href="lib/horton_grid.html#horton.grid.cext.eval_spline_grid">eval_spline_grid() (in module horton.grid.cext)</a>
   </dt>
 
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.builtin.DiracExchange.exchange">exchange (horton.meanfield.builtin.DiracExchange attribute)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.builtin.HartreeFockExchange.exchange">(horton.meanfield.builtin.HartreeFockExchange attribute)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.observable.Observable.exchange">(horton.meanfield.observable.Observable attribute)</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.MeanFieldWFN.exp_alpha">exp_alpha (horton.meanfield.wfn.MeanFieldWFN attribute)</a>
   </dt>
@@ -1108,6 +1279,14 @@
   <dt><a href="lib/horton.html#horton.system.System.extra">extra (horton.system.System attribute)</a>
   </dt>
 
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.Extrapolation">Extrapolation (class in horton.grid.cext)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.CubicSpline.extrapolation">extrapolation (horton.grid.cext.CubicSpline attribute)</a>
+  </dt>
+
   </dl></td>
 </tr></table>
 
@@ -1123,7 +1302,15 @@
   </dt>
 
       
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.cext.LibXCWrapper.family">family (horton.meanfield.cext.LibXCWrapper attribute)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_io.html#horton.io.gaussian.FCHKFile">FCHKFile (class in horton.io.gaussian)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.FermiOccModel">FermiOccModel (class in horton.meanfield.wfn)</a>
   </dt>
 
       
@@ -1141,6 +1328,24 @@
   </dt>
 
       
+  <dt><a href="lib/horton.html#horton.cext.fill_pure_polynomials">fill_pure_polynomials() (in module horton.cext)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton.html#horton.cext.fill_radial_polynomials">fill_radial_polynomials() (in module horton.cext)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver.find_brute">find_brute() (horton.quadprog.QPSolver method)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver.find_local">find_local() (horton.quadprog.QPSolver method)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton.html#horton.symmetry.Symmetry.fracs">fracs (horton.symmetry.Symmetry attribute)</a>
   </dt>
 
@@ -1154,8 +1359,6 @@
   </dt>
 
       </dl></dd>
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_part.html#horton.part.proatomdb.ProAtomDB.from_files">from_files() (horton.part.proatomdb.ProAtomDB class method)</a>
   </dt>
@@ -1170,7 +1373,23 @@
 
       <dd><dl>
         
+  <dt><a href="lib/horton_espfit.html#horton.espfit.cost.ESPCost.from_hdf5">(horton.espfit.cost.ESPCost class method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.atgrid.AtomicGridSpec.from_hdf5">(horton.grid.atgrid.AtomicGridSpec class method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.CubicSpline.from_hdf5">(horton.grid.cext.CubicSpline static method)</a>
+  </dt>
+
+        
   <dt><a href="lib/horton_grid.html#horton.grid.cext.UniformGrid.from_hdf5">(horton.grid.cext.UniformGrid static method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.molgrid.BeckeMolGrid.from_hdf5">(horton.grid.molgrid.BeckeMolGrid class method)</a>
   </dt>
 
         
@@ -1194,6 +1413,10 @@
   </dt>
 
         
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.FermiOccModel.from_hdf5">(horton.meanfield.wfn.FermiOccModel class method)</a>
+  </dt>
+
+        
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.MeanFieldWFN.from_hdf5">(horton.meanfield.wfn.MeanFieldWFN class method)</a>
   </dt>
 
@@ -1211,9 +1434,15 @@
   </dt>
 
       
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.from_string">from_string() (horton.grid.cext.RTransform static method)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.Extrapolation.from_string">from_string() (horton.grid.cext.Extrapolation static method)</a>
   </dt>
 
+      <dd><dl>
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.from_string">(horton.grid.cext.RTransform static method)</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="lib/horton_part.html#horton.part.proatomdb.ProAtomRecord.from_system">from_system() (horton.part.proatomdb.ProAtomRecord class method)</a>
   </dt>
@@ -1270,7 +1499,7 @@
 
       <dd><dl>
         
-  <dt><a href="lib/horton_grid.html#horton.grid.atgrid.ATGridFamily.get">(horton.grid.atgrid.ATGridFamily method)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.atgrid.AtomicGridSpec.get">(horton.grid.atgrid.AtomicGridSpec method)</a>
   </dt>
 
       </dl></dd>
@@ -1307,6 +1536,10 @@
   </dt>
 
       
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.UniformGrid.get_cell">get_cell() (horton.grid.cext.UniformGrid method)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_part.html#horton.part.proatomdb.ProAtomDB.get_charges">get_charges() (horton.part.proatomdb.ProAtomDB method)</a>
   </dt>
 
@@ -1332,6 +1565,28 @@
   </dt>
 
       </dl></dd>
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.PowerRTransform.get_default_int1d">get_default_int1d() (horton.grid.cext.PowerRTransform method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.get_default_int1d">(horton.grid.cext.RTransform method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.get_deriv">get_deriv() (horton.grid.cext.RTransform method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.get_deriv2">get_deriv2() (horton.grid.cext.RTransform method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.get_deriv3">get_deriv3() (horton.grid.cext.RTransform method)</a>
+  </dt>
+
       
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.MeanFieldWFN.get_dm">get_dm() (horton.meanfield.wfn.MeanFieldWFN method)</a>
   </dt>
@@ -1367,11 +1622,19 @@
   </dt>
 
       
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver.get_free_problem">get_free_problem() (horton.quadprog.QPSolver method)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton.html#horton.cext.Cell.get_glength">get_glength() (horton.cext.Cell method)</a>
   </dt>
 
       
   <dt><a href="lib/horton_part.html#horton.part.base.Part.get_grid">get_grid() (horton.part.base.Part method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.UniformGrid.get_grid_cell">get_grid_cell() (horton.grid.cext.UniformGrid method)</a>
   </dt>
 
       
@@ -1396,6 +1659,10 @@
 
       
   <dt><a href="lib/horton.html#horton.system.System.get_kinetic">get_kinetic() (horton.system.System method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.MeanFieldWFN.get_level_shift">get_level_shift() (horton.meanfield.wfn.MeanFieldWFN method)</a>
   </dt>
 
       
@@ -1468,6 +1735,8 @@
   <dt><a href="lib/horton_part.html#horton.part.proatomdb.ProAtomRecord.get_moment">get_moment() (horton.part.proatomdb.ProAtomRecord method)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_part.html#horton.part.mulliken.get_mulliken_operators">get_mulliken_operators() (in module horton.part.mulliken)</a>
   </dt>
@@ -1476,14 +1745,20 @@
   <dt><a href="lib/horton_part.html#horton.part.hirshfeld_e.HEBasis.get_nbasis">get_nbasis() (horton.part.hirshfeld_e.HEBasis method)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton.html#horton.moments.get_ncart">get_ncart() (in module horton.moments)</a>
   </dt>
 
       
   <dt><a href="lib/horton.html#horton.moments.get_ncart_cumul">get_ncart_cumul() (in module horton.moments)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton.html#horton.moments.get_npure">get_npure() (in module horton.moments)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton.html#horton.moments.get_npure_cumul">get_npure_cumul() (in module horton.moments)</a>
   </dt>
 
       
@@ -1504,7 +1779,11 @@
   </dt>
 
         
-  <dt><a href="lib/horton_meanfield.html#horton.meanfield.core.LinearObservable.get_operator">(horton.meanfield.core.LinearObservable method)</a>
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.linear.CustomLinearObservable.get_operator">(horton.meanfield.linear.CustomLinearObservable method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.linear.LinearObservable.get_operator">(horton.meanfield.linear.LinearObservable method)</a>
   </dt>
 
       </dl></dd>
@@ -1514,6 +1793,10 @@
 
       
   <dt><a href="lib/horton.html#horton.system.System.get_overlap">get_overlap() (horton.system.System method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_part.html#horton.part.iterstock.IterativeStockholderWPart.get_proatom_rho">get_proatom_rho() (horton.part.iterstock.IterativeStockholderWPart method)</a>
   </dt>
 
       
@@ -1539,15 +1822,25 @@
   </dt>
 
       
-  <dt><a href="lib/horton_part.html#horton.part.proatomdb.ProAtomDB.get_rgrid">get_rgrid() (horton.part.proatomdb.ProAtomDB method)</a>
+  <dt><a href="lib/horton_part.html#horton.part.iterstock.IterativeStockholderWPart.get_rgrid">get_rgrid() (horton.part.iterstock.IterativeStockholderWPart method)</a>
   </dt>
 
+      <dd><dl>
+        
+  <dt><a href="lib/horton_part.html#horton.part.proatomdb.ProAtomDB.get_rgrid">(horton.part.proatomdb.ProAtomDB method)</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="lib/horton_part.html#horton.part.proatomdb.ProAtomDB.get_rho">get_rho() (horton.part.proatomdb.ProAtomDB method)</a>
   </dt>
 
       
   <dt><a href="lib/horton.html#horton.cext.Cell.get_rlength">get_rlength() (horton.cext.Cell method)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver.get_rmsds">get_rmsds() (horton.quadprog.QPSolver method)</a>
   </dt>
 
       
@@ -1567,6 +1860,10 @@
   </dt>
 
       
+  <dt><a href="lib/horton_grid.html#horton.grid.atgrid.AtomicGridSpec.get_size">get_size() (horton.grid.atgrid.AtomicGridSpec method)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_grid.html#horton.grid.atgrid.AtomicGrid.get_spherical_average">get_spherical_average() (horton.grid.atgrid.AtomicGrid method)</a>
   </dt>
 
@@ -1581,6 +1878,10 @@
 
       </dl></dd>
       
+  <dt><a href="lib/horton_part.html#horton.part.base.Part.get_spindens">get_spindens() (horton.part.base.Part method)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_part.html#horton.part.proatomdb.ProAtomDB.get_spline">get_spline() (horton.part.proatomdb.ProAtomDB method)</a>
   </dt>
 
@@ -1590,10 +1891,6 @@
 
       
   <dt><a href="lib/horton_part.html#horton.part.hirshfeld_e.HEBasis.get_total_lico">get_total_lico() (horton.part.hirshfeld_e.HEBasis method)</a>
-  </dt>
-
-      
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.get_volume_elements">get_volume_elements() (horton.grid.cext.RTransform method)</a>
   </dt>
 
       
@@ -1645,6 +1942,10 @@
 
         
   <dt><a href="lib/horton_grid.html#horton.grid.int1d.SimpsonIntegrator1D.get_weights">(horton.grid.int1d.SimpsonIntegrator1D method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.int1d.StubIntegrator1D.get_weights">(horton.grid.int1d.StubIntegrator1D method)</a>
   </dt>
 
         
@@ -1719,11 +2020,7 @@
 
       </dl></dd>
       
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.UniformGrid.grid_cell">grid_cell (horton.grid.cext.UniformGrid attribute)</a>
-  </dt>
-
-      
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.grid_distances">grid_distances() (in module horton.grid.cext)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.UniformGrid.grid_rvecs">grid_rvecs (horton.grid.cext.UniformGrid attribute)</a>
   </dt>
 
       
@@ -1744,6 +2041,32 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.visual.RectangleGrid.h0">h0 (horton.grid.visual.RectangleGrid attribute)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.visual.RectangleGrid.h1">h1 (horton.grid.visual.RectangleGrid attribute)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.ExpRTransform.half">half() (horton.grid.cext.ExpRTransform method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.LinearRTransform.half">(horton.grid.cext.LinearRTransform method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.PowerRTransform.half">(horton.grid.cext.PowerRTransform method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.half">(horton.grid.cext.RTransform method)</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.hamiltonian.Hamiltonian">Hamiltonian (class in horton.meanfield.hamiltonian)</a>
   </dt>
@@ -1871,6 +2194,10 @@
   </dt>
 
       
+  <dt><a href="lib/horton_grid.html#module-horton.grid.utils">horton.grid.utils (module)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_grid.html#module-horton.grid.visual">horton.grid.visual (module)</a>
   </dt>
 
@@ -1899,11 +2226,13 @@
   </dt>
 
       
+  <dt><a href="lib/horton_io.html#module-horton.io.lockedh5">horton.io.lockedh5 (module)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_io.html#module-horton.io.molden">horton.io.molden (module)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_io.html#module-horton.io.molekel">horton.io.molekel (module)</a>
   </dt>
@@ -1912,8 +2241,14 @@
   <dt><a href="lib/horton_io.html#module-horton.io.smart">horton.io.smart (module)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_io.html#module-horton.io.vasp">horton.io.vasp (module)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_io.html#module-horton.io.wfn">horton.io.wfn (module)</a>
   </dt>
 
       
@@ -1937,6 +2272,10 @@
   </dt>
 
       
+  <dt><a href="lib/horton_meanfield.html#module-horton.meanfield.convergence">horton.meanfield.convergence (module)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_meanfield.html#module-horton.meanfield.core">horton.meanfield.core (module)</a>
   </dt>
 
@@ -1953,6 +2292,10 @@
   </dt>
 
       
+  <dt><a href="lib/horton_meanfield.html#module-horton.meanfield.linear">horton.meanfield.linear (module)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_meanfield.html#module-horton.meanfield.observable">horton.meanfield.observable (module)</a>
   </dt>
 
@@ -1962,6 +2305,30 @@
 
       
   <dt><a href="lib/horton_meanfield.html#module-horton.meanfield.scf">horton.meanfield.scf (module)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#module-horton.meanfield.scf_cdiis">horton.meanfield.scf_cdiis (module)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#module-horton.meanfield.scf_diis">horton.meanfield.scf_diis (module)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#module-horton.meanfield.scf_ediis">horton.meanfield.scf_ediis (module)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#module-horton.meanfield.scf_ediis2">horton.meanfield.scf_ediis2 (module)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#module-horton.meanfield.scf_oda">horton.meanfield.scf_oda (module)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#module-horton.meanfield.scf_wrapper">horton.meanfield.scf_wrapper (module)</a>
   </dt>
 
       
@@ -1993,7 +2360,7 @@
   </dt>
 
       
-  <dt><a href="lib/horton_part.html#module-horton.part.linalg">horton.part.linalg (module)</a>
+  <dt><a href="lib/horton_part.html#module-horton.part.iterstock">horton.part.iterstock (module)</a>
   </dt>
 
       
@@ -2017,6 +2384,10 @@
   </dt>
 
       
+  <dt><a href="lib/horton.html#module-horton.quadprog">horton.quadprog (module)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_scripts.html#module-horton.scripts.atomdb">horton.scripts.atomdb (module)</a>
   </dt>
 
@@ -2030,10 +2401,6 @@
 
       
   <dt><a href="lib/horton_scripts.html#module-horton.scripts.hdf2csv">horton.scripts.hdf2csv (module)</a>
-  </dt>
-
-      
-  <dt><a href="lib/horton_scripts.html#module-horton.scripts.wpart">horton.scripts.wpart (module)</a>
   </dt>
 
       
@@ -2148,16 +2515,16 @@
   </dt>
 
         
+  <dt><a href="lib/horton_grid.html#horton.grid.molgrid.BeckeMolGrid.integrate">(horton.grid.molgrid.BeckeMolGrid method)</a>
+  </dt>
+
+        
   <dt><a href="lib/horton_grid.html#horton.grid.radial.RadialGrid.integrate">(horton.grid.radial.RadialGrid method)</a>
   </dt>
 
       </dl></dd>
       
   <dt><a href="lib/horton_grid.html#horton.grid.int1d.Integrator1D">Integrator1D (class in horton.grid.int1d)</a>
-  </dt>
-
-      
-  <dt><a href="lib/horton_grid.html#horton.grid.atgrid.interpret_atspec">interpret_atspec() (in module horton.grid.atgrid)</a>
   </dt>
 
       
@@ -2169,12 +2536,6 @@
   </dt>
 
       
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.inv_array">inv_array() (horton.grid.cext.RTransform method)</a>
-  </dt>
-
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
-      
   <dt><a href="lib/horton_part.html#horton.part.proatomdb.ProAtomRecord.ipot_energy">ipot_energy (horton.part.proatomdb.ProAtomRecord attribute)</a>
   </dt>
 
@@ -2182,6 +2543,8 @@
   <dt><a href="lib/horton_gbasis.html#horton.gbasis.gobasis.GOBasisContraction.is_generalized">is_generalized() (horton.gbasis.gobasis.GOBasisContraction method)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton.html#horton.matrix.DenseOneBody.iscale">iscale() (horton.matrix.DenseOneBody method)</a>
   </dt>
@@ -2214,6 +2577,14 @@
 
       
   <dt><a href="lib/horton_scripts.html#horton.scripts.atomdb.iter_states">iter_states() (in module horton.scripts.atomdb)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_part.html#horton.part.iterstock.IterativeProatomMixin">IterativeProatomMixin (class in horton.part.iterstock)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_part.html#horton.part.iterstock.IterativeStockholderWPart">IterativeStockholderWPart (class in horton.part.iterstock)</a>
   </dt>
 
       
@@ -2290,8 +2661,16 @@
   </dt>
 
       </dl></dd>
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.cext.LibXCWrapper.key">key (horton.meanfield.cext.LibXCWrapper attribute)</a>
+  </dt>
+
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.cext.LibXCWrapper.kind">kind (horton.meanfield.cext.LibXCWrapper attribute)</a>
+  </dt>
+
       
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.core.KineticEnergy">KineticEnergy (class in horton.meanfield.core)</a>
   </dt>
@@ -2302,6 +2681,14 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.visual.RectangleGrid.l0">l0 (horton.grid.visual.RectangleGrid attribute)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.visual.RectangleGrid.l1">l1 (horton.grid.visual.RectangleGrid attribute)</a>
+  </dt>
+
       
   <dt><a href="lib/horton.html#horton.symmetry.Symmetry.labels">labels (horton.symmetry.Symmetry attribute)</a>
   </dt>
@@ -2351,13 +2738,25 @@
   <dt><a href="lib/horton_part.html#horton.part.becke.BeckeWPart.linear">(horton.part.becke.BeckeWPart attribute)</a>
   </dt>
 
+        
+  <dt><a href="lib/horton_part.html#horton.part.iterstock.IterativeStockholderWPart.linear">(horton.part.iterstock.IterativeStockholderWPart attribute)</a>
+  </dt>
+
       </dl></dd>
       
-  <dt><a href="lib/horton_meanfield.html#horton.meanfield.core.LinearObservable">LinearObservable (class in horton.meanfield.core)</a>
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.linear.LinearObservable">LinearObservable (class in horton.meanfield.linear)</a>
   </dt>
 
       
   <dt><a href="lib/horton_grid.html#horton.grid.cext.LinearRTransform">LinearRTransform (class in horton.grid.cext)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.visual.LineGrid">LineGrid (class in horton.grid.visual)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_part.html#horton.part.base.Part.lmax">lmax (horton.part.base.Part attribute)</a>
   </dt>
 
       
@@ -2379,6 +2778,10 @@
   </dt>
 
       
+  <dt><a href="lib/horton_scripts.html#horton.scripts.espfit.load_charges">load_charges() (in module horton.scripts.espfit)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_io.html#horton.io.chk.load_checkpoint">load_checkpoint() (in module horton.io.chk)</a>
   </dt>
 
@@ -2390,6 +2793,10 @@
 
       
   <dt><a href="lib/horton_io.html#horton.io.cif.load_cif">load_cif() (in module horton.io.cif)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_scripts.html#horton.scripts.espfit.load_cost">load_cost() (in module horton.scripts.espfit)</a>
   </dt>
 
       
@@ -2437,7 +2844,19 @@
   </dt>
 
       
+  <dt><a href="lib/horton_io.html#horton.io.wfn.load_wfn">load_wfn() (in module horton.io.wfn)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_io.html#horton.io.wfn.load_wfn_low">load_wfn_low() (in module horton.io.wfn)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_part.html#horton.part.base.Part.local">local (horton.part.base.Part attribute)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_io.html#horton.io.lockedh5.LockedH5File">LockedH5File (class in horton.io.lockedh5)</a>
   </dt>
 
       
@@ -2450,10 +2869,22 @@
   </dt>
 
         
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.FermiOccModel.log">(horton.meanfield.wfn.FermiOccModel method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver.log">(horton.quadprog.QPSolver method)</a>
+  </dt>
+
+        
   <dt><a href="lib/horton_scripts.html#horton.scripts.atomdb.EnergyTable.log">(horton.scripts.atomdb.EnergyTable method)</a>
   </dt>
 
       </dl></dd>
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.hamiltonian.Hamiltonian.log_energy">log_energy() (horton.meanfield.hamiltonian.Hamiltonian method)</a>
+  </dt>
+
       
   <dt><a href="lib/horton.html#horton.matrix.DenseExpansion.lumo_energy">lumo_energy (horton.matrix.DenseExpansion attribute)</a>
   </dt>
@@ -2475,6 +2906,10 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
+  <dt><a href="lib/horton_scripts.html#horton.scripts.espfit.max_at_edge">max_at_edge() (in module horton.scripts.espfit)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.MeanFieldWFN">MeanFieldWFN (class in horton.meanfield.wfn)</a>
   </dt>
 
@@ -2482,6 +2917,12 @@
   <dt><a href="lib/horton.html#horton.cext.Cell.mic">mic() (horton.cext.Cell method)</a>
   </dt>
 
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.molgrid.BeckeMolGrid.mode">mode (horton.grid.molgrid.BeckeMolGrid attribute)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.RestrictedWFN.mult">mult (horton.meanfield.wfn.RestrictedWFN attribute)</a>
   </dt>
@@ -2492,8 +2933,6 @@
   </dt>
 
       </dl></dd>
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_espfit.html#horton.espfit.cext.multiply_dens_mask">multiply_dens_mask() (in module horton.espfit.cext)</a>
   </dt>
@@ -2517,12 +2956,20 @@
   </dt>
 
       
-  <dt><a href="lib/horton_part.html#horton.part.base.Part.name">name (horton.part.base.Part attribute)</a>
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.cext.LibXCWrapper.name">name (horton.meanfield.cext.LibXCWrapper attribute)</a>
   </dt>
 
       <dd><dl>
         
+  <dt><a href="lib/horton_part.html#horton.part.base.Part.name">(horton.part.base.Part attribute)</a>
+  </dt>
+
+        
   <dt><a href="lib/horton_part.html#horton.part.becke.BeckeWPart.name">(horton.part.becke.BeckeWPart attribute)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_part.html#horton.part.iterstock.IterativeStockholderWPart.name">(horton.part.iterstock.IterativeStockholderWPart attribute)</a>
   </dt>
 
         
@@ -2531,14 +2978,10 @@
 
       </dl></dd>
       
-  <dt><a href="lib/horton_part.html#horton.part.base.Part.natom">natom (horton.part.base.Part attribute)</a>
+  <dt><a href="lib/horton.html#horton.symmetry.Symmetry.natom">natom (horton.symmetry.Symmetry attribute)</a>
   </dt>
 
       <dd><dl>
-        
-  <dt><a href="lib/horton.html#horton.symmetry.Symmetry.natom">(horton.symmetry.Symmetry attribute)</a>
-  </dt>
-
         
   <dt><a href="lib/horton.html#horton.system.System.natom">(horton.system.System attribute)</a>
   </dt>
@@ -2585,6 +3028,10 @@
   </dt>
 
       
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver.nl">nl (horton.quadprog.QPSolver attribute)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_grid.html#horton.grid.atgrid.AtomicGrid.nlls">nlls (horton.grid.atgrid.AtomicGrid attribute)</a>
   </dt>
 
@@ -2599,7 +3046,7 @@
   </dt>
 
       
-  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf.NoSCFConvergence">NoSCFConvergence</a>
+  <dt><a href="lib/horton.html#horton.exceptions.NoSCFConvergence">NoSCFConvergence</a>
   </dt>
 
       
@@ -2617,6 +3064,10 @@
 
         
   <dt><a href="lib/horton_grid.html#horton.grid.int1d.SimpsonIntegrator1D.npoint_min">(horton.grid.int1d.SimpsonIntegrator1D attribute)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.int1d.StubIntegrator1D.npoint_min">(horton.grid.int1d.StubIntegrator1D attribute)</a>
   </dt>
 
         
@@ -2638,15 +3089,23 @@
 
       <dd><dl>
         
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.cext.LibXCWrapper.number">(horton.meanfield.cext.LibXCWrapper attribute)</a>
+  </dt>
+
+        
   <dt><a href="lib/horton_part.html#horton.part.proatomdb.ProAtomRecord.number">(horton.part.proatomdb.ProAtomRecord attribute)</a>
   </dt>
 
       </dl></dd>
       
-  <dt><a href="lib/horton.html#horton.symmetry.Symmetry.numbers">numbers (horton.symmetry.Symmetry attribute)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.molgrid.BeckeMolGrid.numbers">numbers (horton.grid.molgrid.BeckeMolGrid attribute)</a>
   </dt>
 
       <dd><dl>
+        
+  <dt><a href="lib/horton.html#horton.symmetry.Symmetry.numbers">(horton.symmetry.Symmetry attribute)</a>
+  </dt>
+
         
   <dt><a href="lib/horton.html#horton.system.System.numbers">(horton.system.System attribute)</a>
   </dt>
@@ -2654,6 +3113,10 @@
       </dl></dd>
       
   <dt><a href="lib/horton.html#horton.cext.Cell.nvec">nvec (horton.cext.Cell attribute)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver.nx">nx (horton.quadprog.QPSolver attribute)</a>
   </dt>
 
   </dl></td>
@@ -2675,11 +3138,15 @@
   </dt>
 
       
-  <dt><a href="lib/horton.html#horton.matrix.DenseExpansion.occupations">occupations (horton.matrix.DenseExpansion attribute)</a>
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.MeanFieldWFN.occ_model">occ_model (horton.meanfield.wfn.MeanFieldWFN attribute)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="lib/horton.html#horton.matrix.DenseExpansion.occupations">occupations (horton.matrix.DenseExpansion attribute)</a>
+  </dt>
+
       
   <dt><a href="lib/horton.html#horton.matrix.OneBody">OneBody (class in horton.matrix)</a>
   </dt>
@@ -2688,16 +3155,44 @@
   <dt><a href="lib/horton_part.html#horton.part.becke.BeckeWPart.options">options (horton.part.becke.BeckeWPart attribute)</a>
   </dt>
 
+      <dd><dl>
+        
+  <dt><a href="lib/horton_part.html#horton.part.hirshfeld.HirshfeldWPart.options">(horton.part.hirshfeld.HirshfeldWPart attribute)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_part.html#horton.part.hirshfeld_i.HirshfeldIWPart.options">(horton.part.hirshfeld_i.HirshfeldIWPart attribute)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_part.html#horton.part.iterstock.IterativeStockholderWPart.options">(horton.part.iterstock.IterativeStockholderWPart attribute)</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="lib/horton_grid.html#horton.grid.cext.UniformGrid.origin">origin (horton.grid.cext.UniformGrid attribute)</a>
   </dt>
 
+      <dd><dl>
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.visual.RectangleGrid.origin">(horton.grid.visual.RectangleGrid attribute)</a>
+  </dt>
+
+      </dl></dd>
   </dl></td>
 </tr></table>
 
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.visual.LineGrid.p1">p1 (horton.grid.visual.LineGrid attribute)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.visual.LineGrid.p2">p2 (horton.grid.visual.LineGrid attribute)</a>
+  </dt>
+
       
   <dt><a href="lib/horton_espfit.html#horton.espfit.cext.pair_ewald">pair_ewald() (in module horton.espfit.cext)</a>
   </dt>
@@ -2707,11 +3202,11 @@
   </dt>
 
       
-  <dt><a href="lib/horton_scripts.html#horton.scripts.common.parse_ewald_args">parse_ewald_args() (in module horton.scripts.common)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.utils.parse_args_integrate">parse_args_integrate() (in module horton.grid.utils)</a>
   </dt>
 
       
-  <dt><a href="lib/horton_scripts.html#horton.scripts.wpart.parse_grid">parse_grid() (in module horton.scripts.wpart)</a>
+  <dt><a href="lib/horton_scripts.html#horton.scripts.common.parse_ewald_args">parse_ewald_args() (in module horton.scripts.common)</a>
   </dt>
 
       
@@ -2720,10 +3215,6 @@
 
       
   <dt><a href="lib/horton_scripts.html#horton.scripts.common.parse_pbc">parse_pbc() (in module horton.scripts.common)</a>
-  </dt>
-
-      
-  <dt><a href="lib/horton_scripts.html#horton.scripts.common.parse_ugrid">parse_ugrid() (in module horton.scripts.common)</a>
   </dt>
 
       
@@ -2750,8 +3241,6 @@
   <dt><a href="lib/horton_grid.html#horton.grid.cext.UniformGrid.pbc">pbc (horton.grid.cext.UniformGrid attribute)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton.html#horton.periodic.Periodic">Periodic (class in horton.periodic)</a>
   </dt>
@@ -2760,8 +3249,32 @@
   <dt><a href="lib/horton_grid.html#horton.grid.base.IntGrid.points">points (horton.grid.base.IntGrid attribute)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_part.html#horton.part.proatomdb.ProAtomRecord.population">population (horton.part.proatomdb.ProAtomRecord attribute)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.PowerExtrapolation.power">power (horton.grid.cext.PowerExtrapolation attribute)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.PowerRTransform.power">(horton.grid.cext.PowerRTransform attribute)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.PowerExtrapolation">PowerExtrapolation (class in horton.grid.cext)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.PowerRTransform">PowerRTransform (class in horton.grid.cext)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.visual.RectangleGrid.prepare_contour">prepare_contour() (horton.grid.visual.RectangleGrid method)</a>
   </dt>
 
       
@@ -2803,9 +3316,15 @@
   </dt>
 
       
-  <dt><a href="lib/horton.html#horton.system.System.pseudo_numbers">pseudo_numbers (horton.system.System attribute)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.molgrid.BeckeMolGrid.pseudo_numbers">pseudo_numbers (horton.grid.molgrid.BeckeMolGrid attribute)</a>
   </dt>
 
+      <dd><dl>
+        
+  <dt><a href="lib/horton.html#horton.system.System.pseudo_numbers">(horton.system.System attribute)</a>
+  </dt>
+
+      </dl></dd>
       
   <dt><a href="lib/horton_part.html#horton.part.proatomdb.ProAtomRecord.pseudo_population">pseudo_population (horton.part.proatomdb.ProAtomRecord attribute)</a>
   </dt>
@@ -2831,7 +3350,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="lib/horton_part.html#horton.part.linalg.quadratic_solver">quadratic_solver() (in module horton.part.linalg)</a>
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver">QPSolver (class in horton.quadprog)</a>
   </dt>
 
   </dl></td>
@@ -2854,10 +3373,6 @@
 
       
   <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.radius">radius() (horton.grid.cext.RTransform method)</a>
-  </dt>
-
-      
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.RTransform.radius_array">radius_array() (horton.grid.cext.RTransform method)</a>
   </dt>
 
       
@@ -2889,6 +3404,14 @@
   </dt>
 
       
+  <dt><a href="lib/horton_scripts.html#horton.scripts.common.reduce_ugrid">reduce_ugrid() (in module horton.scripts.common)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.cext.LibXCWrapper.refs">refs (horton.meanfield.cext.LibXCWrapper attribute)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_io.html#horton.io.common.renorm_helper">renorm_helper() (in module horton.io.common)</a>
   </dt>
 
@@ -2906,12 +3429,12 @@
   </dt>
 
       </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.RestrictedWFN">RestrictedWFN (class in horton.meanfield.wfn)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_grid.html#horton.grid.atgrid.AtomicGrid.rgrid">rgrid (horton.grid.atgrid.AtomicGrid attribute)</a>
   </dt>
@@ -2931,16 +3454,16 @@
   </dt>
 
       
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.BakerRTransform.rmax">rmax (horton.grid.cext.BakerRTransform attribute)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.ExpRTransform.rmax">rmax (horton.grid.cext.ExpRTransform attribute)</a>
   </dt>
 
       <dd><dl>
         
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.ExpRTransform.rmax">(horton.grid.cext.ExpRTransform attribute)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.LinearRTransform.rmax">(horton.grid.cext.LinearRTransform attribute)</a>
   </dt>
 
         
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.LinearRTransform.rmax">(horton.grid.cext.LinearRTransform attribute)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.PowerRTransform.rmax">(horton.grid.cext.PowerRTransform attribute)</a>
   </dt>
 
         
@@ -2955,6 +3478,10 @@
       <dd><dl>
         
   <dt><a href="lib/horton_grid.html#horton.grid.cext.LinearRTransform.rmin">(horton.grid.cext.LinearRTransform attribute)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.PowerRTransform.rmin">(horton.grid.cext.PowerRTransform attribute)</a>
   </dt>
 
         
@@ -3003,15 +3530,11 @@
   </dt>
 
       
-  <dt><a href="lib/horton_scripts.html#horton.scripts.common.safe_open_h5">safe_open_h5() (in module horton.scripts.common)</a>
-  </dt>
-
-      
   <dt><a href="lib/horton_scripts.html#horton.scripts.espfit.save_weights">save_weights() (in module horton.scripts.espfit)</a>
   </dt>
 
       
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.BakerRTransform.scale">scale (horton.grid.cext.BakerRTransform attribute)</a>
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.scf_wrapper.SCFWrapper">SCFWrapper (class in horton.meanfield.scf_wrapper)</a>
   </dt>
 
       
@@ -3045,7 +3568,19 @@
   </dt>
 
       
+  <dt><a href="lib/horton_io.html#horton.io.wfn.setup_mask">setup_mask() (in module horton.io.wfn)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.setup_mean_field_wfn">setup_mean_field_wfn() (in module horton.meanfield.wfn)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_io.html#horton.io.wfn.setup_permutation1">setup_permutation1() (in module horton.io.wfn)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_io.html#horton.io.wfn.setup_permutation2">setup_permutation2() (in module horton.io.wfn)</a>
   </dt>
 
       
@@ -3071,6 +3606,10 @@
 
       </dl></dd>
       
+  <dt><a href="lib/horton_gbasis.html#horton.gbasis.io.shell_type_to_str">shell_type_to_str() (in module horton.gbasis.io)</a>
+  </dt>
+
+      
   <dt><a href="lib/horton_grid.html#horton.grid.cext.ShiftedExpRTransform">ShiftedExpRTransform (class in horton.grid.cext)</a>
   </dt>
 
@@ -3078,6 +3617,8 @@
   <dt><a href="lib/horton_grid.html#horton.grid.int1d.SimpsonIntegrator1D">SimpsonIntegrator1D (class in horton.grid.int1d)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_grid.html#horton.grid.base.IntGrid.size">size (horton.grid.base.IntGrid attribute)</a>
   </dt>
@@ -3100,8 +3641,10 @@
   </dt>
 
       </dl></dd>
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="lib/horton_part.html#horton.part.base.Part.slow">slow (horton.part.base.Part attribute)</a>
+  </dt>
+
       
   <dt><a href="lib/horton.html#horton.cext.smart_wrap">smart_wrap() (in module horton.cext)</a>
   </dt>
@@ -3110,8 +3653,14 @@
   <dt><a href="lib/horton_espfit.html#horton.espfit.cost.ESPCost.solve">solve() (horton.espfit.cost.ESPCost method)</a>
   </dt>
 
+      <dd><dl>
+        
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver.solve">(horton.quadprog.QPSolver method)</a>
+  </dt>
+
+      </dl></dd>
       
-  <dt><a href="lib/horton_part.html#horton.part.linalg.solve_positive">solve_positive() (in module horton.part.linalg)</a>
+  <dt><a href="lib/horton.html#horton.quadprog.QPSolver.solve_radius">solve_radius() (horton.quadprog.QPSolver method)</a>
   </dt>
 
       
@@ -3142,6 +3691,10 @@
 
       
   <dt><a href="lib/horton_gbasis.html#horton.gbasis.io.str_to_shell_types">str_to_shell_types() (in module horton.gbasis.io)</a>
+  </dt>
+
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.int1d.StubIntegrator1D">StubIntegrator1D (class in horton.grid.int1d)</a>
   </dt>
 
       
@@ -3180,6 +3733,10 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.MeanFieldWFN.temperature">temperature (horton.meanfield.wfn.MeanFieldWFN attribute)</a>
+  </dt>
+
       
   <dt><a href="lib/horton_scripts.html#horton.scripts.atomdb.Template">Template (class in horton.scripts.atomdb)</a>
   </dt>
@@ -3220,13 +3777,31 @@
   <dt><a href="lib/horton.html#horton.cext.Cell.to_frac">to_frac() (horton.cext.Cell method)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton.html#horton.cext.Cell.to_hdf5">to_hdf5() (horton.cext.Cell method)</a>
   </dt>
 
       <dd><dl>
         
+  <dt><a href="lib/horton_espfit.html#horton.espfit.cost.ESPCost.to_hdf5">(horton.espfit.cost.ESPCost method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.atgrid.AtomicGridSpec.to_hdf5">(horton.grid.atgrid.AtomicGridSpec method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.CubicSpline.to_hdf5">(horton.grid.cext.CubicSpline method)</a>
+  </dt>
+
+        
   <dt><a href="lib/horton_grid.html#horton.grid.cext.UniformGrid.to_hdf5">(horton.grid.cext.UniformGrid method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.molgrid.BeckeMolGrid.to_hdf5">(horton.grid.molgrid.BeckeMolGrid method)</a>
   </dt>
 
         
@@ -3254,6 +3829,10 @@
   </dt>
 
         
+  <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.FermiOccModel.to_hdf5">(horton.meanfield.wfn.FermiOccModel method)</a>
+  </dt>
+
+        
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.MeanFieldWFN.to_hdf5">(horton.meanfield.wfn.MeanFieldWFN method)</a>
   </dt>
 
@@ -3262,15 +3841,13 @@
   </dt>
 
       </dl></dd>
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.BakerRTransform.to_string">to_string() (horton.grid.cext.BakerRTransform method)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.ExpRTransform.to_string">to_string() (horton.grid.cext.ExpRTransform method)</a>
   </dt>
 
       <dd><dl>
         
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.ExpRTransform.to_string">(horton.grid.cext.ExpRTransform method)</a>
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.Extrapolation.to_string">(horton.grid.cext.Extrapolation method)</a>
   </dt>
 
         
@@ -3279,6 +3856,14 @@
 
         
   <dt><a href="lib/horton_grid.html#horton.grid.cext.LinearRTransform.to_string">(horton.grid.cext.LinearRTransform method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.PowerExtrapolation.to_string">(horton.grid.cext.PowerExtrapolation method)</a>
+  </dt>
+
+        
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.PowerRTransform.to_string">(horton.grid.cext.PowerRTransform method)</a>
   </dt>
 
         
@@ -3306,10 +3891,6 @@
       </dl></dd>
       
   <dt><a href="lib/horton_grid.html#horton.grid.int1d.TrapezoidIntegrator1D">TrapezoidIntegrator1D (class in horton.grid.int1d)</a>
-  </dt>
-
-      
-  <dt><a href="lib/horton_grid.html#horton.grid.cext.tridiag_solve">tridiag_solve() (in module horton.grid.cext)</a>
   </dt>
 
       
@@ -3368,6 +3949,8 @@
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.MeanFieldWFN.update_dm">update_dm() (horton.meanfield.wfn.MeanFieldWFN method)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.wfn.RestrictedWFN.update_exp">update_exp() (horton.meanfield.wfn.RestrictedWFN method)</a>
   </dt>
@@ -3378,8 +3961,6 @@
   </dt>
 
       </dl></dd>
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.observable.Observable.update_grad_rho">update_grad_rho() (horton.meanfield.observable.Observable method)</a>
   </dt>
@@ -3424,10 +4005,6 @@
       </dl></dd>
       
   <dt><a href="lib/horton_meanfield.html#horton.meanfield.observable.Observable.update_rho">update_rho() (horton.meanfield.observable.Observable method)</a>
-  </dt>
-
-      
-  <dt><a href="lib/horton.html#horton.cext.Cell.update_rvecs">update_rvecs() (horton.cext.Cell method)</a>
   </dt>
 
       
@@ -3514,11 +4091,41 @@
   <dt><a href="lib/horton_scripts.html#horton.scripts.common.write_part_output">write_part_output() (in module horton.scripts.common)</a>
   </dt>
 
+      
+  <dt><a href="lib/horton_scripts.html#horton.scripts.common.write_script_output">write_script_output() (in module horton.scripts.common)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.visual.LineGrid.x">x (horton.grid.visual.LineGrid attribute)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.CubicSpline.y">y (horton.grid.cext.CubicSpline attribute)</a>
+  </dt>
+
   </dl></td>
 </tr></table>
 
 <h2 id="Z">Z</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="lib/horton_grid.html#horton.grid.cext.ZeroExtrapolation">ZeroExtrapolation (class in horton.grid.cext)</a>
+  </dt>
+
+  </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="lib/horton_grid.html#horton.grid.base.IntGrid.zeros">zeros() (horton.grid.base.IntGrid method)</a>
@@ -3577,7 +4184,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

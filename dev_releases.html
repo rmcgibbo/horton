@@ -8,15 +8,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2. Release history &mdash; Horton 1.0.1 documentation</title>
+    <title>2. Release history &mdash; Horton 1.2.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/breathe.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0.1',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +26,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0.1 documentation" href="index.html" />
+    <link rel="top" title="Horton 1.2.1 documentation" href="index.html" />
     <link rel="next" title="3. How to contribute to Horton" href="dev_contribute.html" />
     <link rel="prev" title="1. Contributors" href="dev_contributors.html" /> 
   </head>
@@ -45,7 +46,7 @@
         <li class="right" >
           <a href="dev_contributors.html" title="1. Contributors"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -57,7 +58,86 @@
   <div class="section" id="release-history">
 <h1>2. Release history<a class="headerlink" href="#release-history" title="Permalink to this headline">¶</a></h1>
 <ul>
-<li><p class="first"><strong>June 1, 2013. Version 1.0.1</strong></p>
+<li><p class="first"><strong>March 17, 2014. Version 1.2.1</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Update to LibXC-2.0.3 plus overview of the supported functionals in the
+documentation.</li>
+<li>Update to h5py-2.2.1</li>
+<li>Several bug fixes in the ESP fitting scripts.</li>
+<li>Hu-Lu-Yang ESP cost function</li>
+<li>Documentation for the ESP fitting scripts.</li>
+<li>Mandatory output argument for most <tt class="docutils literal"><span class="pre">horton-*.py</span></tt> scripts.</li>
+<li>Properly load fchk files from Gaussian calculations with Ghost atoms.</li>
+<li>New script: <tt class="docutils literal"><span class="pre">horton-convert.py</span></tt>. (Conversion between different file formats supported in Horton.)</li>
+<li>New script: <tt class="docutils literal"><span class="pre">horton-cubehead.py</span></tt>. (Part of the ESP fitting scripts. A tool te generate economic grid specs for cubegen.)</li>
+<li>Usability improvements in <tt class="docutils literal"><span class="pre">horton-atomdb.py</span></tt>.</li>
+<li>Skip expensive AIM computatoins by default in <tt class="docutils literal"><span class="pre">horton-wpart.py</span></tt></li>
+<li>Documentation generation for C++ code with Doxygen and Breathe.</li>
+<li>More covalent and van der Waals radii.</li>
+<li>Several fixes in the CIF reader.</li>
+<li>Improved EDIIS</li>
+<li>Constructing a DFT/HF hamiltonian without Exchange term raises an error (unless idiot_proof is disable)</li>
+<li>Additional basis sets</li>
+<li>Several minor fixes and cleanups</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>August 25, 2013. Version 1.2.0</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Gaussian/GAMESS wfn file reader. WFN files are now supported in
+<tt class="docutils literal"><span class="pre">horton-wpart.sh</span></tt>. (Thanks to Farnaz!)</li>
+<li>Horton wavefunctions can now be written to the molden file format.</li>
+<li>The efficiency of <tt class="docutils literal"><span class="pre">horton-wpart.sh</span></tt> has improved.</li>
+<li>Added <tt class="docutils literal"><span class="pre">--lmax</span></tt> option to <tt class="docutils literal"><span class="pre">horton-wpart.sh</span></tt> and <tt class="docutils literal"><span class="pre">horton-cpart.sh</span></tt> to
+control the maximum angular momentum for the multipole analysis.</li>
+<li>Fixed a division-by-zero-bug and a caching bug in the Iterative
+Stockholder scheme.</li>
+<li>DIIS algorithms in <tt class="docutils literal"><span class="pre">horton.meanfield</span></tt> package: CDIIS <a class="reference internal" href="ref_literature.html#pulay1980">[pulay1980]</a>, EDIIS
+and EDIIS+DIIS <a class="reference internal" href="ref_literature.html#kudin2002">[kudin2002]</a>.</li>
+<li>Improved efficiency of numerical integration in DFT hamiltonians.</li>
+<li>A robust quadratic programming solver with linear (in)equality constraints.
+(This is used by EDIIS and Hirshfeld-E.)</li>
+<li>Fix for compilation of libxc-2.0.2 with gfortran 4.8.1 and newer.</li>
+<li>More detailed timer output. (Simplified usage of timer in source code.)</li>
+<li>Improved screen output.</li>
+<li>More documentation of the source code.</li>
+<li>Several mistakes were fixed in the Gaussian basis set tutorial.</li>
+<li>LineGrid and RectangleGrid for visualization purposes.</li>
+<li>Various cleanups.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>July 22, 2013. Version 1.1.0</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Iterative Stockholder partitioning <a class="reference internal" href="ref_literature.html#lillestolen2008">[lillestolen2008]</a>.</li>
+<li>Pure (harmonic) multipoles in the AIM analysis.</li>
+<li>Spin charges in the AIM analysis.</li>
+<li>Switch to libxc-2.0.2.</li>
+<li>New pruned atomic integration grids for elements H-La, Hf-Rn, with more
+levels of accuracy.</li>
+<li>New radial integration grids with improved accuracy.</li>
+<li>ADF is no longer supported in <tt class="docutils literal"><span class="pre">horton-atomdb.py</span></tt>.</li>
+<li>More efficient Becke weights.</li>
+<li>Screen output and timer improvements.</li>
+<li>A fast (approximate) evaluation of the electron density in
+<tt class="docutils literal"><span class="pre">horton-wpart.py</span></tt>.</li>
+<li>Many cleanups.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>July 5, 2013. Version 1.0.2</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Also support dynamic linking of libint and libx.</li>
+<li>Switch to libint-2.0.3-stable.</li>
+<li>Various cleanups.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>July 1, 2013. Version 1.0.1</strong></p>
 <blockquote>
 <div><ul class="simple">
 <li>Two bug fixes related to reading Gaussian formatted checkpoint files.<ol class="arabic">
@@ -141,7 +221,7 @@ currently only for 3D periodic systems.</li>
         <li class="right" >
           <a href="dev_contributors.html" title="1. Contributors"
              >previous</a> |</li>
-        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

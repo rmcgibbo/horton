@@ -8,15 +8,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8. horton.io – Input and output routines &mdash; Horton 1.0.1 documentation</title>
+    <title>10. horton.io – Input and output routines &mdash; Horton 1.2.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/breathe.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0.1',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,9 +26,9 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0.1 documentation" href="../index.html" />
-    <link rel="next" title="9. horton.meanfield – Mean-field electronic structure code" href="horton_meanfield.html" />
-    <link rel="prev" title="7. horton.grid – Numerical integraton grids" href="horton_grid.html" /> 
+    <link rel="top" title="Horton 1.2.1 documentation" href="../index.html" />
+    <link rel="next" title="11. horton.meanfield – Mean-field electronic structure code" href="horton_meanfield.html" />
+    <link rel="prev" title="9. horton.grid – Numerical integraton grids" href="horton_grid.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,12 +41,12 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="horton_meanfield.html" title="9. horton.meanfield – Mean-field electronic structure code"
+          <a href="horton_meanfield.html" title="11. horton.meanfield – Mean-field electronic structure code"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="horton_grid.html" title="7. horton.grid – Numerical integraton grids"
+          <a href="horton_grid.html" title="9. horton.grid – Numerical integraton grids"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -55,9 +56,9 @@
           <div class="body">
             
   <div class="section" id="horton-io-input-and-output-routines">
-<h1>8. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input and output routines<a class="headerlink" href="#horton-io-input-and-output-routines" title="Permalink to this headline">¶</a></h1>
+<h1>10. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input and output routines<a class="headerlink" href="#horton-io-input-and-output-routines" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-horton.io.chk">
-<span id="horton-io-chk-horton-checkpoint-file-format"></span><h2>8.1. <tt class="docutils literal"><span class="pre">horton.io.chk</span></tt> &#8211; Horton Checkpoint File Format<a class="headerlink" href="#module-horton.io.chk" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-chk-horton-checkpoint-file-format"></span><h2>10.1. <tt class="docutils literal"><span class="pre">horton.io.chk</span></tt> &#8211; Horton Checkpoint File Format<a class="headerlink" href="#module-horton.io.chk" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.chk.load_checkpoint">
 <tt class="descclassname">horton.io.chk.</tt><tt class="descname">load_checkpoint</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.chk.load_checkpoint" title="Permalink to this definition">¶</a></dt>
@@ -74,7 +75,7 @@ be an open h5.Group object.</dd>
 
 </div>
 <div class="section" id="module-horton.io.cif">
-<span id="horton-io-cif-crystalographic-information-file-format"></span><h2>8.2. <tt class="docutils literal"><span class="pre">horton.io.cif</span></tt> &#8211; Crystalographic Information File Format<a class="headerlink" href="#module-horton.io.cif" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-cif-crystalographic-information-file-format"></span><h2>10.2. <tt class="docutils literal"><span class="pre">horton.io.cif</span></tt> &#8211; Crystalographic Information File Format<a class="headerlink" href="#module-horton.io.cif" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.cif.dump_cif">
 <tt class="descclassname">horton.io.cif.</tt><tt class="descname">dump_cif</tt><big>(</big><em>filename</em>, <em>system</em><big>)</big><a class="headerlink" href="#horton.io.cif.dump_cif" title="Permalink to this definition">¶</a></dt>
@@ -130,22 +131,44 @@ rotation matrix and the last column is the translation vector.</p>
 
 </div>
 <div class="section" id="module-horton.io.common">
-<span id="horton-io-common-shared-routines-in-the-io-package"></span><h2>8.3. <tt class="docutils literal"><span class="pre">horton.io.common</span></tt> &#8211; Shared routines in the IO package<a class="headerlink" href="#module-horton.io.common" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-common-shared-routines-in-the-io-package"></span><h2>10.3. <tt class="docutils literal"><span class="pre">horton.io.common</span></tt> &#8211; Shared routines in the IO package<a class="headerlink" href="#module-horton.io.common" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.common.renorm_helper">
-<tt class="descclassname">horton.io.common.</tt><tt class="descname">renorm_helper</tt><big>(</big><em>con_coeff</em>, <em>alpha</em>, <em>shell_type</em><big>)</big><a class="headerlink" href="#horton.io.common.renorm_helper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fix an unnormalized contraction coefficient</p>
+<tt class="descclassname">horton.io.common.</tt><tt class="descname">renorm_helper</tt><big>(</big><em>con_coeff</em>, <em>alpha</em>, <em>shell_type</em>, <em>reverse=False</em><big>)</big><a class="headerlink" href="#horton.io.common.renorm_helper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fix an unnormalized contraction coefficient from the molden/orca file.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>con_coeff</dt>
+<dd>The original contraction coefficient</dd>
+<dt>alpha</dt>
+<dd>The Gaussian exponent</dd>
+<dt>shell_type</dt>
+<dd>The shell_type as an integer. Must be one of the following: 0=s,
+1=p, -2=d, -3=f, -4=g.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>reverse</dt>
+<dd>By default, the conversion is good for reading molden or orca wfn
+files. The opposite conversion can be done by setting this option to
+True. This is useful for writing molden or orca wfn files.</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="horton.io.common.get_orca_signs">
 <tt class="descclassname">horton.io.common.</tt><tt class="descname">get_orca_signs</tt><big>(</big><em>obasis</em><big>)</big><a class="headerlink" href="#horton.io.common.get_orca_signs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Correct for different sign conventions used in ORCA.</p>
+<dd><p>Correct for different sign conventions for Gaussian basis functions used in ORCA.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>obasis</dt>
+<dd>An instance GOBasis.</dd>
+</dl>
 </dd></dl>
 
 </div>
 <div class="section" id="module-horton.io.cp2k">
-<span id="horton-io-cp2k-cp2k-atomic-wavefunctions"></span><h2>8.4. <tt class="docutils literal"><span class="pre">horton.io.cp2k</span></tt> &#8211; CP2K atomic wavefunctions<a class="headerlink" href="#module-horton.io.cp2k" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-cp2k-cp2k-atomic-wavefunctions"></span><h2>10.4. <tt class="docutils literal"><span class="pre">horton.io.cp2k</span></tt> &#8211; CP2K atomic wavefunctions<a class="headerlink" href="#module-horton.io.cp2k" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.cp2k.load_atom_cp2k">
 <tt class="descclassname">horton.io.cp2k.</tt><tt class="descname">load_atom_cp2k</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.cp2k.load_atom_cp2k" title="Permalink to this definition">¶</a></dt>
@@ -153,7 +176,7 @@ rotation matrix and the last column is the translation vector.</p>
 
 </div>
 <div class="section" id="module-horton.io.cube">
-<span id="horton-io-cube-gaussian-cube-file-format"></span><h2>8.5. <tt class="docutils literal"><span class="pre">horton.io.cube</span></tt> &#8211; Gaussian Cube File Format<a class="headerlink" href="#module-horton.io.cube" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-cube-gaussian-cube-file-format"></span><h2>10.5. <tt class="docutils literal"><span class="pre">horton.io.cube</span></tt> &#8211; Gaussian Cube File Format<a class="headerlink" href="#module-horton.io.cube" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.cube.load_cube">
 <tt class="descclassname">horton.io.cube.</tt><tt class="descname">load_cube</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.cube.load_cube" title="Permalink to this definition">¶</a></dt>
@@ -166,7 +189,7 @@ rotation matrix and the last column is the translation vector.</p>
 
 </div>
 <div class="section" id="module-horton.io.gaussian">
-<span id="horton-io-gaussian-gaussian-log-and-fchk-file-fromats"></span><h2>8.6. <tt class="docutils literal"><span class="pre">horton.io.gaussian</span></tt> &#8211; Gaussian LOG and FCHK file fromats<a class="headerlink" href="#module-horton.io.gaussian" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-gaussian-gaussian-log-and-fchk-file-fromats"></span><h2>10.6. <tt class="docutils literal"><span class="pre">horton.io.gaussian</span></tt> &#8211; Gaussian LOG and FCHK file fromats<a class="headerlink" href="#module-horton.io.gaussian" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.gaussian.load_operators_g09">
 <tt class="descclassname">horton.io.gaussian.</tt><tt class="descname">load_operators_g09</tt><big>(</big><em>fn</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.gaussian.load_operators_g09" title="Permalink to this definition">¶</a></dt>
@@ -221,8 +244,39 @@ checkpoint file. (This can save a lot of time.)</dd>
 </dd></dl>
 
 </div>
+<div class="section" id="module-horton.io.lockedh5">
+<span id="horton-io-lockedh5-h5-file-with-lock"></span><h2>10.7. <tt class="docutils literal"><span class="pre">horton.io.lockedh5</span></tt> &#8211; H5 File with lock<a class="headerlink" href="#module-horton.io.lockedh5" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.io.lockedh5.LockedH5File">
+<em class="property">class </em><tt class="descclassname">horton.io.lockedh5.</tt><tt class="descname">LockedH5File</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#horton.io.lockedh5.LockedH5File" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open an HDF5 file exclusively using flock (works only with sec2 driver)</p>
+<p>Except for the following two optional arguments, all arguments and
+keyword arguments are passed on to the h5.File constructor:</p>
+<dl class="docutils">
+<dt>count</dt>
+<dd>The number of attempts to open the file.</dd>
+<dt>wait</dt>
+<dd>The maximum number of seconds to wait between two attempts to
+open the file. [default=10]</dd>
+</dl>
+<p>Two processes on the same machine typically can not open the same
+HDF5 file for writing. The second one will get an IOError because the
+HDF5 library tries to detect such cases. When the h5.File constructor
+raises no IOError, fcntl.flock is used to obtain a non-blocking lock:
+shared when mode==&#8217;r&#8217;, exclusive in all other cases. This may also
+raise an IOError when two processes on different machines try to
+aquire incompatible locks. Whenever an IOError is raised, this
+constructor will wait for some time and try again, hoping that
+the other process has finished reading/writing and closed the file.
+Several attempts are made before finally giving up.</p>
+<p>This class guarantees that only one process is writing to the HDF5
+file (while no other processes are reading). Multiple processes may
+still read from the same HDF5 file.</p>
+</dd></dl>
+
+</div>
 <div class="section" id="module-horton.io.molden">
-<span id="horton-io-molden-molden-wavefunction-input-file-format"></span><h2>8.7. <tt class="docutils literal"><span class="pre">horton.io.molden</span></tt> &#8211; Molden Wavefunction Input File Format<a class="headerlink" href="#module-horton.io.molden" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-molden-molden-wavefunction-input-file-format"></span><h2>10.8. <tt class="docutils literal"><span class="pre">horton.io.molden</span></tt> &#8211; Molden Wavefunction Input File Format<a class="headerlink" href="#module-horton.io.molden" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.molden.load_molden">
 <tt class="descclassname">horton.io.molden.</tt><tt class="descname">load_molden</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.molden.load_molden" title="Permalink to this definition">¶</a></dt>
@@ -236,9 +290,23 @@ checkpoint file. (This can save a lot of time.)</dd>
 </dl>
 </dd></dl>
 
+<dl class="function">
+<dt id="horton.io.molden.dump_molden">
+<tt class="descclassname">horton.io.molden.</tt><tt class="descname">dump_molden</tt><big>(</big><em>filename</em>, <em>system</em><big>)</big><a class="headerlink" href="#horton.io.molden.dump_molden" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the current system to a file in the molden input format.</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The filename of the molden input file, which is an output file for
+this routine.</dd>
+<dt>system</dt>
+<dd>The system that needs to be written.</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="module-horton.io.molekel">
-<span id="horton-io-molekel-molekel-wavefunction-input-file-format"></span><h2>8.8. <tt class="docutils literal"><span class="pre">horton.io.molekel</span></tt> &#8211; Molekel Wavefunction Input File Format<a class="headerlink" href="#module-horton.io.molekel" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-molekel-molekel-wavefunction-input-file-format"></span><h2>10.9. <tt class="docutils literal"><span class="pre">horton.io.molekel</span></tt> &#8211; Molekel Wavefunction Input File Format<a class="headerlink" href="#module-horton.io.molekel" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.molekel.load_mkl">
 <tt class="descclassname">horton.io.molekel.</tt><tt class="descname">load_mkl</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.molekel.load_mkl" title="Permalink to this definition">¶</a></dt>
@@ -254,7 +322,7 @@ checkpoint file. (This can save a lot of time.)</dd>
 
 </div>
 <div class="section" id="module-horton.io.smart">
-<span id="horton-io-smart-detection-of-file-formats"></span><h2>8.9. <tt class="docutils literal"><span class="pre">horton.io.smart</span></tt> &#8211; Detection of file formats<a class="headerlink" href="#module-horton.io.smart" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-smart-detection-of-file-formats"></span><h2>10.10. <tt class="docutils literal"><span class="pre">horton.io.smart</span></tt> &#8211; Detection of file formats<a class="headerlink" href="#module-horton.io.smart" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.smart.load_system_args">
 <tt class="descclassname">horton.io.smart.</tt><tt class="descname">load_system_args</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.smart.load_system_args" title="Permalink to this definition">¶</a></dt>
@@ -286,7 +354,7 @@ instance). See System constructor for details.</p>
 
 </div>
 <div class="section" id="module-horton.io.vasp">
-<span id="horton-io-vasp-vasp-poscar-chgcar-and-potcar-file-formats"></span><h2>8.10. <tt class="docutils literal"><span class="pre">horton.io.vasp</span></tt> &#8211; VASP POSCAR, CHGCAR and POTCAR File Formats<a class="headerlink" href="#module-horton.io.vasp" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-vasp-vasp-poscar-chgcar-and-potcar-file-formats"></span><h2>10.11. <tt class="docutils literal"><span class="pre">horton.io.vasp</span></tt> &#8211; VASP POSCAR, CHGCAR and POTCAR File Formats<a class="headerlink" href="#module-horton.io.vasp" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.vasp.load_chgcar">
 <tt class="descclassname">horton.io.vasp.</tt><tt class="descname">load_chgcar</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.vasp.load_chgcar" title="Permalink to this definition">¶</a></dt>
@@ -318,8 +386,75 @@ instance). See System constructor for details.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-horton.io.wfn">
+<span id="horton-io-wfn-wfn-file-format-gaussian-and-gamess"></span><h2>10.12. <tt class="docutils literal"><span class="pre">horton.io.wfn</span></tt> &#8211; WFN File format (Gaussian and GAMESS)<a class="headerlink" href="#module-horton.io.wfn" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="horton.io.wfn.load_wfn_low">
+<tt class="descclassname">horton.io.wfn.</tt><tt class="descname">load_wfn_low</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.wfn.load_wfn_low" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load data from a WFN file into arrays</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The filename of the wfn file.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.io.wfn.setup_permutation1">
+<tt class="descclassname">horton.io.wfn.</tt><tt class="descname">setup_permutation1</tt><big>(</big><em>type_assignment</em><big>)</big><a class="headerlink" href="#horton.io.wfn.setup_permutation1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permutes each type of orbital to get the proper order for Horton</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.io.wfn.setup_permutation2">
+<tt class="descclassname">horton.io.wfn.</tt><tt class="descname">setup_permutation2</tt><big>(</big><em>type_assignment</em><big>)</big><a class="headerlink" href="#horton.io.wfn.setup_permutation2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permnutes the basis functions to get the proper order for Horton</p>
+<p>Permutation conventions are as follows:</p>
+<div class="highlight-python"><pre>d orbitals:
+    wfn:     [5, 6, 7, 8, 9, 10]
+    horton:  [5, 8, 9, 6, 10, 7]
+    permute: [0, 3, 4, 1, 5, 2]
+
+f orbitals:
+    wfn:     [11, 12, 13, 17, 14, 15, 18, 19, 16, 20]
+    horton:  [11, 14, 15, 17, 20, 18, 12, 16, 19, 13]
+    permute: [0, 4, 5, 3, 9, 6, 1, 8, 7, 2]
+
+g orbital:
+    wfn:     [23, 29, 32, 27, 22, 28, 35, 34, 26, 31, 33, 30, 25, 24, 21]
+    horton:  [21, 24, 25, 30, 33, 31, 26, 34, 35, 28, 22, 27, 32, 29, 23]
+    permute: [14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+
+h orbital:
+    wfn:     [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56]
+    horton:  [56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36]
+    permute: [20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]</pre>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.io.wfn.setup_mask">
+<tt class="descclassname">horton.io.wfn.</tt><tt class="descname">setup_mask</tt><big>(</big><em>type_assignment</em><big>)</big><a class="headerlink" href="#horton.io.wfn.setup_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Masking orbital types other than s, the_first_p, the_first_d, the_first_f, the_first_g, the_first _h</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.io.wfn.load_wfn">
+<tt class="descclassname">horton.io.wfn.</tt><tt class="descname">load_wfn</tt><big>(</big><em>filename</em>, <em>lf</em><big>)</big><a class="headerlink" href="#horton.io.wfn.load_wfn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load data from a WFN file</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>filename</dt>
+<dd>The filename of the wfn file.</dd>
+<dt>lf</dt>
+<dd>An instance of LinalgFactory, used to initialize the wavefunction
+expansions.</dd>
+</dl>
+</dd></dl>
+
+</div>
 <div class="section" id="module-horton.io.xyz">
-<span id="horton-io-xyz-xyz-file-format"></span><h2>8.11. <tt class="docutils literal"><span class="pre">horton.io.xyz</span></tt> &#8211; XYZ File Format<a class="headerlink" href="#module-horton.io.xyz" title="Permalink to this headline">¶</a></h2>
+<span id="horton-io-xyz-xyz-file-format"></span><h2>10.13. <tt class="docutils literal"><span class="pre">horton.io.xyz</span></tt> &#8211; XYZ File Format<a class="headerlink" href="#module-horton.io.xyz" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.io.xyz.load_geom_xyz">
 <tt class="descclassname">horton.io.xyz.</tt><tt class="descname">load_geom_xyz</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#horton.io.xyz.load_geom_xyz" title="Permalink to this definition">¶</a></dt>
@@ -344,28 +479,30 @@ two first arguments of the System constructor.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">8. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input and output routines</a><ul>
-<li><a class="reference internal" href="#module-horton.io.chk">8.1. <tt class="docutils literal"><span class="pre">horton.io.chk</span></tt> &#8211; Horton Checkpoint File Format</a></li>
-<li><a class="reference internal" href="#module-horton.io.cif">8.2. <tt class="docutils literal"><span class="pre">horton.io.cif</span></tt> &#8211; Crystalographic Information File Format</a></li>
-<li><a class="reference internal" href="#module-horton.io.common">8.3. <tt class="docutils literal"><span class="pre">horton.io.common</span></tt> &#8211; Shared routines in the IO package</a></li>
-<li><a class="reference internal" href="#module-horton.io.cp2k">8.4. <tt class="docutils literal"><span class="pre">horton.io.cp2k</span></tt> &#8211; CP2K atomic wavefunctions</a></li>
-<li><a class="reference internal" href="#module-horton.io.cube">8.5. <tt class="docutils literal"><span class="pre">horton.io.cube</span></tt> &#8211; Gaussian Cube File Format</a></li>
-<li><a class="reference internal" href="#module-horton.io.gaussian">8.6. <tt class="docutils literal"><span class="pre">horton.io.gaussian</span></tt> &#8211; Gaussian LOG and FCHK file fromats</a></li>
-<li><a class="reference internal" href="#module-horton.io.molden">8.7. <tt class="docutils literal"><span class="pre">horton.io.molden</span></tt> &#8211; Molden Wavefunction Input File Format</a></li>
-<li><a class="reference internal" href="#module-horton.io.molekel">8.8. <tt class="docutils literal"><span class="pre">horton.io.molekel</span></tt> &#8211; Molekel Wavefunction Input File Format</a></li>
-<li><a class="reference internal" href="#module-horton.io.smart">8.9. <tt class="docutils literal"><span class="pre">horton.io.smart</span></tt> &#8211; Detection of file formats</a></li>
-<li><a class="reference internal" href="#module-horton.io.vasp">8.10. <tt class="docutils literal"><span class="pre">horton.io.vasp</span></tt> &#8211; VASP POSCAR, CHGCAR and POTCAR File Formats</a></li>
-<li><a class="reference internal" href="#module-horton.io.xyz">8.11. <tt class="docutils literal"><span class="pre">horton.io.xyz</span></tt> &#8211; XYZ File Format</a></li>
+<li><a class="reference internal" href="#">10. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input and output routines</a><ul>
+<li><a class="reference internal" href="#module-horton.io.chk">10.1. <tt class="docutils literal"><span class="pre">horton.io.chk</span></tt> &#8211; Horton Checkpoint File Format</a></li>
+<li><a class="reference internal" href="#module-horton.io.cif">10.2. <tt class="docutils literal"><span class="pre">horton.io.cif</span></tt> &#8211; Crystalographic Information File Format</a></li>
+<li><a class="reference internal" href="#module-horton.io.common">10.3. <tt class="docutils literal"><span class="pre">horton.io.common</span></tt> &#8211; Shared routines in the IO package</a></li>
+<li><a class="reference internal" href="#module-horton.io.cp2k">10.4. <tt class="docutils literal"><span class="pre">horton.io.cp2k</span></tt> &#8211; CP2K atomic wavefunctions</a></li>
+<li><a class="reference internal" href="#module-horton.io.cube">10.5. <tt class="docutils literal"><span class="pre">horton.io.cube</span></tt> &#8211; Gaussian Cube File Format</a></li>
+<li><a class="reference internal" href="#module-horton.io.gaussian">10.6. <tt class="docutils literal"><span class="pre">horton.io.gaussian</span></tt> &#8211; Gaussian LOG and FCHK file fromats</a></li>
+<li><a class="reference internal" href="#module-horton.io.lockedh5">10.7. <tt class="docutils literal"><span class="pre">horton.io.lockedh5</span></tt> &#8211; H5 File with lock</a></li>
+<li><a class="reference internal" href="#module-horton.io.molden">10.8. <tt class="docutils literal"><span class="pre">horton.io.molden</span></tt> &#8211; Molden Wavefunction Input File Format</a></li>
+<li><a class="reference internal" href="#module-horton.io.molekel">10.9. <tt class="docutils literal"><span class="pre">horton.io.molekel</span></tt> &#8211; Molekel Wavefunction Input File Format</a></li>
+<li><a class="reference internal" href="#module-horton.io.smart">10.10. <tt class="docutils literal"><span class="pre">horton.io.smart</span></tt> &#8211; Detection of file formats</a></li>
+<li><a class="reference internal" href="#module-horton.io.vasp">10.11. <tt class="docutils literal"><span class="pre">horton.io.vasp</span></tt> &#8211; VASP POSCAR, CHGCAR and POTCAR File Formats</a></li>
+<li><a class="reference internal" href="#module-horton.io.wfn">10.12. <tt class="docutils literal"><span class="pre">horton.io.wfn</span></tt> &#8211; WFN File format (Gaussian and GAMESS)</a></li>
+<li><a class="reference internal" href="#module-horton.io.xyz">10.13. <tt class="docutils literal"><span class="pre">horton.io.xyz</span></tt> &#8211; XYZ File Format</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="horton_grid.html"
-                        title="previous chapter">7. <tt class="docutils literal docutils literal docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integraton grids</a></p>
+                        title="previous chapter">9. <tt class="docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integraton grids</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="horton_meanfield.html"
-                        title="next chapter">9. <tt class="docutils literal"><span class="pre">horton.meanfield</span></tt> &#8211; Mean-field electronic structure code</a></p>
+                        title="next chapter">11. <tt class="docutils literal"><span class="pre">horton.meanfield</span></tt> &#8211; Mean-field electronic structure code</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/lib/horton_io.txt"
@@ -398,12 +535,12 @@ two first arguments of the System constructor.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="horton_meanfield.html" title="9. horton.meanfield – Mean-field electronic structure code"
+          <a href="horton_meanfield.html" title="11. horton.meanfield – Mean-field electronic structure code"
              >next</a> |</li>
         <li class="right" >
-          <a href="horton_grid.html" title="7. horton.grid – Numerical integraton grids"
+          <a href="horton_grid.html" title="9. horton.grid – Numerical integraton grids"
              >previous</a> |</li>
-        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -8,15 +8,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4. How to use Horton as an SCF program &mdash; Horton 1.0.1 documentation</title>
+    <title>6. How to use Horton as an SCF program &mdash; Horton 1.2.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/breathe.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0.1',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,9 +26,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0.1 documentation" href="index.html" />
-    <link rel="next" title="5. Gaussian basis functions" href="tut_gaussian_basis.html" />
-    <link rel="prev" title="3. Atoms-in-Molecules (AIM) analysis" href="tut_part.html" /> 
+    <link rel="top" title="Horton 1.2.1 documentation" href="index.html" />
+    <link rel="next" title="7. Gaussian basis functions" href="tut_gaussian_basis.html" />
+    <link rel="prev" title="5. Conversion between file formats" href="tut_conversion.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,12 +41,12 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="tut_gaussian_basis.html" title="5. Gaussian basis functions"
+          <a href="tut_gaussian_basis.html" title="7. Gaussian basis functions"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="tut_part.html" title="3. Atoms-in-Molecules (AIM) analysis"
+          <a href="tut_conversion.html" title="5. Conversion between file formats"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -55,15 +56,15 @@
           <div class="body">
             
   <div class="section" id="how-to-use-horton-as-an-scf-program">
-<h1>4. How to use Horton as an SCF program<a class="headerlink" href="#how-to-use-horton-as-an-scf-program" title="Permalink to this headline">¶</a></h1>
+<h1>6. How to use Horton as an SCF program<a class="headerlink" href="#how-to-use-horton-as-an-scf-program" title="Permalink to this headline">¶</a></h1>
 <p>Note that this part of Horton is very experimental and will undergo a
 serious redesign in the near future.</p>
 <div class="section" id="basic-example">
-<h2>4.1. Basic example<a class="headerlink" href="#basic-example" title="Permalink to this headline">¶</a></h2>
+<h2>6.1. Basic example<a class="headerlink" href="#basic-example" title="Permalink to this headline">¶</a></h2>
 <p>This is a basic example of a Hartree-Fock computation in Horton. The input file
 is just a small Python main program that uses the Horton library. The script
-<tt class="docutils literal"><span class="pre">examples/001_hf_water/run.py</span></tt> performs a HF/3-21G computation on water and
-partitions the density with the Becke scheme:</p>
+<tt class="docutils literal"><span class="pre">data/examples/001_hf_water/run.py</span></tt> performs a HF/3-21G computation on water
+and partitions the density with the Becke scheme:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
 
 <span class="kn">from</span> <span class="nn">horton</span> <span class="kn">import</span> <span class="o">*</span>
@@ -89,7 +90,7 @@ partitions the density with the Becke scheme:</p>
 <span class="n">log</span><span class="o">.</span><span class="n">set_level</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">medium</span><span class="p">)</span>
 
 <span class="c"># Partition the density with the Becke scheme</span>
-<span class="n">grid</span> <span class="o">=</span> <span class="n">BeckeMolGrid</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="n">keep_subgrids</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">BeckeMolGrid</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;keep&#39;</span><span class="p">)</span>
 <span class="n">bp</span> <span class="o">=</span> <span class="n">BeckeWPart</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
 <span class="n">bp</span><span class="o">.</span><span class="n">do_charges</span><span class="p">()</span>
 </pre></div>
@@ -110,18 +111,18 @@ functionality compared to the Python interface</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">4. How to use Horton as an SCF program</a><ul>
-<li><a class="reference internal" href="#basic-example">4.1. Basic example</a></li>
+<li><a class="reference internal" href="#">6. How to use Horton as an SCF program</a><ul>
+<li><a class="reference internal" href="#basic-example">6.1. Basic example</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="tut_part.html"
-                        title="previous chapter">3. Atoms-in-Molecules (AIM) analysis</a></p>
+  <p class="topless"><a href="tut_conversion.html"
+                        title="previous chapter">5. Conversion between file formats</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="tut_gaussian_basis.html"
-                        title="next chapter">5. Gaussian basis functions</a></p>
+                        title="next chapter">7. Gaussian basis functions</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/tut_scf.txt"
@@ -154,12 +155,12 @@ functionality compared to the Python interface</p>
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="tut_gaussian_basis.html" title="5. Gaussian basis functions"
+          <a href="tut_gaussian_basis.html" title="7. Gaussian basis functions"
              >next</a> |</li>
         <li class="right" >
-          <a href="tut_part.html" title="3. Atoms-in-Molecules (AIM) analysis"
+          <a href="tut_conversion.html" title="5. Conversion between file formats"
              >previous</a> |</li>
-        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

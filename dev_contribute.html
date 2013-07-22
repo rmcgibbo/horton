@@ -8,15 +8,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3. How to contribute to Horton &mdash; Horton 1.0.1 documentation</title>
+    <title>3. How to contribute to Horton &mdash; Horton 1.2.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/breathe.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0.1',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +26,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0.1 documentation" href="index.html" />
+    <link rel="top" title="Horton 1.2.1 documentation" href="index.html" />
     <link rel="next" title="1. Features" href="ref_features.html" />
     <link rel="prev" title="2. Release history" href="dev_releases.html" /> 
   </head>
@@ -45,7 +46,7 @@
         <li class="right" >
           <a href="dev_releases.html" title="2. Release history"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -75,11 +76,12 @@
 <li><a class="reference internal" href="#unit-tests" id="id13">Unit tests</a><ul>
 <li><a class="reference internal" href="#running-the-tests" id="id14">Running the tests</a></li>
 <li><a class="reference internal" href="#writing-new-tests" id="id15">Writing new tests</a></li>
+<li><a class="reference internal" href="#writing-tests-that-need-a-temporary-directory" id="id16">Writing tests that need a temporary directory</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#documentation" id="id16">Documentation</a></li>
-<li><a class="reference internal" href="#examples" id="id17">Examples</a></li>
-<li><a class="reference internal" href="#citing-scientific-work" id="id18">Citing scientific work</a></li>
+<li><a class="reference internal" href="#documentation" id="id17">Documentation</a></li>
+<li><a class="reference internal" href="#examples" id="id18">Examples</a></li>
+<li><a class="reference internal" href="#citing-scientific-work" id="id19">Citing scientific work</a></li>
 </ul>
 </li>
 </ul>
@@ -418,7 +420,7 @@ these new patches to the public master branch of Horton.</p>
 </div>
 <div class="section" id="unit-tests">
 <h2><a class="toc-backref" href="#id13">3.3. Unit tests</a><a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h2>
-<p>Horton uses the <a class="reference external" href="http://somethingaboutorange.com/mrl/projects/nose/0.11.2/">Nosetests</a>
+<p>Horton uses the <a class="reference external" href="https://nose.readthedocs.org/en/latest/">Nosetests</a>
 program to run all the unit tests. The goal of a unit test is to check whether
 as small piece of code works as expected.</p>
 <div class="section" id="running-the-tests">
@@ -428,8 +430,9 @@ as small piece of code works as expected.</p>
 toony@poony ~/.../horton:master&gt; ./setup.py build_ext -i
 toony@poony ~/.../horton:master&gt; nosetests -v</pre>
 </div>
-<p>There are some cases where the first two commands are not needed. You will
-figure out.</p>
+<p>This will run the tests with the version of Horton in the source tree, i.e. not
+the one that is installed with <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>. There are some cases
+where the first two commands are not needed. You will figure out.</p>
 <p>When working on a specific part of the code, it is often convenient to limit the
 number of tests that are checked. The following runs only the tests in <tt class="docutils literal"><span class="pre">horton/test/test_cell.py</span></tt>:</p>
 <div class="highlight-python"><pre>toony@poony ~/.../horton:master&gt; nosetests -v horton/test/test_cell.py</pre>
@@ -484,9 +487,24 @@ implemented. This is a simple example:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="writing-tests-that-need-a-temporary-directory">
+<h3><a class="toc-backref" href="#id16">3.3.3. Writing tests that need a temporary directory</a><a class="headerlink" href="#writing-tests-that-need-a-temporary-directory" title="Permalink to this headline">¶</a></h3>
+<p>A context manager is implemented in <tt class="docutils literal"><span class="pre">horton.test.common</span></tt> to simplify tests
+that need a temporary working directory. It can be used as follows:</p>
+<div class="highlight-python"><pre>from horton.test.common import tmpdir
+
+def test_something():
+    with tmpdir('horton.somemodule.test.test_something') as dn:
+        # dn is a string with the temporary directory name.
+        # put here the part of the test that operates in the temporary directory.</pre>
+</div>
+<p>On most systems, this temporary directory is a subdirectory of <tt class="docutils literal"><span class="pre">/tmp</span></tt>. The
+argument <tt class="docutils literal"><span class="pre">'horton.somemodule.test.test_something'</span></tt> will occur in the directory
+name, such that it can be easily recognized if needed.</p>
+</div>
 </div>
 <div class="section" id="documentation">
-<h2><a class="toc-backref" href="#id16">3.4. Documentation</a><a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">3.4. Documentation</a><a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
 <p>All the documentation is located in the <tt class="docutils literal"><span class="pre">doc</span></tt> directory. We use the <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> formatting engine to compile the <cite>documentation
 source code</cite> into fancy formatted HTML or PDF.</p>
 <p>The source files have the extension <tt class="docutils literal"><span class="pre">.rst</span></tt>, and are written in the
@@ -507,7 +525,7 @@ effectively. If you added a significant feature, also update the file
 <tt class="docutils literal"><span class="pre">ref_features.rst</span></tt>.</p>
 </div>
 <div class="section" id="examples">
-<h2><a class="toc-backref" href="#id17">3.5. Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">3.5. Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <p>The examples are located in the <tt class="docutils literal"><span class="pre">examples</span></tt> directory. Each example is located
 in a subdirectory <tt class="docutils literal"><span class="pre">XXX_some_name</span></tt>, where <tt class="docutils literal"><span class="pre">XXX</span></tt> is a counter. In each
 subdirectory there is an executable script <tt class="docutils literal"><span class="pre">run.py</span></tt> that demonstrates a
@@ -521,7 +539,7 @@ how the example work. Also write the test such that it does not take more than a
 second to complete.</p>
 </div>
 <div class="section" id="citing-scientific-work">
-<h2><a class="toc-backref" href="#id18">3.6. Citing scientific work</a><a class="headerlink" href="#citing-scientific-work" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id19">3.6. Citing scientific work</a><a class="headerlink" href="#citing-scientific-work" title="Permalink to this headline">¶</a></h2>
 <p>Whenever you add a feature based on a scientific publication, it should be cited
 properly:</p>
 <ol class="arabic simple">
@@ -559,6 +577,7 @@ not available.) Maintain the chronological order.</li>
 <li><a class="reference internal" href="#unit-tests">3.3. Unit tests</a><ul>
 <li><a class="reference internal" href="#running-the-tests">3.3.1. Running the tests</a></li>
 <li><a class="reference internal" href="#writing-new-tests">3.3.2. Writing new tests</a></li>
+<li><a class="reference internal" href="#writing-tests-that-need-a-temporary-directory">3.3.3. Writing tests that need a temporary directory</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#documentation">3.4. Documentation</a></li>
@@ -611,7 +630,7 @@ not available.) Maintain the chronological order.</li>
         <li class="right" >
           <a href="dev_releases.html" title="2. Release history"
              >previous</a> |</li>
-        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

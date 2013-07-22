@@ -8,15 +8,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Horton’s Website &mdash; Horton 1.0.1 documentation</title>
+    <title>Horton’s Website &mdash; Horton 1.2.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/breathe.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0.1',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +26,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0.1 documentation" href="#" />
+    <link rel="top" title="Horton 1.2.1 documentation" href="#" />
     <link rel="next" title="1. Getting started" href="tut_getting_started.html" /> 
   </head>
   <body>
@@ -41,7 +42,7 @@
         <li class="right" >
           <a href="tut_getting_started.html" title="1. Getting started"
              accesskey="N">next</a> |</li>
-        <li><a href="#">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="#">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -76,19 +77,32 @@ mailing list</a>.</p>
 <li class="toctree-l2"><a class="reference internal" href="tut_part.html#horton-atomdb-py-set-up-a-database-of-proatoms">3.2. <tt class="docutils literal"><span class="pre">horton-atomdb.py</span></tt> &#8211; Set up a database of proatoms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tut_part.html#horton-wpart-py-aim-analysis-based-on-a-wavefunction-file">3.3. <tt class="docutils literal"><span class="pre">horton-wpart.py</span></tt> &#8211; AIM analysis based on a wavefunction file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tut_part.html#horton-cpart-py-aim-analysis-based-on-a-cube-file">3.4. <tt class="docutils literal"><span class="pre">horton-cpart.py</span></tt> &#8211; AIM analysis based on a cube file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tut_part.html#horton-hdf2csv-py-conversion-of-hdf5-files-to-csv-format">3.5. <tt class="docutils literal"><span class="pre">horton-hdf2csv.py</span></tt> &#8211; Conversion of HDF5 files to CSV format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tut_part.html#python-interface-to-the-partitioning-code">3.6. Python interface to the partitioning code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_part.html#python-interface-to-the-partitioning-code">3.5. Python interface to the partitioning code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_part.html#frequently-asked-questions">3.6. Frequently asked questions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tut_scf.html">4. How to use Horton as an SCF program</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tut_scf.html#basic-example">4.1. Basic example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tut_espfit.html">4. Electrostatic potential fitting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tut_espfit.html#introduction">4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_espfit.html#horton-esp-cost-py-set-up-an-esp-cost-functions">4.2. <tt class="docutils literal"><span class="pre">horton-esp-cost.py</span></tt> &#8211; Set up an ESP cost functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_espfit.html#horton-esp-fit-py-fit-charges-to-the-esp">4.3. <tt class="docutils literal"><span class="pre">horton-esp-fit.py</span></tt> &#8211; Fit charges to the ESP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_espfit.html#horton-esp-test-py-test-the-esp-quality-of-a-given-set-of-charges">4.4. <tt class="docutils literal"><span class="pre">horton-esp-test.py</span></tt> &#8211; Test the ESP quality of a given set of charges</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tut_gaussian_basis.html">5. Gaussian basis functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tut_gaussian_basis.html#introduction">5.1. Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tut_gaussian_basis.html#cartesian">5.2. Cartesian</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tut_gaussian_basis.html#pure-or-harmonic">5.3. Pure or Harmonic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tut_gaussian_basis.html#transformation-from-cartesian-to-pure">5.4. Transformation from Cartesian to pure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tut_conversion.html">5. Conversion between file formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tut_conversion.html#horton-convert-py-conversion-between-file-formats-supported-by-horton">5.1. <tt class="docutils literal"><span class="pre">horton-convert.py</span></tt> &#8211; Conversion between file formats supported by Horton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_conversion.html#horton-hdf2csv-py-conversion-of-hdf5-files-to-csv-format">5.2. <tt class="docutils literal"><span class="pre">horton-hdf2csv.py</span></tt> &#8211; Conversion of HDF5 files to CSV format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tut_scf.html">6. How to use Horton as an SCF program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tut_scf.html#basic-example">6.1. Basic example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tut_gaussian_basis.html">7. Gaussian basis functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tut_gaussian_basis.html#introduction">7.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_gaussian_basis.html#cartesian">7.2. Cartesian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_gaussian_basis.html#pure-or-harmonic">7.3. Pure or Harmonic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_gaussian_basis.html#transformation-from-cartesian-to-pure">7.4. Transformation from Cartesian to pure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tut_gaussian_basis.html#recursion-relations-for-real-regular-solid-harmonics">7.5. Recursion relations for real regular solid harmonics</a></li>
 </ul>
 </li>
 </ul>
@@ -121,91 +135,129 @@ mailing list</a>.</p>
 <li class="toctree-l2"><a class="reference internal" href="ref_features.html#horton-command-line-scripts">1.2. Horton command-line scripts</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ref_acronyms.html">2. Acronyms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_literature.html">3. Literature</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lib/horton.html">4. <tt class="docutils literal"><span class="pre">horton</span></tt> &#8211; The main Horton Package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.cache">4.1. <tt class="docutils literal"><span class="pre">horton.cache</span></tt> &#8211; Avoid recomputation of earlier results and reallocation of existing arrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.cext">4.2. <tt class="docutils literal"><span class="pre">horton.cext</span></tt> &#8211; C++ extensions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.checkpoint">4.3. <tt class="docutils literal"><span class="pre">horton.checkpoint</span></tt> &#8211; Store (parts of) a system object in a checkpoint file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.constants">4.4. <tt class="docutils literal"><span class="pre">horton.constants</span></tt> &#8211; Physicochemical constants in atomic units</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.context">4.5. <tt class="docutils literal"><span class="pre">horton.context</span></tt> &#8211; The context in which Horton is used</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.exceptions">4.6. <tt class="docutils literal"><span class="pre">horton.exceptions</span></tt> &#8211; Definition of all excpetions in Horton</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.log">4.7. <tt class="docutils literal"><span class="pre">horton.log</span></tt> &#8211; Screen logging, timing and citation management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.matrix">4.8. <tt class="docutils literal"><span class="pre">horton.matrix</span></tt> &#8211; Two- and four-dimensional matrix implementations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.moments">4.9. <tt class="docutils literal"><span class="pre">horton.moments</span></tt> &#8211; Auxiliary routines related to multipole moments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.periodic">4.10. <tt class="docutils literal"><span class="pre">horton.periodic</span></tt> &#8211; Periodic table of elements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.symmetry">4.11. <tt class="docutils literal"><span class="pre">horton.symmetry</span></tt> &#8211; Geometric symmetries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.system">4.12. <tt class="docutils literal"><span class="pre">horton.system</span></tt> &#8211; Molecular system and all aspects relevant for a computation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.units">4.13. <tt class="docutils literal"><span class="pre">horton.units</span></tt> &#8211; Conversion from and to atomic units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_grids.html">2. Atomic integration grids</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ref_grids.html#built-in-grids">2.1. Built-in grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref_grids.html#the-grid-option">2.2. The <tt class="docutils literal"><span class="pre">--grid</span></tt> option</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="lib/horton_espfit.html">5. <tt class="docutils literal"><span class="pre">horton.espfit</span></tt> &#8211; Electrostatic potential fitting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_espfit.html#module-horton.espfit.cext">5.1. <tt class="docutils literal"><span class="pre">horton.espfit.cext</span></tt> &#8211; C++ extensions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_espfit.html#module-horton.espfit.cost">5.2. <tt class="docutils literal"><span class="pre">horton.espfit.cost</span></tt> &#8211; ESP Cost functions for estimating and testing charges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_acronyms.html">3. Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_functionals.html">4. LibXC Functionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_literature.html">5. Literature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lib/horton.html">6. <tt class="docutils literal"><span class="pre">horton</span></tt> &#8211; The main Horton Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.cache">6.1. <tt class="docutils literal"><span class="pre">horton.cache</span></tt> &#8211; Avoid recomputation of earlier results and reallocation of existing arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.cext">6.2. <tt class="docutils literal"><span class="pre">horton.cext</span></tt> &#8211; C++ extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.checkpoint">6.3. <tt class="docutils literal"><span class="pre">horton.checkpoint</span></tt> &#8211; Store (parts of) a system object in a checkpoint file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.constants">6.4. <tt class="docutils literal"><span class="pre">horton.constants</span></tt> &#8211; Physicochemical constants in atomic units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.context">6.5. <tt class="docutils literal"><span class="pre">horton.context</span></tt> &#8211; The context in which Horton is used</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.exceptions">6.6. <tt class="docutils literal"><span class="pre">horton.exceptions</span></tt> &#8211; Definition of all excpetions in Horton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.log">6.7. <tt class="docutils literal"><span class="pre">horton.log</span></tt> &#8211; Screen logging, timing and citation management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.matrix">6.8. <tt class="docutils literal"><span class="pre">horton.matrix</span></tt> &#8211; Two- and four-dimensional matrix implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.moments">6.9. <tt class="docutils literal"><span class="pre">horton.moments</span></tt> &#8211; Auxiliary routines related to multipole moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.periodic">6.10. <tt class="docutils literal"><span class="pre">horton.periodic</span></tt> &#8211; Periodic table of elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.quadprog">6.11. <tt class="docutils literal"><span class="pre">horton.quadprog</span></tt> &#8211; A light-weight quadratic programming solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.symmetry">6.12. <tt class="docutils literal"><span class="pre">horton.symmetry</span></tt> &#8211; Geometric symmetries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.system">6.13. <tt class="docutils literal"><span class="pre">horton.system</span></tt> &#8211; Molecular system and all aspects relevant for a computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#module-horton.units">6.14. <tt class="docutils literal"><span class="pre">horton.units</span></tt> &#8211; Conversion from and to atomic units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#horton-cell-h">6.15. <tt class="docutils literal"><span class="pre">horton/cell.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#horton-moments-h">6.16. <tt class="docutils literal"><span class="pre">horton/moments.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton.html#horton-nucpot-h">6.17. <tt class="docutils literal"><span class="pre">horton/nucpot.h</span></tt></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="lib/horton_gbasis.html">6. <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt> &#8211; Gaussian basis sets</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#module-horton.gbasis.cext">6.1. <tt class="docutils literal"><span class="pre">horton.gbasis.cext</span></tt> &#8211; C++ extensions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#module-horton.gbasis.gobasis">6.2. <tt class="docutils literal"><span class="pre">horton.gbasis.gobasis</span></tt> &#8211; Gaussian orbital basis set module.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#module-horton.gbasis.io">6.3. <tt class="docutils literal"><span class="pre">horton.gbasis.io</span></tt> &#8211; Input/Output routines for gaussian basis sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lib/horton_espfit.html">7. <tt class="docutils literal"><span class="pre">horton.espfit</span></tt> &#8211; Electrostatic potential fitting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_espfit.html#module-horton.espfit.cext">7.1. <tt class="docutils literal"><span class="pre">horton.espfit.cext</span></tt> &#8211; C++ extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_espfit.html#module-horton.espfit.cost">7.2. <tt class="docutils literal"><span class="pre">horton.espfit.cost</span></tt> &#8211; ESP Cost functions for estimating and testing charges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_espfit.html#horton-espfit-electrostatics-h">7.3. <tt class="docutils literal"><span class="pre">horton/espfit/electrostatics.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_espfit.html#horton-espfit-mask-h">7.4. <tt class="docutils literal"><span class="pre">horton/espfit/mask.h</span></tt></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="lib/horton_grid.html">7. <tt class="docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integraton grids</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.atgrid">7.1. <tt class="docutils literal"><span class="pre">horton.grid.atgrid</span></tt> &#8211; Atomic grids</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.base">7.2. <tt class="docutils literal"><span class="pre">horton.grid.base</span></tt> &#8211; Base classes for 3D integration grids</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.cext">7.3. <tt class="docutils literal"><span class="pre">horton.grid.cext</span></tt> &#8211; C++ extensions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.int1d">7.4. <tt class="docutils literal"><span class="pre">horton.grid.int1d</span></tt> &#8211; 1D integration algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.molgrid">7.5. <tt class="docutils literal"><span class="pre">horton.grid.molgrid</span></tt> &#8211; Molecular integration grids</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.radial">7.6. <tt class="docutils literal"><span class="pre">horton.grid.radial</span></tt> &#8211; 1D Radial integration grid</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.visual">7.7. <tt class="docutils literal"><span class="pre">horton.grid.visual</span></tt> &#8211; Grids suitable for visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lib/horton_gbasis.html">8. <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt> &#8211; Gaussian basis sets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#module-horton.gbasis.cext">8.1. <tt class="docutils literal"><span class="pre">horton.gbasis.cext</span></tt> &#8211; C++ extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#module-horton.gbasis.gobasis">8.2. <tt class="docutils literal"><span class="pre">horton.gbasis.gobasis</span></tt> &#8211; Gaussian orbital basis set module.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#module-horton.gbasis.io">8.3. <tt class="docutils literal"><span class="pre">horton.gbasis.io</span></tt> &#8211; Input/Output routines for gaussian basis sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#horton-gbasis-boys-h">8.4. <tt class="docutils literal"><span class="pre">horton/gbasis/boys.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#horton-gbasis-calc-h">8.5. <tt class="docutils literal"><span class="pre">horton/gbasis/calc.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#horton-gbasis-cartpure-h">8.6. <tt class="docutils literal"><span class="pre">horton/gbasis/cartpure.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#horton-gbasis-common-h">8.7. <tt class="docutils literal"><span class="pre">horton/gbasis/common.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#horton-gbasis-fns-h">8.8. <tt class="docutils literal"><span class="pre">horton/gbasis/fns.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#horton-gbasis-gbasis-h">8.9. <tt class="docutils literal"><span class="pre">horton/gbasis/gbasis.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#horton-gbasis-ints-h">8.10. <tt class="docutils literal"><span class="pre">horton/gbasis/ints.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#horton-gbasis-iter-gb-h">8.11. <tt class="docutils literal"><span class="pre">horton/gbasis/iter_gb.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_gbasis.html#horton-gbasis-iter-pow-h">8.12. <tt class="docutils literal"><span class="pre">horton/gbasis/iter_pow.h</span></tt></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="lib/horton_io.html">8. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input and output routines</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.chk">8.1. <tt class="docutils literal"><span class="pre">horton.io.chk</span></tt> &#8211; Horton Checkpoint File Format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.cif">8.2. <tt class="docutils literal"><span class="pre">horton.io.cif</span></tt> &#8211; Crystalographic Information File Format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.common">8.3. <tt class="docutils literal"><span class="pre">horton.io.common</span></tt> &#8211; Shared routines in the IO package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.cp2k">8.4. <tt class="docutils literal"><span class="pre">horton.io.cp2k</span></tt> &#8211; CP2K atomic wavefunctions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.cube">8.5. <tt class="docutils literal"><span class="pre">horton.io.cube</span></tt> &#8211; Gaussian Cube File Format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.gaussian">8.6. <tt class="docutils literal"><span class="pre">horton.io.gaussian</span></tt> &#8211; Gaussian LOG and FCHK file fromats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.molden">8.7. <tt class="docutils literal"><span class="pre">horton.io.molden</span></tt> &#8211; Molden Wavefunction Input File Format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.molekel">8.8. <tt class="docutils literal"><span class="pre">horton.io.molekel</span></tt> &#8211; Molekel Wavefunction Input File Format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.smart">8.9. <tt class="docutils literal"><span class="pre">horton.io.smart</span></tt> &#8211; Detection of file formats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.vasp">8.10. <tt class="docutils literal"><span class="pre">horton.io.vasp</span></tt> &#8211; VASP POSCAR, CHGCAR and POTCAR File Formats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.xyz">8.11. <tt class="docutils literal"><span class="pre">horton.io.xyz</span></tt> &#8211; XYZ File Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lib/horton_grid.html">9. <tt class="docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integraton grids</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.atgrid">9.1. <tt class="docutils literal"><span class="pre">horton.grid.atgrid</span></tt> &#8211; Atomic grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.base">9.2. <tt class="docutils literal"><span class="pre">horton.grid.base</span></tt> &#8211; Base classes for 3D integration grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.cext">9.3. <tt class="docutils literal"><span class="pre">horton.grid.cext</span></tt> &#8211; C++ extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.int1d">9.4. <tt class="docutils literal"><span class="pre">horton.grid.int1d</span></tt> &#8211; 1D integration algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.molgrid">9.5. <tt class="docutils literal"><span class="pre">horton.grid.molgrid</span></tt> &#8211; Molecular integration grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.radial">9.6. <tt class="docutils literal"><span class="pre">horton.grid.radial</span></tt> &#8211; 1D Radial integration grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.utils">9.7. <tt class="docutils literal"><span class="pre">horton.grid.utils</span></tt> &#8211; Auxiliaries for numerical integrals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#module-horton.grid.visual">9.8. <tt class="docutils literal"><span class="pre">horton.grid.visual</span></tt> &#8211; Grids suitable for visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#horton-grid-becke-h">9.9. <tt class="docutils literal"><span class="pre">horton/grid/becke.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#horton-grid-cubic-spline-h">9.10. <tt class="docutils literal"><span class="pre">horton/grid/cubic_spline.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#horton-grid-evaluate-h">9.11. <tt class="docutils literal"><span class="pre">horton/grid/evaluate.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#horton-grid-lebedev-laikov-h">9.12. <tt class="docutils literal"><span class="pre">horton/grid/lebedev_laikov.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#horton-grid-rtransform-h">9.13. <tt class="docutils literal"><span class="pre">horton/grid/rtransform.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#horton-grid-uniform-h">9.14. <tt class="docutils literal"><span class="pre">horton/grid/uniform.h</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_grid.html#horton-grid-utils-h">9.15. <tt class="docutils literal"><span class="pre">horton/grid/utils.h</span></tt></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="lib/horton_meanfield.html">9. <tt class="docutils literal"><span class="pre">horton.meanfield</span></tt> &#8211; Mean-field electronic structure code</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.builtin">9.1. <tt class="docutils literal"><span class="pre">horton.meanfield.builtin</span></tt> &#8211; Built-in energy terms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.cext">9.2. <tt class="docutils literal"><span class="pre">horton.meanfield.cext</span></tt> &#8211; C++ extensions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.core">9.3. <tt class="docutils literal"><span class="pre">horton.meanfield.core</span></tt> &#8211; Linear energy terms (Core Hamiltonian)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.guess">9.4. <tt class="docutils literal"><span class="pre">horton.meanfield.guess</span></tt> &#8211; Initial guesses for wavefunctions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.hamiltonian">9.5. <tt class="docutils literal"><span class="pre">horton.meanfield.hamiltonian</span></tt> &#8211; Mean-field DFT/HF Hamiltonian data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.libxc">9.6. <tt class="docutils literal"><span class="pre">horton.meanfield.libxc</span></tt> &#8211; Interface to LDA, GGA and Hybrid functionals from LibXC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.observable">9.7. <tt class="docutils literal"><span class="pre">horton.meanfield.observable</span></tt> &#8211; Base class for energy terms and other observables of the wavefunction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.project">9.8. <tt class="docutils literal"><span class="pre">horton.meanfield.project</span></tt> &#8211; Projection of 1-electron orbitals to a new basis set</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.scf">9.9. <tt class="docutils literal"><span class="pre">horton.meanfield.scf</span></tt> &#8211; Self-Consistent Field algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.wfn">9.10. <tt class="docutils literal"><span class="pre">horton.meanfield.wfn</span></tt> &#8211; Wavefunction implementations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lib/horton_io.html">10. <tt class="docutils literal"><span class="pre">horton.io</span></tt> &#8211; Input and output routines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.chk">10.1. <tt class="docutils literal"><span class="pre">horton.io.chk</span></tt> &#8211; Horton Checkpoint File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.cif">10.2. <tt class="docutils literal"><span class="pre">horton.io.cif</span></tt> &#8211; Crystalographic Information File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.common">10.3. <tt class="docutils literal"><span class="pre">horton.io.common</span></tt> &#8211; Shared routines in the IO package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.cp2k">10.4. <tt class="docutils literal"><span class="pre">horton.io.cp2k</span></tt> &#8211; CP2K atomic wavefunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.cube">10.5. <tt class="docutils literal"><span class="pre">horton.io.cube</span></tt> &#8211; Gaussian Cube File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.gaussian">10.6. <tt class="docutils literal"><span class="pre">horton.io.gaussian</span></tt> &#8211; Gaussian LOG and FCHK file fromats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.lockedh5">10.7. <tt class="docutils literal"><span class="pre">horton.io.lockedh5</span></tt> &#8211; H5 File with lock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.molden">10.8. <tt class="docutils literal"><span class="pre">horton.io.molden</span></tt> &#8211; Molden Wavefunction Input File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.molekel">10.9. <tt class="docutils literal"><span class="pre">horton.io.molekel</span></tt> &#8211; Molekel Wavefunction Input File Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.smart">10.10. <tt class="docutils literal"><span class="pre">horton.io.smart</span></tt> &#8211; Detection of file formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.vasp">10.11. <tt class="docutils literal"><span class="pre">horton.io.vasp</span></tt> &#8211; VASP POSCAR, CHGCAR and POTCAR File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.wfn">10.12. <tt class="docutils literal"><span class="pre">horton.io.wfn</span></tt> &#8211; WFN File format (Gaussian and GAMESS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_io.html#module-horton.io.xyz">10.13. <tt class="docutils literal"><span class="pre">horton.io.xyz</span></tt> &#8211; XYZ File Format</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="lib/horton_part.html">10. <tt class="docutils literal"><span class="pre">horton.part</span></tt> &#8211; Package for density-based partitioning (fuzzy atoms)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.base">10.1. <tt class="docutils literal"><span class="pre">horton.part.base</span></tt> &#8211; Base classes for partitioning algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.becke">10.2. <tt class="docutils literal"><span class="pre">horton.part.becke</span></tt> &#8211; Becke partitioning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.hirshfeld">10.3. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld</span></tt> &#8211; Hirshfeld Partitioning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.hirshfeld_e">10.4. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld_e</span></tt> &#8211; Extended Hirshfeld Partitioning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.hirshfeld_i">10.5. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld_i</span></tt> &#8211; Iterative Hirshfeld Partitioning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.linalg">10.6. <tt class="docutils literal"><span class="pre">horton.part.linalg</span></tt> &#8211; Linear algebra routines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.mulliken">10.7. <tt class="docutils literal"><span class="pre">horton.part.mulliken</span></tt> &#8211; Mulliken partitioning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.proatomdb">10.8. <tt class="docutils literal"><span class="pre">horton.part.proatomdb</span></tt> &#8211; Pro-atom databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.stockholder">10.9. <tt class="docutils literal"><span class="pre">horton.part.stockholder</span></tt> &#8211; Base classes for all stockholder partitioning schemes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.symmetry">10.10. <tt class="docutils literal"><span class="pre">horton.part.symmetry</span></tt> &#8211; Symmetry analysis of AIM results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lib/horton_meanfield.html">11. <tt class="docutils literal"><span class="pre">horton.meanfield</span></tt> &#8211; Mean-field electronic structure code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.builtin">11.1. <tt class="docutils literal"><span class="pre">horton.meanfield.builtin</span></tt> &#8211; Built-in energy terms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.cext">11.2. <tt class="docutils literal"><span class="pre">horton.meanfield.cext</span></tt> &#8211; C++ extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.convergence">11.3. <tt class="docutils literal"><span class="pre">horton.meanfield.convergence</span></tt> &#8211; Evaluation of convergence criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.core">11.4. <tt class="docutils literal"><span class="pre">horton.meanfield.core</span></tt> &#8211; Linear energy terms (Core Hamiltonian)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.guess">11.5. <tt class="docutils literal"><span class="pre">horton.meanfield.guess</span></tt> &#8211; Initial guesses for wavefunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.hamiltonian">11.6. <tt class="docutils literal"><span class="pre">horton.meanfield.hamiltonian</span></tt> &#8211; Mean-field DFT/HF Hamiltonian data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.libxc">11.7. <tt class="docutils literal"><span class="pre">horton.meanfield.libxc</span></tt> &#8211; Interface to LDA, GGA and Hybrid functionals from LibXC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.linear">11.8. <tt class="docutils literal"><span class="pre">horton.meanfield.linear</span></tt> &#8211; Linear energy terms (Core Hamiltonian)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.observable">11.9. <tt class="docutils literal"><span class="pre">horton.meanfield.observable</span></tt> &#8211; Base class for energy terms and other observables of the wavefunction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.project">11.10. <tt class="docutils literal"><span class="pre">horton.meanfield.project</span></tt> &#8211; Projection of 1-electron orbitals to a new basis set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.scf">11.11. <tt class="docutils literal"><span class="pre">horton.meanfield.scf</span></tt> &#8211; Basic Self-Consistent Field algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.scf_cdiis">11.12. <tt class="docutils literal"><span class="pre">horton.meanfield.scf_cdiis</span></tt> &#8211; Commutator DIIS Self-Consistent Field algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.scf_diis">11.13. <tt class="docutils literal"><span class="pre">horton.meanfield.scf_diis</span></tt> &#8211; Abstract DIIS code used by the different DIIS implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.scf_ediis">11.14. <tt class="docutils literal"><span class="pre">horton.meanfield.scf_ediis</span></tt> &#8211; Energy DIIS Self-Consistent Field algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.scf_ediis2">11.15. <tt class="docutils literal"><span class="pre">horton.meanfield.scf_ediis2</span></tt> &#8211; EDIIS+DIIS Self-Consistent Field algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.scf_oda">11.16. <tt class="docutils literal"><span class="pre">horton.meanfield.scf_oda</span></tt> &#8211; Optimal Damping Self-Consistent Field algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.scf_wrapper">11.17. <tt class="docutils literal"><span class="pre">horton.meanfield.scf_wrapper</span></tt> &#8211; A wrapper for all SCF algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_meanfield.html#module-horton.meanfield.wfn">11.18. <tt class="docutils literal"><span class="pre">horton.meanfield.wfn</span></tt> &#8211; Wavefunction implementations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="lib/horton_scripts.html">11. <tt class="docutils literal"><span class="pre">horton.scripts</span></tt> &#8211; Code used (solely) by the Horton command line scripts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_scripts.html#module-horton.scripts.atomdb">11.1. <tt class="docutils literal"><span class="pre">horton.scripts.atomdb</span></tt> &#8211; Code used by <tt class="docutils literal"><span class="pre">horton-atomdb.py</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_scripts.html#module-horton.scripts.common">11.2. <tt class="docutils literal"><span class="pre">horton.scripts.common</span></tt> &#8211; Code shared by several scripts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_scripts.html#module-horton.scripts.espfit">11.3. <tt class="docutils literal"><span class="pre">horton.scripts.espfit</span></tt> &#8211; Code used by ESP fitting scripts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_scripts.html#module-horton.scripts.hdf2csv">11.4. <tt class="docutils literal"><span class="pre">horton.scripts.hdf2csv</span></tt> &#8211; Code used by <tt class="docutils literal"><span class="pre">horton-hdf2csv.py</span></tt></a></li>
-<li class="toctree-l2"><a class="reference internal" href="lib/horton_scripts.html#module-horton.scripts.wpart">11.5. <tt class="docutils literal"><span class="pre">horton.scripts.wpart</span></tt> &#8211; Code used by <tt class="docutils literal"><span class="pre">horton-wpart.py</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="lib/horton_part.html">12. <tt class="docutils literal"><span class="pre">horton.part</span></tt> &#8211; Package for density-based partitioning (fuzzy atoms)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.base">12.1. <tt class="docutils literal"><span class="pre">horton.part.base</span></tt> &#8211; Base classes for partitioning algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.becke">12.2. <tt class="docutils literal"><span class="pre">horton.part.becke</span></tt> &#8211; Becke partitioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.hirshfeld">12.3. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld</span></tt> &#8211; Hirshfeld Partitioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.hirshfeld_e">12.4. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld_e</span></tt> &#8211; Extended Hirshfeld Partitioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.hirshfeld_i">12.5. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld_i</span></tt> &#8211; Iterative Hirshfeld Partitioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.iterstock">12.6. <tt class="docutils literal"><span class="pre">horton.part.iterstock</span></tt> &#8211; Iterative Stockholder partitioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.mulliken">12.7. <tt class="docutils literal"><span class="pre">horton.part.mulliken</span></tt> &#8211; Mulliken partitioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.proatomdb">12.8. <tt class="docutils literal"><span class="pre">horton.part.proatomdb</span></tt> &#8211; Pro-atom databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.stockholder">12.9. <tt class="docutils literal"><span class="pre">horton.part.stockholder</span></tt> &#8211; Base classes for all stockholder partitioning schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_part.html#module-horton.part.symmetry">12.10. <tt class="docutils literal"><span class="pre">horton.part.symmetry</span></tt> &#8211; Symmetry analysis of AIM results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lib/horton_scripts.html">13. <tt class="docutils literal"><span class="pre">horton.scripts</span></tt> &#8211; Code used (solely) by the Horton command line scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_scripts.html#module-horton.scripts.atomdb">13.1. <tt class="docutils literal"><span class="pre">horton.scripts.atomdb</span></tt> &#8211; Code used by <tt class="docutils literal"><span class="pre">horton-atomdb.py</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_scripts.html#module-horton.scripts.common">13.2. <tt class="docutils literal"><span class="pre">horton.scripts.common</span></tt> &#8211; Code shared by several scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_scripts.html#module-horton.scripts.espfit">13.3. <tt class="docutils literal"><span class="pre">horton.scripts.espfit</span></tt> &#8211; Code used by ESP fitting scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lib/horton_scripts.html#module-horton.scripts.hdf2csv">13.4. <tt class="docutils literal"><span class="pre">horton.scripts.hdf2csv</span></tt> &#8211; Code used by <tt class="docutils literal"><span class="pre">horton-hdf2csv.py</span></tt></a></li>
 </ul>
 </li>
 </ul>
@@ -281,7 +333,7 @@ mailing list</a>.</p>
         <li class="right" >
           <a href="tut_getting_started.html" title="1. Getting started"
              >next</a> |</li>
-        <li><a href="#">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="#">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

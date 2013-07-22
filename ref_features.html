@@ -8,15 +8,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. Features &mdash; Horton 1.0.1 documentation</title>
+    <title>1. Features &mdash; Horton 1.2.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/breathe.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0.1',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,8 +26,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0.1 documentation" href="index.html" />
-    <link rel="next" title="2. Acronyms" href="ref_acronyms.html" />
+    <link rel="top" title="Horton 1.2.1 documentation" href="index.html" />
+    <link rel="next" title="2. Atomic integration grids" href="ref_grids.html" />
     <link rel="prev" title="3. How to contribute to Horton" href="dev_contribute.html" /> 
   </head>
   <body>
@@ -40,12 +41,12 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="ref_acronyms.html" title="2. Acronyms"
+          <a href="ref_grids.html" title="2. Atomic integration grids"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="dev_contribute.html" title="3. How to contribute to Horton"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -62,10 +63,9 @@
 <div class="section" id="package-horton">
 <h3>1.1.1. Package <tt class="docutils literal"><span class="pre">horton</span></tt><a class="headerlink" href="#package-horton" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Datastructures for molecular systems, wavefunctions, unit cell and symmetry.</li>
+<li>Datastructures for molecular systems, unit cell and symmetry.</li>
 <li>Checkpointing.</li>
 <li>Unit conversion and physical constants.</li>
-<li>Initial wavefunction guess, SCF (regular and optimal damping).</li>
 <li>Periodic table.</li>
 <li>Linear algebra abstraction layer.</li>
 <li>Caching tools to avoid recomputation of earlier results.</li>
@@ -92,20 +92,22 @@
 <ul class="simple">
 <li>Molecular integration grids (Becke partitioning with Lebedev Laikov atom
 centered grids).</li>
-<li>Pruned grids for elements H-Ar.</li>
+<li>Pruned grids for elements H-La, Hf-Rn.</li>
 <li>1D integration grids.</li>
 <li>1D Cubic splines.</li>
 <li>Uniform grids (cube files).</li>
 </ul>
 </div>
-<div class="section" id="package-horton-hamiltonian">
-<h3>1.1.5. Package <tt class="docutils literal"><span class="pre">horton.hamiltonian</span></tt><a class="headerlink" href="#package-horton-hamiltonian" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="package-horton-meanfield">
+<h3>1.1.5. Package <tt class="docutils literal"><span class="pre">horton.meanfield</span></tt><a class="headerlink" href="#package-horton-meanfield" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Definition of HF and DFT Hamiltonians.</li>
 <li><a class="reference external" href="http://www.tddft.org/programs/octopus/wiki/index.php/Libxc">LibXC</a> is used
 to provide a large number of exchange and correlation functionals.
 <a class="reference internal" href="ref_literature.html#marques2012">[marques2012]</a></li>
-<li>Custom terms can be added as external potential</li>
+<li>Custom terms that can be added as external potential.</li>
+<li>Wavefunction classes, initial guess and projection.</li>
+<li>SCF algorithms (regular and optimal damping).</li>
 </ul>
 </div>
 <div class="section" id="package-horton-io">
@@ -159,24 +161,29 @@ to provide a large number of exchange and correlation functionals.
 <tr class="row-even"><td>Molden input files (wavefunction)</td>
 <td><tt class="docutils literal"><span class="pre">*.molden.input</span></tt></td>
 <td>X</td>
-<td>&nbsp;</td>
+<td>X</td>
 </tr>
 <tr class="row-odd"><td>Molekel file</td>
 <td><tt class="docutils literal"><span class="pre">*.mkl</span></tt></td>
 <td>X</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>VASP CHGCAR and LOCPOT files</td>
+<tr class="row-even"><td>Gaussian / GAMESS WFN file</td>
+<td><tt class="docutils literal"><span class="pre">*.wfn</span></tt></td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>VASP CHGCAR and LOCPOT files</td>
 <td>&nbsp;</td>
 <td>X</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>VASP POSCAR</td>
+<tr class="row-even"><td>VASP POSCAR</td>
 <td>&nbsp;</td>
 <td>X</td>
 <td>X</td>
 </tr>
-<tr class="row-even"><td>XYZ format</td>
+<tr class="row-odd"><td>XYZ format</td>
 <td><tt class="docutils literal"><span class="pre">*.xyz</span></tt></td>
 <td>X</td>
 <td>X</td>
@@ -191,14 +198,15 @@ to provide a large number of exchange and correlation functionals.
 <li><tt class="docutils literal"><span class="pre">becke</span></tt>: Becke partitioning <a class="reference internal" href="ref_literature.html#becke1988-multicenter">[becke1988_multicenter]</a></li>
 <li><tt class="docutils literal"><span class="pre">h</span></tt>: Hirshfeld partitioning <a class="reference internal" href="ref_literature.html#hirshfeld1977">[hirshfeld1977]</a></li>
 <li><tt class="docutils literal"><span class="pre">hi</span></tt>: Iterative Hirshfeld partitioning <a class="reference internal" href="ref_literature.html#bultinck2007">[bultinck2007]</a></li>
+<li><tt class="docutils literal"><span class="pre">is</span></tt>: Iterative Stockholder partitioning <a class="reference internal" href="ref_literature.html#lillestolen2008">[lillestolen2008]</a></li>
 <li><tt class="docutils literal"><span class="pre">he</span></tt>: Extended Hirshfeld partitioning <a class="reference internal" href="ref_literature.html#verstraelen2013">[verstraelen2013]</a></li>
 </ul>
 <p>Partitioning can be carried on isolated and periodic systems. Both all-electron (AE)
 and pseudo-potential (PP) densities are supported. The following AIM properties can
 be computed:</p>
 <ul class="simple">
-<li>Atomic charges, population, pseudo_population</li>
-<li>Cartesian atomic multipoles</li>
+<li>Atomic charges, population, pseudo_population, spin charges</li>
+<li>Cartesian, pure (harmonic) and radial atomic moments</li>
 <li>Tkatchenko-Scheffler dispersion coefficients <a class="reference internal" href="ref_literature.html#tkatchenko2009">[tkatchenko2009]</a></li>
 </ul>
 <p>Note that not all AIM properties work for any combination partitioning scheme
@@ -224,6 +232,13 @@ and boundary condition for technical reasons.</p>
 <li><tt class="docutils literal"><span class="pre">horton-esp-test.py</span></tt>: test how well charges perform for a given cost function</li>
 </ul>
 </div>
+<div class="section" id="file-conversion">
+<h3>1.2.3. File conversion<a class="headerlink" href="#file-conversion" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">horton-convert.py</span></tt>: convert between file formats supported by Horton</li>
+<li><tt class="docutils literal"><span class="pre">horton-hdf2csv.py</span></tt>: convert the contents of an HDF5 file to a csv file</li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -241,7 +256,7 @@ and boundary condition for technical reasons.</p>
 <li><a class="reference internal" href="#package-horton-espfit">1.1.2. Package <tt class="docutils literal"><span class="pre">horton.espfit</span></tt></a></li>
 <li><a class="reference internal" href="#package-horton-gbasis">1.1.3. Package <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt></a></li>
 <li><a class="reference internal" href="#package-horton-grid">1.1.4. Package <tt class="docutils literal"><span class="pre">horton.grid</span></tt></a></li>
-<li><a class="reference internal" href="#package-horton-hamiltonian">1.1.5. Package <tt class="docutils literal"><span class="pre">horton.hamiltonian</span></tt></a></li>
+<li><a class="reference internal" href="#package-horton-meanfield">1.1.5. Package <tt class="docutils literal"><span class="pre">horton.meanfield</span></tt></a></li>
 <li><a class="reference internal" href="#package-horton-io">1.1.6. Package <tt class="docutils literal"><span class="pre">horton.io</span></tt></a></li>
 <li><a class="reference internal" href="#package-horton-part">1.1.7. Package <tt class="docutils literal"><span class="pre">horton.part</span></tt></a></li>
 </ul>
@@ -249,6 +264,7 @@ and boundary condition for technical reasons.</p>
 <li><a class="reference internal" href="#horton-command-line-scripts">1.2. Horton command-line scripts</a><ul>
 <li><a class="reference internal" href="#density-partitioning">1.2.1. Density partitioning</a></li>
 <li><a class="reference internal" href="#esp-fitting">1.2.2. ESP fitting</a></li>
+<li><a class="reference internal" href="#file-conversion">1.2.3. File conversion</a></li>
 </ul>
 </li>
 </ul>
@@ -259,8 +275,8 @@ and boundary condition for technical reasons.</p>
   <p class="topless"><a href="dev_contribute.html"
                         title="previous chapter">3. How to contribute to Horton</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="ref_acronyms.html"
-                        title="next chapter">2. Acronyms</a></p>
+  <p class="topless"><a href="ref_grids.html"
+                        title="next chapter">2. Atomic integration grids</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/ref_features.txt"
@@ -293,12 +309,12 @@ and boundary condition for technical reasons.</p>
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="ref_acronyms.html" title="2. Acronyms"
+          <a href="ref_grids.html" title="2. Atomic integration grids"
              >next</a> |</li>
         <li class="right" >
           <a href="dev_contribute.html" title="3. How to contribute to Horton"
              >previous</a> |</li>
-        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

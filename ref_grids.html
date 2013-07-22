@@ -1,0 +1,927 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. Atomic integration grids &mdash; Horton 1.2.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/breathe.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Horton 1.2.1 documentation" href="index.html" />
+    <link rel="next" title="3. Acronyms" href="ref_acronyms.html" />
+    <link rel="prev" title="1. Features" href="ref_features.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ref_acronyms.html" title="3. Acronyms"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ref_features.html" title="1. Features"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="atomic-integration-grids">
+<span id="ref-grids"></span><h1>2. Atomic integration grids<a class="headerlink" href="#atomic-integration-grids" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="built-in-grids">
+<h2>2.1. Built-in grids<a class="headerlink" href="#built-in-grids" title="Permalink to this headline">¶</a></h2>
+<p>The table below lists the number of grid points in each built-in atomic
+integration grid in Horton. For the heavier elements (after Kr), the grids are
+calibrated based on reference computations with pseudo potentials. The last
+digit in the grid name refers to the number of significant digits obtained with
+these grids on diatomic benchmarks.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="4%" />
+<col width="6%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Element</th>
+<th class="head">Z</th>
+<th class="head">Zeff</th>
+<th class="head">tv-13.7-3</th>
+<th class="head">tv-13.7-4</th>
+<th class="head">tv-13.7-5</th>
+<th class="head">tv-13.7-6</th>
+<th class="head">tv-13.7-7</th>
+<th class="head">tv-13.7-8</th>
+</tr>
+<tr class="row-even"><th class="head"></th>
+<th class="head"></th>
+<th class="head"></th>
+<th class="head">coarse</th>
+<th class="head">medium</th>
+<th class="head">fine</th>
+<th class="head">veryfine</th>
+<th class="head">ultrafine</th>
+<th class="head">insane</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>H</td>
+<td>1</td>
+<td>1</td>
+<td>604</td>
+<td>928</td>
+<td>1984</td>
+<td>3154</td>
+<td>4546</td>
+<td>6622</td>
+</tr>
+<tr class="row-even"><td>He</td>
+<td>2</td>
+<td>2</td>
+<td>680</td>
+<td>1428</td>
+<td>2104</td>
+<td>3298</td>
+<td>4998</td>
+<td>7234</td>
+</tr>
+<tr class="row-odd"><td>Li</td>
+<td>3</td>
+<td>3</td>
+<td>1416</td>
+<td>3558</td>
+<td>8066</td>
+<td>19718</td>
+<td>28146</td>
+<td>52228</td>
+</tr>
+<tr class="row-even"><td>Be</td>
+<td>4</td>
+<td>4</td>
+<td>1140</td>
+<td>2370</td>
+<td>6378</td>
+<td>9038</td>
+<td>23522</td>
+<td>34894</td>
+</tr>
+<tr class="row-odd"><td>B</td>
+<td>5</td>
+<td>5</td>
+<td>1136</td>
+<td>2490</td>
+<td>3558</td>
+<td>8190</td>
+<td>11722</td>
+<td>29646</td>
+</tr>
+<tr class="row-even"><td>C</td>
+<td>6</td>
+<td>6</td>
+<td>1536</td>
+<td>2490</td>
+<td>5214</td>
+<td>8314</td>
+<td>8314</td>
+<td>31764</td>
+</tr>
+<tr class="row-odd"><td>N</td>
+<td>7</td>
+<td>7</td>
+<td>1372</td>
+<td>2306</td>
+<td>3354</td>
+<td>8234</td>
+<td>18082</td>
+<td>39504</td>
+</tr>
+<tr class="row-even"><td>O</td>
+<td>8</td>
+<td>8</td>
+<td>1612</td>
+<td>3754</td>
+<td>5414</td>
+<td>7746</td>
+<td>18938</td>
+<td>40012</td>
+</tr>
+<tr class="row-odd"><td>F</td>
+<td>9</td>
+<td>9</td>
+<td>1212</td>
+<td>2918</td>
+<td>6302</td>
+<td>9966</td>
+<td>13602</td>
+<td>40904</td>
+</tr>
+<tr class="row-even"><td>Ne</td>
+<td>10</td>
+<td>10</td>
+<td>1840</td>
+<td>3414</td>
+<td>5606</td>
+<td>8778</td>
+<td>18998</td>
+<td>38116</td>
+</tr>
+<tr class="row-odd"><td>Na</td>
+<td>11</td>
+<td>11</td>
+<td>2066</td>
+<td>4470</td>
+<td>10110</td>
+<td>21890</td>
+<td>33076</td>
+<td>73164</td>
+</tr>
+<tr class="row-even"><td>Mg</td>
+<td>12</td>
+<td>12</td>
+<td>2346</td>
+<td>5122</td>
+<td>8158</td>
+<td>17546</td>
+<td>42384</td>
+<td>75514</td>
+</tr>
+<tr class="row-odd"><td>Al</td>
+<td>13</td>
+<td>13</td>
+<td>1982</td>
+<td>6370</td>
+<td>6370</td>
+<td>23338</td>
+<td>46954</td>
+<td>46954</td>
+</tr>
+<tr class="row-even"><td>Si</td>
+<td>14</td>
+<td>14</td>
+<td>1874</td>
+<td>2642</td>
+<td>7238</td>
+<td>20430</td>
+<td>40104</td>
+<td>49096</td>
+</tr>
+<tr class="row-odd"><td>P</td>
+<td>15</td>
+<td>15</td>
+<td>3086</td>
+<td>4614</td>
+<td>10506</td>
+<td>15258</td>
+<td>46456</td>
+<td>70876</td>
+</tr>
+<tr class="row-even"><td>S</td>
+<td>16</td>
+<td>16</td>
+<td>2402</td>
+<td>8498</td>
+<td>12162</td>
+<td>12162</td>
+<td>49628</td>
+<td>80972</td>
+</tr>
+<tr class="row-odd"><td>Cl</td>
+<td>17</td>
+<td>17</td>
+<td>2254</td>
+<td>6770</td>
+<td>6770</td>
+<td>20630</td>
+<td>44192</td>
+<td>48538</td>
+</tr>
+<tr class="row-even"><td>Ar</td>
+<td>18</td>
+<td>18</td>
+<td>2814</td>
+<td>4802</td>
+<td>11014</td>
+<td>24038</td>
+<td>58602</td>
+<td>67344</td>
+</tr>
+<tr class="row-odd"><td>K</td>
+<td>19</td>
+<td>19</td>
+<td>2862</td>
+<td>9710</td>
+<td>14590</td>
+<td>31796</td>
+<td>58566</td>
+<td>79976</td>
+</tr>
+<tr class="row-even"><td>Ca</td>
+<td>20</td>
+<td>20</td>
+<td>3210</td>
+<td>6874</td>
+<td>16962</td>
+<td>25126</td>
+<td>67666</td>
+<td>97256</td>
+</tr>
+<tr class="row-odd"><td>Sc</td>
+<td>21</td>
+<td>21</td>
+<td>3142</td>
+<td>4814</td>
+<td>16402</td>
+<td>23342</td>
+<td>44348</td>
+<td>89152</td>
+</tr>
+<tr class="row-even"><td>Ti</td>
+<td>22</td>
+<td>22</td>
+<td>2510</td>
+<td>7786</td>
+<td>10986</td>
+<td>16542</td>
+<td>35432</td>
+<td>79040</td>
+</tr>
+<tr class="row-odd"><td>V</td>
+<td>23</td>
+<td>23</td>
+<td>3118</td>
+<td>4798</td>
+<td>10850</td>
+<td>16850</td>
+<td>53212</td>
+<td>83928</td>
+</tr>
+<tr class="row-even"><td>Cr</td>
+<td>24</td>
+<td>24</td>
+<td>3698</td>
+<td>3698</td>
+<td>11438</td>
+<td>20018</td>
+<td>55124</td>
+<td>73896</td>
+</tr>
+<tr class="row-odd"><td>Mn</td>
+<td>25</td>
+<td>25</td>
+<td>3878</td>
+<td>3878</td>
+<td>13066</td>
+<td>34474</td>
+<td>65012</td>
+<td>89916</td>
+</tr>
+<tr class="row-even"><td>Fe</td>
+<td>26</td>
+<td>26</td>
+<td>3386</td>
+<td>5194</td>
+<td>12358</td>
+<td>19386</td>
+<td>54572</td>
+<td>72600</td>
+</tr>
+<tr class="row-odd"><td>Co</td>
+<td>27</td>
+<td>27</td>
+<td>3818</td>
+<td>4634</td>
+<td>9854</td>
+<td>25946</td>
+<td>54356</td>
+<td>102196</td>
+</tr>
+<tr class="row-even"><td>Ni</td>
+<td>28</td>
+<td>28</td>
+<td>3942</td>
+<td>5670</td>
+<td>13142</td>
+<td>20302</td>
+<td>61932</td>
+<td>87716</td>
+</tr>
+<tr class="row-odd"><td>Cu</td>
+<td>29</td>
+<td>29</td>
+<td>2778</td>
+<td>10278</td>
+<td>16286</td>
+<td>36220</td>
+<td>46310</td>
+<td>46310</td>
+</tr>
+<tr class="row-even"><td>Zn</td>
+<td>30</td>
+<td>30</td>
+<td>4050</td>
+<td>10798</td>
+<td>18882</td>
+<td>50232</td>
+<td>52794</td>
+<td>52794</td>
+</tr>
+<tr class="row-odd"><td>Ga</td>
+<td>31</td>
+<td>31</td>
+<td>4262</td>
+<td>10422</td>
+<td>26582</td>
+<td>56758</td>
+<td>63532</td>
+<td>63532</td>
+</tr>
+<tr class="row-even"><td>Ge</td>
+<td>32</td>
+<td>32</td>
+<td>3798</td>
+<td>8138</td>
+<td>24992</td>
+<td>43248</td>
+<td>48600</td>
+<td>&#8211;</td>
+</tr>
+<tr class="row-odd"><td>As</td>
+<td>33</td>
+<td>33</td>
+<td>3270</td>
+<td>10230</td>
+<td>28534</td>
+<td>42460</td>
+<td>44294</td>
+<td>44294</td>
+</tr>
+<tr class="row-even"><td>Se</td>
+<td>34</td>
+<td>34</td>
+<td>1586</td>
+<td>3106</td>
+<td>6070</td>
+<td>12398</td>
+<td>43600</td>
+<td>43600</td>
+</tr>
+<tr class="row-odd"><td>Br</td>
+<td>35</td>
+<td>35</td>
+<td>3682</td>
+<td>7506</td>
+<td>7506</td>
+<td>51386</td>
+<td>62096</td>
+<td>62096</td>
+</tr>
+<tr class="row-even"><td>Kr</td>
+<td>36</td>
+<td>36</td>
+<td>6550</td>
+<td>9978</td>
+<td>37152</td>
+<td>41514</td>
+<td>41514</td>
+<td>&#8211;</td>
+</tr>
+<tr class="row-odd"><td>Rb</td>
+<td>37</td>
+<td>9</td>
+<td>2768</td>
+<td>7662</td>
+<td>15870</td>
+<td>29758</td>
+<td>54196</td>
+<td>68138</td>
+</tr>
+<tr class="row-even"><td>Sr</td>
+<td>38</td>
+<td>10</td>
+<td>2360</td>
+<td>5298</td>
+<td>14598</td>
+<td>27266</td>
+<td>48612</td>
+<td>78458</td>
+</tr>
+<tr class="row-odd"><td>Y</td>
+<td>39</td>
+<td>11</td>
+<td>2844</td>
+<td>5970</td>
+<td>12542</td>
+<td>24838</td>
+<td>46326</td>
+<td>75068</td>
+</tr>
+<tr class="row-even"><td>Zr</td>
+<td>40</td>
+<td>12</td>
+<td>1956</td>
+<td>4720</td>
+<td>11494</td>
+<td>22034</td>
+<td>42674</td>
+<td>72940</td>
+</tr>
+<tr class="row-odd"><td>Nb</td>
+<td>41</td>
+<td>13</td>
+<td>1964</td>
+<td>4676</td>
+<td>12882</td>
+<td>23678</td>
+<td>35878</td>
+<td>63660</td>
+</tr>
+<tr class="row-even"><td>Mo</td>
+<td>42</td>
+<td>14</td>
+<td>1788</td>
+<td>3708</td>
+<td>10638</td>
+<td>15662</td>
+<td>30454</td>
+<td>53504</td>
+</tr>
+<tr class="row-odd"><td>Tc</td>
+<td>43</td>
+<td>15</td>
+<td>1636</td>
+<td>3792</td>
+<td>7530</td>
+<td>15170</td>
+<td>33138</td>
+<td>58100</td>
+</tr>
+<tr class="row-even"><td>Ru</td>
+<td>44</td>
+<td>16</td>
+<td>1680</td>
+<td>2980</td>
+<td>7450</td>
+<td>15582</td>
+<td>40914</td>
+<td>55316</td>
+</tr>
+<tr class="row-odd"><td>Rh</td>
+<td>45</td>
+<td>17</td>
+<td>2484</td>
+<td>3972</td>
+<td>7394</td>
+<td>15638</td>
+<td>38578</td>
+<td>52740</td>
+</tr>
+<tr class="row-even"><td>Pd</td>
+<td>46</td>
+<td>18</td>
+<td>2076</td>
+<td>5158</td>
+<td>11070</td>
+<td>15662</td>
+<td>39894</td>
+<td>68412</td>
+</tr>
+<tr class="row-odd"><td>Ag</td>
+<td>47</td>
+<td>19</td>
+<td>1680</td>
+<td>4190</td>
+<td>8782</td>
+<td>26122</td>
+<td>49164</td>
+<td>65284</td>
+</tr>
+<tr class="row-even"><td>Cd</td>
+<td>48</td>
+<td>20</td>
+<td>2596</td>
+<td>5462</td>
+<td>11926</td>
+<td>16582</td>
+<td>40696</td>
+<td>72186</td>
+</tr>
+<tr class="row-odd"><td>In</td>
+<td>49</td>
+<td>21</td>
+<td>2284</td>
+<td>3738</td>
+<td>7122</td>
+<td>16114</td>
+<td>31886</td>
+<td>44696</td>
+</tr>
+<tr class="row-even"><td>Sn</td>
+<td>50</td>
+<td>22</td>
+<td>1352</td>
+<td>4146</td>
+<td>8482</td>
+<td>17126</td>
+<td>25974</td>
+<td>47272</td>
+</tr>
+<tr class="row-odd"><td>Sb</td>
+<td>51</td>
+<td>23</td>
+<td>2388</td>
+<td>4834</td>
+<td>9974</td>
+<td>20454</td>
+<td>42416</td>
+<td>71886</td>
+</tr>
+<tr class="row-even"><td>Te</td>
+<td>52</td>
+<td>24</td>
+<td>2040</td>
+<td>3790</td>
+<td>8438</td>
+<td>19294</td>
+<td>40376</td>
+<td>50820</td>
+</tr>
+<tr class="row-odd"><td>I</td>
+<td>53</td>
+<td>25</td>
+<td>2116</td>
+<td>4358</td>
+<td>8174</td>
+<td>18498</td>
+<td>35636</td>
+<td>50172</td>
+</tr>
+<tr class="row-even"><td>Xe</td>
+<td>54</td>
+<td>26</td>
+<td>2008</td>
+<td>4402</td>
+<td>9630</td>
+<td>21350</td>
+<td>42868</td>
+<td>75950</td>
+</tr>
+<tr class="row-odd"><td>Cs</td>
+<td>55</td>
+<td>9</td>
+<td>2728</td>
+<td>8426</td>
+<td>16798</td>
+<td>31698</td>
+<td>55320</td>
+<td>86878</td>
+</tr>
+<tr class="row-even"><td>Ba</td>
+<td>56</td>
+<td>10</td>
+<td>4032</td>
+<td>7026</td>
+<td>14698</td>
+<td>28110</td>
+<td>47764</td>
+<td>61420</td>
+</tr>
+<tr class="row-odd"><td>La</td>
+<td>57</td>
+<td>11</td>
+<td>2372</td>
+<td>4646</td>
+<td>13250</td>
+<td>26742</td>
+<td>49180</td>
+<td>63652</td>
+</tr>
+<tr class="row-even"><td>Hf</td>
+<td>72</td>
+<td>12</td>
+<td>3908</td>
+<td>6362</td>
+<td>15054</td>
+<td>28302</td>
+<td>51658</td>
+<td>64868</td>
+</tr>
+<tr class="row-odd"><td>Ta</td>
+<td>73</td>
+<td>13</td>
+<td>2928</td>
+<td>4950</td>
+<td>10806</td>
+<td>15646</td>
+<td>32130</td>
+<td>58028</td>
+</tr>
+<tr class="row-even"><td>W</td>
+<td>74</td>
+<td>14</td>
+<td>2000</td>
+<td>5870</td>
+<td>9234</td>
+<td>18634</td>
+<td>36038</td>
+<td>63440</td>
+</tr>
+<tr class="row-odd"><td>Re</td>
+<td>75</td>
+<td>15</td>
+<td>3404</td>
+<td>5882</td>
+<td>9114</td>
+<td>19114</td>
+<td>34294</td>
+<td>59132</td>
+</tr>
+<tr class="row-even"><td>Os</td>
+<td>76</td>
+<td>16</td>
+<td>1964</td>
+<td>7190</td>
+<td>11466</td>
+<td>21886</td>
+<td>41698</td>
+<td>71900</td>
+</tr>
+<tr class="row-odd"><td>Ir</td>
+<td>77</td>
+<td>17</td>
+<td>3244</td>
+<td>5114</td>
+<td>12334</td>
+<td>22718</td>
+<td>46926</td>
+<td>78872</td>
+</tr>
+<tr class="row-even"><td>Pt</td>
+<td>78</td>
+<td>18</td>
+<td>1996</td>
+<td>6134</td>
+<td>9998</td>
+<td>15174</td>
+<td>39990</td>
+<td>65648</td>
+</tr>
+<tr class="row-odd"><td>Au</td>
+<td>79</td>
+<td>19</td>
+<td>2052</td>
+<td>3836</td>
+<td>9566</td>
+<td>19354</td>
+<td>37734</td>
+<td>63976</td>
+</tr>
+<tr class="row-even"><td>Hg</td>
+<td>80</td>
+<td>20</td>
+<td>1904</td>
+<td>4626</td>
+<td>6494</td>
+<td>18530</td>
+<td>29042</td>
+<td>50036</td>
+</tr>
+<tr class="row-odd"><td>Tl</td>
+<td>81</td>
+<td>21</td>
+<td>2672</td>
+<td>3954</td>
+<td>10890</td>
+<td>21154</td>
+<td>41916</td>
+<td>68886</td>
+</tr>
+<tr class="row-even"><td>Pb</td>
+<td>82</td>
+<td>22</td>
+<td>2436</td>
+<td>5514</td>
+<td>7630</td>
+<td>19862</td>
+<td>43276</td>
+<td>56760</td>
+</tr>
+<tr class="row-odd"><td>Bi</td>
+<td>83</td>
+<td>23</td>
+<td>2540</td>
+<td>4802</td>
+<td>11070</td>
+<td>22566</td>
+<td>41604</td>
+<td>72014</td>
+</tr>
+<tr class="row-even"><td>Po</td>
+<td>84</td>
+<td>24</td>
+<td>1308</td>
+<td>2906</td>
+<td>8318</td>
+<td>17434</td>
+<td>36680</td>
+<td>47564</td>
+</tr>
+<tr class="row-odd"><td>At</td>
+<td>85</td>
+<td>25</td>
+<td>2188</td>
+<td>4226</td>
+<td>8358</td>
+<td>18038</td>
+<td>36636</td>
+<td>50940</td>
+</tr>
+<tr class="row-even"><td>Rn</td>
+<td>86</td>
+<td>26</td>
+<td>1964</td>
+<td>5710</td>
+<td>12130</td>
+<td>18734</td>
+<td>33336</td>
+<td>58950</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="the-grid-option">
+<span id="ref-grid-option"></span><h2>2.2. The <tt class="docutils literal"><span class="pre">--grid</span></tt> option<a class="headerlink" href="#the-grid-option" title="Permalink to this headline">¶</a></h2>
+<p>The scripts <tt class="docutils literal"><span class="pre">horton-atomdb.py</span></tt> and <tt class="docutils literal"><span class="pre">horton-wpart.py</span></tt> have a <tt class="docutils literal"><span class="pre">--grid</span></tt>
+option to specify the atomic integration grids. This option may be used to
+control the numerical accuracy of the output. This option takes one argument
+that may have any of the following four formats:</p>
+<ol class="arabic">
+<li><p class="first">A filename of with atomic grid specifications in the same format as those
+found in <tt class="docutils literal"><span class="pre">${HORTONDATA}/grids</span></tt>.</p>
+</li>
+<li><p class="first">A filename of a file in <tt class="docutils literal"><span class="pre">${HORTONDATA}/grids</span></tt> without the extension
+<tt class="docutils literal"><span class="pre">.txt</span></tt>. (These are discussed above.)</p>
+</li>
+<li><p class="first">Equivalently to the previous point, one of the following names: <tt class="docutils literal"><span class="pre">coarse</span></tt>,
+<tt class="docutils literal"><span class="pre">medium</span></tt>, <tt class="docutils literal"><span class="pre">fine</span></tt>, <tt class="docutils literal"><span class="pre">veryfine</span></tt>, <tt class="docutils literal"><span class="pre">ultrafine</span></tt> and <tt class="docutils literal"><span class="pre">insane</span></tt>.</p>
+</li>
+<li><p class="first">A string with the following format: <tt class="docutils literal"><span class="pre">rname:rmin:rmax:nrad:nll</span></tt>, with
+the following meaning for the keywords:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">rname</span></tt> specifies the type of radial grid. It can be <tt class="docutils literal"><span class="pre">linear</span></tt>,
+<tt class="docutils literal"><span class="pre">exp</span></tt> or <tt class="docutils literal"><span class="pre">power</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">rmin</span></tt> and <tt class="docutils literal"><span class="pre">rmax</span></tt> specify the first and the last radial grid point in
+angstroms.</li>
+<li><tt class="docutils literal"><span class="pre">nrad</span></tt> is the number of radial grid points.</li>
+<li><tt class="docutils literal"><span class="pre">nll</span></tt> is the number of points for the angular Lebedev-Laikov grid. It
+must be one of the following values: 6, 14, 26, 38, 50, 74, 86, 110, 146,
+170, 194, 230, 266, 302, 350, 434, 590, 770, 974, 1202, 1454, 1730, 2030,
+2354, 2702, 3074, 3470, 3890, 4334, 4802, 5294, 5810</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Atomic integration grids</a><ul>
+<li><a class="reference internal" href="#built-in-grids">2.1. Built-in grids</a></li>
+<li><a class="reference internal" href="#the-grid-option">2.2. The <tt class="docutils literal"><span class="pre">--grid</span></tt> option</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ref_features.html"
+                        title="previous chapter">1. Features</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ref_acronyms.html"
+                        title="next chapter">3. Acronyms</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/ref_grids.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ref_acronyms.html" title="3. Acronyms"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ref_features.html" title="1. Features"
+             >previous</a> |</li>
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Toon Verstraelen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

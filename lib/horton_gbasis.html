@@ -8,15 +8,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>6. horton.gbasis – Gaussian basis sets &mdash; Horton 1.0.1 documentation</title>
+    <title>8. horton.gbasis – Gaussian basis sets &mdash; Horton 1.2.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/breathe.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0.1',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,9 +26,9 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0.1 documentation" href="../index.html" />
-    <link rel="next" title="7. horton.grid – Numerical integraton grids" href="horton_grid.html" />
-    <link rel="prev" title="5. horton.espfit – Electrostatic potential fitting" href="horton_espfit.html" /> 
+    <link rel="top" title="Horton 1.2.1 documentation" href="../index.html" />
+    <link rel="next" title="9. horton.grid – Numerical integraton grids" href="horton_grid.html" />
+    <link rel="prev" title="7. horton.espfit – Electrostatic potential fitting" href="horton_espfit.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,12 +41,12 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="horton_grid.html" title="7. horton.grid – Numerical integraton grids"
+          <a href="horton_grid.html" title="9. horton.grid – Numerical integraton grids"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="horton_espfit.html" title="5. horton.espfit – Electrostatic potential fitting"
+          <a href="horton_espfit.html" title="7. horton.espfit – Electrostatic potential fitting"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -55,37 +56,37 @@
           <div class="body">
             
   <div class="section" id="horton-gbasis-gaussian-basis-sets">
-<h1>6. <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt> &#8211; Gaussian basis sets<a class="headerlink" href="#horton-gbasis-gaussian-basis-sets" title="Permalink to this headline">¶</a></h1>
+<h1>8. <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt> &#8211; Gaussian basis sets<a class="headerlink" href="#horton-gbasis-gaussian-basis-sets" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-horton.gbasis.cext">
-<span id="horton-gbasis-cext-c-extensions"></span><h2>6.1. <tt class="docutils literal"><span class="pre">horton.gbasis.cext</span></tt> &#8211; C++ extensions<a class="headerlink" href="#module-horton.gbasis.cext" title="Permalink to this headline">¶</a></h2>
+<span id="horton-gbasis-cext-c-extensions"></span><h2>8.1. <tt class="docutils literal"><span class="pre">horton.gbasis.cext</span></tt> &#8211; C++ extensions<a class="headerlink" href="#module-horton.gbasis.cext" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.gbasis.cext.boys_function">
-<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">boys_function</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.boys_function" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">boys_function</tt><big>(</big><em>long m</em>, <em>double t</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.boys_function" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.gbasis.cext.cart_to_pure_low">
-<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">cart_to_pure_low</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.cart_to_pure_low" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">cart_to_pure_low</tt><big>(</big><em>ndarray work_cart</em>, <em>ndarray work_pure</em>, <em>long shell_type</em>, <em>long nant</em>, <em>long npost</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.cart_to_pure_low" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.gbasis.cext.fac">
-<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">fac</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.fac" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">fac</tt><big>(</big><em>long n</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.fac" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.gbasis.cext.fac2">
-<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">fac2</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.fac2" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">fac2</tt><big>(</big><em>long n</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.fac2" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.gbasis.cext.binom">
-<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">binom</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.binom" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">binom</tt><big>(</big><em>long n</em>, <em>long m</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.binom" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.gbasis.cext.get_shell_nbasis">
-<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">get_shell_nbasis</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.get_shell_nbasis" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">get_shell_nbasis</tt><big>(</big><em>long shell_type</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.get_shell_nbasis" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -95,27 +96,27 @@
 
 <dl class="function">
 <dt id="horton.gbasis.cext.gpt_coeff">
-<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">gpt_coeff</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.gpt_coeff" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">gpt_coeff</tt><big>(</big><em>long k</em>, <em>long n0</em>, <em>long n1</em>, <em>double pa</em>, <em>double pb</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.gpt_coeff" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.gbasis.cext.gb_overlap_int1d">
-<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">gb_overlap_int1d</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.gb_overlap_int1d" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">gb_overlap_int1d</tt><big>(</big><em>long n0</em>, <em>long n1</em>, <em>double pa</em>, <em>double pb</em>, <em>double inv_gamma</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.gb_overlap_int1d" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.gbasis.cext.nuclear_attraction_helper">
-<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">nuclear_attraction_helper</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.nuclear_attraction_helper" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">nuclear_attraction_helper</tt><big>(</big><em>ndarray work_g</em>, <em>long n0</em>, <em>long n1</em>, <em>double pa</em>, <em>double pb</em>, <em>double cp</em>, <em>double gamma_inv</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.nuclear_attraction_helper" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.gbasis.cext.gob_cart_normalization">
-<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">gob_cart_normalization</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.gob_cart_normalization" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">gob_cart_normalization</tt><big>(</big><em>double alpha</em>, <em>ndarray n</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.gob_cart_normalization" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="horton.gbasis.cext.gob_pure_normalization">
-<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">gob_pure_normalization</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.gob_pure_normalization" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">gob_pure_normalization</tt><big>(</big><em>double alpha</em>, <em>long l</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.gob_pure_normalization" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="class">
@@ -123,27 +124,27 @@
 <em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">GOBasis</tt><a class="headerlink" href="#horton.gbasis.cext.GOBasis" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="horton.gbasis.cext.GOBasis.check_matrix_coeffs">
-<tt class="descname">check_matrix_coeffs</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.check_matrix_coeffs" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">check_matrix_coeffs</tt><big>(</big><em>self</em>, <em>matrix</em>, <em>nocc=None</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.check_matrix_coeffs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.GOBasis.check_matrix_one_body">
-<tt class="descname">check_matrix_one_body</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.check_matrix_one_body" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">check_matrix_one_body</tt><big>(</big><em>self</em>, <em>matrix</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.check_matrix_one_body" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.GOBasis.check_matrix_two_body">
-<tt class="descname">check_matrix_two_body</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.check_matrix_two_body" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">check_matrix_two_body</tt><big>(</big><em>self</em>, <em>matrix</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.check_matrix_two_body" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.GOBasis.compute_electron_repulsion">
-<tt class="descname">compute_electron_repulsion</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_electron_repulsion" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">compute_electron_repulsion</tt><big>(</big><em>self</em>, <em>electron_repulsion</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_electron_repulsion" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.GOBasis.compute_grid_density_dm">
-<tt class="descname">compute_grid_density_dm</tt><big>(</big><em>dm</em>, <em>points</em>, <em>rho</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_density_dm" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">compute_grid_density_dm</tt><big>(</big><em>self</em>, <em>dm</em>, <em>ndarray points</em>, <em>ndarray rhos</em>, <em>double epsilon=0</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_density_dm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the electron density on a grid for a given density matrix.</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
@@ -154,13 +155,19 @@
 <dt>rhos</dt>
 <dd>A Numpy array for the output, shape (npoint,).</dd>
 </dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>epsilon</dt>
+<dd>Allow errors on the density of this magnitude for the sake of
+efficiency.</dd>
+</dl>
 <p><strong>Warning:</strong> the results are added to the output array! This may
 be useful to combine results from different spin components.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.GOBasis.compute_grid_density_fock">
-<tt class="descname">compute_grid_density_fock</tt><big>(</big><em>points</em>, <em>weights</em>, <em>pots</em>, <em>fock</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_density_fock" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">compute_grid_density_fock</tt><big>(</big><em>self</em>, <em>ndarray points</em>, <em>ndarray weights</em>, <em>ndarray pots</em>, <em>fock</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_density_fock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute a one-body operator based on a density potential grid in real-space</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
@@ -179,7 +186,7 @@ object.</dd>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.GOBasis.compute_grid_gradient_dm">
-<tt class="descname">compute_grid_gradient_dm</tt><big>(</big><em>dm</em>, <em>points</em>, <em>gradrho</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_gradient_dm" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">compute_grid_gradient_dm</tt><big>(</big><em>self</em>, <em>dm</em>, <em>ndarray points</em>, <em>ndarray gradrhos</em>, <em>double epsilon=0</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_gradient_dm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the electron density gradient on a grid for a given density matrix.</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
@@ -190,15 +197,20 @@ object.</dd>
 <dt>gradrhos</dt>
 <dd>A Numpy array for the output, shape (npoint,3).</dd>
 </dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>epsilon</dt>
+<dd>Allow errors on the density of this magnitude for the sake of
+efficiency.</dd>
+</dl>
 <p><strong>Warning:</strong> the results are added to the output array! This may
 be useful to combine results from different spin components.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.GOBasis.compute_grid_gradient_fock">
-<tt class="descname">compute_grid_gradient_fock</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_gradient_fock" title="Permalink to this definition">¶</a></dt>
-<dd><p>compute_grid_density_fock(points, weights, pots, fock)</p>
-<p>Compute a one-body operator based on a density potential grid in real-space</p>
+<tt class="descname">compute_grid_gradient_fock</tt><big>(</big><em>self</em>, <em>ndarray points</em>, <em>ndarray weights</em>, <em>ndarray pots</em>, <em>fock</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_gradient_fock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute a one-body operator based on a density potential grid in real-space</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>points</dt>
@@ -216,7 +228,7 @@ object.</dd>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.GOBasis.compute_grid_hartree_dm">
-<tt class="descname">compute_grid_hartree_dm</tt><big>(</big><em>dm</em>, <em>points</em>, <em>output</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_hartree_dm" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">compute_grid_hartree_dm</tt><big>(</big><em>self</em>, <em>dm</em>, <em>ndarray points</em>, <em>ndarray output</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_hartree_dm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the Hartree potential on a grid for a given density matrix.</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
@@ -235,9 +247,8 @@ be useful to combine results from different spin components.</p>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.GOBasis.compute_grid_orbitals_exp">
-<tt class="descname">compute_grid_orbitals_exp</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_orbitals_exp" title="Permalink to this definition">¶</a></dt>
-<dd><p>compute_grid_density_exp(exp, points, iorbs, orbs)</p>
-<p>Compute the orbtials on a grid for a given set of expansion coefficients.</p>
+<tt class="descname">compute_grid_orbitals_exp</tt><big>(</big><em>self</em>, <em>exp</em>, <em>ndarray points</em>, <em>ndarray iorbs</em>, <em>ndarray orbs</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_grid_orbitals_exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the orbtials on a grid for a given set of expansion coefficients.</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>exp</dt>
@@ -256,19 +267,19 @@ added to this array.</dd>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.GOBasis.compute_kinetic">
-<tt class="descname">compute_kinetic</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_kinetic" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">compute_kinetic</tt><big>(</big><em>self</em>, <em>kinetic</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_kinetic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the kinetic energy matrix in a Gaussian orbital basis.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.GOBasis.compute_nuclear_attraction">
-<tt class="descname">compute_nuclear_attraction</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_nuclear_attraction" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">compute_nuclear_attraction</tt><big>(</big><em>self</em>, <em>ndarray charges</em>, <em>ndarray centers</em>, <em>nuclear_attraction</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_nuclear_attraction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the kintic energy matrix in a Gaussian orbital basis.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.GOBasis.compute_overlap">
-<tt class="descname">compute_overlap</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_overlap" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">compute_overlap</tt><big>(</big><em>self</em>, <em>overlap</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.GOBasis.compute_overlap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the overlap matrix in a Gaussian orbital basis.</p>
 </dd></dl>
 
@@ -314,12 +325,12 @@ added to this array.</dd>
 <dd><p>Wrapper for the IterGB1 class, for testing only.</p>
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB1.inc_prim">
-<tt class="descname">inc_prim</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.inc_prim" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">inc_prim</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.inc_prim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB1.inc_shell">
-<tt class="descname">inc_shell</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.inc_shell" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">inc_shell</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.inc_shell" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -334,17 +345,17 @@ added to this array.</dd>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB1.store">
-<tt class="descname">store</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.store" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">store</tt><big>(</big><em>self</em>, <em>ndarray work</em>, <em>ndarray output</em>, <em>long dim=1</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.store" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB1.update_prim">
-<tt class="descname">update_prim</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.update_prim" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">update_prim</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.update_prim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB1.update_shell">
-<tt class="descname">update_shell</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.update_shell" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">update_shell</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB1.update_shell" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -355,12 +366,12 @@ added to this array.</dd>
 <dd><p>Wrapper for the IterGB2 class, for testing only.</p>
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB2.inc_prim">
-<tt class="descname">inc_prim</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.inc_prim" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">inc_prim</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.inc_prim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB2.inc_shell">
-<tt class="descname">inc_shell</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.inc_shell" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">inc_shell</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.inc_shell" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -375,17 +386,17 @@ added to this array.</dd>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB2.store">
-<tt class="descname">store</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.store" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">store</tt><big>(</big><em>self</em>, <em>ndarray work</em>, <em>ndarray output</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.store" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB2.update_prim">
-<tt class="descname">update_prim</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.update_prim" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">update_prim</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.update_prim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB2.update_shell">
-<tt class="descname">update_shell</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.update_shell" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">update_shell</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB2.update_shell" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -396,12 +407,12 @@ added to this array.</dd>
 <dd><p>Wrapper for the IterGB4 class, for testing only.</p>
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB4.inc_prim">
-<tt class="descname">inc_prim</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.inc_prim" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">inc_prim</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.inc_prim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB4.inc_shell">
-<tt class="descname">inc_shell</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.inc_shell" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">inc_shell</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.inc_shell" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -416,30 +427,31 @@ added to this array.</dd>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB4.store">
-<tt class="descname">store</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.store" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">store</tt><big>(</big><em>self</em>, <em>ndarray work</em>, <em>ndarray output</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.store" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB4.update_prim">
-<tt class="descname">update_prim</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.update_prim" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">update_prim</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.update_prim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterGB4.update_shell">
-<tt class="descname">update_shell</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.update_shell" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">update_shell</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterGB4.update_shell" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="horton.gbasis.cext.iter_pow1_inc">
-<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">iter_pow1_inc</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.iter_pow1_inc" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">iter_pow1_inc</tt><big>(</big><em>ndarray n</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.iter_pow1_inc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="class">
 <dt id="horton.gbasis.cext.IterPow1">
 <em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">IterPow1</tt><a class="headerlink" href="#horton.gbasis.cext.IterPow1" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wrapper for the IterPow1 class, for testing only.</p>
+<dd><p>IterPow1(long shell_type0)
+Wrapper for the IterPow1 class, for testing only.</p>
 <dl class="attribute">
 <dt id="horton.gbasis.cext.IterPow1.fields">
 <tt class="descname">fields</tt><a class="headerlink" href="#horton.gbasis.cext.IterPow1.fields" title="Permalink to this definition">¶</a></dt>
@@ -447,7 +459,7 @@ added to this array.</dd>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterPow1.inc">
-<tt class="descname">inc</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterPow1.inc" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">inc</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterPow1.inc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -455,7 +467,8 @@ added to this array.</dd>
 <dl class="class">
 <dt id="horton.gbasis.cext.IterPow2">
 <em class="property">class </em><tt class="descclassname">horton.gbasis.cext.</tt><tt class="descname">IterPow2</tt><a class="headerlink" href="#horton.gbasis.cext.IterPow2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wrapper for the IterPow2 class, for testing only.</p>
+<dd><p>IterPow2(long shell_type0, long shell_type1)
+Wrapper for the IterPow2 class, for testing only.</p>
 <dl class="attribute">
 <dt id="horton.gbasis.cext.IterPow2.fields">
 <tt class="descname">fields</tt><a class="headerlink" href="#horton.gbasis.cext.IterPow2.fields" title="Permalink to this definition">¶</a></dt>
@@ -463,14 +476,14 @@ added to this array.</dd>
 
 <dl class="method">
 <dt id="horton.gbasis.cext.IterPow2.inc">
-<tt class="descname">inc</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterPow2.inc" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">inc</tt><big>(</big><em>self</em><big>)</big><a class="headerlink" href="#horton.gbasis.cext.IterPow2.inc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-horton.gbasis.gobasis">
-<span id="horton-gbasis-gobasis-gaussian-orbital-basis-set-module"></span><h2>6.2. <tt class="docutils literal"><span class="pre">horton.gbasis.gobasis</span></tt> &#8211; Gaussian orbital basis set module.<a class="headerlink" href="#module-horton.gbasis.gobasis" title="Permalink to this headline">¶</a></h2>
+<span id="horton-gbasis-gobasis-gaussian-orbital-basis-set-module"></span><h2>8.2. <tt class="docutils literal"><span class="pre">horton.gbasis.gobasis</span></tt> &#8211; Gaussian orbital basis set module.<a class="headerlink" href="#module-horton.gbasis.gobasis" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.gbasis.gobasis.GOBasisDesc">
 <em class="property">class </em><tt class="descclassname">horton.gbasis.gobasis.</tt><tt class="descname">GOBasisDesc</tt><big>(</big><em>default</em>, <em>element_map=None</em>, <em>index_map=None</em>, <em>pure=True</em><big>)</big><a class="headerlink" href="#horton.gbasis.gobasis.GOBasisDesc" title="Permalink to this definition">¶</a></dt>
@@ -615,11 +628,17 @@ completed. (This is convenient when loading basis sets from a file.)</p>
 
 </div>
 <div class="section" id="module-horton.gbasis.io">
-<span id="horton-gbasis-io-input-output-routines-for-gaussian-basis-sets"></span><h2>6.3. <tt class="docutils literal"><span class="pre">horton.gbasis.io</span></tt> &#8211; Input/Output routines for gaussian basis sets<a class="headerlink" href="#module-horton.gbasis.io" title="Permalink to this headline">¶</a></h2>
+<span id="horton-gbasis-io-input-output-routines-for-gaussian-basis-sets"></span><h2>8.3. <tt class="docutils literal"><span class="pre">horton.gbasis.io</span></tt> &#8211; Input/Output routines for gaussian basis sets<a class="headerlink" href="#module-horton.gbasis.io" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.gbasis.io.str_to_shell_types">
 <tt class="descclassname">horton.gbasis.io.</tt><tt class="descname">str_to_shell_types</tt><big>(</big><em>s</em>, <em>pure=False</em><big>)</big><a class="headerlink" href="#horton.gbasis.io.str_to_shell_types" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a string into a list of contraction types</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="horton.gbasis.io.shell_type_to_str">
+<tt class="descclassname">horton.gbasis.io.</tt><tt class="descname">shell_type_to_str</tt><big>(</big><em>shell_type</em><big>)</big><a class="headerlink" href="#horton.gbasis.io.shell_type_to_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a shell type into a character</p>
 </dd></dl>
 
 <dl class="function">
@@ -628,6 +647,2090 @@ completed. (This is convenient when loading basis sets from a file.)</p>
 <dd><p>Load the basis set family from an NWChem file.</p>
 </dd></dl>
 
+</div>
+<div class="section" id="horton-gbasis-boys-h">
+<h2>8.4. <tt class="docutils literal"><span class="pre">horton/gbasis/boys.h</span></tt><a class="headerlink" href="#horton-gbasis-boys-h" title="Permalink to this headline">¶</a></h2>
+<p></p>
+<p></p>
+<em>Defines</em><blockquote>
+<div><p id=""><span id="hortonboys_8h_1a82be1b824c02d6db75b32f1c1d430aa5"></span><strong>BOYS_MAX_M</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Functions</em><blockquote>
+<div><p id=""><span id="hortonboys_8h_1aa2e68d694b0e1d8c076e488456eaaba8"></span><div class="line-block">
+<div class="line">double <strong>boys_function</strong>(long m, double u)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="horton-gbasis-calc-h">
+<h2>8.5. <tt class="docutils literal"><span class="pre">horton/gbasis/calc.h</span></tt><a class="headerlink" href="#horton-gbasis-calc-h" title="Permalink to this headline">¶</a></h2>
+<p></p>
+<p></p>
+<p><p id="hortonclassGBCalculator"><em>class</em> <strong>GBCalculator</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGBCalculator_1a0e4756889cd796e9f4aa558d900d503f"></span><div class="line-block">
+<div class="line"> <strong>GBCalculator</strong>(long max_shell_type)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBCalculator_1adb854fd8106dad4bca43503ab353d972"></span><div class="line-block">
+<div class="line"> <strong>~GBCalculator</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBCalculator_1a8e07f4b818e8cd7e8b046742777848cd"></span><div class="line-block">
+<div class="line">const long <strong>get_nwork</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBCalculator_1a1b88b8060f6f63a28e90bf044c2f75fc"></span><div class="line-block">
+<div class="line">const long <strong>get_max_shell_type</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBCalculator_1a642365d494db4c85e087a12659c5f033"></span><div class="line-block">
+<div class="line">const long <strong>get_max_nbasis</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBCalculator_1aad707d6f4542d469ea5543a8a30adbee"></span><div class="line-block">
+<div class="line">const double * <strong>get_work</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Protected Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGBCalculator_1a97b8ad4c523ecfd35f54d8ea0be92a25"></span><div class="line-block">
+<div class="line">void <strong>swap_work</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Protected Attributes</em><blockquote>
+<div><p id=""><span id="hortonclassGBCalculator_1a3267d91a5e2ee7f67c15bb27d973f851"></span>long <strong>nwork</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBCalculator_1a8bcc4d11ec94200f8b36d42297b43f0b"></span>long <strong>max_shell_type</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBCalculator_1a379ca97de0b0b96e674218f1e4150ceb"></span>long <strong>max_nbasis</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBCalculator_1a92706e2b11a0c8d8a84935830791d8ef"></span>double * <strong>work_pure</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBCalculator_1a2fd7109680e9226b70e35c68ce6210ad"></span>double * <strong>work_cart</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+</div>
+<div class="section" id="horton-gbasis-cartpure-h">
+<h2>8.6. <tt class="docutils literal"><span class="pre">horton/gbasis/cartpure.h</span></tt><a class="headerlink" href="#horton-gbasis-cartpure-h" title="Permalink to this headline">¶</a></h2>
+<p></p>
+<p></p>
+<em>Functions</em><blockquote>
+<div><p id=""><span id="hortoncartpure_8h_1a28ada3bb2c4a191a04f8232c642cc05c"></span><div class="line-block">
+<div class="line">void <strong>cart_to_pure_low</strong>(double * work_cart, double * work_pure, long shell_type, long nant, long npost)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="horton-gbasis-common-h">
+<h2>8.7. <tt class="docutils literal"><span class="pre">horton/gbasis/common.h</span></tt><a class="headerlink" href="#horton-gbasis-common-h" title="Permalink to this headline">¶</a></h2>
+<p></p>
+<p></p>
+<em>Defines</em><blockquote>
+<div><p id=""><span id="hortoncommon_8h_1a7fc288042e77defda80a2366feb92a99"></span><strong>MAX_SHELL_TYPE</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortoncommon_8h_1af92deb2006db6870162c152c0d1c3388"></span><strong>MAX_NCART_CUMUL</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Functions</em><blockquote>
+<div><p id=""><span id="hortoncommon_8h_1a5f5865fbf6150586aff9fb7da0da42b2"></span><div class="line-block">
+<div class="line">long <strong>fac</strong>(long n)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortoncommon_8h_1ab3962a86252c448805604451c308c577"></span><div class="line-block">
+<div class="line">long <strong>fac2</strong>(long n)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortoncommon_8h_1adfcbe093a83b1ed1379e8425d453c146"></span><div class="line-block">
+<div class="line">long <strong>binom</strong>(long n, long m)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortoncommon_8h_1a663ebb485e495a5f5b43d7bee4aa1eb1"></span><div class="line-block">
+<div class="line">long <strong>get_shell_nbasis</strong>(long shell_type)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortoncommon_8h_1ade71226574eef13b59ec72672995c6f4"></span><div class="line-block">
+<div class="line">long <strong>get_max_shell_type</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortoncommon_8h_1a914b4afd9fefe6af1900db0442c4f6a1"></span><div class="line-block">
+<div class="line">const double <strong>dist_sq</strong>(const double * r0, const double * r1)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortoncommon_8h_1a8aa7ff77bb38f288a672d42e2197ef2c"></span><div class="line-block">
+<div class="line">void <strong>compute_gpt_center</strong>(double alpha0, const double * r0, double alpha1, const double * r1, double gamma_inv, double * gpt_center)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortoncommon_8h_1aaae0f2a68c8d3b6c36d5dc6c37e81eec"></span><div class="line-block">
+<div class="line">double <strong>gpt_coeff</strong>(long k, long n0, long n1, double pa, double pb)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortoncommon_8h_1aebb550fc1280200dae313cf45158104f"></span><div class="line-block">
+<div class="line">double <strong>gb_overlap_int1d</strong>(long n0, long n1, double pa, double pb, double gamma_inv)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortoncommon_8h_1a11972f7d8df559a1d2572b915bb6bc30"></span><div class="line-block">
+<div class="line">void <strong>nuclear_attraction_helper</strong>(double * work_g, long n0, long n1, double pa, double pb, double pc, double gamma_inv)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="horton-gbasis-fns-h">
+<h2>8.8. <tt class="docutils literal"><span class="pre">horton/gbasis/fns.h</span></tt><a class="headerlink" href="#horton-gbasis-fns-h" title="Permalink to this headline">¶</a></h2>
+<p></p>
+<p></p>
+<p><p id="hortonclassGB1GridFn"><em>class</em> <strong>GB1GridFn</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB1GridFn_1a361f099578b8096a9195ef0043ada1c2"></span><div class="line-block">
+<div class="line"> <strong>GB1GridFn</strong>(long max_shell_type, long dim_work, long dim_output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1GridFn_1a561bce1d4b8c260eab524c3843eb8ff2"></span><div class="line-block">
+<div class="line">void <strong>reset</strong>(long shell_type0, const double * r0, const double * point)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1GridFn_1a7e346b0db4c1160952b686b98f8fb0e7"></span><div class="line-block">
+<div class="line">void <strong>cart_to_pure</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1GridFn_1ae828e6ec47fd05c1a9726e1a24c12ca2"></span><div class="line-block">
+<div class="line">const long <strong>get_shell_type0</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1GridFn_1a2f5424794ed6c650ed06070c4a8e2553"></span><div class="line-block">
+<div class="line">long <strong>get_dim_work</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1GridFn_1a5e1dbe6b4c47939397d2c27ab59a1a0d"></span><div class="line-block">
+<div class="line">long <strong>get_dim_output</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1GridFn_1ab47ab60cfb8ca193354214520c97edc4"></span><div class="line-block">
+<div class="line">void <strong>add</strong>(double coeff, double alpha0, const double * scales0)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Protected Attributes</em><blockquote>
+<div><p id=""><span id="hortonclassGB1GridFn_1a9b5463aaa4951a676bd600b132928913"></span>long <strong>shell_type0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1GridFn_1a446cf892948d1d9a80dc7ea357bd960e"></span>const long <strong>dim_work</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1GridFn_1a1cdcfc27b293244b5ff733e72aed60f8"></span>const long <strong>dim_output</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1GridFn_1a14bef4aacf0b5308783228b9906760b0"></span>const double * <strong>r0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1GridFn_1a32df8b2d76be2250eb6727c887bbb84d"></span>const double * <strong>point</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1GridFn_1af6389465bc5e5108c4af20ff21c1be61"></span><a class="reference internal" href="#hortonclassIterPow1"><em>IterPow1</em></a> <strong>i1p</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassGB1ExpGridFn"><em>class</em> <strong>GB1ExpGridFn</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB1ExpGridFn_1a3510cb9a5c20541959e5d9af54feb369"></span><div class="line-block">
+<div class="line"> <strong>GB1ExpGridFn</strong>(long max_shell_type, long nfn, long dim_work, long dim_output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1ExpGridFn_1a30f5480d49f8fefc0f4cb8c9e29b1028"></span><div class="line-block">
+<div class="line">void <strong>compute_point_from_exp</strong>(double * work_basis, double * coeffs, long nbasis, double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Protected Attributes</em><blockquote>
+<div><p id=""><span id="hortonclassGB1ExpGridFn_1ad7ad973d94a9ceb70e6b14fabae7918a"></span>long <strong>nfn</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassGB1ExpGridOrbitalFn"><em>class</em> <strong>GB1ExpGridOrbitalFn</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB1ExpGridOrbitalFn_1aa17b28765a42fa031621fa9c4af9b5a6"></span><div class="line-block">
+<div class="line"> <strong>GB1ExpGridOrbitalFn</strong>(long max_shell_type, long nfn, long * iorbs, long norb)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1ExpGridOrbitalFn_1ae831310bb3d84b7d39052207535c8e5f"></span><div class="line-block">
+<div class="line">void <strong>add</strong>(double coeff, double alpha0, const double * scales0)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1ExpGridOrbitalFn_1abaed3f026541cbf0934d97262b63db7a"></span><div class="line-block">
+<div class="line">void <strong>compute_point_from_exp</strong>(double * work_basis, double * coeffs, long nbasis, double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Protected Attributes</em><blockquote>
+<div><p id=""><span id="hortonclassGB1ExpGridOrbitalFn_1aea12f1d6e740ea30dc6c063dbc2753e4"></span>long * <strong>iorbs</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1ExpGridOrbitalFn_1a1f710ba9748f6cdbb05145b0806b6cea"></span>long <strong>norb</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassGB1DMGridFn"><em>class</em> <strong>GB1DMGridFn</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB1DMGridFn_1a60d68190f69bea0fde9c14a183f680bf"></span><div class="line-block">
+<div class="line"> <strong>GB1DMGridFn</strong>(long max_shell_type, long dim_work, long dim_output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1DMGridFn_1adfbd8b13d484e8bbe1a0e4710a27022f"></span><div class="line-block">
+<div class="line">void <strong>compute_point_from_dm</strong>(double * work_basis, double * dm, long nbasis, double * output, double epsilon, double * dmmaxrow)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1DMGridFn_1a87c8e7e544bd3674cbfa4a2ab17c7090"></span><div class="line-block">
+<div class="line">void <strong>compute_fock_from_pot</strong>(double * pot, double * work_basis, long nbasis, double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassGB1DMGridDensityFn"><em>class</em> <strong>GB1DMGridDensityFn</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB1DMGridDensityFn_1a07c06e471a738584f8ec9c87b5cd2218"></span><div class="line-block">
+<div class="line"> <strong>GB1DMGridDensityFn</strong>(long max_shell_type)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1DMGridDensityFn_1aa552528c4766b734a91740dd20f7d477"></span><div class="line-block">
+<div class="line">void <strong>reset</strong>(long _shell_type0, const double * _r0, const double * _point)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1DMGridDensityFn_1ab7dfea155f01c5b836c2403311566b75"></span><div class="line-block">
+<div class="line">void <strong>add</strong>(double coeff, double alpha0, const double * scales0)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1DMGridDensityFn_1a15a29f346139d34f3ee751ec16d8a46d"></span><div class="line-block">
+<div class="line">void <strong>compute_point_from_dm</strong>(double * work_basis, double * dm, long nbasis, double * output, double epsilon, double * dmmaxrow)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1DMGridDensityFn_1a637f69bd9b81ed664dc99dedfb6fae02"></span><div class="line-block">
+<div class="line">void <strong>compute_fock_from_pot</strong>(double * pot, double * work_basis, long nbasis, double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Private Members</em><blockquote>
+<div><p id=""><span id="hortonclassGB1DMGridDensityFn_1a91f5dbf1fd7dc6a426e4e6d5ebb2714c"></span>double <strong>poly_work</strong>[MAX_NCART_CUMUL-1]</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1DMGridDensityFn_1af4a7ee1ad989f43397064073a5ce1ae4"></span>long <strong>offset</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassGB1DMGridGradientFn"><em>class</em> <strong>GB1DMGridGradientFn</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB1DMGridGradientFn_1adda2fd6f8826080f9b3f57cd1017807f"></span><div class="line-block">
+<div class="line"> <strong>GB1DMGridGradientFn</strong>(long max_shell_type)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1DMGridGradientFn_1a961785ad0ceee2d65bbb94d74342ee2b"></span><div class="line-block">
+<div class="line">void <strong>add</strong>(double coeff, double alpha0, const double * scales0)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1DMGridGradientFn_1aa0a99d6bafbad4693b8c8ba6c883e637"></span><div class="line-block">
+<div class="line">void <strong>compute_point_from_dm</strong>(double * work_basis, double * dm, long nbasis, double * output, double epsilon, double * dmmaxrow)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB1DMGridGradientFn_1ad6df4a6c720473d8f67d4b88e37c3424"></span><div class="line-block">
+<div class="line">void <strong>compute_fock_from_pot</strong>(double * pot, double * work_basis, long nbasis, double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassGB2DMGridFn"><em>class</em> <strong>GB2DMGridFn</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB2DMGridFn_1aa87646123ba8c38d1f0232f512c4f3a3"></span><div class="line-block">
+<div class="line"> <strong>GB2DMGridFn</strong>(long max_shell_type)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridFn_1aadf2320f9cde0ea28b125a4a182c1b50"></span><div class="line-block">
+<div class="line">void <strong>reset</strong>(long shell_type0, long shell_type1, const double * r0, const double * r1, const double * point)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridFn_1ab6c46306a09679e84b229f4674c57458"></span><div class="line-block">
+<div class="line">void <strong>cart_to_pure</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridFn_1af636a37cb5e2fa80801fbbef1bb93284"></span><div class="line-block">
+<div class="line">const long <strong>get_shell_type0</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridFn_1adfb29cba4bb6f93ecdb9844b071a2a78"></span><div class="line-block">
+<div class="line">const long <strong>get_shell_type1</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridFn_1a11761f4676146d50681347a4cab773f0"></span><div class="line-block">
+<div class="line">void <strong>add</strong>(double coeff, double alpha0, double alpha1, const double * scales0, const double * scales1)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Protected Attributes</em><blockquote>
+<div><p id=""><span id="hortonclassGB2DMGridFn_1a0faa29f7bcd8b7ca584d533faa5f0353"></span>long <strong>shell_type0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridFn_1a492ca6664450bb086d7220175713c037"></span>long <strong>shell_type1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridFn_1aec19e780a982959f558ceebacb0bfb7f"></span>const double * <strong>r0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridFn_1a110b05afe7d67d1f9c68a6a890f2f2d8"></span>const double * <strong>r1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridFn_1aee3cbdaa3e1ba4c3e4bbd91ecf7bbe27"></span>const double * <strong>point</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridFn_1a47f387707676e39298c6ce2f5652e797"></span><a class="reference internal" href="#hortonclassIterPow2"><em>IterPow2</em></a> <strong>i2p</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassGB2DMGridHartreeFn"><em>class</em> <strong>GB2DMGridHartreeFn</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB2DMGridHartreeFn_1aecca26ac6c7416d58a000879b9db4aeb"></span><div class="line-block">
+<div class="line"> <strong>GB2DMGridHartreeFn</strong>(long max_shell_type)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridHartreeFn_1a6af03032c7d2fccee8b40d5e6cde3148"></span><div class="line-block">
+<div class="line"> <strong>~GB2DMGridHartreeFn</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridHartreeFn_1abf7665e0458ca3a66965ac86f8a88234"></span><div class="line-block">
+<div class="line">void <strong>add</strong>(double coeff, double alpha0, double alpha1, const double * scales0, const double * scales1)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Private Members</em><blockquote>
+<div><p id=""><span id="hortonclassGB2DMGridHartreeFn_1a3565282c0a1b1dba07a785450503a33e"></span>double * <strong>work_g0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridHartreeFn_1afb90646ed6e1f05be9be6bd2b2ef976d"></span>double * <strong>work_g1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridHartreeFn_1a78904224c26a6da0361d6c2708da0ec6"></span>double * <strong>work_g2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2DMGridHartreeFn_1ab96744b7a2c52192598223e72fe0beed"></span>double * <strong>work_boys</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+</div>
+<div class="section" id="horton-gbasis-gbasis-h">
+<h2>8.9. <tt class="docutils literal"><span class="pre">horton/gbasis/gbasis.h</span></tt><a class="headerlink" href="#horton-gbasis-gbasis-h" title="Permalink to this headline">¶</a></h2>
+<p></p>
+<p></p>
+<em>Functions</em><blockquote>
+<div><p id=""><span id="hortongbasis_8h_1a997e93b10bbc597c6f4db8c2d17d6f36"></span><div class="line-block">
+<div class="line">const double <strong>gob_cart_normalization</strong>(const double alpha, const long * n)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortongbasis_8h_1a616860bad9df53d7643c78665a35bc7c"></span><div class="line-block">
+<div class="line">const double <strong>gob_pure_normalization</strong>(const double alpha, const long l)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<p><p id="hortonclassGBasis"><em>class</em> <strong>GBasis</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGBasis_1a53fedaddb7c88c6ba37a4d8659cbdfb5"></span><div class="line-block">
+<div class="line"> <strong>GBasis</strong>(const double * centers, const long * shell_map, const long * nprims, const long * shell_types, const double * alphas, const double * con_coeffs, const long ncenter, const long nshell, const long nprim_total)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a0ebc1e9846669ce7cd072a8d8333c6c4"></span><div class="line-block">
+<div class="line"> <strong>~GBasis</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1ae69a0524c6b757a201cf0fe9c1fe9e4d"></span><div class="line-block">
+<div class="line">const double <strong>normalization</strong>(const double alpha, const long * n)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1aea9e2a37334e475f98b1a16df594d14f"></span><div class="line-block">
+<div class="line">void <strong>init_scales</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a44e82d2eca371d0afcee6800b83b2c9c"></span><div class="line-block">
+<div class="line">void <strong>compute_one_body</strong>(double * output, <a class="reference internal" href="#hortonclassGB2Integral"><em>GB2Integral</em></a>  * integral)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a986d11b9677c96c6abdeb539fbb72aff"></span><div class="line-block">
+<div class="line">void <strong>compute_two_body</strong>(double * output, <a class="reference internal" href="#hortonclassGB4Integral"><em>GB4Integral</em></a>  * integral)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a446068fa60cd1d7edf662ebfdc01a4b6"></span><div class="line-block">
+<div class="line">void <strong>compute_grid_point1</strong>(double * output, double * point, <a class="reference internal" href="#hortonclassGB1GridFn"><em>GB1GridFn</em></a>  * grid_fn)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a80f3e5b1fbb15cb63f15b6313b57684c"></span><div class="line-block">
+<div class="line">double <strong>compute_grid_point2</strong>(double * dm, double * point, <a class="reference internal" href="#hortonclassGB2DMGridFn"><em>GB2DMGridFn</em></a>  * grid_fn)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1afa27dbf6a7ac681d16cd073a800eb96a"></span><div class="line-block">
+<div class="line">const long <strong>get_nbasis</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a08aa1caee736955afab0ab57867db206"></span><div class="line-block">
+<div class="line">const long <strong>get_nscales</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1ac1e18b250917888f85b788ea83de8854"></span><div class="line-block">
+<div class="line">const long <strong>get_max_shell_type</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a335f5b207f126525032529764650b439"></span><div class="line-block">
+<div class="line">const long * <strong>get_basis_offsets</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1afa04512d9d52e3b9f968b6e5dee31b3f"></span><div class="line-block">
+<div class="line">const double * <strong>get_scales</strong>(long iprim)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Public Members</em><blockquote>
+<div><p id=""><span id="hortonclassGBasis_1ae7c35e4162f4b87e5995e5c403bcac72"></span>const double * <strong>centers</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a6f3e282f5aca86102ad89d0bf10f8778"></span>const long * <strong>shell_map</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a28061a6621f9774e5555a2fb66781b99"></span>const long * <strong>nprims</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a982135c06a3e830290ecd11d212fcdad"></span>const long * <strong>shell_types</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1ad1bd5f5abfde783266f9133e8c811206"></span>const double * <strong>alphas</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1ae0eb63b3ca1f28ce65a85c09e9ae93c4"></span>const double * <strong>con_coeffs</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a0e622675e82b8737df7eb90b8c5744dd"></span>const long <strong>ncenter</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a9c5cfa14977aaafdae1b941b025c9440"></span>const long <strong>nshell</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a8b733014a3e38e1c0401821fba47aa07"></span>const long <strong>nprim_total</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Private Members</em><blockquote>
+<div><p id=""><span id="hortonclassGBasis_1a40dbd43590c5e5a8d0a67fe51693d96a"></span>long * <strong>basis_offsets</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a9fa57f1fe93e9b592fe4985e34d617f0"></span>long * <strong>scales_offsets</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1abfc5357c1163329d75a46d86149e1f36"></span>double * <strong>scales</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a811c44a5c3f41ad13d5977aa83c915a1"></span>long <strong>nbasis</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a7282fd3aaf25f3c9973dc70ad85c242b"></span>long <strong>nscales</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGBasis_1a775d7482dac22979036639b1b8f7a372"></span>long <strong>max_shell_type</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassGOBasis"><em>class</em> <strong>GOBasis</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGOBasis_1ab1a541b596ac87df3f2389e7181d8582"></span><div class="line-block">
+<div class="line"> <strong>GOBasis</strong>(const double * centers, const long * shell_map, const long * nprims, const long * shell_types, const double * alphas, const double * con_coeffs, const long ncenter, const long nshell, const long nprim_total)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGOBasis_1a2b33f4ad3d3388e32aae58fdc1f71325"></span><div class="line-block">
+<div class="line">const double <strong>normalization</strong>(const double alpha, const long * n)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGOBasis_1a1b234c9230b8f622dfa700a6f2c47a39"></span><div class="line-block">
+<div class="line">void <strong>compute_overlap</strong>(double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGOBasis_1aeaf5f0cfc40a836ab6f65f58ddcfc025"></span><div class="line-block">
+<div class="line">void <strong>compute_kinetic</strong>(double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGOBasis_1a2b0284793e3278f7ae4f221d114d39fe"></span><div class="line-block">
+<div class="line">void <strong>compute_nuclear_attraction</strong>(double * charges, double * centers, long ncharge, double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGOBasis_1aba9aa404818fd3afb3113cbddfac3dc0"></span><div class="line-block">
+<div class="line">void <strong>compute_electron_repulsion</strong>(double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGOBasis_1a66198d3701738c92e144891b59cc48d3"></span><div class="line-block">
+<div class="line">void <strong>compute_grid1_exp</strong>(long nfn, double * coeffs, long npoint, double * points, long norb, long * iorbs, double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGOBasis_1a5253a9601eaabb83803000fbecbf9e7f"></span><div class="line-block">
+<div class="line">void <strong>compute_grid1_dm</strong>(double * dm, long npoint, double * points, <a class="reference internal" href="#hortonclassGB1DMGridFn"><em>GB1DMGridFn</em></a>  * grid_fn, double * output, double epsilon, double * dmmaxrow)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGOBasis_1ab9b0bff0ff181e5bf68232dac7e64fee"></span><div class="line-block">
+<div class="line">void <strong>compute_grid2_dm</strong>(double * dm, long npoint, double * points, double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGOBasis_1ad6f04e7dd7661d0685c01d8dcaa89eab"></span><div class="line-block">
+<div class="line">void <strong>compute_grid1_fock</strong>(long npoint, double * points, double * weights, long pot_stride, double * pots, <a class="reference internal" href="#hortonclassGB1DMGridFn"><em>GB1DMGridFn</em></a>  * grid_fn, double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+</div>
+<div class="section" id="horton-gbasis-ints-h">
+<h2>8.10. <tt class="docutils literal"><span class="pre">horton/gbasis/ints.h</span></tt><a class="headerlink" href="#horton-gbasis-ints-h" title="Permalink to this headline">¶</a></h2>
+<p></p>
+<p></p>
+<p><p id="hortonclassGB2Integral"><em>class</em> <strong>GB2Integral</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB2Integral_1abc86ca27ba910ca953358f8d6604e26a"></span><div class="line-block">
+<div class="line"> <strong>GB2Integral</strong>(long max_shell_type)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2Integral_1a94937246638d3a95b2cbb6199e0ea93e"></span><div class="line-block">
+<div class="line">void <strong>reset</strong>(long shell_type0, long shell_type1, const double * r0, const double * r1)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2Integral_1a66d39866ce5c38bc5ba4b2e4bde518cd"></span><div class="line-block">
+<div class="line">void <strong>add</strong>(double coeff, double alpha0, double alpha1, const double * scales0, const double * scales1)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2Integral_1a55c716fcf82dc22782bcc87780ee73fd"></span><div class="line-block">
+<div class="line">void <strong>cart_to_pure</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2Integral_1ad112830786c856fbf79bb9191c495e6a"></span><div class="line-block">
+<div class="line">const long <strong>get_shell_type0</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2Integral_1a8b279e23a91b16314a90c8170fd60790"></span><div class="line-block">
+<div class="line">const long <strong>get_shell_type1</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Protected Attributes</em><blockquote>
+<div><p id=""><span id="hortonclassGB2Integral_1abef43706147366e41771c40a809e9f50"></span>long <strong>shell_type0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2Integral_1abacf7bd4df8b0ce06b385affca8fd1d7"></span>long <strong>shell_type1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2Integral_1a33e02f248b12e922662665f2a775e6c8"></span>const double * <strong>r0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2Integral_1aa80ec1f539e0947fba96fadcf5a1bf0d"></span>const double * <strong>r1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2Integral_1a1184b98e64b07039ad0d8d87ca6057d3"></span><a class="reference internal" href="#hortonclassIterPow2"><em>IterPow2</em></a> <strong>i2p</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassGB2OverlapIntegral"><em>class</em> <strong>GB2OverlapIntegral</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB2OverlapIntegral_1a20fa811223b64eccf8ec27554c84de52"></span><div class="line-block">
+<div class="line"> <strong>GB2OverlapIntegral</strong>(long max_shell_type)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2OverlapIntegral_1a7280f443de899a4d6ecd73a11c594f1b"></span><div class="line-block">
+<div class="line">void <strong>add</strong>(double coeff, double alpha0, double alpha1, const double * scales0, const double * scales1)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassGB2KineticIntegral"><em>class</em> <strong>GB2KineticIntegral</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB2KineticIntegral_1ada6c057715ae5e7183b6bc66094035db"></span><div class="line-block">
+<div class="line"> <strong>GB2KineticIntegral</strong>(long max_shell_type)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2KineticIntegral_1a62f77077e7713f84f4d8f2794cff6aed"></span><div class="line-block">
+<div class="line">void <strong>add</strong>(double coeff, double alpha0, double alpha1, const double * scales0, const double * scales1)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassGB2NuclearAttractionIntegral"><em>class</em> <strong>GB2NuclearAttractionIntegral</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB2NuclearAttractionIntegral_1a5e750020930eee960327f7d3488ffec4"></span><div class="line-block">
+<div class="line"> <strong>GB2NuclearAttractionIntegral</strong>(long max_shell_type, double * charges, double * centers, long ncharge)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2NuclearAttractionIntegral_1a4e7076ede44b2c1835e40c3b6d65f2dc"></span><div class="line-block">
+<div class="line"> <strong>~GB2NuclearAttractionIntegral</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2NuclearAttractionIntegral_1ac5135f783f5ed9ad48f43cb4d66cff74"></span><div class="line-block">
+<div class="line">void <strong>add</strong>(double coeff, double alpha0, double alpha1, const double * scales0, const double * scales1)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Private Members</em><blockquote>
+<div><p id=""><span id="hortonclassGB2NuclearAttractionIntegral_1a424fde058a9e8eefd42ab17270c17164"></span>double * <strong>charges</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2NuclearAttractionIntegral_1ab92fa3e85ca7062181dc8b68b0839020"></span>double * <strong>centers</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2NuclearAttractionIntegral_1ab3a9e940b56641d4610501a835d9605c"></span>long <strong>ncharge</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2NuclearAttractionIntegral_1af792ccad723b2b66c1c056ab11fce9b9"></span>double * <strong>work_g0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2NuclearAttractionIntegral_1adc4fc57f613ed74f41f53ff8629c78be"></span>double * <strong>work_g1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2NuclearAttractionIntegral_1a7054d99cadad8039b72ea4269e5e0665"></span>double * <strong>work_g2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB2NuclearAttractionIntegral_1a94c40c1f7d13c2584cc81284e643e09d"></span>double * <strong>work_boys</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassGB4Integral"><em>class</em> <strong>GB4Integral</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB4Integral_1a17e81951cc692506a8c60074b795d630"></span><div class="line-block">
+<div class="line"> <strong>GB4Integral</strong>(long max_shell_type)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1a5eb8c1b02d1fd2135d4d37f0f99942da"></span><div class="line-block">
+<div class="line">void <strong>reset</strong>(long shell_type0, long shell_type1, long shell_type2, long shell_type3, const double * r0, const double * r1, const double * r2, const double * r3)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1aa19f73b86000ebd13b6bd9766db1501e"></span><div class="line-block">
+<div class="line">void <strong>add</strong>(double coeff, double alpha0, double alpha1, double alpha2, double alpha3, const double * scales0, const double * scales1, const double * scales2, const double * scales3)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1ae43b38c9bafd45e1c63c386d7e93bc77"></span><div class="line-block">
+<div class="line">void <strong>cart_to_pure</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1aa66375bfe78e54bfe222a8fc7026beca"></span><div class="line-block">
+<div class="line">const long <strong>get_shell_type0</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1a4641378270d2eb0675a2267e4e5fdc8b"></span><div class="line-block">
+<div class="line">const long <strong>get_shell_type1</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1ade7222e7d476edf9ae753e47076af54d"></span><div class="line-block">
+<div class="line">const long <strong>get_shell_type2</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1ad12b0b51c55956bd8294b06393af239b"></span><div class="line-block">
+<div class="line">const long <strong>get_shell_type3</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Protected Attributes</em><blockquote>
+<div><p id=""><span id="hortonclassGB4Integral_1ac14bc04a84ba62e3e4a89620761974f0"></span>long <strong>shell_type0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1a08aa26ba731bba60e73b3d7222cc9589"></span>long <strong>shell_type1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1ab217425aa06b9ad1ed0eced153aedadf"></span>long <strong>shell_type2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1ad738932d03814c446627fe47db9b9a46"></span>long <strong>shell_type3</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1a10ccd11e1876eb9351ce36206ef51040"></span>const double * <strong>r0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1a9d2fd2349abdbb5e240b6200eb1e5ba5"></span>const double * <strong>r1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1ad4de68f434263c58988e3551ea33e5e4"></span>const double * <strong>r2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4Integral_1a24f3a0d5a5c18357cf1c17341c4e7e76"></span>const double * <strong>r3</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonstructlibint__arg__t"><em>class</em> <strong>libint_arg_t</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Members</em><blockquote>
+<div><p id=""><span id="hortonstructlibint__arg__t_1a626956072bb7820f90a49f91762a7ccf"></span>unsigned int <strong>am</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonstructlibint__arg__t_1adf654c2dbc72756b4c4885f420dc2ad6"></span>const double * <strong>r</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonstructlibint__arg__t_1af16da9db3b81dd80f4936c01e781b750"></span>double <strong>alpha</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassGB4ElectronReuplsionIntegralLibInt"><em>class</em> <strong>GB4ElectronReuplsionIntegralLibInt</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassGB4ElectronReuplsionIntegralLibInt_1afad51efbbbb66c1f6bea6e2ec891d7ec"></span><div class="line-block">
+<div class="line"> <strong>GB4ElectronReuplsionIntegralLibInt</strong>(long max_shell_type)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4ElectronReuplsionIntegralLibInt_1a2658f5730dfd50aec375e65febf34834"></span><div class="line-block">
+<div class="line"> <strong>~GB4ElectronReuplsionIntegralLibInt</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4ElectronReuplsionIntegralLibInt_1aa262b90534615d19f21c6dea92258419"></span><div class="line-block">
+<div class="line">void <strong>reset</strong>(long shell_type0, long shell_type1, long shell_type2, long shell_type3, const double * r0, const double * r1, const double * r2, const double * r3)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4ElectronReuplsionIntegralLibInt_1a22f64f5194223f57b73160a2162adc7b"></span><div class="line-block">
+<div class="line">void <strong>add</strong>(double coeff, double alpha0, double alpha1, double alpha2, double alpha3, const double * scales0, const double * scales1, const double * scales2, const double * scales3)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Private Members</em><blockquote>
+<div><p id=""><span id="hortonclassGB4ElectronReuplsionIntegralLibInt_1a71ad88b644453a2c93abc0e01a79dbdb"></span>Libint_eri_t <strong>erieval</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4ElectronReuplsionIntegralLibInt_1a36273ec15e08e6ae2be78163ac85e2b7"></span><a class="reference internal" href="#hortonstructlibint__arg__t"><em>libint_arg_t</em></a> <strong>libint_args</strong>[4]</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4ElectronReuplsionIntegralLibInt_1a53b4f0106a5661e088c7709032678e1a"></span>long <strong>order</strong>[4]</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4ElectronReuplsionIntegralLibInt_1afcc5e4d465e851c733d8ba56ea88e311"></span>double <strong>ab</strong>[3]</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4ElectronReuplsionIntegralLibInt_1a55d5ead13be1768fca82df8dcde80d21"></span>double <strong>cd</strong>[3]</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4ElectronReuplsionIntegralLibInt_1a894e0928b155547020c333e59f8dc4f7"></span>double <strong>ab2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassGB4ElectronReuplsionIntegralLibInt_1a09e63be4fbd69e0ba2d0e477a351b74b"></span>double <strong>cd2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+</div>
+<div class="section" id="horton-gbasis-iter-gb-h">
+<h2>8.11. <tt class="docutils literal"><span class="pre">horton/gbasis/iter_gb.h</span></tt><a class="headerlink" href="#horton-gbasis-iter-gb-h" title="Permalink to this headline">¶</a></h2>
+<p></p>
+<p></p>
+<p><p id="hortonclassIterGB1"><em>class</em> <strong>IterGB1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassIterGB1_1a43413f39d8b1c2dbef9dc4d8582c2744"></span><div class="line-block">
+<div class="line"> <strong>IterGB1</strong>(<a class="reference internal" href="#hortonclassGBasis"><em>GBasis</em></a>  * gbasis)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1a6b76039be36c90cfcf6cce83280226e4"></span><div class="line-block">
+<div class="line">int <strong>inc_shell</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1aa7f13ae1dde0ce79fa48cd3615196a2f"></span><div class="line-block">
+<div class="line">void <strong>update_shell</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1a0a6fa3c65b2a24aa406272ecc06f7252"></span><div class="line-block">
+<div class="line">int <strong>inc_prim</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1a9101f4a291cddcb0d29616edd4b09366"></span><div class="line-block">
+<div class="line">void <strong>update_prim</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1aae570ee14d32c138073b787b3f13eea8"></span><div class="line-block">
+<div class="line">void <strong>store</strong>(const double * work, double * output, long dim)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Public Members</em><blockquote>
+<div><p id=""><span id="hortonclassIterGB1_1ac531bba10f2c7b37cb6ca0389871bb64"></span>long <strong>shell_type0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1a11288e44d8c50a8c4d469216f2a57dc5"></span>double <strong>con_coeff</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1aa01dbeec1b09f8a7d30b457ea26565fd"></span>double <strong>alpha0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1aebb712610b543f2027ef31e3dacc2744"></span>const double * <strong>r0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1af2c641c21ed79ff5f88afaffe96fa02f"></span>const double * <strong>scales0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1a618d08ce790deb7567832c8401491d7b"></span>long <strong>ibasis0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1a7c142bc3cc6f5018b6fa6c13d5ec5617"></span>long <strong>ishell0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1a1cf49ce3579a0dc1ae0614bc4acb9248"></span>long <strong>nprim0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1aa3a5e3eabb3263978d35022d3285ef17"></span>long <strong>iprim0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1a0cdadebe02869865410ee23d851c8fc6"></span>long <strong>oprim0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Private Members</em><blockquote>
+<div><p id=""><span id="hortonclassIterGB1_1a86664fe3aa004c2d4cd0f46b26d1dfd5"></span>const  <a class="reference internal" href="#hortonclassGBasis"><em>GBasis</em></a>  * <strong>gbasis</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB1_1a8ff939d87f568560d20f036303fc9c4c"></span>const long * <strong>basis_offsets</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassIterGB2"><em>class</em> <strong>IterGB2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassIterGB2_1a00d4e6a7f5991f2a206ecb5c91632da3"></span><div class="line-block">
+<div class="line"> <strong>IterGB2</strong>(<a class="reference internal" href="#hortonclassGBasis"><em>GBasis</em></a>  * gbasis)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1ab0da174408aef71d2729f8227973fb9b"></span><div class="line-block">
+<div class="line">int <strong>inc_shell</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1a7fb092b142cf2ce9049613871c4b7000"></span><div class="line-block">
+<div class="line">void <strong>update_shell</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1aa1f2eaa18dcc8bef27c84991a4ba77d9"></span><div class="line-block">
+<div class="line">int <strong>inc_prim</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1a2bb2e4dd1051096d4a7359122344faf2"></span><div class="line-block">
+<div class="line">void <strong>update_prim</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1a9ddd8b07d6f77fe6230ef91f06f91555"></span><div class="line-block">
+<div class="line">void <strong>store</strong>(const double * work, double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1a263b2ac39a085e58debb9460310f8859"></span><div class="line-block">
+<div class="line">double <strong>dot</strong>(const double * work, const double * dm)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Public Members</em><blockquote>
+<div><p id=""><span id="hortonclassIterGB2_1a18ebe6a37ea1c4ba79fdf122984b8705"></span>long <strong>shell_type0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1ae4c972df412341b58fc285d97c3f9d13"></span>long <strong>shell_type1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1a9e1e47fbe3a8f98d45d41c5b0214858f"></span>double <strong>con_coeff</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1ab86718800d9faa4beb172bd46bdf16bf"></span>double <strong>alpha0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1a5045c93d370238544cd1e1dee8af6e9d"></span>double <strong>alpha1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1addc036fd686fb7d8da7aa638ab6a9791"></span>const double * <strong>r0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1a472c122edb9326886c08356539389195"></span>const double * <strong>r1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1a824687fdfb95a9f7116333eb33b60568"></span>const double * <strong>scales0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1af69cf343ccdd697f55c7e85350e22c01"></span>const double * <strong>scales1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1ab2ecf689644dd7c6e818b21e8f0090bd"></span>long <strong>ibasis0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1afc51be045b75fac659aaa786c5e80ed2"></span>long <strong>ibasis1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1a1c81bd954acb0d482efb21a1fee34201"></span>long <strong>ishell0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1a5ecae3ee02bd5e68d2a622eb79b089aa"></span>long <strong>ishell1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1a62c045d5664ecbb92ca999b8b2b42b1e"></span>long <strong>nprim0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1a1ce609bd91a9e671e243247bcde4bc84"></span>long <strong>nprim1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1ac1bc32544d35795fa7d0485b52f4ed20"></span>long <strong>iprim0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1aa846bba04048d3c24a9cb1263c125bfa"></span>long <strong>iprim1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1acc327f0bed14f012ff177ce55f0de842"></span>long <strong>oprim0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1aa819dce059e680e430e7ae3f63b9c986"></span>long <strong>oprim1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Private Members</em><blockquote>
+<div><p id=""><span id="hortonclassIterGB2_1a541af4cdd6a2c7a9b0c15eaa1e848ef0"></span>const  <a class="reference internal" href="#hortonclassGBasis"><em>GBasis</em></a>  * <strong>gbasis</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB2_1ab8b93c6305c1e1f0f5c9e8f3f3be6007"></span>const long * <strong>basis_offsets</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassIterGB4"><em>class</em> <strong>IterGB4</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassIterGB4_1a7eb51418a14bcdcab106ad181f6c9e03"></span><div class="line-block">
+<div class="line"> <strong>IterGB4</strong>(<a class="reference internal" href="#hortonclassGBasis"><em>GBasis</em></a>  * gbasis)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a3814705f829d753d45fc9e3b790b7ef9"></span><div class="line-block">
+<div class="line">int <strong>inc_shell</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1ad14b8a668f66996cc25ae2dedd63e9b2"></span><div class="line-block">
+<div class="line">void <strong>update_shell</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a23bfa172e25240f047dc81ed8d65429f"></span><div class="line-block">
+<div class="line">int <strong>inc_prim</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a920ca24b9d054ac17b31385fd30f0cb6"></span><div class="line-block">
+<div class="line">void <strong>update_prim</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1ac6a2f40d7378718c7f578627ad3e9ef7"></span><div class="line-block">
+<div class="line">void <strong>store</strong>(const double * work, double * output)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Public Members</em><blockquote>
+<div><p id=""><span id="hortonclassIterGB4_1a1be9aa1827f377ec8e7396744b62b22b"></span>long <strong>shell_type0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a07e1eb0a6a0d5b06b4fd1406a78fff78"></span>long <strong>shell_type1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a89fce159216e8bacde1add75c631da20"></span>long <strong>shell_type2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a09dcab789dc899b7375697444b991b34"></span>long <strong>shell_type3</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a162ab6f54bfbf92456db29cdb7024f4c"></span>double <strong>con_coeff</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a08da4665567769eb30ac30aabb80ae14"></span>double <strong>alpha0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a5867f86e7b82365de3042bb3d352e904"></span>double <strong>alpha1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a67c9615c744fcc674c8f4824ffa0e7e6"></span>double <strong>alpha2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1ad7d04c96306c5a591123a4fb6cf06916"></span>double <strong>alpha3</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1ac912ba69a463952a8a9a75379eb35a9b"></span>const double * <strong>r0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1aefc89cf300fecc426654a54e98552dbf"></span>const double * <strong>r1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a62bd75f46259fba11f7086259aa29851"></span>const double * <strong>r2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a0880f66287f6aa8dde1a063c6c55cd2f"></span>const double * <strong>r3</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a49765f0c3007a56f83e51845830350a0"></span>const double * <strong>scales0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a719502654d834563842e913ee6397184"></span>const double * <strong>scales1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a9d78902299d98592a3b7cfb1db6d1fb9"></span>const double * <strong>scales2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1af34768a0f26fb5a57dbc9c253b5f7651"></span>const double * <strong>scales3</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a55b1f04a22d09377daecd271cca740f7"></span>long <strong>ibasis0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a986247ff88c2ac1fb9287cc4e26a86ee"></span>long <strong>ibasis1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a7e492da24cb6a500af680816000ef041"></span>long <strong>ibasis2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1aff927966540640ccd93b8d5d22f75e3f"></span>long <strong>ibasis3</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a96ddf875a1662a90960edca786dc039b"></span>long <strong>ishell0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a1847ddc7c8f846460de0cd3038c32dbf"></span>long <strong>ishell1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a34c2594e0f8dec09889fc2cfde0b4e19"></span>long <strong>ishell2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a664c09b1e5e9b87931ca436e55cc3ebc"></span>long <strong>ishell3</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a31558332f57e7517daeec4ca2bb8d418"></span>long <strong>ishell3_max</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a752e3368b03b080d4354342f38544d4f"></span>long <strong>nprim0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a2b885e95c89225e659b8b9ee10655346"></span>long <strong>nprim1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a865a4d7e633f858dd3c0ad329c58ca84"></span>long <strong>nprim2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a361a6a5af15295d805767d789075ef67"></span>long <strong>nprim3</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1aeaeb5d39b5189c644a6550496e756c59"></span>long <strong>iprim0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1ada40b6b2581f426779a0573168daf8ef"></span>long <strong>iprim1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1af950a621c43103b13de2d17bf2a095b2"></span>long <strong>iprim2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a195392a80b01982f18a9f681b09f7f22"></span>long <strong>iprim3</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a94090814d3ab0edbbce8b46303c5523e"></span>long <strong>oprim0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1ae6fb9a5f58911d812b02884e0763e3b6"></span>long <strong>oprim1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a30f794850cc228ca78980f96691d349d"></span>long <strong>oprim2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a1b719af88b383a43b28a66abffe107b5"></span>long <strong>oprim3</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Private Members</em><blockquote>
+<div><p id=""><span id="hortonclassIterGB4_1a1ae8ce6d015a865b4ef76f5d2eb8d9d0"></span>const  <a class="reference internal" href="#hortonclassGBasis"><em>GBasis</em></a>  * <strong>gbasis</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterGB4_1a3ecf40109b54dec790b51c4ee9ad406f"></span>const long * <strong>basis_offsets</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+</div>
+<div class="section" id="horton-gbasis-iter-pow-h">
+<h2>8.12. <tt class="docutils literal"><span class="pre">horton/gbasis/iter_pow.h</span></tt><a class="headerlink" href="#horton-gbasis-iter-pow-h" title="Permalink to this headline">¶</a></h2>
+<p></p>
+<p></p>
+<em>Functions</em><blockquote>
+<div><p id=""><span id="hortoniter__pow_8h_1a8c6391c1e588562888d4468eb9e2c1c1"></span><div class="line-block">
+<div class="line">int <strong>iter_pow1_inc</strong>(long * n)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<p><p id="hortonclassIterPow1"><em>class</em> <strong>IterPow1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassIterPow1_1a8cfe393ec09eb56cf2c18cdf2e932be6"></span><div class="line-block">
+<div class="line">void <strong>reset</strong>(long shell_type0)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterPow1_1aa1a4af6a3e5aa0260637073e3ea296e4"></span><div class="line-block">
+<div class="line">int <strong>inc</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Public Members</em><blockquote>
+<div><p id=""><span id="hortonclassIterPow1_1aa3f37d811e1c6b6ebb4b52614ef31566"></span>long <strong>n0</strong>[3]</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterPow1_1a02532a88196f813afc859852eec36da1"></span>long <strong>ibasis0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Private Members</em><blockquote>
+<div><p id=""><span id="hortonclassIterPow1_1a538cb439b45090dc1bff20db95adb518"></span>long <strong>shell_type0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
+<p><p id="hortonclassIterPow2"><em>class</em> <strong>IterPow2</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+<em>Public Functions</em><blockquote>
+<div><p id=""><span id="hortonclassIterPow2_1ab69822b66199b8e50ac160262a821fd4"></span><div class="line-block">
+<div class="line">void <strong>reset</strong>(long shell_type0, long shell_type1)</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterPow2_1a58360ba2ba2156e91f93d1737942fb89"></span><div class="line-block">
+<div class="line">int <strong>inc</strong>()</div>
+</div>
+</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Public Members</em><blockquote>
+<div><p id=""><span id="hortonclassIterPow2_1ad2a9a0a2ab5963c83e75c8d0cb8d08c4"></span>long <strong>n0</strong>[3]</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterPow2_1a3dfdea08a339d893d1ba7d9b9098a46f"></span>long <strong>n1</strong>[3]</p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterPow2_1ae79df28ccb801f2cd26b35f1c0dd25b5"></span>long <strong>offset</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterPow2_1aa43893e6d0d4755451ad4674cf1f6d7f"></span>long <strong>ibasis0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterPow2_1a75804e0c84633a85895992b076f5e457"></span>long <strong>ibasis1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+<em>Private Members</em><blockquote>
+<div><p id=""><span id="hortonclassIterPow2_1abd8713b70e0c82a358c35955167037ba"></span>long <strong>shell_type0</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+<p id=""><span id="hortonclassIterPow2_1ab3b515e16c53c5b63fcbf9e474a8542d"></span>long <strong>shell_type1</strong></p>
+<blockquote>
+<div><p></p>
+<p></p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</p>
 </div>
 </div>
 
@@ -639,20 +2742,29 @@ completed. (This is convenient when loading basis sets from a file.)</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">6. <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt> &#8211; Gaussian basis sets</a><ul>
-<li><a class="reference internal" href="#module-horton.gbasis.cext">6.1. <tt class="docutils literal"><span class="pre">horton.gbasis.cext</span></tt> &#8211; C++ extensions</a></li>
-<li><a class="reference internal" href="#module-horton.gbasis.gobasis">6.2. <tt class="docutils literal"><span class="pre">horton.gbasis.gobasis</span></tt> &#8211; Gaussian orbital basis set module.</a></li>
-<li><a class="reference internal" href="#module-horton.gbasis.io">6.3. <tt class="docutils literal"><span class="pre">horton.gbasis.io</span></tt> &#8211; Input/Output routines for gaussian basis sets</a></li>
+<li><a class="reference internal" href="#">8. <tt class="docutils literal"><span class="pre">horton.gbasis</span></tt> &#8211; Gaussian basis sets</a><ul>
+<li><a class="reference internal" href="#module-horton.gbasis.cext">8.1. <tt class="docutils literal"><span class="pre">horton.gbasis.cext</span></tt> &#8211; C++ extensions</a></li>
+<li><a class="reference internal" href="#module-horton.gbasis.gobasis">8.2. <tt class="docutils literal"><span class="pre">horton.gbasis.gobasis</span></tt> &#8211; Gaussian orbital basis set module.</a></li>
+<li><a class="reference internal" href="#module-horton.gbasis.io">8.3. <tt class="docutils literal"><span class="pre">horton.gbasis.io</span></tt> &#8211; Input/Output routines for gaussian basis sets</a></li>
+<li><a class="reference internal" href="#horton-gbasis-boys-h">8.4. <tt class="docutils literal"><span class="pre">horton/gbasis/boys.h</span></tt></a></li>
+<li><a class="reference internal" href="#horton-gbasis-calc-h">8.5. <tt class="docutils literal"><span class="pre">horton/gbasis/calc.h</span></tt></a></li>
+<li><a class="reference internal" href="#horton-gbasis-cartpure-h">8.6. <tt class="docutils literal"><span class="pre">horton/gbasis/cartpure.h</span></tt></a></li>
+<li><a class="reference internal" href="#horton-gbasis-common-h">8.7. <tt class="docutils literal"><span class="pre">horton/gbasis/common.h</span></tt></a></li>
+<li><a class="reference internal" href="#horton-gbasis-fns-h">8.8. <tt class="docutils literal"><span class="pre">horton/gbasis/fns.h</span></tt></a></li>
+<li><a class="reference internal" href="#horton-gbasis-gbasis-h">8.9. <tt class="docutils literal"><span class="pre">horton/gbasis/gbasis.h</span></tt></a></li>
+<li><a class="reference internal" href="#horton-gbasis-ints-h">8.10. <tt class="docutils literal"><span class="pre">horton/gbasis/ints.h</span></tt></a></li>
+<li><a class="reference internal" href="#horton-gbasis-iter-gb-h">8.11. <tt class="docutils literal"><span class="pre">horton/gbasis/iter_gb.h</span></tt></a></li>
+<li><a class="reference internal" href="#horton-gbasis-iter-pow-h">8.12. <tt class="docutils literal"><span class="pre">horton/gbasis/iter_pow.h</span></tt></a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="horton_espfit.html"
-                        title="previous chapter">5. <tt class="docutils literal docutils literal docutils literal"><span class="pre">horton.espfit</span></tt> &#8211; Electrostatic potential fitting</a></p>
+                        title="previous chapter">7. <tt class="docutils literal"><span class="pre">horton.espfit</span></tt> &#8211; Electrostatic potential fitting</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="horton_grid.html"
-                        title="next chapter">7. <tt class="docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integraton grids</a></p>
+                        title="next chapter">9. <tt class="docutils literal"><span class="pre">horton.grid</span></tt> &#8211; Numerical integraton grids</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/lib/horton_gbasis.txt"
@@ -685,12 +2797,12 @@ completed. (This is convenient when loading basis sets from a file.)</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="horton_grid.html" title="7. horton.grid – Numerical integraton grids"
+          <a href="horton_grid.html" title="9. horton.grid – Numerical integraton grids"
              >next</a> |</li>
         <li class="right" >
-          <a href="horton_espfit.html" title="5. horton.espfit – Electrostatic potential fitting"
+          <a href="horton_espfit.html" title="7. horton.espfit – Electrostatic potential fitting"
              >previous</a> |</li>
-        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

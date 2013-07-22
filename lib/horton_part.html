@@ -8,15 +8,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>10. horton.part – Package for density-based partitioning (fuzzy atoms) &mdash; Horton 1.0.1 documentation</title>
+    <title>12. horton.part – Package for density-based partitioning (fuzzy atoms) &mdash; Horton 1.2.1 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/breathe.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0.1',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,9 +26,9 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0.1 documentation" href="../index.html" />
-    <link rel="next" title="11. horton.scripts – Code used (solely) by the Horton command line scripts" href="horton_scripts.html" />
-    <link rel="prev" title="9. horton.meanfield – Mean-field electronic structure code" href="horton_meanfield.html" /> 
+    <link rel="top" title="Horton 1.2.1 documentation" href="../index.html" />
+    <link rel="next" title="13. horton.scripts – Code used (solely) by the Horton command line scripts" href="horton_scripts.html" />
+    <link rel="prev" title="11. horton.meanfield – Mean-field electronic structure code" href="horton_meanfield.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,12 +41,12 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="horton_scripts.html" title="11. horton.scripts – Code used (solely) by the Horton command line scripts"
+          <a href="horton_scripts.html" title="13. horton.scripts – Code used (solely) by the Horton command line scripts"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="horton_meanfield.html" title="9. horton.meanfield – Mean-field electronic structure code"
+          <a href="horton_meanfield.html" title="11. horton.meanfield – Mean-field electronic structure code"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -55,12 +56,12 @@
           <div class="body">
             
   <div class="section" id="horton-part-package-for-density-based-partitioning-fuzzy-atoms">
-<h1>10. <tt class="docutils literal"><span class="pre">horton.part</span></tt> &#8211; Package for density-based partitioning (fuzzy atoms)<a class="headerlink" href="#horton-part-package-for-density-based-partitioning-fuzzy-atoms" title="Permalink to this headline">¶</a></h1>
+<h1>12. <tt class="docutils literal"><span class="pre">horton.part</span></tt> &#8211; Package for density-based partitioning (fuzzy atoms)<a class="headerlink" href="#horton-part-package-for-density-based-partitioning-fuzzy-atoms" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-horton.part.base">
-<span id="horton-part-base-base-classes-for-partitioning-algorithms"></span><h2>10.1. <tt class="docutils literal"><span class="pre">horton.part.base</span></tt> &#8211; Base classes for partitioning algorithms<a class="headerlink" href="#module-horton.part.base" title="Permalink to this headline">¶</a></h2>
+<span id="horton-part-base-base-classes-for-partitioning-algorithms"></span><h2>12.1. <tt class="docutils literal"><span class="pre">horton.part.base</span></tt> &#8211; Base classes for partitioning algorithms<a class="headerlink" href="#module-horton.part.base" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.part.base.Part">
-<em class="property">class </em><tt class="descclassname">horton.part.base.</tt><tt class="descname">Part</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local</em>, <em>moldens=None</em><big>)</big><a class="headerlink" href="#horton.part.base.Part" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.part.base.</tt><tt class="descname">Part</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local</em>, <em>slow</em>, <em>lmax</em>, <em>moldens=None</em><big>)</big><a class="headerlink" href="#horton.part.base.Part" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>system</dt>
@@ -69,6 +70,11 @@
 <dd>The integration grid</dd>
 <dt>local</dt>
 <dd>Whether or not to use local (non-periodic) grids.</dd>
+<dt>slow</dt>
+<dd>When <tt class="docutils literal"><span class="pre">True</span></tt>, also the AIM properties are computed that use the
+AIM overlap operators.</dd>
+<dt>lmax</dt>
+<dd>The maximum angular momentum in multipole expansions.</dd>
 </dl>
 <p><strong>Optional arguments:</strong></p>
 <dl class="docutils">
@@ -99,7 +105,7 @@
 <dl class="method">
 <dt id="horton.part.base.Part.do_all">
 <tt class="descname">do_all</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.part.base.Part.do_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes all reasonable properties and returns a corresponding list of keys</p>
+<dd><p>Computes all properties and return a list of their names.</p>
 </dd></dl>
 
 <dl class="method">
@@ -128,6 +134,16 @@
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="horton.part.base.Part.do_spin_charges">
+<tt class="descname">do_spin_charges</tt><big>(</big><em>instance</em><big>)</big><a class="headerlink" href="#horton.part.base.Part.do_spin_charges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.part.base.Part.do_spindens">
+<tt class="descname">do_spindens</tt><big>(</big><em>instance</em><big>)</big><a class="headerlink" href="#horton.part.base.Part.do_spindens" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="horton.part.base.Part.get_grid">
 <tt class="descname">get_grid</tt><big>(</big><em>index=None</em><big>)</big><a class="headerlink" href="#horton.part.base.Part.get_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an integration grid</p>
@@ -151,6 +167,11 @@ is always returned.</dd>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="horton.part.base.Part.get_spindens">
+<tt class="descname">get_spindens</tt><big>(</big><em>index=None</em>, <em>output=None</em><big>)</big><a class="headerlink" href="#horton.part.base.Part.get_spindens" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="horton.part.base.Part.get_wcor">
 <tt class="descname">get_wcor</tt><big>(</big><em>index</em><big>)</big><a class="headerlink" href="#horton.part.base.Part.get_wcor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the weight corrections on a grid</p>
@@ -168,6 +189,11 @@ is always returned.</dd>
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="horton.part.base.Part.lmax">
+<tt class="descname">lmax</tt><a class="headerlink" href="#horton.part.base.Part.lmax" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="horton.part.base.Part.local">
 <tt class="descname">local</tt><a class="headerlink" href="#horton.part.base.Part.local" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -178,8 +204,8 @@ is always returned.</dd>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="horton.part.base.Part.natom">
-<tt class="descname">natom</tt><a class="headerlink" href="#horton.part.base.Part.natom" title="Permalink to this definition">¶</a></dt>
+<dt id="horton.part.base.Part.slow">
+<tt class="descname">slow</tt><a class="headerlink" href="#horton.part.base.Part.slow" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -216,7 +242,7 @@ cache is cleared.</p>
 
 <dl class="class">
 <dt id="horton.part.base.WPart">
-<em class="property">class </em><tt class="descclassname">horton.part.base.</tt><tt class="descname">WPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local=True</em><big>)</big><a class="headerlink" href="#horton.part.base.WPart" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.part.base.</tt><tt class="descname">WPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local=True</em>, <em>slow=False</em>, <em>lmax=3</em>, <em>epsilon=0</em><big>)</big><a class="headerlink" href="#horton.part.base.WPart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for density partitioning schemes</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
@@ -227,13 +253,29 @@ cache is cleared.</p>
 <dl class="docutils">
 <dt>local</dt>
 <dd>If <tt class="docutils literal"><span class="pre">True</span></tt>: use the proper atomic grid for each AIM integral.
-If <tt class="docutils literal"><span class="pre">False</span></tt>: use the entire molecular grid for each AIM integral.
-When set to <tt class="docutils literal"><span class="pre">True</span></tt>, certain pairwise integrals are done with
-two atomic grids if needed.</dd>
+If <tt class="docutils literal"><span class="pre">False</span></tt>: use the entire molecular grid for each AIM integral.</dd>
+<dt>slow</dt>
+<dd>When <tt class="docutils literal"><span class="pre">True</span></tt>, also the AIM properties are computed that use the
+AIM overlap operators.</dd>
+<dt>lmax</dt>
+<dd>The maximum angular momentum in multipole expansions.</dd>
+<dt>epsilon</dt>
+<dd>Allow errors on the computed electron density of this magnitude
+for the sake of efficiency.</dd>
 </dl>
 <dl class="method">
 <dt id="horton.part.base.WPart.do_moldens">
 <tt class="descname">do_moldens</tt><big>(</big><em>instance</em><big>)</big><a class="headerlink" href="#horton.part.base.WPart.do_moldens" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.part.base.WPart.do_spindens">
+<tt class="descname">do_spindens</tt><big>(</big><em>instance</em><big>)</big><a class="headerlink" href="#horton.part.base.WPart.do_spindens" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.part.base.WPart.epsilon">
+<tt class="descname">epsilon</tt><a class="headerlink" href="#horton.part.base.WPart.epsilon" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -250,7 +292,7 @@ two atomic grids if needed.</dd>
 
 <dl class="class">
 <dt id="horton.part.base.CPart">
-<em class="property">class </em><tt class="descclassname">horton.part.base.</tt><tt class="descname">CPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local</em>, <em>moldens</em>, <em>wcor_numbers</em>, <em>wcor_rcut_max=2.0</em>, <em>wcor_rcond=0.1</em><big>)</big><a class="headerlink" href="#horton.part.base.CPart" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.part.base.</tt><tt class="descname">CPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local</em>, <em>moldens</em>, <em>wcor_numbers=None</em>, <em>wcor_rcut_max=2.0</em>, <em>wcor_rcond=0.1</em>, <em>lmax=3</em><big>)</big><a class="headerlink" href="#horton.part.base.CPart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for density partitioning schemes of cube files</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
@@ -262,6 +304,9 @@ two atomic grids if needed.</dd>
 <dd>Whether or not to use local (non-periodic) grids.</dd>
 <dt>moldens</dt>
 <dd>The all-electron density grid data.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
 <dt>wcor_numbers</dt>
 <dd>The list of element numbers for which weight corrections are
 needed.</dd>
@@ -269,10 +314,17 @@ needed.</dd>
 <dd>The maximum cutoff sphere used for the weight corrections.</dd>
 <dt>wcor_rcond</dt>
 <dd>The regulatization strength for the weight correction equations.</dd>
+<dt>lmax</dt>
+<dd>The maximum angular momentum in multipole expansions.</dd>
 </dl>
 <dl class="method">
 <dt id="horton.part.base.CPart.do_moldens">
 <tt class="descname">do_moldens</tt><big>(</big><em>instance</em><big>)</big><a class="headerlink" href="#horton.part.base.CPart.do_moldens" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.part.base.CPart.do_spindens">
+<tt class="descname">do_spindens</tt><big>(</big><em>instance</em><big>)</big><a class="headerlink" href="#horton.part.base.CPart.do_spindens" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -309,11 +361,32 @@ needed.</dd>
 
 </div>
 <div class="section" id="module-horton.part.becke">
-<span id="horton-part-becke-becke-partitioning"></span><h2>10.2. <tt class="docutils literal"><span class="pre">horton.part.becke</span></tt> &#8211; Becke partitioning<a class="headerlink" href="#module-horton.part.becke" title="Permalink to this headline">¶</a></h2>
+<span id="horton-part-becke-becke-partitioning"></span><h2>12.2. <tt class="docutils literal"><span class="pre">horton.part.becke</span></tt> &#8211; Becke partitioning<a class="headerlink" href="#module-horton.part.becke" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.part.becke.BeckeWPart">
-<em class="property">class </em><tt class="descclassname">horton.part.becke.</tt><tt class="descname">BeckeWPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local=True</em>, <em>k=3</em><big>)</big><a class="headerlink" href="#horton.part.becke.BeckeWPart" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
+<em class="property">class </em><tt class="descclassname">horton.part.becke.</tt><tt class="descname">BeckeWPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local=True</em>, <em>slow=False</em>, <em>lmax=3</em>, <em>epsilon=0</em>, <em>k=3</em><big>)</big><a class="headerlink" href="#horton.part.becke.BeckeWPart" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>grid</dt>
+<dd>A Molecular integration grid</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>local</dt>
+<dd>If <tt class="docutils literal"><span class="pre">True</span></tt>: use the proper atomic grid for each AIM integral.
+If <tt class="docutils literal"><span class="pre">False</span></tt>: use the entire molecular grid for each AIM integral.</dd>
+<dt>slow</dt>
+<dd>When <tt class="docutils literal"><span class="pre">True</span></tt>, also the AIM properties are computed that use the
+AIM overlap operators.</dd>
+<dt>lmax</dt>
+<dd>The maximum angular momentum in multipole expansions.</dd>
+<dt>epsilon</dt>
+<dd>Allow errors on the computed electron density of this magnitude
+for the sake of efficiency.</dd>
+<dt>k</dt>
+<dd>The order of the polynomials used in the Becke partitioning.</dd>
+</dl>
+<dl class="attribute">
 <dt id="horton.part.becke.BeckeWPart.k">
 <tt class="descname">k</tt><a class="headerlink" href="#horton.part.becke.BeckeWPart.k" title="Permalink to this definition">¶</a></dt>
 <dd><p>The order of the Becke switching function.</p>
@@ -332,28 +405,32 @@ needed.</dd>
 
 <dl class="attribute">
 <dt id="horton.part.becke.BeckeWPart.options">
-<tt class="descname">options</tt><em class="property"> = ['k']</em><a class="headerlink" href="#horton.part.becke.BeckeWPart.options" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">options</tt><em class="property"> = ['slow', 'lmax', 'epsilon', 'k']</em><a class="headerlink" href="#horton.part.becke.BeckeWPart.options" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="horton.part.becke.BeckeWPart.update_at_weights">
-<tt class="descname">update_at_weights</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.part.becke.BeckeWPart.update_at_weights" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">update_at_weights</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#horton.part.becke.BeckeWPart.update_at_weights" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-horton.part.hirshfeld">
-<span id="horton-part-hirshfeld-hirshfeld-partitioning"></span><h2>10.3. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld</span></tt> &#8211; Hirshfeld Partitioning<a class="headerlink" href="#module-horton.part.hirshfeld" title="Permalink to this headline">¶</a></h2>
+<span id="horton-part-hirshfeld-hirshfeld-partitioning"></span><h2>12.3. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld</span></tt> &#8211; Hirshfeld Partitioning<a class="headerlink" href="#module-horton.part.hirshfeld" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.part.hirshfeld.HirshfeldWPart">
-<em class="property">class </em><tt class="descclassname">horton.part.hirshfeld.</tt><tt class="descname">HirshfeldWPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>proatomdb</em>, <em>local=True</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld.HirshfeldWPart" title="Permalink to this definition">¶</a></dt>
-<dd><p>Base class for Hirshfeld partitioning</p>
+<em class="property">class </em><tt class="descclassname">horton.part.hirshfeld.</tt><tt class="descname">HirshfeldWPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>proatomdb</em>, <em>local=True</em>, <em>slow=False</em>, <em>lmax=3</em>, <em>epsilon=0</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld.HirshfeldWPart" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="horton.part.hirshfeld.HirshfeldWPart.options">
+<tt class="descname">options</tt><em class="property"> = ['slow', 'lmax', 'epsilon']</em><a class="headerlink" href="#horton.part.hirshfeld.HirshfeldWPart.options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="class">
 <dt id="horton.part.hirshfeld.HirshfeldCPart">
-<em class="property">class </em><tt class="descclassname">horton.part.hirshfeld.</tt><tt class="descname">HirshfeldCPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local</em>, <em>moldens</em>, <em>proatomdb</em>, <em>wcor_numbers</em>, <em>wcor_rcut_max=2.0</em>, <em>wcor_rcond=0.1</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld.HirshfeldCPart" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.part.hirshfeld.</tt><tt class="descname">HirshfeldCPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local</em>, <em>moldens</em>, <em>proatomdb</em>, <em>wcor_numbers=None</em>, <em>wcor_rcut_max=2.0</em>, <em>wcor_rcond=0.1</em>, <em>lmax=3</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld.HirshfeldCPart" title="Permalink to this definition">¶</a></dt>
 <dd><p>See CPart base class for the description of the arguments.</p>
 <dl class="method">
 <dt id="horton.part.hirshfeld.HirshfeldCPart.get_cutoff_radius">
@@ -370,7 +447,7 @@ needed.</dd>
 
 </div>
 <div class="section" id="module-horton.part.hirshfeld_e">
-<span id="horton-part-hirshfeld-e-extended-hirshfeld-partitioning"></span><h2>10.4. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld_e</span></tt> &#8211; Extended Hirshfeld Partitioning<a class="headerlink" href="#module-horton.part.hirshfeld_e" title="Permalink to this headline">¶</a></h2>
+<span id="horton-part-hirshfeld-e-extended-hirshfeld-partitioning"></span><h2>12.4. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld_e</span></tt> &#8211; Extended Hirshfeld Partitioning<a class="headerlink" href="#module-horton.part.hirshfeld_e" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.part.hirshfeld_e.HEBasis">
 <em class="property">class </em><tt class="descclassname">horton.part.hirshfeld_e.</tt><tt class="descname">HEBasis</tt><big>(</big><em>numbers</em>, <em>proatomdb</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld_e.HEBasis" title="Permalink to this definition">¶</a></dt>
@@ -452,7 +529,7 @@ kations.</p>
 
 <dl class="class">
 <dt id="horton.part.hirshfeld_e.HirshfeldEWPart">
-<em class="property">class </em><tt class="descclassname">horton.part.hirshfeld_e.</tt><tt class="descname">HirshfeldEWPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>proatomdb</em>, <em>local=True</em>, <em>threshold=1e-06</em>, <em>maxiter=500</em>, <em>greedy=False</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld_e.HirshfeldEWPart" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.part.hirshfeld_e.</tt><tt class="descname">HirshfeldEWPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>proatomdb</em>, <em>local=True</em>, <em>slow=False</em>, <em>lmax=3</em>, <em>epsilon=0</em>, <em>threshold=1e-06</em>, <em>maxiter=500</em>, <em>greedy=False</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld_e.HirshfeldEWPart" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="horton.part.hirshfeld_e.HirshfeldEWPart.eval_proatom">
 <tt class="descname">eval_proatom</tt><big>(</big><em>index</em>, <em>output</em>, <em>grid=None</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld_e.HirshfeldEWPart.eval_proatom" title="Permalink to this definition">¶</a></dt>
@@ -472,7 +549,7 @@ kations.</p>
 
 <dl class="class">
 <dt id="horton.part.hirshfeld_e.HirshfeldECPart">
-<em class="property">class </em><tt class="descclassname">horton.part.hirshfeld_e.</tt><tt class="descname">HirshfeldECPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local</em>, <em>moldens</em>, <em>proatomdb</em>, <em>wcor_numbers</em>, <em>wcor_rcut_max=2.0</em>, <em>wcor_rcond=0.1</em>, <em>threshold=1e-06</em>, <em>maxiter=500</em>, <em>greedy=False</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld_e.HirshfeldECPart" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.part.hirshfeld_e.</tt><tt class="descname">HirshfeldECPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local</em>, <em>moldens</em>, <em>proatomdb</em>, <em>wcor_numbers=None</em>, <em>wcor_rcut_max=2.0</em>, <em>wcor_rcond=0.1</em>, <em>lmax=3</em>, <em>threshold=1e-06</em>, <em>maxiter=500</em>, <em>greedy=False</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld_e.HirshfeldECPart" title="Permalink to this definition">¶</a></dt>
 <dd><p>See CPart base class for the description of the arguments.</p>
 <dl class="method">
 <dt id="horton.part.hirshfeld_e.HirshfeldECPart.eval_proatom">
@@ -498,10 +575,10 @@ kations.</p>
 
 </div>
 <div class="section" id="module-horton.part.hirshfeld_i">
-<span id="horton-part-hirshfeld-i-iterative-hirshfeld-partitioning"></span><h2>10.5. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld_i</span></tt> &#8211; Iterative Hirshfeld Partitioning<a class="headerlink" href="#module-horton.part.hirshfeld_i" title="Permalink to this headline">¶</a></h2>
+<span id="horton-part-hirshfeld-i-iterative-hirshfeld-partitioning"></span><h2>12.5. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld_i</span></tt> &#8211; Iterative Hirshfeld Partitioning<a class="headerlink" href="#module-horton.part.hirshfeld_i" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.part.hirshfeld_i.HirshfeldIWPart">
-<em class="property">class </em><tt class="descclassname">horton.part.hirshfeld_i.</tt><tt class="descname">HirshfeldIWPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>proatomdb</em>, <em>local=True</em>, <em>threshold=1e-06</em>, <em>maxiter=500</em>, <em>greedy=False</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld_i.HirshfeldIWPart" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.part.hirshfeld_i.</tt><tt class="descname">HirshfeldIWPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>proatomdb</em>, <em>local=True</em>, <em>slow=False</em>, <em>lmax=3</em>, <em>epsilon=0</em>, <em>threshold=1e-06</em>, <em>maxiter=500</em>, <em>greedy=False</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld_i.HirshfeldIWPart" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Optional arguments:</strong> (that are not present in the base class)</p>
 <dl class="docutils">
 <dt>threshold</dt>
@@ -522,11 +599,16 @@ in the end, no warning is given.</dd>
 <tt class="descname">get_memory_estimates</tt><big>(</big><big>)</big><a class="headerlink" href="#horton.part.hirshfeld_i.HirshfeldIWPart.get_memory_estimates" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="attribute">
+<dt id="horton.part.hirshfeld_i.HirshfeldIWPart.options">
+<tt class="descname">options</tt><em class="property"> = ['slow', 'lmax', 'threshold', 'maxiter', 'greedy', 'epsilon']</em><a class="headerlink" href="#horton.part.hirshfeld_i.HirshfeldIWPart.options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="class">
 <dt id="horton.part.hirshfeld_i.HirshfeldICPart">
-<em class="property">class </em><tt class="descclassname">horton.part.hirshfeld_i.</tt><tt class="descname">HirshfeldICPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local</em>, <em>moldens</em>, <em>proatomdb</em>, <em>wcor_numbers</em>, <em>wcor_rcut_max=2.0</em>, <em>wcor_rcond=0.1</em>, <em>threshold=1e-06</em>, <em>maxiter=500</em>, <em>greedy=False</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld_i.HirshfeldICPart" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.part.hirshfeld_i.</tt><tt class="descname">HirshfeldICPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local</em>, <em>moldens</em>, <em>proatomdb</em>, <em>wcor_numbers=None</em>, <em>wcor_rcut_max=2.0</em>, <em>wcor_rcond=0.1</em>, <em>lmax=3</em>, <em>threshold=1e-06</em>, <em>maxiter=500</em>, <em>greedy=False</em><big>)</big><a class="headerlink" href="#horton.part.hirshfeld_i.HirshfeldICPart" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Optional arguments:</strong> (that are not present in the base class)</p>
 <dl class="docutils">
 <dt>threshold</dt>
@@ -550,53 +632,58 @@ in the end, no warning is given.</dd>
 </dd></dl>
 
 </div>
-<div class="section" id="module-horton.part.linalg">
-<span id="horton-part-linalg-linear-algebra-routines"></span><h2>10.6. <tt class="docutils literal"><span class="pre">horton.part.linalg</span></tt> &#8211; Linear algebra routines<a class="headerlink" href="#module-horton.part.linalg" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="horton.part.linalg.solve_positive">
-<tt class="descclassname">horton.part.linalg.</tt><tt class="descname">solve_positive</tt><big>(</big><em>A</em>, <em>B</em>, <em>bindings_eq=</em><span class="optional">[</span><span class="optional">]</span>, <em>upper_limits=None</em>, <em>rcond=0</em><big>)</big><a class="headerlink" href="#horton.part.linalg.solve_positive" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="horton.part.linalg.quadratic_solver">
-<tt class="descclassname">horton.part.linalg.</tt><tt class="descname">quadratic_solver</tt><big>(</big><em>A</em>, <em>b</em>, <em>binding_eq</em>, <em>binding_ineq</em>, <em>rcond=0</em><big>)</big><a class="headerlink" href="#horton.part.linalg.quadratic_solver" title="Permalink to this definition">¶</a></dt>
-<dd><p>A quadratic program solver.</p>
-<p><strong>Arguments:</strong></p>
-<dl class="docutils">
-<dt>A</dt>
-<dd>The coefficients of the equations</dd>
-<dt>b</dt>
-<dd>The right-hand side</dd>
-<dt>binding_eq</dt>
-<dd>Linear equality constraint equations. These equations are of the
-form. [(row_i, val_i), ...]. A solution x must satisfy all equations
-dot(row_i, x) = val_i. Can be None.</dd>
-<dt>binding_ineq</dt>
-<dd>Linear inequality constraint equations.  These equations are of the
-form. [(row_i, val_i), ...]. A solution x must satisfy all equations
-dot(row_i, x) &gt;= val_i.</dd>
-<dt>rcond</dt>
-<dd>When different from zero, rcond**2 is added to the diagonal of the
-normal equations to regularize the fit.</dd>
-</dl>
-<p>The implementation is based on the normal equations in order to keep
-things simple. The constraint equations are not inverted separately,
-which avoids a lot of trouble.</p>
+<div class="section" id="module-horton.part.iterstock">
+<span id="horton-part-iterstock-iterative-stockholder-partitioning"></span><h2>12.6. <tt class="docutils literal"><span class="pre">horton.part.iterstock</span></tt> &#8211; Iterative Stockholder partitioning<a class="headerlink" href="#module-horton.part.iterstock" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="horton.part.iterstock.IterativeProatomMixin">
+<em class="property">class </em><tt class="descclassname">horton.part.iterstock.</tt><tt class="descname">IterativeProatomMixin</tt><a class="headerlink" href="#horton.part.iterstock.IterativeProatomMixin" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="horton.part.iterstock.IterativeProatomMixin.compute_change">
+<tt class="descname">compute_change</tt><big>(</big><em>propars1</em>, <em>propars2</em><big>)</big><a class="headerlink" href="#horton.part.iterstock.IterativeProatomMixin.compute_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the difference between an old and a new proatoms</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="horton.part.linalg.constrained_solver">
-<tt class="descclassname">horton.part.linalg.</tt><tt class="descname">constrained_solver</tt><big>(</big><em>A</em>, <em>b</em>, <em>R</em>, <em>s</em>, <em>rcond=0</em><big>)</big><a class="headerlink" href="#horton.part.linalg.constrained_solver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Minimizes 1/2 x^t A x - b^t x, subject to R x = s.</p>
-<p>The implementation is based on an eigen decomposition, which is also used
-to check the condition number and optionally regularize the equations.
-This is not the most efficient approach, neither does it optimally make
-use of numerical precision. However, the approach is robust and simple.</p>
+<dl class="method">
+<dt id="horton.part.iterstock.IterativeProatomMixin.do_partitioning">
+<tt class="descname">do_partitioning</tt><big>(</big><em>instance</em><big>)</big><a class="headerlink" href="#horton.part.iterstock.IterativeProatomMixin.do_partitioning" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="horton.part.iterstock.IterativeStockholderWPart">
+<em class="property">class </em><tt class="descclassname">horton.part.iterstock.</tt><tt class="descname">IterativeStockholderWPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>slow=False</em>, <em>lmax=3</em>, <em>epsilon=0</em>, <em>threshold=1e-06</em>, <em>maxiter=500</em><big>)</big><a class="headerlink" href="#horton.part.iterstock.IterativeStockholderWPart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for Iterative Stockholder Partitioning</p>
+<dl class="method">
+<dt id="horton.part.iterstock.IterativeStockholderWPart.get_proatom_rho">
+<tt class="descname">get_proatom_rho</tt><big>(</big><em>index</em>, <em>propars=None</em><big>)</big><a class="headerlink" href="#horton.part.iterstock.IterativeStockholderWPart.get_proatom_rho" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="horton.part.iterstock.IterativeStockholderWPart.get_rgrid">
+<tt class="descname">get_rgrid</tt><big>(</big><em>index</em><big>)</big><a class="headerlink" href="#horton.part.iterstock.IterativeStockholderWPart.get_rgrid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.part.iterstock.IterativeStockholderWPart.linear">
+<tt class="descname">linear</tt><em class="property"> = False</em><a class="headerlink" href="#horton.part.iterstock.IterativeStockholderWPart.linear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.part.iterstock.IterativeStockholderWPart.name">
+<tt class="descname">name</tt><em class="property"> = 'is'</em><a class="headerlink" href="#horton.part.iterstock.IterativeStockholderWPart.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="horton.part.iterstock.IterativeStockholderWPart.options">
+<tt class="descname">options</tt><em class="property"> = ['slow', 'lmax', 'threshold', 'maxiter', 'epsilon']</em><a class="headerlink" href="#horton.part.iterstock.IterativeStockholderWPart.options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>
 <div class="section" id="module-horton.part.mulliken">
-<span id="horton-part-mulliken-mulliken-partitioning"></span><h2>10.7. <tt class="docutils literal"><span class="pre">horton.part.mulliken</span></tt> &#8211; Mulliken partitioning<a class="headerlink" href="#module-horton.part.mulliken" title="Permalink to this headline">¶</a></h2>
+<span id="horton-part-mulliken-mulliken-partitioning"></span><h2>12.7. <tt class="docutils literal"><span class="pre">horton.part.mulliken</span></tt> &#8211; Mulliken partitioning<a class="headerlink" href="#module-horton.part.mulliken" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.part.mulliken.assign_mulliken_operator">
 <tt class="descclassname">horton.part.mulliken.</tt><tt class="descname">assign_mulliken_operator</tt><big>(</big><em>operator</em>, <em>system</em>, <em>index</em><big>)</big><a class="headerlink" href="#horton.part.mulliken.assign_mulliken_operator" title="Permalink to this definition">¶</a></dt>
@@ -623,11 +710,35 @@ system.obasis corresponds to the atoms in the system object.</p>
 
 </div>
 <div class="section" id="module-horton.part.proatomdb">
-<span id="horton-part-proatomdb-pro-atom-databases"></span><h2>10.8. <tt class="docutils literal"><span class="pre">horton.part.proatomdb</span></tt> &#8211; Pro-atom databases<a class="headerlink" href="#module-horton.part.proatomdb" title="Permalink to this headline">¶</a></h2>
+<span id="horton-part-proatomdb-pro-atom-databases"></span><h2>12.8. <tt class="docutils literal"><span class="pre">horton.part.proatomdb</span></tt> &#8211; Pro-atom databases<a class="headerlink" href="#module-horton.part.proatomdb" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.part.proatomdb.ProAtomRecord">
-<em class="property">class </em><tt class="descclassname">horton.part.proatomdb.</tt><tt class="descname">ProAtomRecord</tt><big>(</big><em>number</em>, <em>charge</em>, <em>energy</em>, <em>homo_energy</em>, <em>rgrid</em>, <em>rho</em>, <em>pseudo_number=None</em>, <em>ipot_energy=None</em><big>)</big><a class="headerlink" href="#horton.part.proatomdb.ProAtomRecord" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
+<em class="property">class </em><tt class="descclassname">horton.part.proatomdb.</tt><tt class="descname">ProAtomRecord</tt><big>(</big><em>number</em>, <em>charge</em>, <em>energy</em>, <em>homo_energy</em>, <em>rgrid</em>, <em>rho</em>, <em>deriv=None</em>, <em>pseudo_number=None</em>, <em>ipot_energy=None</em><big>)</big><a class="headerlink" href="#horton.part.proatomdb.ProAtomRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p>A single proatomic density record</p>
+<p><strong>Arguments:</strong></p>
+<dl class="docutils">
+<dt>number</dt>
+<dd>The element number of the proatom.</dd>
+<dt>charge</dt>
+<dd>The net charge of the proatom. (integer)</dd>
+<dt>energy</dt>
+<dd>The total energy of the proatom.</dd>
+<dt>rgrid</dt>
+<dd>The radial grid on which the density (and optional radial
+density derivatives) are tabulated.</dd>
+<dt>rho</dt>
+<dd>The electron density on the grid.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>deriv</dt>
+<dd>The radial derivative of the electron density.</dd>
+<dt>pseudo_number</dt>
+<dd>The effective core charge (defaults to number).</dd>
+<dt>ipot_energy</dt>
+<dd>The ionization potential.</dd>
+</dl>
+<dl class="attribute">
 <dt id="horton.part.proatomdb.ProAtomRecord.charge">
 <tt class="descname">charge</tt><a class="headerlink" href="#horton.part.proatomdb.ProAtomRecord.charge" title="Permalink to this definition">¶</a></dt>
 <dd><p>The charge</p>
@@ -652,6 +763,12 @@ be computed.</dd>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="horton.part.proatomdb.ProAtomRecord.deriv">
+<tt class="descname">deriv</tt><a class="headerlink" href="#horton.part.proatomdb.ProAtomRecord.deriv" title="Permalink to this definition">¶</a></dt>
+<dd><p>The radial derivative of the density on a radial grid</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="horton.part.proatomdb.ProAtomRecord.energy">
 <tt class="descname">energy</tt><a class="headerlink" href="#horton.part.proatomdb.ProAtomRecord.energy" title="Permalink to this definition">¶</a></dt>
 <dd><p>The total electronic energy</p>
@@ -659,14 +776,19 @@ be computed.</dd>
 
 <dl class="classmethod">
 <dt id="horton.part.proatomdb.ProAtomRecord.from_system">
-<em class="property">classmethod </em><tt class="descname">from_system</tt><big>(</big><em>system</em>, <em>atgrid</em><big>)</big><a class="headerlink" href="#horton.part.proatomdb.ProAtomRecord.from_system" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><tt class="descname">from_system</tt><big>(</big><em>system</em>, <em>agspec='fine'</em><big>)</big><a class="headerlink" href="#horton.part.proatomdb.ProAtomRecord.from_system" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct a proatom record from a system and an atomic grid</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>sys</dt>
 <dd>The one-atom system.</dd>
-<dt>atgrid</dt>
-<dd>The atomic grid used for computation of the spherical average.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>agspec</dt>
+<dd>A specifications of the atomic grid. This can either be an
+instance of the AtomicGridSpec object, or the first argument
+of its constructor.</dd>
 </dl>
 </dd></dl>
 
@@ -786,27 +908,30 @@ constructor, which may weed out duplicates.</p>
 
 <dl class="classmethod">
 <dt id="horton.part.proatomdb.ProAtomDB.from_files">
-<em class="property">classmethod </em><tt class="descname">from_files</tt><big>(</big><em>fns</em>, <em>atgrid</em><big>)</big><a class="headerlink" href="#horton.part.proatomdb.ProAtomDB.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><tt class="descname">from_files</tt><big>(</big><em>fns</em>, <em>agspec='fine'</em><big>)</big><a class="headerlink" href="#horton.part.proatomdb.ProAtomDB.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct a ProAtomDB from a series of Horton checkpoint files.</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>fns_chk</dt>
 <dd>A list of system files.</dd>
-<dt>atgrid</dt>
-<dd>An AtomicGrid object used for computing spherical average.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
+<dt>agspec</dt>
+<dd>A specifications of the atomic grid. This can either be an
+instance of the AtomicGridSpec object, or the first argument
+of its constructor.</dd>
 </dl>
 </dd></dl>
 
 <dl class="classmethod">
 <dt id="horton.part.proatomdb.ProAtomDB.from_refatoms">
-<em class="property">classmethod </em><tt class="descname">from_refatoms</tt><big>(</big><em>atgrid</em>, <em>numbers=None</em>, <em>max_kation=3</em>, <em>max_anion=2</em><big>)</big><a class="headerlink" href="#horton.part.proatomdb.ProAtomDB.from_refatoms" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><tt class="descname">from_refatoms</tt><big>(</big><em>numbers=None</em>, <em>max_kation=3</em>, <em>max_anion=2</em>, <em>agspec='fine'</em><big>)</big><a class="headerlink" href="#horton.part.proatomdb.ProAtomDB.from_refatoms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct a ProAtomDB from reference atoms included in Horton</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>fns_chk</dt>
 <dd>A list of Horton checkpoint files.</dd>
-<dt>atgrid</dt>
-<dd>An AtomicGrid object used for computing spherical average.</dd>
 </dl>
 <p><strong>Optional Arguments:</strong></p>
 <dl class="docutils">
@@ -818,6 +943,10 @@ database. When not given, all reference atoms are loaded.</dd>
 <dt>max_anion</dt>
 <dd>Minus the charge of the most negativ anion to include. (This
 is typically a positive argument.)</dd>
+<dt>agspec</dt>
+<dd>A specifications of the atomic grid. This can either be an
+instance of the AtomicGridSpec object, or the first argument
+of its constructor.</dd>
 </dl>
 </dd></dl>
 
@@ -844,7 +973,7 @@ is typically a positive argument.)</dd>
 
 <dl class="method">
 <dt id="horton.part.proatomdb.ProAtomDB.get_rho">
-<tt class="descname">get_rho</tt><big>(</big><em>number</em>, <em>parameters=0</em>, <em>combine='linear'</em><big>)</big><a class="headerlink" href="#horton.part.proatomdb.ProAtomDB.get_rho" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_rho</tt><big>(</big><em>number</em>, <em>parameters=0</em>, <em>combine='linear'</em>, <em>do_deriv=False</em><big>)</big><a class="headerlink" href="#horton.part.proatomdb.ProAtomDB.get_rho" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct a proatom density on a grid.</p>
 <p><strong>Arguments:</strong></p>
 <dl class="docutils">
@@ -865,6 +994,10 @@ are the coefficients.</li>
 <dt>combine</dt>
 <dd>In case parameters is an array, this determines the type of
 combination: &#8216;linear&#8217; or &#8216;geometric&#8217;.</dd>
+<dt>do_deriv</dt>
+<dd>When set to True, the derivative of rho is also returned. In
+case the derivative is not available, the second return value is
+None.</dd>
 </dl>
 </dd></dl>
 
@@ -901,10 +1034,10 @@ h5.Group object.</dd>
 
 </div>
 <div class="section" id="module-horton.part.stockholder">
-<span id="horton-part-stockholder-base-classes-for-all-stockholder-partitioning-schemes"></span><h2>10.9. <tt class="docutils literal"><span class="pre">horton.part.stockholder</span></tt> &#8211; Base classes for all stockholder partitioning schemes<a class="headerlink" href="#module-horton.part.stockholder" title="Permalink to this headline">¶</a></h2>
+<span id="horton-part-stockholder-base-classes-for-all-stockholder-partitioning-schemes"></span><h2>12.9. <tt class="docutils literal"><span class="pre">horton.part.stockholder</span></tt> &#8211; Base classes for all stockholder partitioning schemes<a class="headerlink" href="#module-horton.part.stockholder" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="horton.part.stockholder.StockholderWPart">
-<em class="property">class </em><tt class="descclassname">horton.part.stockholder.</tt><tt class="descname">StockholderWPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local=True</em><big>)</big><a class="headerlink" href="#horton.part.stockholder.StockholderWPart" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.part.stockholder.</tt><tt class="descname">StockholderWPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local=True</em>, <em>slow=False</em>, <em>lmax=3</em>, <em>epsilon=0</em><big>)</big><a class="headerlink" href="#horton.part.stockholder.StockholderWPart" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>grid</dt>
@@ -914,9 +1047,15 @@ h5.Group object.</dd>
 <dl class="docutils">
 <dt>local</dt>
 <dd>If <tt class="docutils literal"><span class="pre">True</span></tt>: use the proper atomic grid for each AIM integral.
-If <tt class="docutils literal"><span class="pre">False</span></tt>: use the entire molecular grid for each AIM integral.
-When set to <tt class="docutils literal"><span class="pre">True</span></tt>, certain pairwise integrals are done with
-two atomic grids if needed.</dd>
+If <tt class="docutils literal"><span class="pre">False</span></tt>: use the entire molecular grid for each AIM integral.</dd>
+<dt>slow</dt>
+<dd>When <tt class="docutils literal"><span class="pre">True</span></tt>, also the AIM properties are computed that use the
+AIM overlap operators.</dd>
+<dt>lmax</dt>
+<dd>The maximum angular momentum in multipole expansions.</dd>
+<dt>epsilon</dt>
+<dd>Allow errors on the computed electron density of this magnitude
+for the sake of efficiency.</dd>
 </dl>
 <dl class="method">
 <dt id="horton.part.stockholder.StockholderWPart.update_pro">
@@ -927,7 +1066,7 @@ two atomic grids if needed.</dd>
 
 <dl class="class">
 <dt id="horton.part.stockholder.StockholderCPart">
-<em class="property">class </em><tt class="descclassname">horton.part.stockholder.</tt><tt class="descname">StockholderCPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local</em>, <em>moldens</em>, <em>wcor_numbers</em>, <em>wcor_rcut_max=2.0</em>, <em>wcor_rcond=0.1</em><big>)</big><a class="headerlink" href="#horton.part.stockholder.StockholderCPart" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">horton.part.stockholder.</tt><tt class="descname">StockholderCPart</tt><big>(</big><em>system</em>, <em>grid</em>, <em>local</em>, <em>moldens</em>, <em>wcor_numbers=None</em>, <em>wcor_rcut_max=2.0</em>, <em>wcor_rcond=0.1</em>, <em>lmax=3</em><big>)</big><a class="headerlink" href="#horton.part.stockholder.StockholderCPart" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Arguments:</strong></p>
 <dl class="docutils">
 <dt>system</dt>
@@ -938,6 +1077,9 @@ two atomic grids if needed.</dd>
 <dd>Whether or not to use local (non-periodic) grids.</dd>
 <dt>moldens</dt>
 <dd>The all-electron density grid data.</dd>
+</dl>
+<p><strong>Optional arguments:</strong></p>
+<dl class="docutils">
 <dt>wcor_numbers</dt>
 <dd>The list of element numbers for which weight corrections are
 needed.</dd>
@@ -945,6 +1087,8 @@ needed.</dd>
 <dd>The maximum cutoff sphere used for the weight corrections.</dd>
 <dt>wcor_rcond</dt>
 <dd>The regulatization strength for the weight correction equations.</dd>
+<dt>lmax</dt>
+<dd>The maximum angular momentum in multipole expansions.</dd>
 </dl>
 <dl class="method">
 <dt id="horton.part.stockholder.StockholderCPart.to_sys_grid">
@@ -960,7 +1104,7 @@ needed.</dd>
 
 </div>
 <div class="section" id="module-horton.part.symmetry">
-<span id="horton-part-symmetry-symmetry-analysis-of-aim-results"></span><h2>10.10. <tt class="docutils literal"><span class="pre">horton.part.symmetry</span></tt> &#8211; Symmetry analysis of AIM results<a class="headerlink" href="#module-horton.part.symmetry" title="Permalink to this headline">¶</a></h2>
+<span id="horton-part-symmetry-symmetry-analysis-of-aim-results"></span><h2>12.10. <tt class="docutils literal"><span class="pre">horton.part.symmetry</span></tt> &#8211; Symmetry analysis of AIM results<a class="headerlink" href="#module-horton.part.symmetry" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="horton.part.symmetry.symmetry_analysis">
 <tt class="descclassname">horton.part.symmetry.</tt><tt class="descname">symmetry_analysis</tt><big>(</big><em>system</em>, <em>symmetry</em>, <em>aim_results</em><big>)</big><a class="headerlink" href="#horton.part.symmetry.symmetry_analysis" title="Permalink to this definition">¶</a></dt>
@@ -1001,27 +1145,27 @@ equivalent atoms. 1 refers to the standard deviation</li>
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">10. <tt class="docutils literal"><span class="pre">horton.part</span></tt> &#8211; Package for density-based partitioning (fuzzy atoms)</a><ul>
-<li><a class="reference internal" href="#module-horton.part.base">10.1. <tt class="docutils literal"><span class="pre">horton.part.base</span></tt> &#8211; Base classes for partitioning algorithms</a></li>
-<li><a class="reference internal" href="#module-horton.part.becke">10.2. <tt class="docutils literal"><span class="pre">horton.part.becke</span></tt> &#8211; Becke partitioning</a></li>
-<li><a class="reference internal" href="#module-horton.part.hirshfeld">10.3. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld</span></tt> &#8211; Hirshfeld Partitioning</a></li>
-<li><a class="reference internal" href="#module-horton.part.hirshfeld_e">10.4. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld_e</span></tt> &#8211; Extended Hirshfeld Partitioning</a></li>
-<li><a class="reference internal" href="#module-horton.part.hirshfeld_i">10.5. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld_i</span></tt> &#8211; Iterative Hirshfeld Partitioning</a></li>
-<li><a class="reference internal" href="#module-horton.part.linalg">10.6. <tt class="docutils literal"><span class="pre">horton.part.linalg</span></tt> &#8211; Linear algebra routines</a></li>
-<li><a class="reference internal" href="#module-horton.part.mulliken">10.7. <tt class="docutils literal"><span class="pre">horton.part.mulliken</span></tt> &#8211; Mulliken partitioning</a></li>
-<li><a class="reference internal" href="#module-horton.part.proatomdb">10.8. <tt class="docutils literal"><span class="pre">horton.part.proatomdb</span></tt> &#8211; Pro-atom databases</a></li>
-<li><a class="reference internal" href="#module-horton.part.stockholder">10.9. <tt class="docutils literal"><span class="pre">horton.part.stockholder</span></tt> &#8211; Base classes for all stockholder partitioning schemes</a></li>
-<li><a class="reference internal" href="#module-horton.part.symmetry">10.10. <tt class="docutils literal"><span class="pre">horton.part.symmetry</span></tt> &#8211; Symmetry analysis of AIM results</a></li>
+<li><a class="reference internal" href="#">12. <tt class="docutils literal"><span class="pre">horton.part</span></tt> &#8211; Package for density-based partitioning (fuzzy atoms)</a><ul>
+<li><a class="reference internal" href="#module-horton.part.base">12.1. <tt class="docutils literal"><span class="pre">horton.part.base</span></tt> &#8211; Base classes for partitioning algorithms</a></li>
+<li><a class="reference internal" href="#module-horton.part.becke">12.2. <tt class="docutils literal"><span class="pre">horton.part.becke</span></tt> &#8211; Becke partitioning</a></li>
+<li><a class="reference internal" href="#module-horton.part.hirshfeld">12.3. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld</span></tt> &#8211; Hirshfeld Partitioning</a></li>
+<li><a class="reference internal" href="#module-horton.part.hirshfeld_e">12.4. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld_e</span></tt> &#8211; Extended Hirshfeld Partitioning</a></li>
+<li><a class="reference internal" href="#module-horton.part.hirshfeld_i">12.5. <tt class="docutils literal"><span class="pre">horton.part.hirshfeld_i</span></tt> &#8211; Iterative Hirshfeld Partitioning</a></li>
+<li><a class="reference internal" href="#module-horton.part.iterstock">12.6. <tt class="docutils literal"><span class="pre">horton.part.iterstock</span></tt> &#8211; Iterative Stockholder partitioning</a></li>
+<li><a class="reference internal" href="#module-horton.part.mulliken">12.7. <tt class="docutils literal"><span class="pre">horton.part.mulliken</span></tt> &#8211; Mulliken partitioning</a></li>
+<li><a class="reference internal" href="#module-horton.part.proatomdb">12.8. <tt class="docutils literal"><span class="pre">horton.part.proatomdb</span></tt> &#8211; Pro-atom databases</a></li>
+<li><a class="reference internal" href="#module-horton.part.stockholder">12.9. <tt class="docutils literal"><span class="pre">horton.part.stockholder</span></tt> &#8211; Base classes for all stockholder partitioning schemes</a></li>
+<li><a class="reference internal" href="#module-horton.part.symmetry">12.10. <tt class="docutils literal"><span class="pre">horton.part.symmetry</span></tt> &#8211; Symmetry analysis of AIM results</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="horton_meanfield.html"
-                        title="previous chapter">9. <tt class="docutils literal docutils literal docutils literal"><span class="pre">horton.meanfield</span></tt> &#8211; Mean-field electronic structure code</a></p>
+                        title="previous chapter">11. <tt class="docutils literal"><span class="pre">horton.meanfield</span></tt> &#8211; Mean-field electronic structure code</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="horton_scripts.html"
-                        title="next chapter">11. <tt class="docutils literal"><span class="pre">horton.scripts</span></tt> &#8211; Code used (solely) by the Horton command line scripts</a></p>
+                        title="next chapter">13. <tt class="docutils literal"><span class="pre">horton.scripts</span></tt> &#8211; Code used (solely) by the Horton command line scripts</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/lib/horton_part.txt"
@@ -1054,12 +1198,12 @@ equivalent atoms. 1 refers to the standard deviation</li>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="horton_scripts.html" title="11. horton.scripts – Code used (solely) by the Horton command line scripts"
+          <a href="horton_scripts.html" title="13. horton.scripts – Code used (solely) by the Horton command line scripts"
              >next</a> |</li>
         <li class="right" >
-          <a href="horton_meanfield.html" title="9. horton.meanfield – Mean-field electronic structure code"
+          <a href="horton_meanfield.html" title="11. horton.meanfield – Mean-field electronic structure code"
              >previous</a> |</li>
-        <li><a href="../index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

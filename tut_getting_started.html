@@ -8,15 +8,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. Getting started &mdash; Horton 1.0.1 documentation</title>
+    <title>1. Getting started &mdash; Horton 1.2.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/breathe.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0.1',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +26,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Horton 1.0.1 documentation" href="index.html" />
+    <link rel="top" title="Horton 1.2.1 documentation" href="index.html" />
     <link rel="next" title="2. How to cite Horton" href="tut_cite.html" />
     <link rel="prev" title="Horton’s Website" href="index.html" /> 
   </head>
@@ -45,7 +46,7 @@
         <li class="right" >
           <a href="index.html" title="Horton’s Website"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -86,13 +87,13 @@ operating system, some of the instructions below may not work.</p>
 <h3><a class="toc-backref" href="#id5">1.2.1. Stable release (recommended)</a><a class="headerlink" href="#stable-release-recommended" title="Permalink to this headline">¶</a></h3>
 <p>The latest stable source code release of Horton can be downloaded here:</p>
 <blockquote>
-<div><a class="reference external" href="http://users.ugent.be/~tovrstra/horton/horton-1.0.1.tar.gz">http://users.ugent.be/~tovrstra/horton/horton-1.0.1.tar.gz</a>.</div></blockquote>
+<div><a class="reference external" href="https://github.com/theochem/horton/releases/download/1.2.1/horton-1.2.1.tar.gz">https://github.com/theochem/horton/releases/download/1.2.1/horton-1.2.1.tar.gz</a></div></blockquote>
 <p>Choose a suitable directory, e.g. <tt class="docutils literal"><span class="pre">~/build</span></tt>, download and unpack the archive:</p>
 <div class="highlight-python"><pre>mkdir -p ~/build
 cd ~/build
-wget http://users.ugent.be/~tovrstra/horton/horton-1.0.1.tar.gz
-tar -xvzf horton-1.0.1.tar.gz
-cd horton-1.0.1</pre>
+wget https://github.com/theochem/horton/releases/download/1.2.1/horton-1.2.1.tar.gz
+tar -xvzf horton-1.2.1.tar.gz
+cd horton-1.2.1</pre>
 </div>
 </div>
 <div class="section" id="latest-development-code-experts-only">
@@ -123,10 +124,9 @@ install relatively recent versions of the following programs/libraries:</p>
 <li>Python &gt;= 2.7, &lt; 3.0: <a class="reference external" href="http://www.python.org/">http://www.python.org/</a> (also install <cite>development files</cite>)</li>
 <li>GCC, G++ and GFortran &gt;= 4.5: <a class="reference external" href="http://gcc.gnu.org/">http://gcc.gnu.org/</a> (In principle the Intel compilers or any other of your favorite compilers should work. The GNU compilers are used for development and testing.)</li>
 <li>Numpy &gt; 1.0: <a class="reference external" href="http://www.scipy.org/">http://www.scipy.org/</a></li>
-<li>h5py &gt;= 2.1.1: <a class="reference external" href="http://code.google.com/p/h5py/">http://code.google.com/p/h5py/</a></li>
+<li>h5py &gt;= 2.2.1: <a class="reference external" href="http://www.h5py.org/">http://www.h5py.org/</a></li>
 <li>Scipy &gt;= 0.10.0: <a class="reference external" href="http://www.scipy.org/">http://www.scipy.org/</a></li>
 <li>Cython &gt;= 0.17.1 : <a class="reference external" href="http://www.cython.org/">http://www.cython.org/</a></li>
-<li>Sphinx &gt; 1.0: <a class="reference external" href="http://sphinx.pocoo.org/">http://sphinx.pocoo.org/</a></li>
 <li>Nosetests &gt;= 1.1.2: <a class="reference external" href="http://readthedocs.org/docs/nose/en/latest/">http://readthedocs.org/docs/nose/en/latest/</a></li>
 <li>Sympy &gt;= 0.7.1: <a class="reference external" href="http://code.google.com/p/sympy/">http://code.google.com/p/sympy/</a></li>
 <li>The <tt class="docutils literal"><span class="pre">patch</span></tt> program &gt;= 2.0: <a class="reference external" href="http://savannah.gnu.org/projects/patch/">http://savannah.gnu.org/projects/patch/</a> (or any of its equivalents)</li>
@@ -134,6 +134,13 @@ install relatively recent versions of the following programs/libraries:</p>
 <p>Optionally, one may also install Matplotlib:</p>
 <ul class="simple">
 <li>Matplotlib &gt;= 1.0: <a class="reference external" href="http://matplotlib.org/">http://matplotlib.org/</a></li>
+</ul>
+<p>If one is interested in generating the documentation from source, the following
+packages are also needed:</p>
+<ul class="simple">
+<li>Sphinx &gt; 1.0: <a class="reference external" href="http://sphinx.pocoo.org/">http://sphinx.pocoo.org/</a></li>
+<li>Doxygen &gt;= 1.8.6: <a class="reference external" href="http://www.doxygen.org/">http://www.doxygen.org/</a></li>
+<li>Breathe &gt;= 1.2.0: <a class="reference external" href="http://michaeljones.github.io/breathe/">http://michaeljones.github.io/breathe/</a></li>
 </ul>
 <p>On a decent operating system, these programs/libraries can be easily installed
 with a package manager. First check this possibility before manually installing
@@ -143,6 +150,10 @@ the dependencies.</p>
 </div>
 <p>On Fedora Linux:</p>
 <div class="highlight-python"><pre>sudo yum install python-devel gcc gcc-c++ gcc-gfortran numpy h5py scipy Cython python-sphinx python-nose sympy patch python-matplotlib</pre>
+</div>
+<p>Since Breathe is relatively new, it must be installed manually. For example, it
+is available through PyPI and can be installed as follows:</p>
+<div class="highlight-python"><pre>pip install --user breathe</pre>
 </div>
 <p>If the package manager of your operating system does not have the desired
 packages (or the right versions), one has to install them manually, e.g.
@@ -163,13 +174,25 @@ dependencies from source. For the moment, there are two such dependencies,
 namely <a class="reference external" href="http://sourceforge.net/p/libint/">libint2</a> and <a class="reference external" href="http://www.tddft.org/programs/octopus/wiki/index.php/Libxc">libxc</a>
 <a class="reference internal" href="ref_literature.html#marques2012">[marques2012]</a>. The directory <tt class="docutils literal"><span class="pre">depends</span></tt>
 contains a <tt class="docutils literal"><span class="pre">Makefile</span></tt> that takes care of downloading the right version and
-compiling it. The following should get you both libint and libxc:</p>
+compiling it. The following should get you the proper versions of libint and
+libxc:</p>
 <div class="highlight-python"><pre>cd depends
 make libint
 make libxc
 cd ..</pre>
 </div>
-<p>The compilation of libint takes a few minutes.</p>
+<p>The compilation of libint takes a few minutes. These commands will build
+libraries suitable for static linking.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Alternatively, it is also possible to link libint and libxc dynamically. This
+requires some familiarity with software compilation on Unix systems. Make
+sure you have the following versions installed:</p>
+<ul class="last simple">
+<li>libint (for mpqc) &gt;= 2.0.3-stable</li>
+<li>libxc &gt;= 2.0.3.</li>
+</ul>
+</div>
 </div>
 <div class="section" id="reference-atoms">
 <h2><a class="toc-backref" href="#id9">1.5. Reference atoms</a><a class="headerlink" href="#reference-atoms" title="Permalink to this headline">¶</a></h2>
@@ -185,16 +208,18 @@ cd ../..</pre>
 </div>
 <div class="section" id="compilation-and-installation">
 <h2><a class="toc-backref" href="#id10">1.6. Compilation and installation</a><a class="headerlink" href="#compilation-and-installation" title="Permalink to this headline">¶</a></h2>
-<p>One may either install Horton in the home directory, or perform an in-pace build
-in the source tree.</p>
-<p>The <strong>regular build+install</strong> is as done follows:</p>
+<p>The regular build and install is as done follows:</p>
 <div class="highlight-python"><pre>./setup.py install --user</pre>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">horton-*.py</span></tt> scripts are installed in <tt class="docutils literal"><span class="pre">~/.local/bin</span></tt> and you have to
 add this directory to your <tt class="docutils literal"><span class="pre">PATH</span></tt> environment variable to make them accessible
 from any directory.</p>
-<p>The <strong>in-place build</strong> is useful for testing purposes, and is done as follows:</p>
-<div class="highlight-python"><pre>./setup.py build_ext -i</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When libint and libxc are compiled for static linking (as explained above),
+these libraries are found automatically. In case of dynamic linking,
+it may be necessary to specify explicitly the location of the shared objects
+and the header files with the options <tt class="docutils literal"><span class="pre">-I</span></tt> and <tt class="docutils literal"><span class="pre">-L</span></tt> of the setup script.</p>
 </div>
 <p>The documentation is compiled and viewed as follows:</p>
 <div class="highlight-python"><pre>cd doc
@@ -205,15 +230,14 @@ cd ..</pre>
 </div>
 <div class="section" id="testing">
 <h2><a class="toc-backref" href="#id11">1.7. Testing</a><a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
-<p>A bunch of validation routines are included in Horton. To run the tests, first
-perform an <strong>in-place build</strong> and run <tt class="docutils literal"><span class="pre">nosetests</span></tt> afterwards:</p>
-<div class="highlight-python"><pre>./setup.py build_ext -i
-nosetests -v</pre>
+<p>Move to a directory outside the source tree and call nosetests as follows:</p>
+<div class="highlight-python"><pre>cd ~
+nosetests -v horton</pre>
 </div>
-<p>If all tests pass, the screen output should end with <tt class="docutils literal"><span class="pre">OK</span></tt>. If at some point,
-something during the build process fails, clean up the source tree with the
-<tt class="docutils literal"><span class="pre">cleanfiles.sh</span></tt> script and try again. If you then still have problems,
-please report them on the <a class="reference external" href="https://groups.google.com/d/forum/horton-discuss">Horton mailing list</a>.</p>
+<p>In case one is testing horton on a system without an X Server, one has to
+configure matplotlib to use a backend that does not rely on an X Server. This
+can be done by adding a line <tt class="docutils literal"><span class="pre">backend:</span> <span class="pre">agg</span></tt> to the file
+<tt class="docutils literal"><span class="pre">~/.matplotlib/matplotlibrc</span></tt>.</p>
 </div>
 </div>
 
@@ -284,7 +308,7 @@ please report them on the <a class="reference external" href="https://groups.goo
         <li class="right" >
           <a href="index.html" title="Horton’s Website"
              >previous</a> |</li>
-        <li><a href="index.html">Horton 1.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

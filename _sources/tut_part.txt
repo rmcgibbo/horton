@@ -32,16 +32,20 @@ Command-line script      ``horton-wpart.py``         ``horton-cpart.py``
 Gaussian03/09 fchk       X                                                       http://www.gaussian.com/
 Molekel (Orca)           X                                                       http://cec.mpg.de/forum/
 Molden input (Orca)      X                                                       http://cec.mpg.de/forum/
+Gaussian/GAMESS wfn      X                                                       http://www.gaussian.com/ http://www.msg.ameslab.gov/gamess/
 Gaussian03/09 cube                                   X                           http://www.gaussian.com/
 Vasp CHGCAR                                          X                           https://www.vasp.at/
 **AIM schemes**
 Becke                    X                                                       [becke1988_multicenter]_
 Hirshfeld                X                           X                           [hirshfeld1977]_
 Iterative Hirshfeld      X                           X                           [bultinck2007]_
+Iterative Stockholder    X                                                       [lillestolen2008]_
 Extended Hirshfeld       X                           X                           [verstraelen2013]_
 **AIM properties**
 Charges                  X                           X
-Multipoles               X                           X
+Spin charges             X
+Cartesian multipoles     X                           X
+Pure/harmonic multipoles X                           X
 Radial moments           X                           X
 Dispersion coefficients  X                           X                           [tkatchenko2009]_
 **Extra options**
@@ -68,8 +72,9 @@ supported by most spreadsheet software.
 The usage of the four scripts (``horton-atomdb.py``, ``horton-wpart.py``,
 ``horton-cpart.py`` and ``horton-hdf2csv.py``) will be discussed in the
 following sections. All scripts have a ``--help`` option that prints out a
-complete list of all options. The last section shows how one can use the
-partitioning code through the Python interface.
+complete list of all options. The penultimate section shows how one can use the
+partitioning code through the Python interface. The last section answers some
+frequently asked questions about partitioning with Horton.
 
 
 ``horton-atomdb.py`` -- Set up a database of proatoms
@@ -78,7 +83,7 @@ partitioning code through the Python interface.
 The usage of the script ``horton-atomdb.py`` consists of three steps:
 
 1) **Generate input files** for isolated atom computations for one of the following
-   codes: Gaussian03/09, Orca, ADF or CP2K. The following example generates
+   codes: Gaussian03/09, Orca or CP2K. The following example generates
    Gaussian09 inputs for hydrogen, carbon, nitrogen and oxygen::
 
     horton-atomdb.py input g09 1,6-8 template.com
@@ -103,8 +108,10 @@ The usage of the script ``horton-atomdb.py`` consists of three steps:
 
     ./horton-atomdb.py convert
 
-   This script also generates figures of the radial densities and Fukui functions
-   if ``matplotlib`` is installed.
+   This script also generates figures of the radial densities and Fukui
+   functions if ``matplotlib`` is installed. In this step, one may use
+   :ref:`ref_grid_option`, although the default setting should be fine for
+   nearly all cases.
 
 One may remove some directories with atomic computations before or after
 executing the ``run_PROGRAM.sh`` script. The corresponding atoms will not be
@@ -241,47 +248,6 @@ The following template file use the built-in ``cc_pVQZ`` basis set of ORCA::
     *
 
 
-Simple template file for ADF
-----------------------------
-
-This is a simple template for ADF::
-
-    Title atomic PBE/DZP (all-electron) single point calculation
-
-    ATOMS
-      ${element}        0.00000        0.00000        0.00000
-    END
-
-    CHARGE  ${charge}
-
-    SYMMETRY tol=1e-2
-
-    BASIS
-      Type DZP
-      Core None
-    END
-
-    XC
-      GGA PBE
-    END
-
-    INTEGRATION
-      accint  6.0
-    END
-
-    SCF
-      iterations  100
-      converge 1.0e-06 1.0e-06
-    END
-
-    EXACTDENSITY
-
-Since Horton supports (for now) only Gaussian-type basis sets, the atomic
-density is computed on a grid with the auxiliary tools of ADF. These grid data are
-loaded in the ``convert`` step of ``horton-atomdb.py`` to compute the
-spherically averaged isolate atom densities.
-
-
 Template file for CP2K
 ----------------------
 
@@ -377,36 +343,47 @@ set.
 
 The basic usage of ``horton-wpart.py`` is as follows::
 
-    horton-wpart.py wfn {b,h,hi,he} [atoms.h5]
+    horton-wpart.py wfn output.h5[:group] {b,h,hi,he} [atoms.h5]
 
-The ``wfn`` argument can be a Gaussian03 or 09 formatted checkpoint file, a
-Molekel file or a Molden input file. The second argument refers to the
-partitioning scheme:
+This script has four important arguments:
 
-* ``b``: Becke partitioning. [becke1988_multicenter]_
-* ``h``: Hirshfeld partitioning. [hirshfeld1977]_
-* ``hi``: Iterative Hirshfeld partitioning. [bultinck2007]_
-* ``he``: Extended Hirshfeld partitioning. [verstraelen2013]_
+1. The ``wfn`` argument can be a Gaussian03 or 09 formatted checkpoint file, a
+   Molekel file or a Molden input file.
 
-The ``atoms.h5`` argument is only needed for the Hirshfeld variants. This script
-computes atomic weight functions and then derives all AIM observables that are
-implemented for that scheme. These results are stored in a HDF5 file with
-the same name as the ``wfn`` file but with a ``.h5`` extension appended. In this
-HDF5 file, the results are written in the group ``wpart/${SCHEME}`` where
-``${SCHEME}`` is any of ``b``, ``h``, ``hi``, ``he``.
+2. The output file in which the partitioning results are written. The output
+   is written in HDF5 format. Usually, the output file has the extension
+   ``.h5``. The output file is optionally followed by a colon and a group
+   suffix. This suffix can be used to specify a group in the HDF5 output file
+   where the output is stored.
+
+3. The third argument refers to the partitioning scheme:
+
+    * ``b``: Becke partitioning. [becke1988_multicenter]_
+    * ``h``: Hirshfeld partitioning. [hirshfeld1977]_
+    * ``hi``: Iterative Hirshfeld partitioning. [bultinck2007]_
+    * ``is``: Iterative Stockholder partitioning. [lillestolen2008]_
+    * ``he``: Extended Hirshfeld partitioning. [verstraelen2013]_
+
+4. The ``atoms.h5`` argument is only needed for the Hirshfeld variants, not for
+   ``b`` and ``is``. This script computes atomic weight functions and then
+   derives all AIM observables that are implemented for that scheme. These
+   results are stored in a HDF5 file with the same name as the ``wfn`` file but
+   with a suffix ``_wpart.h5``. In this HDF5 file, the results are written in
+   the group ``wpart/${SCHEME}`` where ``${SCHEME}`` is any of ``b``, ``h``,
+   ``hi``, ``is``, ``he``.
 
 Run ``horton-wpart.py --help`` to get a complete list of all command-line
-options.
+options. The integration grid can be tuned with :ref:`ref_grid_option`.
 
 .. note::
 
     When a post Hartree-Fock level is used in Gaussian 03/09 (MP2, MP3, CC or
     CI), one must add the keyword ``Density=current`` to the commands in the
-    input file. This is needed to have the corresponding density matrix in the
-    formatted checkpoint file. When such a post HF density matrix is present,
-    Horton will load that density matrix instead of the SCF density matrix. Also
-    note that for some levels of theory, no 1RDM is constructed, including MP4,
-    MP5, ZINDO and QCISD(T).
+    Gaussian input file. This is needed to have the corresponding density matrix
+    in the formatted checkpoint file. When such a post HF density matrix is
+    present, Horton will load that density matrix instead of the SCF density
+    matrix. Also note that for some levels of theory, no 1RDM is constructed,
+    including MP4, MP5, ZINDO and QCISD(T).
 
 
 ``horton-cpart.py`` -- AIM analysis based on a cube file
@@ -414,20 +391,93 @@ options.
 
 The basic usage of ``horton-cpart.py`` is as follows::
 
-    horton-cpart.py cube {h,hi,he} atoms.h5
+    horton-cpart.py cube output.h5:group {h,hi,he} atoms.h5
 
-The ``cube`` argument can be a Gaussian03 or 09 cube file or a VASP CHGCAR file.
-The second argument refers to the partitioning scheme:
+The script takes three arguments:
 
-* ``h``: Hirshfeld partitioning. [hirshfeld1977]_
-* ``hi``: Iterative Hirshfeld partitioning. [bultinck2007]_
-* ``he``: Extended Hirshfeld partitioning. [verstraelen2013]_
+1. The ``cube`` argument can be a Gaussian cube file (possibly generated with
+   another program, e.g. CP2K). Some information must be added to the cube file
+   about the effective core charges that were used. This information is needed
+   to compute the correct net charges. (This is not only relevant for the final
+   output, but also for constructing the proper pro-atoms. When these numbers
+   are not set correctly, you'll get garbage output.)
 
-This script
+   For example, given an original cube file with the following header::
+
+           -Quickstep-
+            ELECTRON DENSITY
+              18    0.000000    0.000000    0.000000
+              54    0.183933    0.000000    0.000000
+              75    0.000000    0.187713    0.000000
+              81    0.000000    0.000000    0.190349
+               8    0.000000    0.000000    3.677294    0.000000
+               8    0.000000    4.966200   10.401166    0.000000
+               8    0.000000    0.000000   10.401166    0.000000
+               8    0.000000    4.966200    3.677294    0.000000
+               8    0.000000    2.483100    0.000000    2.243351
+               8    0.000000    7.449300    0.000000   13.174925
+               8    0.000000    2.483100    4.554391    4.206115
+               8    0.000000    2.483100    9.524087    4.206115
+               8    0.000000    7.449300    9.524087   11.212180
+               8    0.000000    7.449300    4.554391   11.212180
+               8    0.000000    4.966200    7.039230    7.709138
+               8    0.000000    0.000000    7.039230    7.709138
+              14    0.000000    2.483100    2.971972    1.606588
+              14    0.000000    2.483100   11.106506    1.606588
+              14    0.000000    7.449300   11.106506   13.811687
+              14    0.000000    7.449300    2.971972   13.811687
+              14    0.000000    2.483100    7.039230    5.959157
+              14    0.000000    7.449300    7.039230    9.459119
+
+   Now consider the case that 6 effective electrons were used for oxygen and 4
+   effective electrons for silicon. Then, the second column in the atom lines
+   has to be set to the effective core charge. (This number is not used in the
+   cube format.) In this case, one gets::
+
+           -Quickstep-
+            ELECTRON DENSITY
+              18    0.000000    0.000000    0.000000
+              54    0.183933    0.000000    0.000000
+              75    0.000000    0.187713    0.000000
+              81    0.000000    0.000000    0.190349
+               8    6.0         0.000000    3.677294    0.000000
+               8    6.0         4.966200   10.401166    0.000000
+               8    6.0         0.000000   10.401166    0.000000
+               8    6.0         4.966200    3.677294    0.000000
+               8    6.0         2.483100    0.000000    2.243351
+               8    6.0         7.449300    0.000000   13.174925
+               8    6.0         2.483100    4.554391    4.206115
+               8    6.0         2.483100    9.524087    4.206115
+               8    6.0         7.449300    9.524087   11.212180
+               8    6.0         7.449300    4.554391   11.212180
+               8    6.0         4.966200    7.039230    7.709138
+               8    6.0         0.000000    7.039230    7.709138
+              14    4.0         2.483100    2.971972    1.606588
+              14    4.0         2.483100   11.106506    1.606588
+              14    4.0         7.449300   11.106506   13.811687
+              14    4.0         7.449300    2.971972   13.811687
+              14    4.0         2.483100    7.039230    5.959157
+              14    4.0         7.449300    7.039230    9.459119
+
+2. The output file in which the partitioning results are written. The output
+   is written in HDF5 format. Usually, the output file has the extension
+   ``.h5``. The output file is optionally followed by a colon and a group
+   suffix. This suffix can be used to specify a group in the HDF5 output file
+   where the output is stored.
+
+3. The third argument refers to the partitioning scheme:
+
+        * ``h``: Hirshfeld partitioning. [hirshfeld1977]_
+        * ``hi``: Iterative Hirshfeld partitioning. [bultinck2007]_
+        * ``he``: Extended Hirshfeld partitioning. [verstraelen2013]_
+
+4. The fourth argument is the atom database generated with ``horton-atomdb.py``
+
+The ``horton-cpart.py`` script
 computes atomic weight functions and then derives all AIM observables that are
 implemented for that scheme. These results are stored in a HDF5 file with
-the same name as the ``cube`` file but with a ``.h5`` extension appended. In this
-HDF5 file, the results are written in the group ``cpart/${SCHEME}_r${STRIDE}`` where
+the same name as the ``cube`` file but with a ``_cpart.h5`` suffix. In this HDF5
+file, the results are written in the group ``cpart/${SCHEME}_r${STRIDE}`` where
 ``${SCHEME}`` is any of ``h``, ``hi``, ``he`` and ``${STRIDE}`` is an optional
 argument of the script ``horton-cpart.py`` that is discussed below.
 
@@ -453,37 +503,109 @@ Run ``horton-cpart.py --help`` to get a complete list of all command-line
 options.
 
 
-``horton-hdf2csv.py`` -- Conversion of HDF5 files to CSV format
-===============================================================
-
-The script ``horton-hdf2csv.py`` is used as follows::
-
-    horton-hdf2csv.py somefile.h5:path/in/hdf5/file otherfile.csv
-
-For example, if ``horton-wpart.py`` was used to run an Extended Hirshfeld
-partitioning of a wavefunction in ``gaussian.fchk``, then the following would
-convert the results into CSV format::
-
-    horton-hdf2csv.py gaussian.fchk.h5:wpart/he extended_hirshfeld.csv
-
-This script was added for the sake of convenience for those who are not capable
-of processing the HDF5 output generated by the Horton scripts. If you know how,
-please process the HDF5 files directly with custom scripts. That is far easier
-than interfacing to the CSV files that this script generates. The `h5py
-<http://www.h5py.org/ library>`_ library is a great tool to make such custom
-scripts.
-
-
 Python interface to the partitioning code
 =========================================
 
 The ``horton-wpart.py`` and ``horton-cpart.py`` scripts have a rather intuitive
 Python interface that allows one to run a more customized analysis. The script
-``examples/004_wpart/run.py`` is a simple example that runs a Becke partitioning
+``data/examples/004_wpart/run.py`` is a simple example that runs a Becke partitioning
 where only the charges are computed and written to a simple text file.
 
-.. literalinclude:: ../examples/004_wpart/run.py
+.. literalinclude:: ../data/examples/004_wpart/run.py
 
 The unit tests in the source code contain many small examples that can be used
 as a starting point for similar scripts. These unit tests can be found in
 ``horton/part/test/test_wpart.py`` and ``horton/part/test/test_cpart.py``.
+
+
+Frequently asked questions
+==========================
+
+**Which atoms-in-molecules (AIM or partitioning) scheme should I use?**
+
+    There is no single partitioning scheme that is most suitable for any
+    application. Nevertheless, some people claim that only one AIM scheme should
+    be used above all others, especially in the QTAIM and electron density
+    communities. Try to stay away from such fanboyism as it has little to do
+    with good science.
+
+    In practice, the choice depends on the purposes one has in mind. One should
+    try to select a scheme that shows some desirable behavior.
+    Typically, one would like to have a compromise between some of the following
+    features:
+
+    * Numerical stability.
+    * Robustness with respect to conformational changes.
+    * Uniqueness of the result.
+    * Computational efficiency.
+    * Mathematical elegance.
+    * Simplicity.
+    * Linearity in the density (matrix).
+    * Chemical transferability.
+    * Applicable to a broad range of systems.
+    * Applicable to periodic/isolated systems.
+    * Applicable to a broad range of electronic structure methods/implementations.
+    * Accuracy of electrostatic interactions with a limited multipole expansion
+      of the atoms.
+    * Good (empirical) correlations between some AIM property with some experimental
+      observable.
+    * ...
+
+    It goes beyond the scope of this FAQ to describe how each partitioning scheme
+    (implemented in Horton or not) performs for these criteria. Some of these
+    features are also very hard to assess and subject of intense debate in the
+    literature.
+
+    Regarding our own work, the following papers are directly related to this
+    question:
+
+    * [verstraelen2011a]_ "Assessment of Atomic Charge Models for {Gas-Phase} Computations on Polypeptides"
+    * [verstraelen2012a]_ "The conformational sensitivity of iterative stockholder partitioning schemes"
+    * [verstraelen2013]_ "Hirshfeld-E Partitioning: AIM Charges with an Improved Trade-off between Robustness and Accurate Electrostatics"
+
+    The following are also related to this question, but the list is far from
+    complete:
+
+    * [bultinck2007]_ "Critical analysis and extension of the Hirshfeld atoms in molecules"
+    * [bultinck2007b]_ "Uniqueness and basis set dependence of iterative Hirshfeld charges"
+
+    If you have more suggestions, please drop me a note: Toon.Verstraelen@UGent.be.
+
+
+**What is the recommended level of theory for the computation of the database of proatoms?**
+
+    This question is relevant the following methods implemented in Horton:
+    Hirshfeld, Hirshfeld-I and Hirshfeld-E. They are referred to in this answer
+    as Hirshfeld-like schemes.
+
+    In principle, one is free to choose any level of theory one prefers. In
+    practice, several papers tend to be consistent in the level of theory (and
+    basis set) that is used for the molecular and proatomic computations.
+    See for example: [bultinck2007]_, [verstraelen2009]_, [verstraelen2011a]_,
+    [verstraelen2011b]_, [vanduyfhuys2012]_, [verstraelen2012a]_,
+    [verstraelen2012b]_, [verstraelen2013]_.
+
+    One motivation for this consistency is that Hirshfeld-like partitioning
+    schemes yield atoms-in-molecules that are maximally similar to the
+    pro-atoms. [nalewajski2000]_ (Technically speaking, the sum over all atoms
+    of the `Kullback-Leibler divergence
+    <https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence>`_
+    between the atom-in-molecule and proatom is minimized.)
+    This principle is (or should be) one of the reasons that Hirhsfeld-like
+    charges are somewhat transferable between chemically similar atoms. One
+    could hope that the Kullback-Leibler divergence is easier to minimize when
+    the molecular and proatomic densities are computed as consistently as
+    possible, hence with the same level of theory and basis set.
+
+    Another motivation is that such consistency may lead to a degree of error
+    cancellation when comparing Hirshfeld-like charges computed at different
+    levels of theory. For example, it is found that Hirshfeld-I charges have
+    only a small basis set dependence. [bultinck2007b]_ In this work, the
+    molecular and proatomic densities were computed consistently.
+
+    At last, one could also argue that without the consistency in level of
+    theory, there are some many possible combinations that it becomes impossible
+    to make a well-motivated choice. Then again, this is a problem that
+    computational chemist usually embrace with open arms in the hope that they
+    will find a weird combination of levels of theory that turns out to be
+    useful.

@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>5. Conversion between file formats &mdash; Horton 1.2.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/breathe.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Horton 1.2.1 documentation" href="index.html" />
+    <link rel="next" title="6. How to use Horton as an SCF program" href="tut_scf.html" />
+    <link rel="prev" title="4. Electrostatic potential fitting" href="tut_espfit.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tut_scf.html" title="6. How to use Horton as an SCF program"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tut_espfit.html" title="4. Electrostatic potential fitting"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="conversion-between-file-formats">
+<h1><a class="toc-backref" href="#id1">5. Conversion between file formats</a><a class="headerlink" href="#conversion-between-file-formats" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#conversion-between-file-formats" id="id1">Conversion between file formats</a><ul>
+<li><a class="reference internal" href="#horton-convert-py-conversion-between-file-formats-supported-by-horton" id="id2"><tt class="docutils literal"><span class="pre">horton-convert.py</span></tt> &#8211; Conversion between file formats supported by Horton</a></li>
+<li><a class="reference internal" href="#horton-hdf2csv-py-conversion-of-hdf5-files-to-csv-format" id="id3"><tt class="docutils literal"><span class="pre">horton-hdf2csv.py</span></tt> &#8211; Conversion of HDF5 files to CSV format</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="horton-convert-py-conversion-between-file-formats-supported-by-horton">
+<h2><a class="toc-backref" href="#id2">5.1. <tt class="docutils literal"><span class="pre">horton-convert.py</span></tt> &#8211; Conversion between file formats supported by Horton</a><a class="headerlink" href="#horton-convert-py-conversion-between-file-formats-supported-by-horton" title="Permalink to this headline">¶</a></h2>
+<p>The script <tt class="docutils literal"><span class="pre">horton-convert.py</span></tt> is experimental. It can be used to convert
+between different file formats supported by Horton. Run <tt class="docutils literal"><span class="pre">horton-convert.py</span>
+<span class="pre">--help</span></tt> for more details.</p>
+</div>
+<div class="section" id="horton-hdf2csv-py-conversion-of-hdf5-files-to-csv-format">
+<h2><a class="toc-backref" href="#id3">5.2. <tt class="docutils literal"><span class="pre">horton-hdf2csv.py</span></tt> &#8211; Conversion of HDF5 files to CSV format</a><a class="headerlink" href="#horton-hdf2csv-py-conversion-of-hdf5-files-to-csv-format" title="Permalink to this headline">¶</a></h2>
+<p>The script <tt class="docutils literal"><span class="pre">horton-hdf2csv.py</span></tt> is used as follows:</p>
+<div class="highlight-python"><pre>horton-hdf2csv.py somefile.h5:path/in/hdf5/file otherfile.csv</pre>
+</div>
+<p>For example, if <tt class="docutils literal"><span class="pre">horton-wpart.py</span></tt> was used to run an Extended Hirshfeld
+partitioning of a wavefunction in <tt class="docutils literal"><span class="pre">gaussian.fchk</span></tt>, then the following would
+convert the results into CSV format:</p>
+<div class="highlight-python"><pre>horton-hdf2csv.py wpart_he_results.h5 extended_hirshfeld.csv</pre>
+</div>
+<p>This script was added for the sake of convenience for those who are not capable
+of processing the HDF5 output generated by the Horton scripts. If you know how,
+please process the HDF5 files directly with custom scripts. That is far easier
+than interfacing to the CSV files that this script generates. The <a class="reference external" href="http://www.h5py.org/library">h5py</a> library is a great tool to make such custom
+scripts.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5. Conversion between file formats</a><ul>
+<li><a class="reference internal" href="#horton-convert-py-conversion-between-file-formats-supported-by-horton">5.1. <tt class="docutils literal"><span class="pre">horton-convert.py</span></tt> &#8211; Conversion between file formats supported by Horton</a></li>
+<li><a class="reference internal" href="#horton-hdf2csv-py-conversion-of-hdf5-files-to-csv-format">5.2. <tt class="docutils literal"><span class="pre">horton-hdf2csv.py</span></tt> &#8211; Conversion of HDF5 files to CSV format</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tut_espfit.html"
+                        title="previous chapter">4. Electrostatic potential fitting</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tut_scf.html"
+                        title="next chapter">6. How to use Horton as an SCF program</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tut_conversion.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tut_scf.html" title="6. How to use Horton as an SCF program"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tut_espfit.html" title="4. Electrostatic potential fitting"
+             >previous</a> |</li>
+        <li><a href="index.html">Horton 1.2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Toon Verstraelen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
