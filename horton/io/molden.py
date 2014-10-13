@@ -135,8 +135,8 @@ def load_molden(filename, lf):
                 break
             elif icoeff == -1:
                 # read 1a line
-                if line != ' Sym=     1a\n':
-                    raise IOError('Symmetry in wavefunctions is not supported.')
+                # if line != ' Sym=     1a\n':
+                #     raise IOError('Symmetry in wavefunctions is not supported.')
                 # prepare array with orbital coefficients
                 col = np.zeros((nbasis,1), float)
                 icoeff = -2
