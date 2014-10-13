@@ -183,8 +183,8 @@ class ScreenLog(object):
 
         if self.do_warning and not self._active:
             self._active = True
-            print >> self._file, self.head_banner
-            self._print_basic_info()
+            # print >> self._file, self.head_banner
+            # self._print_basic_info()
 
     def print_footer(self):
         if self.do_warning and self._active:
@@ -192,7 +192,7 @@ class ScreenLog(object):
             self._print_basic_info()
             self.timer._stop('Total')
             self.timer.report(self)
-            print >> self._file, self.foot_banner
+            # print >> self._file, self.foot_banner
 
     def _print_references(self):
         if self._biblio is not None:
@@ -517,4 +517,4 @@ foot_banner = """
 
 timer = TimerGroup()
 log = ScreenLog('HORTON', horton.__version__, head_banner, foot_banner, timer)
-atexit.register(log.print_footer)
+# atexit.register(log.print_footer)
