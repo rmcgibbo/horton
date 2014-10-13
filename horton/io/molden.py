@@ -201,7 +201,7 @@ def load_molden(filename, lf):
             if len(line) == 0:
                 break
             line = line.strip()
-            if line == '[Atoms] AU':
+            if line == '[Atoms] (AU)':
                 numbers, coordinates = helper_coordinates(f)
             elif line == '[GTO]':
                 obasis = helper_obasis(f, coordinates)
