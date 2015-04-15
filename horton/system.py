@@ -502,7 +502,7 @@ class System(object):
 
     @timer.with_section('Orbitals grid')
     def compute_grid_orbitals(self, points, iorbs=None, orbs=None, select='alpha'):
-        '''Compute the electron density on a grid using self.wfn as input
+        '''Compute the orbitals on a grid using self.wfn as input
 
            **Arguments:**
 
