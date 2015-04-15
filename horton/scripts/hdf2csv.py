@@ -19,6 +19,9 @@
 #
 #--
 '''Code used by ``horton-hdf2csv.py``'''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 import h5py as h5

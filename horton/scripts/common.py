@@ -19,6 +19,9 @@
 #
 #--
 '''Code shared by several scripts'''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 import os, sys, datetime, numpy as np

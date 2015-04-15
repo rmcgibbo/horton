@@ -21,6 +21,9 @@
 #pylint: skip-file
 
 
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 from nose.tools import assert_raises
 import numpy as np
 from horton import *

@@ -21,6 +21,9 @@
 #pylint: skip-file
 
 
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 from horton.test.common import check_script, tmpdir
 from horton.scripts.test.common import check_files, copy_files
 

@@ -19,6 +19,9 @@
 #
 #--
 '''CP2K atomic wavefunctions'''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 import numpy as np
 
@@ -32,16 +35,16 @@ __all__ = ['load_atom_cp2k']
 
 def _read_coeffs_helper(f, oe):
     coeffs = {}
-    f.next()
+    next(f)
     while len(coeffs) < len(oe):
-        line = f.next()
+        line = next(f)
         assert line.startswith("    ORBITAL      L =")
         words = line.split()
         l = int(words[3])
         s = int(words[6])
         c = []
         while True:
-            line = f.next()
+            line = next(f)
             if len(line.strip()) == 0:
                 break
             c.append(float(line))
@@ -107,8 +110,8 @@ def load_atom_cp2k(filename, lf):
                 break
 
         # TODO: add support for uncontracted and all-electron basis
-        f.next() # empty line
-        line = f.next() # Check for GTO
+        next(f) # empty line
+        line = next(f) # Check for GTO
         assert line == ' ********************** Contracted Gaussian Type Orbitals **********************\n'
 
         # Load the basis used for the PP wavefn
@@ -183,13 +186,13 @@ def load_atom_cp2k(filename, lf):
         for line in f:
             if line.startswith(' Orbital energies'):
                 break
-        f.next()
+        next(f)
 
         oe_alpha = []
         oe_beta = []
         empty = 0
         while empty < 2:
-            line = f.next()
+            line = next(f)
             words = line.split()
             if len(words) == 0:
                 empty += 1
@@ -205,14 +208,14 @@ def load_atom_cp2k(filename, lf):
                 oe_beta.append((l, s, occ, ener))
 
         # Read orbital expansion coefficients
-        line = f.next()
+        line = next(f)
         assert (line == " Atomic orbital expansion coefficients [Alpha]\n") or \
                (line == " Atomic orbital expansion coefficients []\n")
 
         coeffs_alpha = _read_coeffs_helper(f, oe_alpha)
 
         if not restricted:
-            line = f.next()
+            line = next(f)
             assert (line == " Atomic orbital expansion coefficients [Beta]\n")
 
             coeffs_beta = _read_coeffs_helper(f, oe_beta)

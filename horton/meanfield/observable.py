@@ -19,6 +19,9 @@
 #
 #--
 '''Base class for energy terms and other observables of the wavefunction'''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 __all__ = [

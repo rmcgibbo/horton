@@ -27,6 +27,9 @@
    it easier to load molecular data from various file formats. It uses to
    extension of the filename to figure out what the file format is.
 '''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 from horton.io.cif import *

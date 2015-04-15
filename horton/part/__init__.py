@@ -19,6 +19,9 @@
 #
 #--
 '''Package for density-based partitioning (fuzzy atoms)'''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 from horton.part.base import *

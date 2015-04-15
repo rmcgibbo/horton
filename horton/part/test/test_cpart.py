@@ -21,6 +21,9 @@
 #pylint: skip-file
 
 
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 from horton import *
 from horton.part.test.common import check_names, check_proatom_splines, \
     get_fake_co, get_fake_pseudo_oo
@@ -77,7 +80,7 @@ def check_fake(scheme, pseudo, dowcor, local, absmean, **kwargs):
 
     cpart.do_charges()
     charges = cpart['charges']
-    print abs(charges.sum()), abs(charges).mean(), abs(abs(charges).mean() - absmean)
+    print(abs(charges.sum()), abs(charges).mean(), abs(abs(charges).mean() - absmean))
     assert abs(charges.sum()) < 1e-2
     assert abs(abs(charges).mean() - absmean) < 1e-3
 

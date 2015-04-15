@@ -26,6 +26,9 @@
    * exp = expansion (orbitals, energies and occupations)
    * dm = density matrix
 """
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 import numpy as np
@@ -205,7 +208,7 @@ class PropertyHelper(object):
         # For actual use
         try:
             return self.method(obj, self.arg)
-        except KeyError, e:
+        except KeyError as e:
             raise AttributeError('The requested attribute (%s) is not available.' % e.args[0])
 
 

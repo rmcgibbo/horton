@@ -27,6 +27,9 @@
    written to a binary checkpoint file or kept in memory as attributes of the
    Horton objects.
 '''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 # TODO: - use the logger in all current code
 
@@ -124,7 +127,7 @@ class ScreenLog(object):
             else:
                 current = rest
                 rest = u''
-            print >> self._file, u'%s%s' % (lead, current)
+            print(u'%s%s' % (lead, current), file=self._file)
             if first:
                 lead = u' '*len(lead)
                 first = False
@@ -156,7 +159,7 @@ class ScreenLog(object):
 
     def blank(self):
         if not self._last_blank:
-            print >> self._file
+            print(file=self._file)
             self._last_blank = True
 
     def deflist(self, l):

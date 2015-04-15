@@ -19,6 +19,9 @@
 #
 #--
 '''Crystalographic Information File Format'''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 
@@ -48,32 +51,32 @@ def dump_cif(filename, system):
     if system.cell is None or system.cell.nvec != 3:
         raise ValueError('The CIF format only supports 3D periodic systems.')
     with open(filename, 'w') as f:
-        print >> f, 'data_foobar'
-        print >> f, '_symmetry_space_group_name_H-M       \'P1\''
-        print >> f, '_audit_creation_method            \'Horton\''
-        print >> f, '_symmetry_Int_Tables_number       1'
-        print >> f, '_symmetry_cell_setting            triclinic'
-        print >> f, 'loop_'
-        print >> f, '_symmetry_equiv_pos_as_xyz'
-        print >> f, '  x,y,z'
+        print('data_foobar', file=f)
+        print('_symmetry_space_group_name_H-M       \'P1\'', file=f)
+        print('_audit_creation_method            \'Horton\'', file=f)
+        print('_symmetry_Int_Tables_number       1', file=f)
+        print('_symmetry_cell_setting            triclinic', file=f)
+        print('loop_', file=f)
+        print('_symmetry_equiv_pos_as_xyz', file=f)
+        print('  x,y,z', file=f)
         lengths, angles = system.cell.parameters
-        print >> f, '_cell_length_a     %12.6f' % (lengths[0]/angstrom)
-        print >> f, '_cell_length_b     %12.6f' % (lengths[1]/angstrom)
-        print >> f, '_cell_length_c     %12.6f' % (lengths[2]/angstrom)
-        print >> f, '_cell_angle_alpha  %12.6f' % (angles[0]/deg)
-        print >> f, '_cell_angle_beta   %12.6f' % (angles[1]/deg)
-        print >> f, '_cell_angle_gamma  %12.6f' % (angles[2]/deg)
-        print >> f, 'loop_'
-        print >> f, '_atom_site_label'
-        print >> f, '_atom_site_type_symbol'
-        print >> f, '_atom_site_fract_x'
-        print >> f, '_atom_site_fract_y'
-        print >> f, '_atom_site_fract_z'
+        print('_cell_length_a     %12.6f' % (lengths[0]/angstrom), file=f)
+        print('_cell_length_b     %12.6f' % (lengths[1]/angstrom), file=f)
+        print('_cell_length_c     %12.6f' % (lengths[2]/angstrom), file=f)
+        print('_cell_angle_alpha  %12.6f' % (angles[0]/deg), file=f)
+        print('_cell_angle_beta   %12.6f' % (angles[1]/deg), file=f)
+        print('_cell_angle_gamma  %12.6f' % (angles[2]/deg), file=f)
+        print('loop_', file=f)
+        print('_atom_site_label', file=f)
+        print('_atom_site_type_symbol', file=f)
+        print('_atom_site_fract_x', file=f)
+        print('_atom_site_fract_y', file=f)
+        print('_atom_site_fract_z', file=f)
         for i in xrange(system.natom):
             fx, fy, fz = system.cell.to_frac(system.coordinates[i])
             symbol = periodic[system.numbers[i]].symbol
             label = symbol+str(i+1)
-            print >> f, '%10s %3s % 12.6f % 12.6f % 12.6f' % (label, symbol, fx, fy, fz)
+            print('%10s %3s % 12.6f % 12.6f % 12.6f' % (label, symbol, fx, fy, fz), file=f)
 
 
 class IterRelevantCIFLines(object):
@@ -106,7 +109,7 @@ class IterRelevantCIFLines(object):
         '''Get the next line from the file (or from the undo stack).'''
         if len(self.cache) == 0:
             while True:
-                line = self.f.next()
+                line = next(self.f)
                 line = line[:line.find('#')].strip()
                 if self.in_comment:
                     if line == ';':
@@ -155,7 +158,7 @@ def _load_cif_table(irl):
     # first read headings
     headings = []
     while True:
-        line = irl.next()
+        line = next(irl)
         if line.startswith('_'):
             headings.append(line[1:])
         else:
@@ -166,7 +169,7 @@ def _load_cif_table(irl):
     rows = []
     while True:
         try:
-            line = irl.next()
+            line = next(irl)
         except StopIteration:
             break
         if line.startswith('_') or line.startswith('loop_'):
@@ -204,12 +207,12 @@ def _load_cif_low(fn_cif):
     tables = []
     with open(fn_cif) as f:
         irl = IterRelevantCIFLines(f)
-        title = irl.next()
+        title = next(irl)
         assert title.startswith('data_')
         title = title[5:]
         while True:
             try:
-                line = irl.next()
+                line = next(irl)
             except StopIteration:
                 break
 

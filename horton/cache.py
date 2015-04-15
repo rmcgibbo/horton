@@ -24,6 +24,9 @@
    independently, but in some cases it makes a lot of sense to combine them.
    See for example the density partitioning code in ``horton.part``.
 '''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 import numpy as np, types
@@ -66,10 +69,10 @@ def just_once(fn):
     def wrapper(instance):
         if not hasattr(instance, '_done_just_once'):
             raise TypeError('Missing hidden _done_just_once. Forgot to call JustOnceClass.__init__()?')
-        if fn.func_name in instance._done_just_once:
+        if fn.__name__ in instance._done_just_once:
             return
         fn(instance)
-        instance._done_just_once.add(fn.func_name)
+        instance._done_just_once.add(fn.__name__)
     wrapper.__doc__ = fn.__doc__
     return wrapper
 

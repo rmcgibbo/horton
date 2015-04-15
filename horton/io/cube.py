@@ -19,6 +19,9 @@
 #
 #--
 '''Gaussian Cube File Format'''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 import numpy as np
@@ -110,19 +113,19 @@ def load_cube(filename):
 
 
 def _write_cube_header(f, coordinates, numbers, ugrid, pseudo_numbers):
-    print >> f, 'Cube file created with Horton'
-    print >> f, 'OUTER LOOP: X, MIDDLE LOOP: Y, INNER LOOP: Z'
+    print('Cube file created with Horton', file=f)
+    print('OUTER LOOP: X, MIDDLE LOOP: Y, INNER LOOP: Z', file=f)
     natom = len(numbers)
     x, y, z = ugrid.origin
-    print >> f, '%5i % 11.6f % 11.6f % 11.6f' % (natom, x, y, z)
+    print('%5i % 11.6f % 11.6f % 11.6f' % (natom, x, y, z), file=f)
     rvecs = ugrid.grid_rvecs
     for i in xrange(3):
         x, y, z = rvecs[i]
-        print >> f, '%5i % 11.6f % 11.6f % 11.6f' % (ugrid.shape[i], x, y, z)
+        print('%5i % 11.6f % 11.6f % 11.6f' % (ugrid.shape[i], x, y, z), file=f)
     for i in xrange(natom):
         q = pseudo_numbers[i]
         x, y, z = coordinates[i]
-        print >> f, '%5i % 11.6f % 11.6f % 11.6f % 11.6f' % (numbers[i], q, x, y, z)
+        print('%5i % 11.6f % 11.6f % 11.6f % 11.6f' % (numbers[i], q, x, y, z), file=f)
 
 
 def _write_cube_data(f, cube_data):

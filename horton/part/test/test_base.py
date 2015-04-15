@@ -22,6 +22,9 @@
 #pylint: skip-file
 
 
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 from nose.tools import assert_raises
 from horton import *
 
@@ -74,5 +77,5 @@ def test_cpart_schemes():
     assert cpart_schemes['hi'] is HirshfeldICPart
 
     for CPartClass in cpart_schemes.itervalues():
-        print CPartClass
+        print(CPartClass)
         assert hasattr(CPartClass, 'options')

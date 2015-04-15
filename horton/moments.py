@@ -25,6 +25,9 @@
    case, such low-level code should be consistent with the conventions in this
    module. See for example, horton.gobasis.cext.cart_to_pur_low.
 '''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 # TODO: remove duplicate code with gobasis, e.g. get_shell_nbasis

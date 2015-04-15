@@ -21,6 +21,9 @@
 #pylint: skip-file
 
 
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 import numpy as np, tempfile, shutil
 from contextlib import contextmanager
 import subprocess, os, shlex
@@ -58,14 +61,14 @@ def check_script(command, workdir):
     except OSError:
         raise AssertionError('The script %s could not be found for testing. Is your PATH variable set correctly? (See documentation.)' % command[0])
     if proc.returncode != 0:
-        print 'Standard output'
-        print '+'*80
-        print outdata
-        print '+'*80
-        print 'Standard error'
-        print '+'*80
-        print errdata
-        print '+'*80
+        print('Standard output')
+        print('+'*80)
+        print(outdata)
+        print('+'*80)
+        print('Standard error')
+        print('+'*80)
+        print(errdata)
+        print('+'*80)
         assert False
 
 

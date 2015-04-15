@@ -21,6 +21,9 @@
 #pylint: skip-file
 
 
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 from nose.tools import assert_raises
 
 from horton import *
@@ -316,7 +319,7 @@ def check_load_nitrogen(key, numbers_full, numbers_spin):
     assert 'dm_full' in wfn._cache
     assert 'dm_spin' in wfn._cache
     assert wfn.nbasis == 9
-    print wfn.dm_spin._array[0, 0]
+    print(wfn.dm_spin._array[0, 0])
     assert wfn.dm_full._array[0, 0] == numbers_full[0]
     assert wfn.dm_full._array[8, 8] == numbers_full[1]
     assert wfn.dm_spin._array[0, 0] == numbers_spin[0]

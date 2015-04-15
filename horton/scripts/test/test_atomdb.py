@@ -21,6 +21,9 @@
 #pylint: skip-file
 
 
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 import os, shutil
 from horton.context import context
 from horton.periodic import periodic
@@ -132,8 +135,8 @@ def copy_atom_output(fn, number, charge, mult, dn, fn_out):
 
 def make_fake_run_script(program, dn):
     with open(os.path.join(dn, 'run_%s.sh' % program), 'w') as f:
-        print >> f, '#!/bin/bash'
-        print >> f, 'echo "Foo"'
+        print('#!/bin/bash', file=f)
+        print('echo "Foo"', file=f)
 
 
 def test_script_convert_cp2k():

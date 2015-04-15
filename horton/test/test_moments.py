@@ -21,6 +21,9 @@
 #pylint: skip-file
 
 
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 from nose.tools import assert_raises
 from horton import *
 from horton.test.common import get_pentagon_moments
@@ -155,11 +158,11 @@ def test_fill_pure_polynomials():
     for l in xrange(1, 5):
         assert fill_pure_polynomials(output, l) == get_npure_cumul(l-1)-1
         nrow = get_npure_cumul(l)-1
-        print l, nrow
+        print(l, nrow)
         for irow in xrange(nrow):
-            print irow, output[irow], expected[irow]
+            print(irow, output[irow], expected[irow])
             assert abs(output[irow] - expected[irow]) < 1e-10
-        print
+        print()
         assert (output[nrow:] == 0).all()
 
     with assert_raises(ValueError):

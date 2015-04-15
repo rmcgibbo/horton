@@ -21,6 +21,9 @@
 #pylint: skip-file
 
 
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 import numpy as np
 from nose.tools import assert_raises
 
@@ -140,12 +143,12 @@ def test_diagonal_form_nl4():
         try:
             assert abs(x3 - x4).max() < 1e-8*abs(x3).max()
         except:
-            print i, 5
-            print np.linalg.eigvalsh(a)
-            print np.linalg.svd(r)[1]
-            print x3
-            print x3 - x4
-            print
+            print(i, 5)
+            print(np.linalg.eigvalsh(a))
+            print(np.linalg.svd(r)[1])
+            print(x3)
+            print(x3 - x4)
+            print()
             raise
 
 
@@ -157,10 +160,10 @@ def test_diagonal_form_nl8():
         try:
             assert abs(np.dot(r, x0) - s).max() < 1e-10
         except:
-            print i, 8, 'constraint'
-            print np.linalg.svd(r)[1]
-            print s
-            print np.dot(r, x0) - s
+            print(i, 8, 'constraint')
+            print(np.linalg.svd(r)[1])
+            print(s)
+            print(np.dot(r, x0) - s)
             raise
         assert basis is None
         assert evals is None
@@ -170,12 +173,12 @@ def test_diagonal_form_nl8():
         try:
             assert abs(x0 - x5).max() < 1e-8*abs(x0).max()
         except:
-            print i, 8
-            print np.linalg.eigvalsh(a)
-            print np.linalg.svd(r)[1]
-            print x0
-            print x0 - x5
-            print
+            print(i, 8)
+            print(np.linalg.eigvalsh(a))
+            print(np.linalg.svd(r)[1])
+            print(x0)
+            print(x0 - x5)
+            print()
             raise
 
 
@@ -381,7 +384,7 @@ def test_brute_local_posdef():
             try:
                 qps.check_solution(x0)
             except:
-                print 'problem with brute'
+                print('problem with brute')
                 qps.log()
                 raise
 
@@ -390,7 +393,7 @@ def test_brute_local_posdef():
                 qps.check_solution(x1)
                 assert abs(x0 - x1).max() < qps.eps
             except:
-                print 'problem with local from solution'
+                print('problem with local from solution')
                 qps.log(x0)
                 raise
 
@@ -402,7 +405,7 @@ def test_brute_local_posdef():
                 qps.check_solution(x2)
                 assert abs(x0 - x2).max() < qps.eps
             except:
-                print 'problem with local from random'
+                print('problem with local from random')
                 qps.log(xr)
                 raise
 
@@ -416,14 +419,14 @@ def test_brute_local():
         try:
             cost0, x0 = qps.find_brute()
             feasible = True
-        except (FeasibilityError, BoundedError), e:
+        except (FeasibilityError, BoundedError) as e:
             feasible = False
 
         if feasible:
             try:
                 qps.check_solution(x0)
             except:
-                print 'problem with brute'
+                print('problem with brute')
                 qps.log()
                 raise
 
@@ -432,7 +435,7 @@ def test_brute_local():
                 qps.check_solution(x1)
                 assert abs(x0 - x1).max() < qps.eps
             except:
-                print 'problem with local from solution'
+                print('problem with local from solution')
                 qps.log(x0)
                 raise
 
@@ -448,7 +451,7 @@ def test_brute_local():
                 # this may happen with unbounded problems
                 continue
             except:
-                print 'problem with local from random'
+                print('problem with local from random')
                 qps.log(xr)
                 raise
 

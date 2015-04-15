@@ -19,6 +19,9 @@
 #
 #--
 '''XYZ File Format'''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 import numpy as np
@@ -42,8 +45,8 @@ def load_geom_xyz(filename):
        two first arguments of the System constructor.
     '''
     f = file(filename)
-    size = int(f.next())
-    f.next()
+    size = int(next(f))
+    next(f)
     coordinates = np.empty((size, 3), float)
     numbers = np.empty(size, int)
     for i in xrange(size):
@@ -72,9 +75,9 @@ def dump_xyz(filename, system):
             An instance of the System class.
     '''
     with open(filename, 'w') as f:
-        print >> f, system.natom
-        print >> f, 'File generated with Horton'
+        print(system.natom, file=f)
+        print('File generated with Horton', file=f)
         for i in xrange(system.natom):
             n = periodic[system.numbers[i]].symbol
             x, y, z = system.coordinates[i]/angstrom
-            print >> f, '%2s %15.10f %15.10f %15.10f' % (n, x, y, z)
+            print('%2s %15.10f %15.10f %15.10f' % (n, x, y, z), file=f)

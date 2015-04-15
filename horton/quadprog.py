@@ -70,6 +70,9 @@ r'''A light-weight quadratic programming solver
    nl
         The number of constraints
 '''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 # How to implement the primal feasibility test
@@ -124,7 +127,7 @@ def _counter_to_free(counter, free):
         power *= 2
 
 
-def find_1d_root(fn, (x0, y0), (x2, y2), eps):
+def find_1d_root(fn, xxx_todo_changeme, xxx_todo_changeme1, eps):
     '''Find the root of a 1D function
 
        **Arguments:**
@@ -138,7 +141,8 @@ def find_1d_root(fn, (x0, y0), (x2, y2), eps):
        eps
             The allowed error on the function.
     '''
-    # we want y0 < 0 and y2 > 0
+    (x0, y0) = xxx_todo_changeme
+    (x2, y2) = xxx_todo_changeme1
     if y2 < 0:
         x0, y0, x2, y2 = x2, y2, x0, y0
     assert y0 < 0
@@ -852,24 +856,24 @@ class QPSolver(object):
                 An solution vector (that causes problems).
         '''
         def _print_array(ar):
-            print '    np.array(['
+            print('    np.array([')
             for row in ar:
-                print '        [%s],' % (', '.join(repr(v) for v in row))
-            print '    ]),'
+                print('        [%s],' % (', '.join(repr(v) for v in row)))
+            print('    ]),')
 
         def _print_vector(ve):
-            print '    np.array([%s]),' % (', '.join(repr(v) for v in ve))
+            print('    np.array([%s]),' % (', '.join(repr(v) for v in ve)))
 
-        print '#'*80
-        print 'qps = QPSolver('
+        print('#'*80)
+        print('qps = QPSolver(')
         _print_array(self.a)
         _print_vector(self.b)
         if self.nl > 0:
             _print_array(self.r)
             _print_vector(self.s)
         else:
-            print 'None, None,'
-        print ')'
+            print('None, None,')
+        print(')')
         if x is not None:
-            print 'x = np.array([%s])' % (', '.join(repr(v) for v in x))
-        print '#'*80
+            print('x = np.array([%s])' % (', '.join(repr(v) for v in x)))
+        print('#'*80)

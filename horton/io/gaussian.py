@@ -19,6 +19,9 @@
 #
 #--
 '''Gaussian LOG and FCHK file fromats'''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 import numpy as np
@@ -92,7 +95,7 @@ def _load_onebody_g09(f, nbasis, lf):
     block_counter = 0
     while block_counter < nbasis:
         # skip the header line
-        f.next()
+        next(f)
         # determine the number of rows in this part
         nrow = nbasis - block_counter
         for i in xrange(nrow):
@@ -121,11 +124,11 @@ def _load_twobody_g09(f, nbasis, lf):
     result = lf.create_two_body(nbasis)
     # Skip first six lines
     for i in xrange(6):
-        f.next()
+        next(f)
     # Start reading elements until a line is encountered that does not start
     # with ' I='
     while True:
-        line = f.next()
+        line = next(f)
         if not line.startswith(' I='):
             break
         #print line[3:7], line[9:13], line[15:19], line[21:25], line[28:].replace('D', 'E')
@@ -213,7 +216,7 @@ class FCHKFile(object):
                         for word in line.split():
                             try:
                                 value[counter] = datatype(word)
-                            except (ValueError, OverflowError), e:
+                            except (ValueError, OverflowError) as e:
                                 raise IOError('Could not interpret word while reading %s: %s' % (word, filename))
                             counter += 1
                 except ValueError:

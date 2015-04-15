@@ -48,6 +48,9 @@
    internals that still make temporaries. This fixed later with an alternative
    implementation.
 """
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 import numpy as np
@@ -356,7 +359,7 @@ class DenseExpansion(LinalgObject):
             if self.occupations[i] == 0:
                 continue
             norm = olp.dot(self._coeffs[:,i], self._coeffs[:,i])
-            print i, norm
+            print(i, norm)
             assert abs(norm-1) < eps, 'The orbitals are not normalized!'
 
     def compute_density_matrix(self, dm, factor=None):

@@ -29,6 +29,9 @@
    TODO: (long future) make the fields clever enough such that they can convert
    data from one linalgfactory into another.
 """
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 import h5py as h5, numpy as np

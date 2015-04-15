@@ -19,6 +19,9 @@
 #
 #--
 '''H5 File with lock'''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 import h5py as h5, fcntl, time
@@ -63,7 +66,7 @@ class LockedH5File(h5.File):
             try:
                 h5.File.__init__(self, *args, **kwargs)
                 break # When this line is reached, it worked.
-            except IOError, e:
+            except IOError as e:
                 if irep == count-1:
                     # giving up
                     raise
@@ -82,7 +85,7 @@ class LockedH5File(h5.File):
                 else:
                     fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
                 break # When this line is reached, it worked.
-            except IOError, e:
+            except IOError as e:
                 if irep == count-1:
                     # giving up
                     raise

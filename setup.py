@@ -21,6 +21,7 @@
 #--
 
 
+from __future__ import print_function
 import os
 import numpy as np
 from glob import glob
@@ -33,7 +34,8 @@ from Cython.Distutils import build_ext
 
 libintdir = 'depends/libint-2.0.3-stable'
 libxcdir = 'depends/libxc-2.0.3'
-execfile('customize.py')
+with open('customize.py') as f:
+    exec(f.read())
 
 
 def get_sources(dirname):
@@ -68,11 +70,10 @@ class my_install_data(install_data):
         for name in dist.packages:
             if '.' not in name:
                 destination = os.path.join(libdir, name, "data_dir.txt")
-                print "Creating %s" % destination
+                print("Creating %s" % destination)
                 if not self.dry_run:
-                    f = file(destination, "w")
-                    print >> f, self.install_dir
-                    f.close()
+                    with open(destination, "w") as f:
+                        print(self.install_dir, file=f)
 
 
 

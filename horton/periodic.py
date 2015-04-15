@@ -35,6 +35,9 @@
        >>> periodic['5'].symbol
        'B'
 '''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 from horton.context import context
@@ -221,7 +224,7 @@ def load_periodic():
                 break
         # parse the first two header rows
         names = row
-        convertors = [convertor_types[key] for key in r.next()]
+        convertors = [convertor_types[key] for key in next(r)]
 
         elements = []
         for row in r:

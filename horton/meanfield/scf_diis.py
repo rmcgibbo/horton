@@ -19,6 +19,9 @@
 #
 #--
 '''Abstract DIIS code used by the different DIIS implementations'''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 import numpy as np
@@ -366,7 +369,7 @@ def converge_scf_diis_cs(ham, DIISHistoryClass, maxiter=128, threshold=1e-6, nve
                 wfn.update_dm('alpha', tmp)
                 ham.clear()
                 energies2.append(ham.compute())
-                print x, energies1[-1], energies2[-1]
+                print(x, energies1[-1], energies2[-1])
             pt.clf()
             pt.plot(xs, energies1, label='est')
             pt.plot(xs, energies2, label='ref')

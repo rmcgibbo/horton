@@ -19,6 +19,9 @@
 #
 #--
 '''Molden Wavefunction Input File Format'''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 import numpy as np
@@ -265,19 +268,19 @@ def dump_molden(filename, system):
     '''
     with open(filename, 'w') as f:
         # Print the header
-        print >> f, '[Molden Format]'
-        print >> f, '[Title]'
-        print >> f, ' File created with Horton'
-        print >> f
+        print('[Molden Format]', file=f)
+        print('[Title]', file=f)
+        print(' File created with Horton', file=f)
+        print(file=f)
 
         # Print the elements numbers and the coordinates
-        print >> f, '[Atoms] AU'
+        print('[Atoms] AU', file=f)
         for i in xrange(system.natom):
             number = system.numbers[i]
             x, y, z = system.coordinates[i]
-            print >> f, '%2s %3i %3i  %20.10f %20.10f %20.10f' % (
+            print('%2s %3i %3i  %20.10f %20.10f %20.10f' % (
                 periodic[number].symbol.ljust(2), i+1, number, x, y, z
-            )
+            ), file=f)
 
         # Print the basis set
         if isinstance(system.obasis, GOBasis):
@@ -300,18 +303,18 @@ def dump_molden(filename, system):
                 centers[icenter].append((sts, prims))
                 begin_prim = end_prim
 
-            print >> f, '[GTO]'
+            print('[GTO]', file=f)
             for icenter in xrange(obasis.ncenter):
-                print >> f, '%3i 0' % (icenter+1)
+                print('%3i 0' % (icenter+1), file=f)
                 for sts, prims in centers[icenter]:
-                    print >> f, '%1s %3i 1.0' % (sts, len(prims))
+                    print('%1s %3i 1.0' % (sts, len(prims)), file=f)
                     for alpha, con_coeff in prims:
-                        print >> f, '%20.10f %20.10f' % (alpha, con_coeff)
-                print >> f
+                        print('%20.10f %20.10f' % (alpha, con_coeff), file=f)
+                print(file=f)
 
             # For now, only pure basis functions are supported.
-            print >> f, '[5D]'
-            print >> f, '[9G]'
+            print('[5D]', file=f)
+            print('[9G]', file=f)
 
             # The sign conventions...
             signs = get_orca_signs(obasis)
@@ -323,19 +326,19 @@ def dump_molden(filename, system):
                 raise TypeError('The restricted WFN does not have an expansion of the %s orbitals.' % spin)
             exp = system.wfn.get_exp(spin)
             for ifn in xrange(exp.nfn):
-                print >> f, ' Sym=     1a'
-                print >> f, ' Ene= %20.14E' % exp.energies[ifn]
-                print >> f, ' Spin= %s' % spin.capitalize()
-                print >> f, ' Occup= %8.6f' % (exp.occupations[ifn]*occ_scale)
+                print(' Sym=     1a', file=f)
+                print(' Ene= %20.14E' % exp.energies[ifn], file=f)
+                print(' Spin= %s' % spin.capitalize(), file=f)
+                print(' Occup= %8.6f' % (exp.occupations[ifn]*occ_scale), file=f)
                 for ibasis in xrange(exp.nbasis):
-                    print >> f, '%3i %20.12f' % (ibasis+1, exp.coeffs[ibasis,ifn]*signs[ibasis])
+                    print('%3i %20.12f' % (ibasis+1, exp.coeffs[ibasis,ifn]*signs[ibasis]), file=f)
 
         # Print the mean-field orbitals
         if isinstance(system.wfn, RestrictedWFN):
-            print >> f, '[MO]'
+            print('[MO]', file=f)
             helper_exp('alpha', 2.0)
         elif isinstance(system.wfn, UnrestrictedWFN):
-            print >> f, '[MO]'
+            print('[MO]', file=f)
             helper_exp('alpha')
             helper_exp('beta')
         else:

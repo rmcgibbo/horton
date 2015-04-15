@@ -23,6 +23,9 @@
    These are the physical constants defined in this module (in atomic units):
 
 '''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 boltzmann = 3.1668154051341965e-06
 avogadro = 6.0221415e23

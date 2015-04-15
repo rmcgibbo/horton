@@ -19,6 +19,9 @@
 #
 #--
 '''Code used by ``horton-atomdb.py``'''
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
 
 
 from string import Template as BaseTemplate
@@ -344,7 +347,7 @@ class AtomProgram(object):
         exists = os.path.isfile(fn_script)
         if not exists:
             with open(fn_script, 'w') as f:
-                print >> f, self.run_script
+                print(self.run_script, file=f)
             log('Written new:      ', fn_script)
         else:
             log('Not overwriting:  ', fn_script)
